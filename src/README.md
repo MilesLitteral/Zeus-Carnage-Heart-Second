@@ -16,10 +16,12 @@ Unknown:
 .CLU
 .MOT
 .BIN
-.SCE
 .MSG
 
 OKE data files
 .DAT
+
+Scenarios
+.SCE
 
 As progress is made new categories will pop up as to what each file relates to
