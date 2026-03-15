@@ -1,6 +1,6 @@
 ZEUS Carnage Heart Second – Decompilation Project
 
-Project Status: ⚡ Early / Ongoing / Active (adjust as appropriate)
+Project Status: ⚡ Ongoing 
 
 This repository contains the decompilation effort of ZEUS Carnage Heart Second, aiming to reverse-engineer the game’s executable into a readable and maintainable source code format. The goal is to enable research, modding, preservation, and deeper understanding of the game’s inner workings.
 
