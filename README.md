@@ -44,6 +44,7 @@ git clone https://github.com/YourUsername/ZEUS-CH2-Decomp.git
 cd ZEUS-CH2-Decomp
 ```
 # Follow individual folder README for building or inspecting code
+```
 Project Structure
 /ZEUS-CH2-Decomp
 ├─ bin/           # Placeholder for original executable (not included)
@@ -51,16 +52,13 @@ Project Structure
 ├─ docs/          # Notes, analyses, and code annotations
 ├─ tests/         # Scripts to test engine logic
 └─ README.md
+```
 Contributing
-
 We welcome contributions! Ways to help:
 
 Code annotation
-
 Bug reporting
-
 Logic analysis (AI, battle algorithms, etc.)
-
 Improving project documentation
 
 Please follow the CONTRIBUTING.md
