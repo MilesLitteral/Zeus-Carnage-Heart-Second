@@ -16,8 +16,10 @@ Unknown:
 .CLU
 .MOT
 .BIN
-.DAT
 .SCE
 .MSG
+
+OKE data files
+.DAT
 
 As progress is made new categories will pop up as to what each file relates to
