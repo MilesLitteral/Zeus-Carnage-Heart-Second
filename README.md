@@ -72,6 +72,6 @@ Contact
 
 For questions, discussions, or collaboration:
 
-Discord / Forum link (if any)
+Discord / Forum link: https://discord.gg/pmVju5kJ
 
-Email: your.email@example.com
+Email: mandaloe2@gmail.com
