@@ -39,8 +39,10 @@ C/C++ compiler (depending on decompilation output)
 [Optional] Debugging tools such as Ghidra, IDA, or Binary Ninja
 
 Installation / Setup
+```
 git clone https://github.com/YourUsername/ZEUS-CH2-Decomp.git
 cd ZEUS-CH2-Decomp
+```
 # Follow individual folder README for building or inspecting code
 Project Structure
 /ZEUS-CH2-Decomp
