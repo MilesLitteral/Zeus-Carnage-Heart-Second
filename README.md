@@ -1,11 +1,15 @@
-ZEUS Carnage Heart Second – Decompilation Project
+# ZEUS Carnage Heart Second – Decompilation Project
+
+
+![Decompiler Screenshot](Screenshot%202026-03-18%20131835.png)
+
 
 Project Status: ⚡ Ongoing 
 
 This repository contains the decompilation effort of ZEUS Carnage Heart Second, aiming to reverse-engineer the game’s executable into a readable and maintainable source code format. The goal is to enable research, modding, preservation, and deeper understanding of the game’s inner workings.
 As well as create a version of ZEUS (Win95/98) that is fully compatible with modern operating systems.
 
-Overview
+## Overview
 
 ZEUS Carnage Heart Second is a classic mecha strategy and programming simulation game with complex systems. This project seeks to:
 
@@ -17,7 +21,7 @@ Provide a foundation for modding, analysis, or cross-platform recreation.
 
 ⚠️ Note: This project is intended for educational and research purposes. It does not distribute the original game’s assets or binaries.
 
-Project Goals
+## Project Goals
 
 Decompilation: Translate binary executable into C/C++ (or the closest human-readable form).
 
@@ -27,17 +31,19 @@ Research: Explore AI behaviors, battle algorithms, and simulation mechanics.
 
 Community Engagement: Allow enthusiasts to contribute analyses, bug findings, and small mods.
 
-Getting Started
+## Getting Started
 
 These instructions assume you want to explore the decompiled code, run tests, or contribute.
 
-Prerequisites
+### Prerequisites
 
-Git
+* Git
 
-C/C++ compiler (depending on decompilation output)
+* C/C++ compiler (depending on decompilation output)
 
-[Optional] Debugging tools such as Ghidra, IDA, or Binary Ninja
+* [Optional] Debugging tools such as Ghidra, IDA, or Binary Ninja
+
+* [Optional] TIM Viewer, Hex Editor (XVI32, etc), Duckstation
 
 Installation / Setup
 ```
@@ -54,7 +60,8 @@ Project Structure
 ├─ tests/         # Scripts to test engine logic
 └─ README.md
 ```
-Contributing
+
+## Contributing
 We welcome contributions! Ways to help:
 
 Code annotation
@@ -75,11 +82,11 @@ undefined8 = 8-byte value (equivalent to uint64_t)
 Please follow the CONTRIBUTING.md
  guidelines.
 
-Legal Disclaimer
+## Legal Disclaimer
 
 This project does not contain or distribute copyrighted game assets. It is for research, education, and archival purposes only. Users must own the original game to fully utilize any related work.
 
-Contact
+## Contact
 
 For questions, discussions, or collaboration:
 
