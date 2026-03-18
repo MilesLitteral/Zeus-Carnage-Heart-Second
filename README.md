@@ -62,6 +62,16 @@ Bug reporting
 Logic analysis (AI, battle algorithms, etc.)
 Improving project documentation
 
+For example:
+```
+Data Types guide:
+undefined1 = 1-byte value (equivalent to uint8_t or unsigned char)
+undefined2 = 2-byte value (equivalent to uint16_t or unsigned short)
+undefined4 = 4-byte value (equivalent to uint32_t or unsigned int)
+undefined5 = 5-byte value (unusual; rare in decompiled code)
+undefined8 = 8-byte value (equivalent to uint64_t)
+```
+
 Please follow the CONTRIBUTING.md
  guidelines.
 
