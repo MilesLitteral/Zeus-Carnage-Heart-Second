@@ -1,79 +1,85 @@
-// Input handling functions for ZEUS Carnage Heart Second
-// Decompiled from original binary
+// input.c
+#include <stdint.h>
+#include <stdbool.h>
 
-#include "zeus.h"
+/* globals */
+uint32_t gInputCurrent;
+uint32_t gInputPressed;
+uint32_t gInputPrevious;
 
-// Initialize input system
-void FUN_00420b20(void)
+uint32_t gInputUpdated;
+uint32_t gInputOverride;
 
+/* external engine functions */
+extern int InputSystemActive(void);
+extern void ResetInputHardware(int);
+extern uint32_t ReadController(uint32_t* state);
+extern void StopController(void);
+
+/* initialize input system */
+
+void Input_Init(void)
 {
-  int iVar1;
+    if (InputSystemActive())
+        ResetInputHardware(0);
 
-  iVar1 = FUN_004436b0();
-  if (iVar1 != 0) {
-    FUN_004436c0(0);
-  }
-  if (DAT_004bc460 == 0) {
-    DAT_004deaf8 = 0;
-    DAT_004deaf0 = FUN_00446e90(&DAT_004deaf4);
-    if (DAT_004bc45c != 0) {
-      DAT_004deaf0 = DAT_004deaf4;
+    if (!gInputUpdated)
+    {
+        gInputPrevious = 0;
+
+        gInputPressed = ReadController(&gInputCurrent);
+
+        if (gInputOverride)
+            gInputPressed = gInputCurrent;
+
+        gInputOverride = 0;
+        gInputUpdated = 1;
     }
-    DAT_004bc45c = 0;
-    DAT_004bc460 = 1;
-  }
-  return;
 }
 
-// Stub function
-void FUN_00420b80(void)
+/* check if button pressed this frame */
+
+bool Input_Pressed(uint32_t mask)
 {
-  return;
+    gInputUpdated = 0;
+
+    if ((mask & gInputPressed) && !(mask & gInputPrevious))
+        return true;
+
+    return false;
 }
 
-// Check if a key is pressed (returns 1 if pressed and not previously pressed)
-undefined4 __cdecl check_key_press(uint param_1)
+/* check if button held */
+
+uint32_t Input_Held(uint32_t mask)
 {
-  DAT_004bc460 = 0;
-  if (((param_1 & DAT_004deaf0) != 0) && ((param_1 & DAT_004deaf8) == 0)) {
-    return 1;
-  }
-  return 0;
+    gInputUpdated = 0;
+    return mask & gInputCurrent;
 }
 
-// Get current key state
-uint __cdecl FUN_00420bc0(uint param_1)
+/* reset input state */
+
+void Input_Reset(void)
 {
-  DAT_004bc460 = 0;
-  return param_1 & DAT_004deaf4;
+    gInputUpdated = 0;
+    gInputPrevious = 0;
+    gInputPressed = 0;
+
+    StopController();
 }
 
-// Reset input state
-void FUN_00420be0(void)
+/* check if no buttons pressed */
+
+bool Input_None(void)
 {
-  DAT_004bc460 = 0;
-  DAT_004deaf8 = 0;
-  DAT_004deaf0 = 0;
-  FUN_00446eb0();
-  return;
+    gInputUpdated = 0;
+    return gInputPressed == 0;
 }
 
-// Check if no keys are pressed
-bool FUN_00420c00(void)
-{
-  DAT_004bc460 = 0;
-  return DAT_004deaf0 == 0;
-}
+/* per-frame input update */
 
-// Stub function
-void FUN_00420c20(void)
+void Input_Update(void)
 {
-  return;
-}
-
-// Process input (main input processing function)
-void process_input(void)
-{
-  FUN_00420c20();
-  return;
+    /* currently empty in binary */
+    return;
 }

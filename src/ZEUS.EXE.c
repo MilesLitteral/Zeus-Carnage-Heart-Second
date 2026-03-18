@@ -1,5 +1,5 @@
 #include <string>
-
+#include "zeus.h"
 
 uint DAT_004baa34;
 uint DAT_004baa38;
@@ -11,7 +11,7 @@ ushort screen_scroll_y;
 uchar DAT_004fda40;
 short DAT_004ddb5c;
 uchar *PTR_DAT_004baa20;
-string s_GRA\SNAP\MGSNAP01.TIM_004b44f4;
+string s_GRA; //\SNAP\MGSNAP01.TIM_004b44f4;
 uchar DAT_0052f3e0;
 int DAT_004feeb0;
 uchar DAT_004b450c;
@@ -21,8 +21,8 @@ short menu_selection;  // 0, 1, or 2 for different menu options
 short screen_scroll_y;  // Y offset for screen scrolling
 uchar DAT_004b44c0;
 uchar DAT_004b44c2;
-string s_FAMILY_NAME_004b4524;
-string s_FIRST_NAME_004b4530;
+string s_FAMILY_NAME; //_004b4524;
+string s_FIRST_NAME; //_004b4530;
 ushort game_start_flag;  // Flag to start the game
 ushort menu_state;  // Current menu screen/state
 short DAT_004dda98;
@@ -48,7 +48,7 @@ ushort DAT_004ddb58;
 ushort DAT_004ddb54;
 ushort DAT_004ddae4;
 ushort DAT_004ddae0;
-string s_KNJ.BIN_004b453c;
+string s_KNJ; //.BIN_004b453c;
 uchar DAT_004dda80;
 uchar DAT_004ddaa8;
 uchar DAT_004ddaf8;
@@ -183,7 +183,7 @@ short DAT_004ddbd8;
 short DAT_004ddbb0;
 LPVOID vram_buffer;
 short DAT_004ddbdc;
-string s_GRA\HARD01.TIM_004b50e0;
+string s_GRA; //\HARD01.TIM_004b50e0;
 ushort DAT_004ddba8;
 ushort DAT_004ddb74;
 ushort DAT_004ddbb0;
@@ -191,7 +191,7 @@ ushort DAT_004ddbc0;
 ushort DAT_004ddbd8;
 LPVOID DAT_005584b0;
 short DAT_004ddbac;
-uchar *PTR_s_MODEL\TOP\BASE01.TIM_004b4f68;
+uchar *PTR_s_MODEL; //\TOP\BASE01.TIM_004b4f68;
 char *DAT_004feeb0;
 ushort DAT_004ddbac;
 uchar *PTR_DAT_004b4f30;
@@ -580,8 +580,8 @@ uint DAT_004baa70;
 uint DAT_004baa74;
 uchar DAT_0052bfcc;
 ushort DAT_004feebc;
-string s_NPC\NPCCARD.PAC_004b9a78;
-uchar *PTR_s_MOVIE\LOGO.AVI_004b9b28;
+string s_NPC //\NPCCARD.PAC_004b9a78;
+uchar *PTR_s_MOVIE //\LOGO.AVI_004b9b28;
 ushort DAT_004ddda4;
 ushort DAT_004ddda6;
 short DAT_004ddda4;
@@ -615,7 +615,7 @@ uint DAT_004baad4;
 uint DAT_004baad0;
 uint DAT_004baacc;
 uchar LAB_00419420;
-string s_CARNAGE_HEART_SECOND_1999_MUTEX_004babf4;
+string s_CARNAGE_HEART_SECOND_1999_MUTEX; //_004babf4;
 uchar DAT_004fd8d0;
 uchar DAT_004fd8d4;
 uint DAT_004fd8dc;
@@ -22941,34 +22941,6 @@ FUN_00420700(short param_1,short param_2,int param_3,uint param_4,int param_5,in
   return;
 }
 
-
-
-void __cdecl set_palette_color(uchar param_1)
-
-{
-  uint local_10;
-  short local_c;
-  short local_a;
-  ushort local_8;
-  ushort local_6;
-  uchar local_4;
-  uchar local_3;
-  uchar local_2;
-  
-  local_c = -(short)DAT_004baa34;
-  local_10 = 0x60000000;
-  local_2 = param_1;
-  local_3 = param_1;
-  local_4 = param_1;
-  local_a = -(short)DAT_004baa38;
-  local_8 = 0x200;
-  local_6 = 0xf0;
-  FUN_00439e60(&local_10,&DAT_0052f3e0 + DAT_00549dcc * 0x14,0);
-  return;
-}
-
-
-
 void FUN_00420b20(void)
 
 {
@@ -22997,20 +22969,6 @@ void FUN_00420b80(void)
 {
   return;
 }
-
-
-
-uint __cdecl check_key_press(uint param_1)
-
-{
-  DAT_004bc460 = 0;
-  if (((param_1 & DAT_004deaf0) != 0) && ((param_1 & DAT_004deaf8) == 0)) {
-    return 1;
-  }
-  return 0;
-}
-
-
 
 uint __cdecl FUN_00420bc0(uint param_1)
 
@@ -23096,10 +23054,7 @@ void __cdecl FUN_00420ca0(LPCSTR param_1)
 }
 
 
-
-void __cdecl FUN_00420ce0(int param_1)
-
-{
+void __cdecl FUN_00420ce0(int param_1){
   short local_24 [4];
   uint local_1c [7];
   
@@ -23110,36 +23065,7 @@ void __cdecl FUN_00420ce0(int param_1)
 }
 
 
-
-int __cdecl
-process_image_data(int param_1,ushort param_2,ushort param_3,ushort param_4,ushort param_5
-            )
-
-{
-  uint local_24;
-  ushort local_20;
-  ushort local_1e;
-  uint local_1c;
-  ushort local_14;
-  ushort local_12;
-  short local_8 [4];
-  
-  FUN_00410440();
-  FUN_00437bb0((uint *)(param_1 + 4),&local_24);
-  local_20 = param_2;
-  local_1e = param_3;
-  local_14 = param_4;
-  local_12 = param_5;
-  FUN_00420ec0(local_8,&local_24);
-  return (-(uint)((*(byte *)(param_1 + 4) & 7) == 0) & 0xfffffe20) + 0x220 +
-         (local_1c & 0xffff) * (local_1c >> 0x10) * 2;
-}
-
-
-
-int __cdecl FUN_00420db0(int param_1,ushort param_2,ushort param_3)
-
-{
+int __cdecl FUN_00420db0(int param_1,ushort param_2,ushort param_3) {
   uint local_24;
   ushort local_20;
   ushort local_1e;
@@ -23156,11 +23082,7 @@ int __cdecl FUN_00420db0(int param_1,ushort param_2,ushort param_3)
          (local_1c & 0xffff) * (local_1c >> 0x10) * 2;
 }
 
-
-
-int __cdecl FUN_00420e40(int param_1,short param_2,short param_3,short param_4,short param_5)
-
-{
+int __cdecl FUN_00420e40(int param_1,short param_2,short param_3,short param_4,short param_5){
   uint local_24;
   short local_20;
   short local_1e;
@@ -23334,41 +23256,6 @@ FUN_00421110(short param_1,short param_2,short param_3,short param_4,uchar param
   return iVar2 / 0x300;
 }
 
-
-
-int __cdecl
-fill_rectangle(short param_1,short param_2,ushort param_3,ushort param_4,uchar param_5,
-            uchar param_6,uchar param_7,int param_8,int param_9)
-
-{
-  uint *puVar1;
-  short sVar2;
-  short sVar3;
-  int iVar4;
-  byte *pbVar5;
-  
-  sVar2 = (short)DAT_004baa34;
-  pbVar5 = PTR_DAT_004baa20 + DAT_00549dcc * 0x14;
-  sVar3 = (short)DAT_004baa38;
-  iVar4 = DAT_0052f498 * 0x10;
-  puVar1 = (uint *)(&DAT_00556c70 + iVar4);
-  FUN_0043a040((int)puVar1);
-  *(short *)(&DAT_00556c78 + iVar4) = param_1 - sVar2;
-  *(short *)(&DAT_00556c7a + iVar4) = param_2 - sVar3;
-  *(ushort *)(&DAT_00556c7c + iVar4) = param_3;
-  *(ushort *)(&DAT_00556c7e + iVar4) = param_4;
-  (&DAT_00556c75)[iVar4] = param_5;
-  (&DAT_00556c76)[iVar4] = param_6;
-  (&DAT_00556c77)[iVar4] = param_7;
-  FUN_0043a080((int)puVar1,param_8);
-  FUN_00437ea0(pbVar5,puVar1,param_9);
-  iVar4 = DAT_0052f498 + 1;
-  DAT_0052f498 = iVar4 % 0x120;
-  return iVar4 / 0x120;
-}
-
-
-
 void __cdecl
 FUN_00421380(short param_1,short param_2,short param_3,short param_4,int param_5,int param_6,
             char param_7,char param_8,uchar param_9,uchar param_10,uchar param_11,
@@ -23464,49 +23351,6 @@ FUN_004214e0(short param_1,short param_2,short param_3,short param_4,short param
 
 
 
-void __cdecl
-render_graphics(short param_1,short param_2,ushort param_3,ushort param_4,uchar param_5,
-            uchar param_6,uchar param_7,uchar param_8,uchar param_9,
-            uchar param_10,uchar param_11,uchar param_12,uchar param_13,
-            uchar param_14,uchar param_15,uchar param_16,int param_17,int param_18)
-
-{
-  uint *puVar1;
-  int iVar2;
-  short sVar3;
-  short sVar4;
-  uint uVar5;
-  byte *pbVar6;
-  
-  sVar3 = (short)DAT_004baa34;
-  pbVar6 = PTR_DAT_004baa20 + DAT_00549dcc * 0x14;
-  sVar4 = (short)DAT_004baa38;
-  iVar2 = DAT_0052f49c * 0x19;
-  puVar1 = (uint *)(&DAT_00557e70 + iVar2);
-  FUN_0043a050((int)puVar1);
-  *(short *)(iVar2 + 0x557e78) = param_1 - sVar3;
-  *(short *)(iVar2 + 0x557e7a) = param_2 - sVar4;
-  *(ushort *)(iVar2 + 0x557e7c) = param_3;
-  *(ushort *)(iVar2 + 0x557e7e) = param_4;
-  (&DAT_00557e76)[iVar2] = param_6;
-  (&DAT_00557e75)[iVar2] = param_5;
-  (&DAT_00557e77)[iVar2] = param_7;
-  (&DAT_00557e81)[iVar2] = param_9;
-  (&DAT_00557e80)[iVar2] = param_8;
-  (&DAT_00557e82)[iVar2] = param_10;
-  (&DAT_00557e84)[iVar2] = param_12;
-  (&DAT_00557e83)[iVar2] = param_11;
-  (&DAT_00557e85)[iVar2] = param_13;
-  (&DAT_00557e87)[iVar2] = param_15;
-  (&DAT_00557e86)[iVar2] = param_14;
-  (&DAT_00557e88)[iVar2] = param_16;
-  FUN_0043a080((int)puVar1,param_17);
-  FUN_00437ea0(pbVar6,puVar1,param_18);
-  uVar5 = (int)(DAT_0052f49c + 1U) >> 0x1f;
-  DAT_0052f49c = ((DAT_0052f49c + 1U ^ uVar5) - uVar5 & 0x3f ^ uVar5) - uVar5;
-  return;
-}
-
 
 
 int __cdecl
@@ -23531,35 +23375,6 @@ FUN_004216c0(short param_1,short param_2,short param_3,short param_4,uchar param
   DAT_004baa30 = iVar1 % 0x300;
   return iVar1 / 0x300;
 }
-
-
-
-int __cdecl
-draw_sprite(short param_1,short param_2,uchar param_3,uchar param_4,ushort param_5,
-            ushort param_6,int param_7,int param_8)
-
-{
-  int iVar1;
-  int iVar2;
-  byte *pbVar3;
-  
-  iVar1 = DAT_005006e0;
-  pbVar3 = PTR_DAT_004baa20 + DAT_00549dcc * 0x14;
-  (&DAT_005584cc)[DAT_005006e0 * 0x14] = param_3;
-  iVar2 = iVar1 * 0x14;
-  (&DAT_005584cd)[iVar2] = param_4;
-  *(ushort *)(iVar2 + 0x5584d0) = param_5;
-  *(ushort *)(iVar2 + 0x5584d2) = param_6;
-  *(short *)(iVar2 + 0x5584c8) = param_1 - (short)DAT_004baa34;
-  *(short *)(iVar2 + 0x5584ca) = param_2 - (short)DAT_004baa38;
-  (&DAT_005584ce)[iVar1 * 10] = (&DAT_004fd900)[param_7];
-  FUN_0043a080((int)(&DAT_005584c0 + iVar2),1);
-  FUN_00437ea0(pbVar3,(uint *)(&DAT_005584c0 + iVar2),param_8);
-  iVar2 = DAT_005006e0 + 1;
-  DAT_005006e0 = iVar2 % 0x6a4;
-  return iVar2 / 0x6a4;
-}
-
 
 
 int __cdecl
@@ -23631,18 +23446,7 @@ int __cdecl FUN_00421950(int param_1,int param_2,uint *param_3)
 }
 
 
-
-void __cdecl set_palette_bank(int param_1,int param_2)
-
-{
-  FUN_00421950(param_1,param_2,(uint *)0x0);
-  return;
-}
-
-
-
 int __cdecl FUN_004219e0(int param_1,int param_2,uint *param_3)
-
 {
   int iVar1;
   byte *pbVar2;
@@ -36064,9 +35868,7 @@ void __cdecl FUN_004370a0(int param_1,int param_2,int param_3,int param_4)
 
 
 
-void FUN_004373e0(void)
-
-{
+void FUN_004373e0(void) {
   ushort uVar1;
   uint uVar2;
   uint uVar3;
@@ -36293,166 +36095,6 @@ void FUN_004378e0(void)
   }
   return;
 }
-
-
-
-void __cdecl play_sound_effect(int param_1,int param_2,int param_3,int param_4)
-
-{
-  int iVar1;
-  int iVar2;
-  uint *puVar3;
-  
-  if (DAT_004bf320 != 0) {
-    iVar1 = param_2 / 2;
-    if (iVar1 < 0x41) {
-      if (iVar1 < 0) {
-        return;
-      }
-    }
-    else {
-      iVar1 = 0x40;
-    }
-    if (((param_1 < 0) || (DAT_004def0c <= param_1)) || (param_3 < 0)) {
-      FUN_004436c0(99);
-    }
-    update_sound_system();
-    if ((param_4 == 0) || (iVar2 = is_sound_playing(param_1), iVar2 == 0)) {
-      puVar3 = find_free_sound_channel();
-      if (puVar3 == (uint *)0x0) {
-        puVar3 = find_oldest_sound_channel();
-      }
-      puVar3[1] = param_3;
-      puVar3[2] = DAT_004def08;
-      DAT_004def08 = DAT_004def08 + 1;
-      puVar3[3] = param_1;
-      FUN_00447880((int *)*puVar3,*(int *)(DAT_004bf324 + param_1 * 0xc + 8),
-                   *(uint *)(DAT_004bf324 + 4 + param_1 * 0xc));
-      FUN_00447960((int *)*puVar3,iVar1);
-      FUN_004479b0((int *)*puVar3);
-    }
-  }
-  return;
-}
-
-
-
-void update_sound_system(void)
-
-{
-  int iVar1;
-  int iVar2;
-  uint *puVar3;
-  
-  puVar3 = &DAT_004def10;
-  iVar2 = 8;
-  do {
-    if (puVar3[1] != -1) {
-      iVar1 = FUN_00447a50((int *)*puVar3);
-      if (iVar1 == 0) {
-        puVar3[1] = 0xffffffff;
-      }
-    }
-    puVar3 = puVar3 + 4;
-    iVar2 = iVar2 + -1;
-  } while (iVar2 != 0);
-  return;
-}
-
-
-
-uint __cdecl is_sound_playing(int param_1)
-
-{
-  uint *puVar1;
-  int iVar2;
-  
-  iVar2 = 0;
-  puVar1 = &DAT_004def10;
-  while ((puVar1[1] == -1 || (puVar1[3] != param_1))) {
-    iVar2 = iVar2 + 1;
-    puVar1 = puVar1 + 4;
-    if (7 < iVar2) {
-      return 0;
-    }
-  }
-  return 1;
-}
-
-
-
-uint * find_free_sound_channel(void)
-
-{
-  uint *puVar1;
-  int iVar2;
-  
-  iVar2 = 0;
-  puVar1 = &DAT_004def10;
-  do {
-    if ((int)puVar1[1] < 0) {
-      return puVar1;
-    }
-    iVar2 = iVar2 + 1;
-    puVar1 = puVar1 + 4;
-  } while (iVar2 < 8);
-  return (uint *)0x0;
-}
-
-
-
-uint * find_oldest_sound_channel(void)
-
-{
-  int iVar1;
-  int iVar2;
-  uint *puVar3;
-  int iVar4;
-  uint *puVar5;
-  int iVar6;
-  
-  puVar5 = &DAT_004def10;
-  puVar3 = &DAT_004def20;
-  iVar2 = 7;
-  iVar4 = DAT_004def18;
-  iVar6 = DAT_004def14;
-  do {
-    iVar1 = puVar3[1];
-    if ((iVar1 < iVar6) || ((iVar6 == iVar1 && ((int)puVar3[2] < iVar4)))) {
-      iVar4 = puVar3[2];
-      puVar5 = puVar3;
-      iVar6 = iVar1;
-    }
-    puVar3 = puVar3 + 4;
-    iVar2 = iVar2 + -1;
-  } while (iVar2 != 0);
-  FUN_00447a10((int *)*puVar5);
-  puVar5[1] = 0xffffffff;
-  return puVar5;
-}
-
-
-
-uint __cdecl calculate_display_mode(uint param_1,short param_2)
-
-{
-  uint uVar1;
-  
-  uVar1 = param_1 >> 4 & 0xffff003f;
-  return CONCAT22((short)(uVar1 >> 0x10),(ushort)uVar1 | param_2 << 6);
-}
-
-
-
-uint __cdecl FUN_00437b60(uint param_1,ushort param_2,uint param_3,uint param_4)
-
-{
-  return CONCAT22((short)((param_1 & 0xffff0003) >> 0x10),
-                  (((short)(param_1 & 0xffff0003) << 2 | param_2 & 3) << 3 | (ushort)param_4 & 0x200
-                  ) << 2 | (ushort)(param_3 >> 6) & 0xf | (ushort)(param_4 >> 4) & 0x10);
-}
-
-
 
 void __cdecl FUN_00437bb0(uint *param_1,uint *param_2)
 
@@ -104894,7 +104536,6 @@ void __cdecl FUN_004b2790(uint *param_1,uint param_2)
   }
   return;
 }
-
 
 
 uint * __cdecl FUN_004b27b0(int param_1){

@@ -48,12 +48,13 @@ void __cdecl play_sound_effect(int param_1,int param_2,int param_3,int param_4)
 }
 
 // Update sound system state
-void FUN_00437a40()
+void update_sound_system(void)
+
 {
   int iVar1;
   int iVar2;
-  uint32_t *puVar3;
-
+  uint *puVar3;
+  
   puVar3 = &DAT_004def10;
   iVar2 = 8;
   do {
@@ -70,11 +71,10 @@ void FUN_00437a40()
 }
 
 // Check if sound is already playing
-uint32_t __cdecl FUN_00437a80(int param_1)
-{
-  uint32_t *puVar1;
+uint __cdecl is_sound_playing(int param_1){
+  uint *puVar1;
   int iVar2;
-
+  
   iVar2 = 0;
   puVar1 = &DAT_004def10;
   while ((puVar1[1] == -1 || (puVar1[3] != param_1))) {
@@ -88,11 +88,12 @@ uint32_t __cdecl FUN_00437a80(int param_1)
 }
 
 // Find free sound channel
-uint32_t * FUN_00437ac0(void)
-{
-  uint32_t *puVar1;
-  int iVar2;
+uint * find_free_sound_channel(void)
 
+{
+  uint *puVar1;
+  int iVar2;
+  
   iVar2 = 0;
   puVar1 = &DAT_004def10;
   do {
@@ -102,19 +103,20 @@ uint32_t * FUN_00437ac0(void)
     iVar2 = iVar2 + 1;
     puVar1 = puVar1 + 4;
   } while (iVar2 < 8);
-  return (uint32_t *)0x0;
+  return (uint *)0x0;
 }
 
+
 // Find oldest sound channel to replace
-uint32_t * FUN_00437ae0(void)
+uint * find_oldest_sound_channel(void)
 {
   int iVar1;
   int iVar2;
-  uint32_t *puVar3;
+  uint *puVar3;
   int iVar4;
-  uint32_t *puVar5;
+  uint *puVar5;
   int iVar6;
-
+  
   puVar5 = &DAT_004def10;
   puVar3 = &DAT_004def20;
   iVar2 = 7;
