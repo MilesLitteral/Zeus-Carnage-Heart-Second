@@ -10786,10 +10786,10 @@ LPARAM ReuseDDElParam(LPARAM lParam,UINT msgIn,UINT msgOut,UINT_PTR uiLo,UINT_PT
 
 
 
-BOOL UnpackDDElParam(UINT msg,LPARAM lParam,PUINT_PTR puiLo,PUINT_PTR puiHi)
+bool UnpackDDElParam(UINT msg,LPARAM lParam,PUINT_PTR puiLo,PUINT_PTR puiHi)
 
 {
-  BOOL BVar1;
+  bool BVar1;
   
                     // WARNING: Could not recover jumptable at 0x0040cc5c. Too many branches
                     // WARNING: Treating indirect jump as call
@@ -10812,10 +10812,10 @@ short GetFileTitleA(LPCSTR param_1,LPSTR Buf,WORD cchSize)
 
 
 
-BOOL GetSaveFileNameA(LPOPENFILENAMEA param_1)
+bool GetSaveFileNameA(LPOPENFILENAMEA param_1)
 
 {
-  BOOL BVar1;
+  bool BVar1;
   
                     // WARNING: Could not recover jumptable at 0x0040cc68. Too many branches
                     // WARNING: Treating indirect jump as call
@@ -10825,10 +10825,9 @@ BOOL GetSaveFileNameA(LPOPENFILENAMEA param_1)
 
 
 
-BOOL GetOpenFileNameA(LPOPENFILENAMEA param_1)
-
+bool GetOpenFileNameA(LPOPENFILENAMEA param_1)
 {
-  BOOL BVar1;
+  bool BVar1;
   
                     // WARNING: Could not recover jumptable at 0x0040cc6e. Too many branches
                     // WARNING: Treating indirect jump as call
@@ -10838,10 +10837,10 @@ BOOL GetOpenFileNameA(LPOPENFILENAMEA param_1)
 
 
 
-BOOL ClosePrinter(HANDLE hPrinter)
+bool ClosePrinter(HANDLE hPrinter)
 
 {
-  BOOL BVar1;
+  bool BVar1;
   
                     // WARNING: Could not recover jumptable at 0x0040cc74. Too many branches
                     // WARNING: Treating indirect jump as call
@@ -10851,11 +10850,11 @@ BOOL ClosePrinter(HANDLE hPrinter)
 
 
 
-LONG DocumentPropertiesA(HWND hWnd,HANDLE hPrinter,LPSTR pDeviceName,PDEVMODEA pDevModeOutput,
+long DocumentPropertiesA(HWND hWnd,HANDLE hPrinter,LPSTR pDeviceName,PDEVMODEA pDevModeOutput,
                         PDEVMODEA pDevModeInput,DWORD fMode)
 
 {
-  LONG LVar1;
+  long LVar1;
   
                     // WARNING: Could not recover jumptable at 0x0040cc7a. Too many branches
                     // WARNING: Treating indirect jump as call
@@ -10865,10 +10864,10 @@ LONG DocumentPropertiesA(HWND hWnd,HANDLE hPrinter,LPSTR pDeviceName,PDEVMODEA p
 
 
 
-BOOL OpenPrinterA(LPSTR pPrinterName,LPHANDLE phPrinter,LPPRINTER_DEFAULTSA pDefault)
+bool OpenPrinterA(LPSTR pPrinterName,LPHANDLE phPrinter,LPPRINTER_DEFAULTSA pDefault)
 
 {
-  BOOL BVar1;
+  bool BVar1;
   
                     // WARNING: Could not recover jumptable at 0x0040cc80. Too many branches
                     // WARNING: Treating indirect jump as call
@@ -10892,9 +10891,7 @@ HANDLE __cdecl FUN_0040cc90(HWND param_1)
 
 
 
-HANDLE __cdecl FUN_0040ccb0(HWND param_1,int param_2)
-
-{
+HANDLE __cdecl FUN_0040ccb0(HWND param_1,int param_2) {
   HANDLE hData;
   
   hData = FUN_0040cc90(param_1);
@@ -16074,7 +16071,7 @@ void __fastcall FUN_004135a4(int param_1)
 int FUN_004135e2(void)
 
 {
-  bool bVar1;
+  BOOL bVar1;
   int iVar2;
   HRSRC hResInfo;
   HGLOBAL hResData;

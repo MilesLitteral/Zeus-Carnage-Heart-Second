@@ -4667,7 +4667,6 @@ long AfxInternalProcessWndProcException(CException *param_1,tagMSG *param_2)
 
 
 
-
 // Library Function - Single Match
 //  class CWinThread * __stdcall AfxGetThread(void)
 // 

@@ -23,7 +23,7 @@ typedef unsigned long long    undefined8;  // 8-byte unknown type
 typedef unsigned short    ushort;
 typedef unsigned short    word;*/
 
-typedef unsigned char    bool;
+//typedef unsigned char    bool;
 typedef unsigned char    byte;
 typedef unsigned int     dword;
 typedef unsigned short   word;
