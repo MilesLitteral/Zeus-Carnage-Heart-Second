@@ -3012,8 +3012,6 @@ LAB_004b1cf5:
 
 
 
-
-
 // Library Function - Single Match
 //  __lock_fhandle
 // 
@@ -3084,4 +3082,1773 @@ void __cdecl ___add_12(uint *param_1,uint *param_2)
   }
   FUN_004b0e50(param_1[2],param_2[2],param_1 + 2);
   return;
+}
+
+// DataCopy Specific
+// Library Function - Single Match
+//  struct HWND__ * __stdcall AfxGetParentOwner(struct HWND__ *)
+// 
+// Library: Visual Studio 2003 Release
+
+HWND__ * AfxGetParentOwner(HWND__ *param_1)
+
+{
+  CWnd *pCVar1;
+  uint uVar2;
+  HWND__ *pHVar3;
+  
+  pCVar1 = (CWnd *)FUN_00414113((uint)param_1);
+  if (pCVar1 == (CWnd *)0x0) {
+    uVar2 = GetWindowLongA(param_1,-0x10);
+    if ((uVar2 & 0x40000000) == 0) {
+      pHVar3 = GetWindow(param_1,4);
+    }
+    else {
+      pHVar3 = GetParent(param_1);
+    }
+  }
+  else {
+    pCVar1 = CWnd::GetOwner(pCVar1);
+    pHVar3 = (HWND__ *)0x0;
+    if (pCVar1 != (CWnd *)0x0) {
+      pHVar3 = *(HWND__ **)(pCVar1 + 0x1c);
+    }
+  }
+  return pHVar3;
+}
+
+// Library Function - Multiple Matches With Same Base Name
+//  int __stdcall _AfxRegisterWithIcon(struct tagWNDCLASSA *,char const *,unsigned int)
+//  int __stdcall _AfxRegisterWithIcon(struct tagWNDCLASSW *,wchar_t const *,unsigned int)
+// 
+// Libraries: Visual Studio 2003 Release, Visual Studio 2005 Release
+
+void AfxRegisterWithIcon(int param_1,uint32_t param_2,ushort param_3)
+
+{
+  int iVar1;
+  HICON pHVar2;
+  
+  *(uint32_t *)(param_1 + 0x24) = param_2;
+  iVar1 = FUN_0041bf1f();
+  pHVar2 = LoadIconA(*(HINSTANCE *)(iVar1 + 0xc),(LPCSTR)(uint)param_3);
+  *(HICON *)(param_1 + 0x14) = pHVar2;
+  if (pHVar2 == (HICON)0x0) {
+    pHVar2 = LoadIconA((HINSTANCE)0x0,(LPCSTR)0x7f00);
+    *(HICON *)(param_1 + 0x14) = pHVar2;
+  }
+  FUN_00414d40();
+  return;
+}
+
+
+// Library Function - Single Match
+//  protected: long __thiscall CWnd::OnDisplayChange(unsigned int,long)
+// 
+// Library: Visual Studio 1998 Release
+
+long __thiscall CWnd::OnDisplayChange(CWnd *this,uint param_1,long param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  long lVar3;
+  
+  iVar1 = FUN_0041bf1f();
+  if (*(CWnd **)(*(int *)(iVar1 + 4) + 0x1c) == this) {
+    FUN_0041701b(0x42ab98);
+  }
+  uVar2 = FUN_00416a9d((int)this);
+  if ((uVar2 & 0x40000000) == 0) {
+    iVar1 = FUN_0041400b();
+    FUN_004158f9(*(HWND *)(this + 0x1c),*(UINT *)(iVar1 + 4),*(WPARAM *)(iVar1 + 8),
+                 *(LPARAM *)(iVar1 + 0xc),1,1);
+  }
+  lVar3 = FUN_00414040((int *)this);
+  return lVar3;
+}
+
+// Library Function - Single Match
+//  protected: void __thiscall CWnd::AttachControlSite(class CHandleMap *)
+// 
+// Library: Visual Studio 1998 Release
+
+void __thiscall CWnd::AttachControlSite(CWnd *this,CHandleMap *param_1)
+
+{
+  HWND pHVar1;
+  int iVar2;
+  
+  if ((this != (CWnd *)0x0) && (*(int *)(this + 0x38) == 0)) {
+    pHVar1 = GetParent(*(HWND *)(this + 0x1c));
+    iVar2 = FUN_00411434(param_1,(uint)pHVar1);
+    if (iVar2 != 0) {
+      FUN_00416c35(this,iVar2);
+    }
+  }
+  return;
+}
+
+
+// Library Function - Single Match
+//  public: virtual void * __thiscall CPaintDC::`scalar deleting destructor'(unsigned int)
+// 
+// Library: Visual Studio 2003 Release
+
+void * __thiscall CPaintDC::_scalar_deleting_destructor_(CPaintDC *this,uint param_1)
+
+{
+  ~CPaintDC(this);
+  if ((param_1 & 1) != 0) {
+    FUN_0041250b(this);
+  }
+  return this;
+}
+
+
+// Library Function - Single Match
+//  public: virtual __thiscall CPaintDC::~CPaintDC(void)
+// 
+// Library: Visual Studio 2003 Release
+
+void __thiscall CPaintDC::~CPaintDC(CPaintDC *this)
+
+{
+  int *extraout_ECX;
+  int unaff_EBP;
+  
+  FUN_004037f0();
+  *(int **)(unaff_EBP + -0x10) = extraout_ECX;
+  *extraout_ECX = (int)&PTR_LAB_0041f6dc;
+  *(uint32_t *)(unaff_EBP + -4) = 0;
+  EndPaint((HWND)extraout_ECX[4],(PAINTSTRUCT *)(extraout_ECX + 5));
+  FUN_00417bbd(extraout_ECX);
+  *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
+  FUN_00417bee();
+  ExceptionList = *(void **)(unaff_EBP + -0xc);
+  return;
+}
+
+
+
+
+// Library Function - Multiple Matches With Same Base Name
+//  protected: int __thiscall CView::OnCreate(struct tagCREATESTRUCTA *)
+//  protected: int __thiscall CView::OnCreate(struct tagCREATESTRUCTW *)
+// 
+// Libraries: Visual Studio 2003 Release, Visual Studio 2005 Release
+
+uint32_t __thiscall OnCreate(void *this,int *param_1)
+
+{
+  CDocument *this_00;
+  int iVar1;
+  uint32_t uVar2;
+  
+  iVar1 = FUN_00414040(this);
+  if (iVar1 == -1) {
+    uVar2 = 0xffffffff;
+  }
+  else {
+    if ((*param_1 != 0) && (this_00 = *(CDocument **)(*param_1 + 4), this_00 != (CDocument *)0x0)) {
+      CDocument::AddView(this_00,this);
+    }
+    uVar2 = 0;
+  }
+  return uVar2;
+}
+
+// Library Function - Single Match
+//  struct AFX_MSGMAP_ENTRY const * __stdcall AfxFindMessageEntry(struct AFX_MSGMAP_ENTRY const
+// *,unsigned int,unsigned int,unsigned int)
+// 
+// Library: Visual Studio
+
+AFX_MSGMAP_ENTRY *
+AfxFindMessageEntry(AFX_MSGMAP_ENTRY *param_1,uint param_2,uint param_3,uint param_4)
+
+{
+  while( true ) {
+    if (*(int *)(param_1 + 0x10) == 0) {
+      return (AFX_MSGMAP_ENTRY *)0x0;
+    }
+    if ((((param_2 == *(uint *)param_1) && (param_3 == *(uint *)(param_1 + 4))) &&
+        (*(uint *)(param_1 + 8) <= param_4)) && (param_4 <= *(uint *)(param_1 + 0xc))) break;
+    param_1 = param_1 + 0x18;
+  }
+  return param_1;
+}
+
+
+
+// Library Function - Single Match
+//  public: int __thiscall CScrollView::OnMouseWheel(unsigned int,short,class CPoint)
+// 
+// Library: Visual Studio 2003 Release
+
+int __thiscall CScrollView::OnMouseWheel(CScrollView *this,uint param_1,short param_2)
+
+{
+  CWnd *pCVar1;
+  int extraout_EAX;
+  
+  if (((param_1 & 0xc) == 0) && (pCVar1 = FUN_00418cf3((CWnd *)this,1), pCVar1 == (CWnd *)0x0)) {
+    FUN_00418aaf((int *)this,param_1,param_2);
+    return extraout_EAX;
+  }
+  return 0;
+}
+
+
+// Library Function - Single Match
+//  public: void __thiscall CDocument::AddView(class CView *)
+// 
+// Libraries: Visual Studio 2003 Release, Visual Studio 2005 Release
+
+void __thiscall CDocument::AddView(CDocument *this,CView *param_1)
+
+{
+  CPtrList::AddTail((CPtrList *)(this + 0x28),param_1);
+  *(CDocument **)(param_1 + 0x3c) = this;
+  (**(code **)(*(int *)this + 0x70))();
+  return;
+}
+
+
+
+
+// Library Function - Multiple Matches With Same Base Name
+//  protected: char const * __thiscall CFrameWnd::GetIconWndClass(unsigned long,unsigned int)
+//  protected: wchar_t const * __thiscall CFrameWnd::GetIconWndClass(unsigned long,unsigned int)
+// 
+// Library: Visual Studio 2003 Release
+
+LPSTR __thiscall GetIconWndClass(void *this,uint32_t param_1,ushort param_2)
+
+{
+  int iVar1;
+  HICON pHVar2;
+  BOOL BVar3;
+  LPSTR pCVar4;
+  uint8_t local_5c [32];
+  uint32_t local_3c;
+  LPCSTR local_34;
+  tagWNDCLASSA local_2c;
+  
+  iVar1 = FUN_0041bf1f();
+  pHVar2 = LoadIconA(*(HINSTANCE *)(iVar1 + 0xc),(LPCSTR)(uint)param_2);
+  if (pHVar2 != (HICON)0x0) {
+    _memset(local_5c,0,0x30);
+    local_3c = param_1;
+    (**(code **)(*(int *)this + 100))(local_5c);
+    if (local_34 != (LPCSTR)0x0) {
+      iVar1 = FUN_0041bf1f();
+      BVar3 = GetClassInfoA(*(HINSTANCE *)(iVar1 + 8),local_34,&local_2c);
+      if ((BVar3 != 0) && (local_2c.hIcon != pHVar2)) {
+        pCVar4 = FUN_00414de9(local_2c.style,local_2c.hCursor,local_2c.hbrBackground,pHVar2);
+        return pCVar4;
+      }
+    }
+  }
+  return (LPSTR)0x0;
+}
+
+
+
+// Library Function - Single Match
+//  public: void __thiscall CFrameWnd::SetActiveView(class CView *,int)
+// 
+// Libraries: Visual Studio 2003 Release, Visual Studio 2005 Release
+
+void __thiscall CFrameWnd::SetActiveView(CFrameWnd *this,CView *param_1,int param_2)
+
+{
+  CView *pCVar1;
+  
+  pCVar1 = *(CView **)(this + 0x98);
+  if (param_1 != pCVar1) {
+    *(uint32_t *)(this + 0x98) = 0;
+    if (pCVar1 != (CView *)0x0) {
+      (**(code **)(*(int *)pCVar1 + 0xec))(0,param_1,pCVar1);
+    }
+    if (((*(int *)(this + 0x98) == 0) &&
+        (*(CView **)(this + 0x98) = param_1, param_1 != (CView *)0x0)) && (param_2 != 0)) {
+      (**(code **)(*(int *)param_1 + 0xec))(1,param_1,pCVar1);
+    }
+  }
+  return;
+}
+
+
+
+// Library Function - Single Match
+//  _strchr
+// 
+// Libraries: Visual Studio 1998 Debug, Visual Studio 1998 Release
+
+char * __cdecl _strchr(char *_Str,int _Val)
+
+{
+  uint uVar1;
+  char cVar2;
+  uint uVar3;
+  uint uVar4;
+  uint *puVar5;
+  
+  while (((uint)_Str & 3) != 0) {
+    uVar1 = *(uint *)_Str;
+    if ((char)uVar1 == (char)_Val) {
+      return (char *)(uint *)_Str;
+    }
+    _Str = (char *)((int)_Str + 1);
+    if ((char)uVar1 == '\0') {
+      return (char *)0x0;
+    }
+  }
+  while( true ) {
+    while( true ) {
+      uVar1 = *(uint *)_Str;
+      uVar4 = uVar1 ^ CONCAT22(CONCAT11((char)_Val,(char)_Val),CONCAT11((char)_Val,(char)_Val));
+      uVar3 = uVar1 ^ 0xffffffff ^ uVar1 + 0x7efefeff;
+      puVar5 = (uint *)((int)_Str + 4);
+      if (((uVar4 ^ 0xffffffff ^ uVar4 + 0x7efefeff) & 0x81010100) != 0) break;
+      _Str = (char *)puVar5;
+      if ((uVar3 & 0x81010100) != 0) {
+        if ((uVar3 & 0x1010100) != 0) {
+          return (char *)0x0;
+        }
+        if ((uVar1 + 0x7efefeff & 0x80000000) == 0) {
+          return (char *)0x0;
+        }
+      }
+    }
+    uVar1 = *(uint *)_Str;
+    if ((char)uVar1 == (char)_Val) {
+      return (char *)(uint *)_Str;
+    }
+    if ((char)uVar1 == '\0') {
+      return (char *)0x0;
+    }
+    cVar2 = (char)(uVar1 >> 8);
+    if (cVar2 == (char)_Val) {
+      return (char *)((int)_Str + 1);
+    }
+    if (cVar2 == '\0') {
+      return (char *)0x0;
+    }
+    cVar2 = (char)(uVar1 >> 0x10);
+    if (cVar2 == (char)_Val) {
+      return (char *)((int)_Str + 2);
+    }
+    if (cVar2 == '\0') break;
+    cVar2 = (char)(uVar1 >> 0x18);
+    if (cVar2 == (char)_Val) {
+      return (char *)((int)_Str + 3);
+    }
+    _Str = (char *)puVar5;
+    if (cVar2 == '\0') {
+      return (char *)0x0;
+    }
+  }
+  return (char *)0x0;
+}
+
+
+
+// Library Function - Single Match
+//  _strpbrk
+// 
+// Libraries: Visual Studio 1998 Debug, Visual Studio 1998 Release
+
+char * __cdecl _strpbrk(char *_Str,char *_Control)
+
+{
+  byte bVar1;
+  byte *pbVar2;
+  byte abStack_28 [32];
+  
+  abStack_28[0x1c] = 0;
+  abStack_28[0x1d] = 0;
+  abStack_28[0x1e] = 0;
+  abStack_28[0x1f] = 0;
+  abStack_28[0x18] = 0;
+  abStack_28[0x19] = 0;
+  abStack_28[0x1a] = 0;
+  abStack_28[0x1b] = 0;
+  abStack_28[0x14] = 0;
+  abStack_28[0x15] = 0;
+  abStack_28[0x16] = 0;
+  abStack_28[0x17] = 0;
+  abStack_28[0x10] = 0;
+  abStack_28[0x11] = 0;
+  abStack_28[0x12] = 0;
+  abStack_28[0x13] = 0;
+  abStack_28[0xc] = 0;
+  abStack_28[0xd] = 0;
+  abStack_28[0xe] = 0;
+  abStack_28[0xf] = 0;
+  abStack_28[8] = 0;
+  abStack_28[9] = 0;
+  abStack_28[10] = 0;
+  abStack_28[0xb] = 0;
+  abStack_28[4] = 0;
+  abStack_28[5] = 0;
+  abStack_28[6] = 0;
+  abStack_28[7] = 0;
+  abStack_28[0] = 0;
+  abStack_28[1] = 0;
+  abStack_28[2] = 0;
+  abStack_28[3] = 0;
+  while( true ) {
+    bVar1 = *_Control;
+    if (bVar1 == 0) break;
+    _Control = _Control + 1;
+    abStack_28[(int)(uint)bVar1 >> 3] = abStack_28[(int)(uint)bVar1 >> 3] | '\x01' << (bVar1 & 7);
+  }
+  do {
+    pbVar2 = (byte *)_Str;
+    bVar1 = *pbVar2;
+    if (bVar1 == 0) {
+      return (char *)0x0;
+    }
+    _Str = (char *)(pbVar2 + 1);
+  } while ((abStack_28[(int)(uint)bVar1 >> 3] >> (bVar1 & 7) & 1) == 0);
+  return (char *)pbVar2;
+}
+
+
+// WARNING: Restarted to delay deadcode elimination for space: stack
+// Library Function - Single Match
+//  __CallSettingFrame@12
+// 
+// Libraries: Visual Studio 2017 Debug, Visual Studio 2017 Release, Visual Studio 2019 Debug, Visual
+// Studio 2019 Release
+
+void __CallSettingFrame_12(uint32_t param_1,uint32_t param_2,int param_3)
+
+{
+  code *pcVar1;
+  
+  pcVar1 = (code *)__NLG_Notify1(param_3);
+  (*pcVar1)();
+  if (param_3 == 0x100) {
+    param_3 = 2;
+  }
+  __NLG_Notify1(param_3);
+  return;
+}
+
+// Library Function - Single Match
+//  _memcmp
+// 
+// Libraries: Visual Studio 1998 Debug, Visual Studio 1998 Release
+
+int __cdecl _memcmp(void *_Buf1,void *_Buf2,size_t _Size)
+
+{
+  uint uVar1;
+  uint uVar2;
+  int iVar3;
+  byte bVar4;
+  uint uVar5;
+  byte bVar6;
+  uint *puVar7;
+  uint *puVar8;
+  bool bVar9;
+  
+  if (_Size != 0) {
+    if ((((uint)_Buf1 | (uint)_Buf2) & 3) == 0) {
+      uVar2 = _Size & 3;
+      uVar5 = _Size >> 2;
+      bVar9 = false;
+      puVar7 = _Buf1;
+      puVar8 = _Buf2;
+      if (uVar5 != 0) {
+        do {
+          _Buf1 = puVar7;
+          _Buf2 = puVar8;
+          if (uVar5 == 0) break;
+          uVar5 = uVar5 - 1;
+          _Buf2 = puVar8 + 1;
+          _Buf1 = puVar7 + 1;
+          bVar9 = *puVar7 == *puVar8;
+          puVar7 = _Buf1;
+          puVar8 = _Buf2;
+        } while (bVar9);
+        if (!bVar9) {
+          uVar2 = *(uint *)((int)_Buf1 + -4);
+          uVar5 = *(uint *)((int)_Buf2 + -4);
+          bVar9 = (byte)uVar2 < (byte)uVar5;
+          if ((((byte)uVar2 == (byte)uVar5) &&
+              (bVar4 = (byte)(uVar2 >> 8), bVar6 = (byte)(uVar5 >> 8), bVar9 = bVar4 < bVar6,
+              bVar4 == bVar6)) &&
+             (bVar4 = (byte)(uVar2 >> 0x10), bVar6 = (byte)(uVar5 >> 0x10), bVar9 = bVar4 < bVar6,
+             bVar4 == bVar6)) {
+            bVar9 = (byte)(uVar2 >> 0x18) < (byte)(uVar5 >> 0x18);
+          }
+          goto LAB_00403b1a;
+        }
+      }
+      if (uVar2 != 0) {
+        uVar5 = *(uint *)_Buf1;
+        uVar1 = *(uint *)_Buf2;
+        bVar9 = (byte)uVar5 < (byte)uVar1;
+        if ((byte)uVar5 != (byte)uVar1) {
+LAB_00403b1a:
+          return (1 - (uint)bVar9) - (uint)(bVar9 != 0);
+        }
+        iVar3 = 0;
+        if (uVar2 != 1) {
+          bVar6 = (byte)(uVar5 >> 8);
+          bVar4 = (byte)(uVar1 >> 8);
+          bVar9 = bVar6 < bVar4;
+          if (bVar6 != bVar4) goto LAB_00403b1a;
+          iVar3 = 0;
+          if (uVar2 != 2) {
+            bVar9 = (uVar5 & 0xff0000) < (uVar1 & 0xff0000);
+            if ((uVar5 & 0xff0000) != (uVar1 & 0xff0000)) goto LAB_00403b1a;
+            iVar3 = uVar2 - 3;
+          }
+        }
+        return iVar3;
+      }
+    }
+    else {
+      if ((_Size & 1) == 0) goto LAB_00403acd;
+      bVar9 = *(byte *)_Buf1 < *(byte *)_Buf2;
+      if (*(byte *)_Buf1 != *(byte *)_Buf2) goto LAB_00403b1a;
+      _Buf1 = (void *)((int)_Buf1 + 1);
+      _Buf2 = (void *)((int)_Buf2 + 1);
+      for (_Size = _Size - 1; _Size != 0; _Size = _Size - 2) {
+LAB_00403acd:
+        bVar9 = *(byte *)_Buf1 < *(byte *)_Buf2;
+        if ((*(byte *)_Buf1 != *(byte *)_Buf2) ||
+           (bVar9 = *(byte *)((int)_Buf1 + 1) < *(byte *)((int)_Buf2 + 1),
+           *(byte *)((int)_Buf1 + 1) != *(byte *)((int)_Buf2 + 1))) goto LAB_00403b1a;
+        _Buf2 = (void *)((int)_Buf2 + 2);
+        _Buf1 = (void *)((int)_Buf1 + 2);
+      }
+    }
+  }
+  return 0;
+}
+
+
+
+// Library Function - Single Match
+//  __amsg_exit
+// 
+// Library: Visual Studio 1998 Release
+
+void __cdecl __amsg_exit(int param_1)
+
+{
+  if (DAT_0042ac5c == 1) {
+    FUN_00407000();
+  }
+  FUN_00407040(param_1);
+  (*(code *)PTR___exit_004257b4)(0xff);
+  return;
+}
+
+
+// Library Function - Single Match
+//  __exit
+// 
+// Library: Visual Studio 1998 Release
+
+void __cdecl __exit(int _Code)
+
+{
+  FUN_004038d0(_Code,1,0);
+  return;
+}
+
+
+
+// Library Function - Single Match
+//  __abnormal_termination
+// 
+// Library: Visual Studio
+
+int __cdecl __abnormal_termination(void)
+
+{
+  int iVar1;
+  
+  iVar1 = 0;
+  if ((*(uint8_t **)((int)ExceptionList + 4) == &LAB_004034c0) &&
+     (*(int *)((int)ExceptionList + 8) == *(int *)(*(int *)((int)ExceptionList + 0xc) + 0xc))) {
+    iVar1 = 1;
+  }
+  return iVar1;
+}
+
+
+
+// Library Function - Single Match
+//  __NLG_Notify1
+// 
+// Libraries: Visual Studio 2017 Debug, Visual Studio 2017 Release, Visual Studio 2019 Debug, Visual
+// Studio 2019 Release
+
+void __fastcall __NLG_Notify1(uint32_t param_1)
+
+{
+  uint32_t in_EAX;
+  uint32_t unaff_EBP;
+  
+  DAT_004257ac = param_1;
+  DAT_004257a8 = in_EAX;
+  DAT_004257b0 = unaff_EBP;
+  return;
+}
+
+
+
+
+// Library Function - Single Match
+//  _memset
+// 
+// Libraries: Visual Studio 1998 Debug, Visual Studio 1998 Release
+
+void * __cdecl _memset(void *_Dst,int _Val,size_t _Size)
+
+{
+  uint uVar1;
+  uint uVar2;
+  size_t sVar3;
+  uint *puVar4;
+  
+  if (_Size == 0) {
+    return _Dst;
+  }
+  uVar1 = _Val & 0xff;
+  puVar4 = _Dst;
+  if (3 < _Size) {
+    uVar2 = -(int)_Dst & 3;
+    sVar3 = _Size;
+    if (uVar2 != 0) {
+      sVar3 = _Size - uVar2;
+      do {
+        *(uint8_t *)puVar4 = (uint8_t)_Val;
+        puVar4 = (uint *)((int)puVar4 + 1);
+        uVar2 = uVar2 - 1;
+      } while (uVar2 != 0);
+    }
+    uVar1 = uVar1 * 0x1010101;
+    _Size = sVar3 & 3;
+    uVar2 = sVar3 >> 2;
+    if (uVar2 != 0) {
+      for (; uVar2 != 0; uVar2 = uVar2 - 1) {
+        *puVar4 = uVar1;
+        puVar4 = puVar4 + 1;
+      }
+      if (_Size == 0) {
+        return _Dst;
+      }
+    }
+  }
+  do {
+    *(char *)puVar4 = (char)uVar1;
+    puVar4 = (uint *)((int)puVar4 + 1);
+    _Size = _Size - 1;
+  } while (_Size != 0);
+  return _Dst;
+}
+
+
+
+// Library Function - Single Match
+//  public: class CWnd * __thiscall CWnd::GetOwner(void)const 
+// 
+// Libraries: Visual Studio 2003 Release, Visual Studio 2005 Release
+
+CWnd * __thiscall CWnd::GetOwner(CWnd *this)
+
+{
+  CWnd *pCVar1;
+  
+  if (*(int *)(this + 0x20) == 0) {
+    GetParent(*(HWND *)(this + 0x1c));
+  }
+  pCVar1 = FUN_004140eb();
+  return pCVar1;
+}
+
+
+
+
+// Library Function - Single Match
+//  void __stdcall AfxPostQuitMessage(int)
+// 
+// Library: Visual Studio 1998 Release
+
+void AfxPostQuitMessage(int param_1)
+
+{
+  CWinThread *pCVar1;
+  
+  pCVar1 = AfxGetThread();
+  if ((pCVar1 != (CWinThread *)0x0) && (*(code **)(pCVar1 + 0x54) != (code *)0x0)) {
+    (**(code **)(pCVar1 + 0x54))(1,1);
+  }
+  PostQuitMessage(param_1);
+  return;
+}
+
+
+
+// Library Function - Single Match
+//  public: virtual __thiscall CWinThread::~CWinThread(void)
+// 
+// Library: Visual Studio 2003 Release
+
+void __thiscall CWinThread::~CWinThread(CWinThread *this)
+
+{
+  HANDLE hObject;
+  AFX_MODULE_THREAD_STATE *pAVar1;
+  uint32_t *extraout_ECX;
+  int unaff_EBP;
+  
+  FUN_004037f0();
+  *(uint32_t **)(unaff_EBP + -0x10) = extraout_ECX;
+  *extraout_ECX = &PTR_LAB_0041ea14;
+  hObject = (HANDLE)extraout_ECX[10];
+  *(uint32_t *)(unaff_EBP + -4) = 0;
+  if (hObject != (HANDLE)0x0) {
+    CloseHandle(hObject);
+  }
+  pAVar1 = AfxGetModuleThreadState();
+  if (*(uint32_t **)(pAVar1 + 4) == extraout_ECX) {
+    *(uint32_t *)(pAVar1 + 4) = 0;
+  }
+  *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
+  FUN_00411f70();
+  ExceptionList = *(void **)(unaff_EBP + -0xc);
+  return;
+}
+
+
+
+
+// Library Function - Single Match
+//  __global_unwind2
+// 
+// Library: Visual Studio
+
+void __cdecl __global_unwind2(PVOID param_1)
+
+{
+  RtlUnwind(param_1,(PVOID)0x4034b8,(PEXCEPTION_RECORD)0x0,(PVOID)0x0);
+  return;
+}
+
+
+
+// Library Function - Single Match
+//  __local_unwind2
+// 
+// Libraries: Visual Studio 1998 Debug, Visual Studio 1998 Release, Visual Studio 2003 Debug, Visual
+// Studio 2003 Release
+
+void __cdecl __local_unwind2(int param_1,int param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  void *pvStack_1c;
+  uint8_t *puStack_18;
+  uint32_t local_14;
+  int iStack_10;
+  
+  iStack_10 = param_1;
+  puStack_18 = &LAB_004034c0;
+  pvStack_1c = ExceptionList;
+  ExceptionList = &pvStack_1c;
+  while( true ) {
+    iVar1 = *(int *)(param_1 + 8);
+    iVar2 = *(int *)(param_1 + 0xc);
+    if ((iVar2 == -1) || (iVar2 == param_2)) break;
+    local_14 = *(uint32_t *)(iVar1 + iVar2 * 0xc);
+    *(uint32_t *)(param_1 + 0xc) = local_14;
+    if (*(int *)(iVar1 + 4 + iVar2 * 0xc) == 0) {
+      FUN_00403576();
+      (**(code **)(iVar1 + 8 + iVar2 * 0xc))();
+    }
+  }
+  ExceptionList = pvStack_1c;
+  return;
+}
+
+
+
+// Library Function - Single Match
+//  __strrev
+// 
+// Libraries: Visual Studio 1998 Debug, Visual Studio 1998 Release
+
+char * __cdecl __strrev(char *_Str)
+
+{
+  char cVar1;
+  int iVar2;
+  char *pcVar3;
+  char *pcVar4;
+  
+  iVar2 = -1;
+  pcVar3 = _Str;
+  do {
+    pcVar4 = pcVar3;
+    if (iVar2 == 0) break;
+    iVar2 = iVar2 + -1;
+    pcVar4 = pcVar3 + 1;
+    cVar1 = *pcVar3;
+    pcVar3 = pcVar4;
+  } while (cVar1 != '\0');
+  if (iVar2 != -2) {
+    pcVar4 = pcVar4 + -2;
+    for (pcVar3 = _Str; pcVar3 < pcVar4; pcVar3 = pcVar3 + 1) {
+      cVar1 = *pcVar3;
+      *pcVar3 = *pcVar4;
+      *pcVar4 = cVar1;
+      pcVar4 = pcVar4 + -1;
+    }
+  }
+  return _Str;
+}
+
+
+
+// Library Function - Single Match
+//  _strrchr
+// 
+// Libraries: Visual Studio 1998 Debug, Visual Studio 1998 Release
+
+char * __cdecl _strrchr(char *_Str,int _Ch)
+
+{
+  char cVar1;
+  int iVar2;
+  char *pcVar3;
+  char *pcVar4;
+  
+  iVar2 = -1;
+  do {
+    pcVar4 = _Str;
+    if (iVar2 == 0) break;
+    iVar2 = iVar2 + -1;
+    pcVar4 = _Str + 1;
+    cVar1 = *_Str;
+    _Str = pcVar4;
+  } while (cVar1 != '\0');
+  iVar2 = -(iVar2 + 1);
+  pcVar4 = pcVar4 + -1;
+  do {
+    pcVar3 = pcVar4;
+    if (iVar2 == 0) break;
+    iVar2 = iVar2 + -1;
+    pcVar3 = pcVar4 + -1;
+    cVar1 = *pcVar4;
+    pcVar4 = pcVar3;
+  } while ((char)_Ch != cVar1);
+  pcVar3 = pcVar3 + 1;
+  if (*pcVar3 != (char)_Ch) {
+    pcVar3 = (char *)0x0;
+  }
+  return pcVar3;
+}
+
+
+// Library Function - Multiple Matches With Same Base Name
+//  protected: int __thiscall CToolBarCtrl::OnCreate(struct tagCREATESTRUCTA *)
+//  protected: int __thiscall CToolBarCtrl::OnCreate(struct tagCREATESTRUCTW *)
+// 
+// Library: Visual Studio 2003 Release
+
+uint32_t __fastcall OnCreate(int *param_1)
+
+{
+  int iVar1;
+  uint32_t uVar2;
+  
+  iVar1 = FUN_00414040(param_1);
+  if (iVar1 == -1) {
+    uVar2 = 0xffffffff;
+  }
+  else {
+    SendMessageA((HWND)param_1[7],0x41e,0x14,0);
+    uVar2 = 0;
+  }
+  return uVar2;
+}
+
+
+
+// Library Function - Single Match
+//  public: __thiscall CProcessLocalObject::~CProcessLocalObject(void)
+// 
+// Library: Visual Studio 2012 Release
+
+void __thiscall CProcessLocalObject::~CProcessLocalObject(CProcessLocalObject *this)
+
+{
+  if (*(int *)this != 0) {
+    if (*(uint32_t **)this != (uint32_t *)0x0) {
+      (**(code **)**(uint32_t **)this)(1);
+    }
+  }
+  return;
+}
+
+
+// Library Function - Multiple Matches With Same Base Name
+//  public: struct HKEY__ * __thiscall CWinApp::GetSectionKey(char const *)
+//  public: struct HKEY__ * __thiscall CWinApp::GetSectionKey(wchar_t const *)
+// 
+// Libraries: Visual Studio 2003 Release, Visual Studio 2005 Release, Visual Studio 2008 Release
+
+HKEY __thiscall GetSectionKey(void *this,LPCSTR param_1)
+
+{
+  HKEY hKey;
+  void *local_c;
+  HKEY local_8;
+  
+  local_8 = (HKEY)0x0;
+  local_c = this;
+  hKey = FUN_0041c784((int)this);
+  if (hKey == (HKEY)0x0) {
+    local_8 = (HKEY)0x0;
+  }
+  else {
+    RegCreateKeyExA(hKey,param_1,0,(LPSTR)0x0,0,0x2001f,(LPSECURITY_ATTRIBUTES)0x0,&local_8,
+                    (LPDWORD)&local_c);
+    RegCloseKey(hKey);
+  }
+  return local_8;
+}
+
+
+
+// Library Function - Single Match
+//  class AFX_MODULE_THREAD_STATE * __stdcall AfxGetModuleThreadState(void)
+// 
+// Library: Visual Studio 2003 Release
+
+AFX_MODULE_THREAD_STATE * AfxGetModuleThreadState(void)
+
+{
+  int iVar1;
+  AFX_MODULE_THREAD_STATE *pAVar2;
+  
+  iVar1 = FUN_0041bf1f();
+  pAVar2 = (AFX_MODULE_THREAD_STATE *)FUN_0041c645((void *)(iVar1 + 0x1070),&LAB_0041b94a);
+  return pAVar2;
+}
+
+
+
+// Library Function - Single Match
+//  public: void __thiscall CTypeLibCache::Unlock(void)
+// 
+// Libraries: Visual Studio 2003 Release, Visual Studio 2005 Release, Visual Studio 2008 Release,
+// Visual Studio 2010 Release
+
+void __thiscall CTypeLibCache::Unlock(CTypeLibCache *this)
+
+{
+  int *piVar1;
+  LONG LVar2;
+  
+  LVar2 = InterlockedDecrement((LONG *)(this + 0x20));
+  if (LVar2 == 0) {
+    piVar1 = *(int **)(this + 0x1c);
+    if (piVar1 != (int *)0x0) {
+      (**(code **)(*piVar1 + 8))(piVar1);
+      *(uint32_t *)(this + 0x1c) = 0;
+    }
+    piVar1 = *(int **)(this + 8);
+    if (piVar1 != (int *)0x0) {
+      (**(code **)(*piVar1 + 8))(piVar1);
+      *(uint32_t *)(this + 8) = 0;
+    }
+  }
+  return;
+}
+
+
+
+
+// Library Function - Single Match
+//  public: virtual void * __thiscall CWinThread::`scalar deleting destructor'(unsigned int)
+// 
+// Library: Visual Studio 2003 Release
+
+void * __thiscall CWinThread::_scalar_deleting_destructor_(CWinThread *this,uint param_1)
+
+{
+  ~CWinThread(this);
+  if ((param_1 & 1) != 0) {
+    FUN_0041250b(this);
+  }
+  return this;
+}
+
+
+
+
+// Library Function - Single Match
+//  _strspn
+// 
+// Libraries: Visual Studio 1998 Debug, Visual Studio 1998 Release
+
+size_t __cdecl _strspn(char *_Str,char *_Control)
+
+{
+  byte bVar1;
+  size_t sVar2;
+  byte abStack_28 [32];
+  
+  abStack_28[0x1c] = 0;
+  abStack_28[0x1d] = 0;
+  abStack_28[0x1e] = 0;
+  abStack_28[0x1f] = 0;
+  abStack_28[0x18] = 0;
+  abStack_28[0x19] = 0;
+  abStack_28[0x1a] = 0;
+  abStack_28[0x1b] = 0;
+  abStack_28[0x14] = 0;
+  abStack_28[0x15] = 0;
+  abStack_28[0x16] = 0;
+  abStack_28[0x17] = 0;
+  abStack_28[0x10] = 0;
+  abStack_28[0x11] = 0;
+  abStack_28[0x12] = 0;
+  abStack_28[0x13] = 0;
+  abStack_28[0xc] = 0;
+  abStack_28[0xd] = 0;
+  abStack_28[0xe] = 0;
+  abStack_28[0xf] = 0;
+  abStack_28[8] = 0;
+  abStack_28[9] = 0;
+  abStack_28[10] = 0;
+  abStack_28[0xb] = 0;
+  abStack_28[4] = 0;
+  abStack_28[5] = 0;
+  abStack_28[6] = 0;
+  abStack_28[7] = 0;
+  abStack_28[0] = 0;
+  abStack_28[1] = 0;
+  abStack_28[2] = 0;
+  abStack_28[3] = 0;
+  while( true ) {
+    bVar1 = *_Control;
+    if (bVar1 == 0) break;
+    _Control = _Control + 1;
+    abStack_28[(int)(uint)bVar1 >> 3] = abStack_28[(int)(uint)bVar1 >> 3] | '\x01' << (bVar1 & 7);
+  }
+  sVar2 = 0xffffffff;
+  do {
+    sVar2 = sVar2 + 1;
+    bVar1 = *_Str;
+    if (bVar1 == 0) {
+      return sVar2;
+    }
+    _Str = _Str + 1;
+  } while ((abStack_28[(int)(uint)bVar1 >> 3] >> (bVar1 & 7) & 1) != 0);
+  return sVar2;
+}
+
+
+
+// Library Function - Single Match
+//  _strcspn
+// 
+// Libraries: Visual Studio 1998 Debug, Visual Studio 1998 Release
+
+size_t __cdecl _strcspn(char *_Str,char *_Control)
+
+{
+  byte bVar1;
+  size_t sVar2;
+  byte abStack_28 [32];
+  
+  abStack_28[0x1c] = 0;
+  abStack_28[0x1d] = 0;
+  abStack_28[0x1e] = 0;
+  abStack_28[0x1f] = 0;
+  abStack_28[0x18] = 0;
+  abStack_28[0x19] = 0;
+  abStack_28[0x1a] = 0;
+  abStack_28[0x1b] = 0;
+  abStack_28[0x14] = 0;
+  abStack_28[0x15] = 0;
+  abStack_28[0x16] = 0;
+  abStack_28[0x17] = 0;
+  abStack_28[0x10] = 0;
+  abStack_28[0x11] = 0;
+  abStack_28[0x12] = 0;
+  abStack_28[0x13] = 0;
+  abStack_28[0xc] = 0;
+  abStack_28[0xd] = 0;
+  abStack_28[0xe] = 0;
+  abStack_28[0xf] = 0;
+  abStack_28[8] = 0;
+  abStack_28[9] = 0;
+  abStack_28[10] = 0;
+  abStack_28[0xb] = 0;
+  abStack_28[4] = 0;
+  abStack_28[5] = 0;
+  abStack_28[6] = 0;
+  abStack_28[7] = 0;
+  abStack_28[0] = 0;
+  abStack_28[1] = 0;
+  abStack_28[2] = 0;
+  abStack_28[3] = 0;
+  while( true ) {
+    bVar1 = *_Control;
+    if (bVar1 == 0) break;
+    _Control = _Control + 1;
+    abStack_28[(int)(uint)bVar1 >> 3] = abStack_28[(int)(uint)bVar1 >> 3] | '\x01' << (bVar1 & 7);
+  }
+  sVar2 = 0xffffffff;
+  do {
+    sVar2 = sVar2 + 1;
+    bVar1 = *_Str;
+    if (bVar1 == 0) {
+      return sVar2;
+    }
+    _Str = _Str + 1;
+  } while ((abStack_28[(int)(uint)bVar1 >> 3] >> (bVar1 & 7) & 1) == 0);
+  return sVar2;
+}
+
+
+
+
+// Library Function - Single Match
+//  protected: void __thiscall CFrameWnd::BringToTop(int)
+// 
+// Libraries: Visual Studio 1998 Release, Visual Studio 2003 Release
+
+void __thiscall CFrameWnd::BringToTop(CFrameWnd *this,int param_1)
+
+{
+  HWND hWnd;
+  
+  if ((((param_1 != 0) && (param_1 != 6)) && (param_1 != 7)) && ((param_1 != 8 && (param_1 != 4))))
+  {
+    hWnd = GetLastActivePopup(*(HWND *)(this + 0x1c));
+    BringWindowToTop(hWnd);
+  }
+  return;
+}
+
+
+
+
+// Library Function - Single Match
+//  public: virtual void __thiscall CFrameWnd::OnUpdateFrameTitle(int)
+// 
+// Library: Visual Studio 1998 Release
+
+void __thiscall CFrameWnd::OnUpdateFrameTitle(CFrameWnd *this,int param_1)
+
+{
+  uint uVar1;
+  int iVar2;
+  LPCSTR pCVar3;
+  
+  uVar1 = FUN_00416a9d((int)this);
+  if ((uVar1 & 0x8000) != 0) {
+    if ((*(int **)(this + 0x68) != (int *)0x0) &&
+       (iVar2 = (**(code **)(**(int **)(this + 0x68) + 0x70))(), iVar2 != 0)) {
+      return;
+    }
+    iVar2 = (**(code **)(*(int *)this + 0xc4))();
+    if ((param_1 == 0) || (iVar2 == 0)) {
+      pCVar3 = (LPCSTR)0x0;
+    }
+    else {
+      pCVar3 = *(LPCSTR *)(iVar2 + 0x1c);
+    }
+    FUN_0041af50(this,pCVar3);
+  }
+  return;
+}
+
+
+
+// Library Function - Single Match
+//  __isindst
+// 
+// Library: Visual Studio 1998 Release
+
+int __cdecl __isindst(tm *_Time)
+
+{
+  bool bVar1;
+  undefined3 extraout_var;
+  
+  FUN_00407250(0xb);
+  bVar1 = FUN_004094b0(&_Time->tm_sec);
+  FUN_004072d0(0xb);
+  return CONCAT31(extraout_var,bVar1);
+}
+
+
+// Library Function - Single Match
+//  _abort
+// 
+// Library: Visual Studio 1998 Release
+
+void __cdecl _abort(void)
+
+{
+  FUN_00407040(10);
+  FUN_0040b7c0((DWORD *)0x16);
+                    // WARNING: Subroutine does not return
+  __exit(3);
+}
+
+
+
+
+// Library Function - Single Match
+//  _strncpy
+// 
+// Libraries: Visual Studio 1998 Debug, Visual Studio 1998 Release
+
+char * __cdecl _strncpy(char *_Dest,char *_Source,size_t _Count)
+
+{
+  uint uVar1;
+  uint uVar2;
+  char cVar3;
+  uint uVar4;
+  uint *puVar5;
+  
+  if (_Count == 0) {
+    return _Dest;
+  }
+  puVar5 = (uint *)_Dest;
+  if (((uint)_Source & 3) != 0) {
+    while( true ) {
+      uVar4 = *(uint *)_Source;
+      _Source = (char *)((int)_Source + 1);
+      *(char *)puVar5 = (char)uVar4;
+      puVar5 = (uint *)((int)puVar5 + 1);
+      _Count = _Count - 1;
+      if (_Count == 0) {
+        return _Dest;
+      }
+      if ((char)uVar4 == '\0') break;
+      if (((uint)_Source & 3) == 0) {
+        uVar4 = _Count >> 2;
+        goto joined_r0x00409c6e;
+      }
+    }
+    do {
+      if (((uint)puVar5 & 3) == 0) {
+        uVar4 = _Count >> 2;
+        cVar3 = '\0';
+        if (uVar4 == 0) goto LAB_00409cab;
+        goto LAB_00409d19;
+      }
+      *(char *)puVar5 = '\0';
+      puVar5 = (uint *)((int)puVar5 + 1);
+      _Count = _Count - 1;
+    } while (_Count != 0);
+    return _Dest;
+  }
+  uVar4 = _Count >> 2;
+  if (uVar4 != 0) {
+    do {
+      uVar1 = *(uint *)_Source;
+      uVar2 = *(uint *)_Source;
+      _Source = (char *)((int)_Source + 4);
+      if (((uVar1 ^ 0xffffffff ^ uVar1 + 0x7efefeff) & 0x81010100) != 0) {
+        if ((char)uVar2 == '\0') {
+          *puVar5 = 0;
+joined_r0x00409d15:
+          while( true ) {
+            uVar4 = uVar4 - 1;
+            puVar5 = puVar5 + 1;
+            if (uVar4 == 0) break;
+LAB_00409d19:
+            *puVar5 = 0;
+          }
+          cVar3 = '\0';
+          _Count = _Count & 3;
+          if (_Count != 0) goto LAB_00409cab;
+          return _Dest;
+        }
+        if ((char)(uVar2 >> 8) == '\0') {
+          *puVar5 = uVar2 & 0xff;
+          goto joined_r0x00409d15;
+        }
+        if ((uVar2 & 0xff0000) == 0) {
+          *puVar5 = uVar2 & 0xffff;
+          goto joined_r0x00409d15;
+        }
+        if ((uVar2 & 0xff000000) == 0) {
+          *puVar5 = uVar2;
+          goto joined_r0x00409d15;
+        }
+      }
+      *puVar5 = uVar2;
+      puVar5 = puVar5 + 1;
+      uVar4 = uVar4 - 1;
+joined_r0x00409c6e:
+    } while (uVar4 != 0);
+    _Count = _Count & 3;
+    if (_Count == 0) {
+      return _Dest;
+    }
+  }
+  do {
+    cVar3 = (char)*(uint *)_Source;
+    _Source = (char *)((int)_Source + 1);
+    *(char *)puVar5 = cVar3;
+    puVar5 = (uint *)((int)puVar5 + 1);
+    if (cVar3 == '\0') {
+      while (_Count = _Count - 1, _Count != 0) {
+LAB_00409cab:
+        *(char *)puVar5 = cVar3;
+        puVar5 = (uint *)((int)puVar5 + 1);
+      }
+      return _Dest;
+    }
+    _Count = _Count - 1;
+  } while (_Count != 0);
+  return _Dest;
+}
+
+
+
+// Library Function - Single Match
+//  __aulldiv
+// 
+// Library: Visual Studio
+
+undefined8 __aulldiv(uint param_1,uint param_2,uint param_3,uint param_4)
+
+{
+  ulonglong uVar1;
+  longlong lVar2;
+  uint uVar3;
+  int iVar4;
+  uint uVar5;
+  uint uVar6;
+  uint uVar7;
+  uint uVar8;
+  uint uVar9;
+  
+  uVar3 = param_1;
+  uVar8 = param_4;
+  uVar6 = param_2;
+  uVar9 = param_3;
+  if (param_4 == 0) {
+    uVar3 = param_2 / param_3;
+    iVar4 = (int)(((ulonglong)param_2 % (ulonglong)param_3 << 0x20 | (ulonglong)param_1) /
+                 (ulonglong)param_3);
+  }
+  else {
+    do {
+      uVar5 = uVar8 >> 1;
+      uVar9 = uVar9 >> 1 | (uint)((uVar8 & 1) != 0) << 0x1f;
+      uVar7 = uVar6 >> 1;
+      uVar3 = uVar3 >> 1 | (uint)((uVar6 & 1) != 0) << 0x1f;
+      uVar8 = uVar5;
+      uVar6 = uVar7;
+    } while (uVar5 != 0);
+    uVar1 = CONCAT44(uVar7,uVar3) / (ulonglong)uVar9;
+    iVar4 = (int)uVar1;
+    lVar2 = (ulonglong)param_3 * (uVar1 & 0xffffffff);
+    uVar3 = (uint)((ulonglong)lVar2 >> 0x20);
+    uVar8 = uVar3 + iVar4 * param_4;
+    if (((CARRY4(uVar3,iVar4 * param_4)) || (param_2 < uVar8)) ||
+       ((param_2 <= uVar8 && (param_1 < (uint)lVar2)))) {
+      iVar4 = iVar4 + -1;
+    }
+    uVar3 = 0;
+  }
+  return CONCAT44(uVar3,iVar4);
+}
+
+
+
+// Library Function - Single Match
+//  __aullrem
+// 
+// Library: Visual Studio
+
+undefined8 __aullrem(uint param_1,uint param_2,uint param_3,uint param_4)
+
+{
+  ulonglong uVar1;
+  longlong lVar2;
+  uint uVar3;
+  uint uVar4;
+  uint uVar5;
+  int iVar6;
+  int iVar7;
+  uint uVar8;
+  uint uVar9;
+  uint uVar10;
+  bool bVar11;
+  
+  uVar3 = param_1;
+  uVar4 = param_4;
+  uVar9 = param_2;
+  uVar10 = param_3;
+  if (param_4 == 0) {
+    iVar6 = (int)(((ulonglong)param_2 % (ulonglong)param_3 << 0x20 | (ulonglong)param_1) %
+                 (ulonglong)param_3);
+    iVar7 = 0;
+  }
+  else {
+    do {
+      uVar5 = uVar4 >> 1;
+      uVar10 = uVar10 >> 1 | (uint)((uVar4 & 1) != 0) << 0x1f;
+      uVar8 = uVar9 >> 1;
+      uVar3 = uVar3 >> 1 | (uint)((uVar9 & 1) != 0) << 0x1f;
+      uVar4 = uVar5;
+      uVar9 = uVar8;
+    } while (uVar5 != 0);
+    uVar1 = CONCAT44(uVar8,uVar3) / (ulonglong)uVar10;
+    uVar3 = (int)uVar1 * param_4;
+    lVar2 = (uVar1 & 0xffffffff) * (ulonglong)param_3;
+    uVar9 = (uint)((ulonglong)lVar2 >> 0x20);
+    uVar4 = (uint)lVar2;
+    uVar10 = uVar9 + uVar3;
+    if (((CARRY4(uVar9,uVar3)) || (param_2 < uVar10)) || ((param_2 <= uVar10 && (param_1 < uVar4))))
+    {
+      bVar11 = uVar4 < param_3;
+      uVar4 = uVar4 - param_3;
+      uVar10 = (uVar10 - param_4) - (uint)bVar11;
+    }
+    iVar6 = -(uVar4 - param_1);
+    iVar7 = -(uint)(uVar4 - param_1 != 0) - ((uVar10 - param_2) - (uint)(uVar4 < param_1));
+  }
+  return CONCAT44(iVar7,iVar6);
+}
+
+
+
+// Library Function - Single Match
+//  public: virtual __thiscall CWnd::~CWnd(void)
+// 
+// Library: Visual Studio 2003 Release
+
+void __thiscall CWnd::~CWnd(CWnd *this)
+
+{
+  int iVar1;
+  uint32_t *extraout_ECX;
+  int unaff_EBP;
+  
+  FUN_004037f0();
+  *(uint32_t **)(unaff_EBP + -0x10) = extraout_ECX;
+  *extraout_ECX = &PTR_LAB_0041f284;
+  *(uint32_t *)(unaff_EBP + -4) = 0;
+  if ((((extraout_ECX[7] != 0) && (extraout_ECX != (uint32_t *)&DAT_0042a5f0)) &&
+      (extraout_ECX != (uint32_t *)&DAT_0042a6b0)) &&
+     ((extraout_ECX != (uint32_t *)&DAT_0042a630 && (extraout_ECX != (uint32_t *)&DAT_0042a670))
+     )) {
+    FUN_004149e5((int)extraout_ECX);
+  }
+  if ((int *)extraout_ECX[0xd] != (int *)0x0) {
+    (**(code **)(*(int *)extraout_ECX[0xd] + 4))(1);
+  }
+  iVar1 = extraout_ECX[0xe];
+  if ((iVar1 != 0) && (*(uint32_t **)(iVar1 + 0x24) == extraout_ECX)) {
+    *(uint32_t *)(iVar1 + 0x24) = 0;
+  }
+  *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
+  FUN_00411f70();
+  ExceptionList = *(void **)(unaff_EBP + -0xc);
+  return;
+}
+
+
+
+// Library Function - Single Match
+//  public: virtual void * __thiscall CWnd::`scalar deleting destructor'(unsigned int)
+// 
+// Library: Visual Studio 2003 Release
+
+void * __thiscall CWnd::_scalar_deleting_destructor_(CWnd *this,uint param_1)
+
+{
+  ~CWnd(this);
+  if ((param_1 & 1) != 0) {
+    FUN_0041250b(this);
+  }
+  return this;
+}
+
+
+
+// Library Function - Single Match
+//  public: virtual __thiscall CDialog::~CDialog(void)
+// 
+// Library: Visual Studio 2003 Release
+
+void __thiscall CDialog::~CDialog(CDialog *this)
+
+{
+  CWnd *this_00;
+  int unaff_EBP;
+  
+  FUN_004037f0();
+  *(CWnd **)(unaff_EBP + -0x10) = this_00;
+  *(uint ***)this_00 = &PTR_LAB_0041ee34;
+  *(uint32_t *)(unaff_EBP + -4) = 0;
+  if (*(int *)(this_00 + 0x1c) != 0) {
+    FUN_004149e5((int)this_00);
+  }
+  *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
+  CWnd::~CWnd(this_00);
+  ExceptionList = *(void **)(unaff_EBP + -0xc);
+  return;
+}
+
+
+
+
+// Library Function - Single Match
+//  public: __thiscall CCmdUI::CCmdUI(void)
+// 
+// Libraries: Visual Studio 2003 Release, Visual Studio 2005 Release, Visual Studio 2008 Release,
+// Visual Studio 2010 Release
+
+void __thiscall CCmdUI::CCmdUI(CCmdUI *this)
+
+{
+  *(uint ***)this = &PTR_FUN_0041ec14;
+  *(uint32_t *)(this + 0x20) = 0;
+  *(uint32_t *)(this + 8) = 0;
+  *(uint32_t *)(this + 4) = 0;
+  *(uint32_t *)(this + 0x24) = 0;
+  *(uint32_t *)(this + 0x10) = 0;
+  *(uint32_t *)(this + 0xc) = 0;
+  *(uint32_t *)(this + 0x14) = 0;
+  *(uint32_t *)(this + 0x1c) = 0;
+  *(uint32_t *)(this + 0x18) = 0;
+  return;
+}
+
+
+
+// Library Function - Single Match
+//  long __stdcall AfxInternalProcessWndProcException(class CException *,struct tagMSG const *)
+// 
+// Libraries: Visual Studio 2003 Release, Visual Studio 2005 Release
+
+long AfxInternalProcessWndProcException(CException *param_1,tagMSG *param_2)
+
+{
+  long lVar1;
+  
+  if (param_2->message == 1) {
+    lVar1 = -1;
+  }
+  else {
+    if (param_2->message == 0xf) {
+      ValidateRect(param_2->hwnd,(RECT *)0x0);
+    }
+    lVar1 = 0;
+  }
+  return lVar1;
+}
+
+
+
+
+// Library Function - Single Match
+//  class CWinThread * __stdcall AfxGetThread(void)
+// 
+// Library: Visual Studio 1998 Release
+
+CWinThread * AfxGetThread(void)
+
+{
+  AFX_MODULE_THREAD_STATE *pAVar1;
+  int iVar2;
+  CWinThread *pCVar3;
+  
+  pAVar1 = AfxGetModuleThreadState();
+  pCVar3 = *(CWinThread **)(pAVar1 + 4);
+  if (pCVar3 == (CWinThread *)0x0) {
+    iVar2 = FUN_0041bf1f();
+    pCVar3 = *(CWinThread **)(iVar2 + 4);
+  }
+  return pCVar3;
+}
+
+
+// Library Function - Multiple Matches With Same Base Name
+//  public: __thiscall CMap<void *,void *,void *,void *>::CMap<void *,void *,void *,void *>(int)
+//  public: __thiscall CMap<class ATL::CStringT<wchar_t,class StrTraitMFC<wchar_t,class
+// ATL::ChTraitsOS<wchar_t> > >,wchar_t const *,void *,void *>::CMap<class
+// ATL::CStringT<wchar_t,class StrTraitMFC<wchar_t,class ATL::ChTraitsOS<wchar_t> > >,wchar_t const
+// *,void *,void *>(int)
+// 
+// Libraries: Visual Studio 2005 Release, Visual Studio 2008 Release
+
+void __thiscall CMap<>(void *this,uint32_t param_1)
+
+{
+  *(uint32_t *)((int)this + 4) = 0;
+  *(uint32_t *)((int)this + 0xc) = 0;
+  *(uint32_t *)((int)this + 0x10) = 0;
+  *(uint32_t *)((int)this + 0x14) = 0;
+  *(uint ***)this = &PTR_LAB_0041fb04;
+  *(uint32_t *)((int)this + 8) = 0x11;
+  *(uint32_t *)((int)this + 0x18) = param_1;
+  return;
+}
+
+
+
+// Library Function - Multiple Matches With Same Base Name
+//  public: void __thiscall CMapPtrToPtr::RemoveAll(void)
+//  public: void __thiscall CMapPtrToWord::RemoveAll(void)
+//  public: void __thiscall CMapWordToOb::RemoveAll(void)
+//  public: void __thiscall CMapWordToPtr::RemoveAll(void)
+// 
+// Libraries: Visual Studio 2003 Release, Visual Studio 2005 Release, Visual Studio 2008 Release,
+// Visual Studio 2010 Release
+
+void __fastcall RemoveAll(int param_1)
+
+{
+  if (*(uint **)(param_1 + 4) != (uint *)0x0) {
+    FUN_0041250b(*(uint **)(param_1 + 4));
+    *(uint32_t *)(param_1 + 4) = 0;
+  }
+  *(uint32_t *)(param_1 + 0xc) = 0;
+  *(uint32_t *)(param_1 + 0x10) = 0;
+  FUN_004112e8(*(uint32_t **)(param_1 + 0x14));
+  *(uint32_t *)(param_1 + 0x14) = 0;
+  return;
+}
+
+
+
+
+// Library Function - Multiple Matches With Same Base Name
+//  public: void __thiscall CObList::RemoveAll(void)
+//  public: void __thiscall CPtrList::RemoveAll(void)
+// 
+// Library: Visual Studio 2015 Release
+
+void __fastcall RemoveAll(int param_1)
+
+{
+  *(uint32_t *)(param_1 + 0xc) = 0;
+  *(uint32_t *)(param_1 + 0x10) = 0;
+  *(uint32_t *)(param_1 + 8) = 0;
+  *(uint32_t *)(param_1 + 4) = 0;
+  FUN_004112e8(*(uint32_t **)(param_1 + 0x14));
+  *(uint32_t *)(param_1 + 0x14) = 0;
+  return;
+}
+
+
+
+
+// Library Function - Single Match
+//  public: struct __POSITION * __thiscall CPtrList::AddTail(void *)
+// 
+// Libraries: Visual Studio 2003 Release, Visual Studio 2005 Release
+
+__POSITION * __thiscall CPtrList::AddTail(CPtrList *this,void *param_1)
+
+{
+  __POSITION *p_Var1;
+  
+  p_Var1 = (__POSITION *)FUN_0041120d(this,*(uint32_t *)(this + 8),0);
+  *(void **)(p_Var1 + 8) = param_1;
+  if (*(uint32_t **)(this + 8) == (uint32_t *)0x0) {
+    *(__POSITION **)(this + 4) = p_Var1;
+  }
+  else {
+    **(uint32_t **)(this + 8) = p_Var1;
+  }
+  *(__POSITION **)(this + 8) = p_Var1;
+  return p_Var1;
+}
+
+
+
+// Library Function - Single Match
+//  public: void __thiscall CSimpleException::InitString(void)
+// 
+// Library: Visual Studio 2015 Release
+
+void __thiscall CSimpleException::InitString(CSimpleException *this)
+
+{
+  int iVar1;
+  
+  *(uint32_t *)(this + 0xc) = 1;
+  iVar1 = FUN_00416cfe(*(UINT *)(this + 0x94),(LPSTR)(this + 0x14),0x80);
+  *(uint *)(this + 0x10) = (uint)(iVar1 != 0);
+  return;
+}
+
+
+// Library Function - Single Match
+//  _strncmp
+// 
+// Libraries: Visual Studio 1998 Debug, Visual Studio 1998 Release
+
+int __cdecl _strncmp(char *_Str1,char *_Str2,size_t _MaxCount)
+
+{
+  char cVar1;
+  char cVar2;
+  size_t sVar3;
+  int iVar4;
+  uint uVar5;
+  char *pcVar6;
+  char *pcVar7;
+  
+  uVar5 = 0;
+  sVar3 = _MaxCount;
+  pcVar6 = _Str1;
+  if (_MaxCount != 0) {
+    do {
+      if (sVar3 == 0) break;
+      sVar3 = sVar3 - 1;
+      cVar1 = *pcVar6;
+      pcVar6 = pcVar6 + 1;
+    } while (cVar1 != '\0');
+    iVar4 = _MaxCount - sVar3;
+    do {
+      pcVar6 = _Str2;
+      pcVar7 = _Str1;
+      if (iVar4 == 0) break;
+      iVar4 = iVar4 + -1;
+      pcVar7 = _Str1 + 1;
+      pcVar6 = _Str2 + 1;
+      cVar2 = *_Str1;
+      cVar1 = *_Str2;
+      _Str2 = pcVar6;
+      _Str1 = pcVar7;
+    } while (cVar1 == cVar2);
+    uVar5 = 0;
+    if ((byte)pcVar6[-1] <= (byte)pcVar7[-1]) {
+      if (pcVar6[-1] == pcVar7[-1]) {
+        return 0;
+      }
+      uVar5 = 0xfffffffe;
+    }
+    uVar5 = ~uVar5;
+  }
+  return uVar5;
 }
