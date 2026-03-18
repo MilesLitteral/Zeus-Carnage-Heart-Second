@@ -2,6 +2,7 @@
 // Contains type definitions and extern declarations
 
 #include <windows.h>
+#include <stdint.h>
 
 // Basic type definitions from decompiled code
 // Note: uint8_t-8 are decompiler placeholders for unknown types
@@ -93,6 +94,8 @@ extern uint32_t DAT_00508c50;
 // String constants
 extern char s_GRA_SNAP_MGSNAP01_TIM_004b44f4[];
 extern char s_KNJ_BIN_004b453c[];
+uint16_t display_mode_table[8];
+uint8_t* vram_buffer;
 
 typedef union IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion, *PIMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion;
 
@@ -1126,7 +1129,7 @@ uint __cdecl FUN_00420bc0(uint param_1);
 void FUN_00420be0(void);
 bool FUN_00420c00(void);
 void FUN_00420c20(void);
-void process_input(void);
+void process_input();
 
 // Graphics functions
 void __cdecl set_palette_color(uint8_t param_1);

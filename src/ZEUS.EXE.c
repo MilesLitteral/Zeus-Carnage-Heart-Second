@@ -26,7 +26,7 @@ string s_FIRST_NAME_004b4530;
 ushort game_start_flag;  // Flag to start the game
 ushort menu_state;  // Current menu screen/state
 short DAT_004dda98;
-LPCSTR DAT_00508c50;
+LPCSTR vram_buffer;
 short DAT_004ddb20;
 short DAT_004ddb24;
 short DAT_004ddae8;
@@ -52,7 +52,7 @@ string s_KNJ.BIN_004b453c;
 uchar DAT_004dda80;
 uchar DAT_004ddaa8;
 uchar DAT_004ddaf8;
-int DAT_00508c50;
+int vram_buffer;
 ushort DAT_004dda9c;
 ushort DAT_004ddb48;
 ushort DAT_004ddb4c;
@@ -181,7 +181,7 @@ uchar DAT_0052f484;
 int DAT_00549dcc;
 short DAT_004ddbd8;
 short DAT_004ddbb0;
-LPVOID DAT_00508c50;
+LPVOID vram_buffer;
 short DAT_004ddbdc;
 string s_GRA\HARD01.TIM_004b50e0;
 ushort DAT_004ddba8;
@@ -467,7 +467,7 @@ pointer PTR_DAT_004b92c4;
 pointer PTR_DAT_004b92cc;
 pointer PTR_DAT_004b92d0;
 uchar *PTR_DAT_004b92d4;
-uint DAT_00508c50;
+uint vram_buffer;
 int DAT_004ddda0;
 uint *DAT_004ddd94;
 uint *DAT_004ddd10;
@@ -4950,7 +4950,7 @@ uint __cdecl start_game_mode(short param_1)
   FUN_00420be0();
   DAT_004dda98 = param_1;
   initialize_game_state();
-  load_tim_file(s_KNJ_BIN_004b453c,DAT_00508c50,0x12000);
+  load_tim_file(s_KNJ_BIN_004b453c,vram_buffer,0x12000);
   uStack_ec = 1;
   uStack_eb = 1;
   uStack_f0 = 0x30;
@@ -5062,11 +5062,11 @@ LAB_00401c24:
         handle_move_selection();
       }
       else {
-        FUN_00404c80((int)&uStack_f0,DAT_00508c50);
+        FUN_00404c80((int)&uStack_f0,vram_buffer);
       }
       if (DAT_004ddb60 == 0) {
         if (DAT_004ddaa0 == 0) {
-          FUN_00405200((int)&uStack_f0,DAT_00508c50);
+          FUN_00405200((int)&uStack_f0,vram_buffer);
         }
         else {
           FUN_004053c0((int)&uStack_f0);
@@ -5081,7 +5081,7 @@ LAB_00401dc7:
             }
           }
           else {
-            FUN_004057f0((int)&uStack_f0,DAT_00508c50);
+            FUN_004057f0((int)&uStack_f0,vram_buffer);
           }
         }
       }
@@ -5093,7 +5093,7 @@ LAB_00401dc7:
             if (DAT_004ddb20 < DAT_004ddb24) goto LAB_00401dc7;
           }
           else {
-            FUN_004057f0((int)&uStack_f0,DAT_00508c50);
+            FUN_004057f0((int)&uStack_f0,vram_buffer);
           }
         }
       }
@@ -5175,7 +5175,7 @@ LAB_00401dc7:
 void initialize_game_state(void)
 
 {
-  FUN_00420600(s_GRA_WIN_TIM_004b4544,(LPVOID)(DAT_00508c50 + 0x12000),3);
+  FUN_00420600(s_GRA_WIN_TIM_004b4544,(LPVOID)(vram_buffer + 0x12000),3);
   FUN_00410440();
   DAT_004dda9c = 0;
   DAT_004ddb48 = 1;
@@ -6984,7 +6984,7 @@ int __cdecl FUN_00405f70(int param_1)
   DAT_004baa38 = 0;
   FUN_0043fdd0(0,0);
   FUN_00420b20();
-  DAT_00508c18 = DAT_00508c50 + 0x20000;
+  DAT_00508c18 = vram_buffer + 0x20000;
   _DAT_004ddbbc = DAT_005584b0 + 0xeb50;
   _DAT_004ddbb8 = DAT_005584b0 + 0x9d30;
   FUN_004064a0();
@@ -7036,7 +7036,7 @@ int FUN_00406140(void)
   DAT_004baa38 = 0;
   FUN_0043fdd0(0,0);
   FUN_00420b20();
-  DAT_00508c18 = DAT_00508c50 + 0x20000;
+  DAT_00508c18 = vram_buffer + 0x20000;
   _DAT_004ddbb8 = DAT_005584b0 + 0x9d30;
   _DAT_004ddbbc = DAT_005584b0 + 0xeb50;
   FUN_004064a0();
@@ -7101,7 +7101,7 @@ int FUN_00406360(void)
   FUN_00437e70(&DAT_0052f470 + DAT_00549dcc * 0x14);
   FUN_004064a0();
   FUN_00406620();
-  FUN_00420600(s_GRA_HARD01_TIM_004b50e0,DAT_00508c50,3);
+  FUN_00420600(s_GRA_HARD01_TIM_004b50e0,vram_buffer,3);
   FUN_00410440();
   DAT_004ddbdc = 0;
   FUN_0043fdd0(-DAT_004baa34,-DAT_004baa38);
@@ -8250,11 +8250,11 @@ int thunk_FUN_00408aa0(void)
   int iVar8;
   uchar auStack_4 [4];
   
-  iVar4 = DAT_00508c50;
+  iVar4 = vram_buffer;
   iVar7 = 0;
   iVar8 = 0;
   iVar6 = 0;
-  pvVar5 = (LPVOID)(DAT_00508c50 + 0x40000);
+  pvVar5 = (LPVOID)(vram_buffer + 0x40000);
   FUN_00420be0();
   puVar1 = PTR_DAT_004baa20;
   PTR_DAT_004baa20 = &DAT_0052f3e0;
@@ -8390,11 +8390,11 @@ int FUN_00408aa0(void)
   int iVar8;
   uchar auStack_4 [4];
   
-  iVar4 = DAT_00508c50;
+  iVar4 = vram_buffer;
   iVar7 = 0;
   iVar8 = 0;
   iVar6 = 0;
-  pvVar5 = (LPVOID)(DAT_00508c50 + 0x40000);
+  pvVar5 = (LPVOID)(vram_buffer + 0x40000);
   FUN_00420be0();
   puVar1 = PTR_DAT_004baa20;
   PTR_DAT_004baa20 = &DAT_0052f3e0;
@@ -8672,7 +8672,7 @@ void FUN_00409230(void)
   uint local_1c [3];
   uint *local_10;
   
-  pvVar1 = DAT_00508c50;
+  pvVar1 = vram_buffer;
   local_44[0] = &DAT_004b4bdc;
   local_44[1] = &DAT_004b4bd8;
   local_44[2] = &DAT_004b4bd4;
@@ -8808,8 +8808,8 @@ void FUN_00409580(void)
 {
   LPVOID pvVar1;
   
-  pvVar1 = DAT_00508c50;
-  load_tim_file(s_GRA_SYSTEM_TIM_004b5758,DAT_00508c50,0x10000);
+  pvVar1 = vram_buffer;
+  load_tim_file(s_GRA_SYSTEM_TIM_004b5758,vram_buffer,0x10000);
   FUN_00420db0((int)pvVar1,0x200,0);
   load_tim_file(s_GRA_MENU01_TIM_004b5748,pvVar1,0x10000);
   FUN_00420db0((int)pvVar1,0x240,0);
@@ -9723,13 +9723,13 @@ void __cdecl FUN_0040adf0(int param_1,uint param_2)
   int local_8;
   uchar *local_4;
   
-  pvVar4 = DAT_00508c50;
+  pvVar4 = vram_buffer;
   local_4 = PTR_DAT_004baa20;
   PTR_DAT_004baa20 = &DAT_0052f3e0;
-  DAT_00508c18 = (int)DAT_00508c50 + 0x48000;
+  DAT_00508c18 = (int)vram_buffer + 0x48000;
   DAT_004baa34 = 0;
   DAT_004baa38 = 0;
-  load_tim_file(s_GRA_TACT01_TIM_004b5768,DAT_00508c50,0x10000);
+  load_tim_file(s_GRA_TACT01_TIM_004b5768,vram_buffer,0x10000);
   FUN_00420db0((int)pvVar4,0x340,0);
   local_8 = 0;
   local_18 = 0;
@@ -10202,13 +10202,13 @@ void __cdecl FUN_0040bc40(int param_1)
   ushort local_4;
   ushort local_2;
   
-  pvVar2 = DAT_00508c50;
+  pvVar2 = vram_buffer;
   puVar1 = PTR_DAT_004baa20;
   PTR_DAT_004baa20 = &DAT_0052f3e0;
-  DAT_00508c18 = (int)DAT_00508c50 + 0x48000;
+  DAT_00508c18 = (int)vram_buffer + 0x48000;
   DAT_004baa34 = 0;
   DAT_004baa38 = 0;
-  FUN_00422a40(s_GRA_LOAD_NLTAC_BIN_004b56f0,DAT_00508c50,0x1e800,
+  FUN_00422a40(s_GRA_LOAD_NLTAC_BIN_004b56f0,vram_buffer,0x1e800,
                *(short *)(DAT_0051f784 + 0x3c) * 0x1e800);
   process_image_data((int)pvVar2,0x300,0,0x200,0x1ff);
   uVar3 = calculate_display_mode(0x200,0x1ff);
@@ -11593,10 +11593,10 @@ void FUN_0040dea0(void)
   ushort *puVar7;
   short *psVar8;
   
-  iVar1 = DAT_00508c50;
-  uVar3 = *(uint *)(DAT_00508c50 + 8);
-  uVar4 = *(int *)(DAT_00508c50 + 0xc) + DAT_00508c50;
-  puVar6 = (uint *)(*(int *)(DAT_00508c50 + 4) + DAT_00508c50);
+  iVar1 = vram_buffer;
+  uVar3 = *(uint *)(vram_buffer + 8);
+  uVar4 = *(int *)(vram_buffer + 0xc) + vram_buffer;
+  puVar6 = (uint *)(*(int *)(vram_buffer + 4) + vram_buffer);
   puVar5 = DAT_004ddd94;
   for (uVar2 = uVar3 >> 2; uVar2 != 0; uVar2 = uVar2 - 1) {
     *puVar5 = *puVar6;
@@ -12014,7 +12014,7 @@ void FUN_0040e9a0(void)
   int iVar5;
   uint uVar6;
   
-  iVar3 = DAT_00508c50;
+  iVar3 = vram_buffer;
   sVar1 = *(short *)(DAT_004feeb0 + 0x1c);
   pbVar4 = DAT_004feeb0 + 0x1c;
   iVar5 = (int)sVar1;
@@ -12035,7 +12035,7 @@ void FUN_0040e9a0(void)
   }
   DAT_004ddcfc = 0;
   DAT_004ddd00 = 0;
-  DAT_00508c18 = DAT_00508c50;
+  DAT_00508c18 = vram_buffer;
   sVar1 = *(short *)pbVar4;
   if ((sVar1 < 0xf) || (*DAT_004feeb0 == 2)) {
     sVar1 = *(short *)(&DAT_004b8fa0 + sVar1 * 2);
@@ -12061,12 +12061,12 @@ void FUN_0040e9a0(void)
     uVar6 = 10;
   }
   FUN_0040ecc0(uVar6,0x340,0x100);
-  DAT_004ddd08 = DAT_00508c50 + 0x30000;
+  DAT_004ddd08 = vram_buffer + 0x30000;
   DAT_004ddda0 = 0;
   _DAT_004ddd04 = 0;
-  DAT_004ddd94 = DAT_00508c50 + 0x40000;
+  DAT_004ddd94 = vram_buffer + 0x40000;
   _DAT_004ddd24 = PTR_s_TACTICS_MAP_TACMAP_BIN_004b95e8;
-  _DAT_004ddc98 = DAT_00508c50 + 0x60000;
+  _DAT_004ddc98 = vram_buffer + 0x60000;
   _DAT_004ddd2c = 0x3800;
   _DAT_004ddd34 = 0x3800;
   _DAT_004ddd38 = 0;
@@ -14958,7 +14958,7 @@ void FUN_004139c0(void)
   uint local_8;
   int local_4;
   
-  local_3c = (uint *)(DAT_00508c50 + 0x30000);
+  local_3c = (uint *)(vram_buffer + 0x30000);
   local_44 = 0;
   local_20 = 0;
   local_34 = 0;
@@ -15151,7 +15151,7 @@ void FUN_00413e50(void)
   DAT_004fdaa0 = DAT_00508c18 + 0x70000;
   _DAT_00576760 = DAT_005584b0 + 0x20000;
   _DAT_00576764 = DAT_005584b0 + 0x28000;
-  FUN_00420600(s_GRA_HARD01_TIM_004b50e0,DAT_00508c50,3);
+  FUN_00420600(s_GRA_HARD01_TIM_004b50e0,vram_buffer,3);
   FUN_00410440();
   DAT_004ddda8 = 0;
   DAT_004fd8f0 = (int)*(char *)(DAT_004feeb0 + 0x3e);
@@ -15495,8 +15495,8 @@ void FUN_004146e0(void)
 {
   LPVOID pvVar1;
   
-  pvVar1 = DAT_00508c50;
-  DAT_004fdaa0 = DAT_00508c50;
+  pvVar1 = vram_buffer;
+  DAT_004fdaa0 = vram_buffer;
   FUN_00437e70(&DAT_0052f3e0 + DAT_00549dcc * 0x14);
   FUN_00437e70(&DAT_0052f410 + DAT_00549dcc * 0x14);
   FUN_00437e70(&DAT_0052f440 + DAT_00549dcc * 0x14);
@@ -16040,7 +16040,7 @@ void FUN_00415e50(void)
   DAT_00556c68 = 0;
   DAT_004ddeac = 0;
   PTR_DAT_004baa20 = &DAT_0052f440;
-  FUN_00420600(s_GRA_HARD01_TIM_004b50e0,DAT_00508c50,3);
+  FUN_00420600(s_GRA_HARD01_TIM_004b50e0,vram_buffer,3);
   FUN_00410440();
   FUN_004a5690(3);
   FUN_004a52c0();
@@ -16066,9 +16066,9 @@ int FUN_00415eb0(void)
   int iVar12;
   int local_1c [7];
   
-  DAT_00508c18 = DAT_00508c50;
+  DAT_00508c18 = vram_buffer;
   DAT_004ddea8 = (uint)(DAT_004baa3c != 0x14);
-  DAT_004fdaa0 = DAT_00508c50 + 0x70000;
+  DAT_004fdaa0 = vram_buffer + 0x70000;
   FUN_00415e50();
   if (DAT_004bb648 != 0) {
     iVar6 = 0;
@@ -16161,7 +16161,7 @@ int FUN_00415eb0(void)
     } while (iVar12 < 0x1c);
     thunk_FUN_00447030();
   }
-  DAT_004fdaa0 = DAT_00508c50;
+  DAT_004fdaa0 = vram_buffer;
   return iVar6;
 }
 
@@ -17772,8 +17772,8 @@ void FUN_00418e60(void)
   ushort *puVar4;
   uint uVar5;
   
-  pvVar1 = DAT_00508c50;
-  load_tim_file(s_GRA_TITLE_OPBG_TIM_004bb840,DAT_00508c50,0x20000);
+  pvVar1 = vram_buffer;
+  load_tim_file(s_GRA_TITLE_OPBG_TIM_004bb840,vram_buffer,0x20000);
   process_image_data((int)pvVar1,0x300,0,0x300,0x1e0);
   load_tim_file(s_GRA_OPTION_TIM_004bb830,pvVar1,0x10000);
   FUN_00420db0((int)pvVar1,0x2c0,0);
@@ -18250,9 +18250,9 @@ void FUN_00419c60(void)
   int iVar6;
   uint uVar7;
   
-  pvVar2 = DAT_00508c50;
+  pvVar2 = vram_buffer; //vram_buffer;
   iVar6 = 0;
-  load_tim_file(s_GRA_CLUTPAC_ALL_004bb854,DAT_00508c50,0x2000);
+  load_tim_file(s_GRA_CLUTPAC_ALL_004bb854,vram_buffer,0x2000);
   do {
     sVar1 = (short)iVar6;
     iVar6 = iVar6 + 1;
@@ -18285,7 +18285,7 @@ void FUN_00419cf0(void)
   uchar *puVar4;
   short local_10 [8];
   
-  pvVar1 = DAT_00508c50;
+  pvVar1 = vram_buffer; //vram_buffer;
   DAT_004baa34 = 0;
   DAT_004baa38 = 0;
   FUN_00410420();
@@ -19237,7 +19237,7 @@ uint __cdecl FUN_0041b660(int param_1)
   uint uVar1;
   
   DAT_00563ad0 = (uint)(param_1 == 0xe);
-  DAT_00508c18 = DAT_00508c50 + 0x20000;
+  DAT_00508c18 = vram_buffer + 0x20000;
   FUN_0041c260();
   FUN_0041e390();
   FUN_0041b700();
@@ -19573,7 +19573,7 @@ void __cdecl FUN_0041bc40(int param_1)
   iVar3 = (((uint)DAT_00560aa6 * 0x100 + (uint)DAT_00560aa5) * 0x100 + (uint)DAT_00560aa4) * 0x100 +
           (uint)DAT_00560aa0._3_1_;
   iVar6 = DAT_004bc17c - iVar3;
-  piVar8 = (int *)(DAT_00508c50 + 0x30000);
+  piVar8 = (int *)(vram_buffer + 0x30000);
   FUN_0041c020((char *)piVar8,(byte *)((int)&DAT_00560aa0 + iVar3),iVar6);
   *(uchar *)((int)piVar8 + iVar6) = 0;
   if (param_1 == 0x32) {
@@ -19842,8 +19842,8 @@ void FUN_0041c260(void)
   DAT_004ddef8 = 0xffffffff;
   FUN_0041c3d0(0);
   iVar1 = DAT_004de598;
-  _DAT_004de6f0 = DAT_00508c50;
-  _DAT_004de6f4 = DAT_00508c50 + 0x18000;
+  _DAT_004de6f0 = vram_buffer;
+  _DAT_004de6f4 = vram_buffer + 0x18000;
   iVar2 = DAT_004ddf18;
   iVar3 = 0;
   do {
@@ -25586,9 +25586,9 @@ void FUN_00423f00(void)
   int local_108;
   CHAR local_104 [260];
   
-  DAT_004fdaa0 = (uint *)(DAT_00508c50 + 0x48000);
+  DAT_004fdaa0 = (uint *)(vram_buffer + 0x48000);
   PTR_DAT_004baa20 = &DAT_0052f3e0;
-  DAT_004dec30 = DAT_00508c50 + 0x88000;
+  DAT_004dec30 = vram_buffer + 0x88000;
   DAT_004dec34 = 0;
   DAT_004dec4c = 0;
   DAT_004dedbc = 0;
@@ -31239,7 +31239,7 @@ void FUN_0042dee0(void)
     puVar19 = puVar17;
   } while (puVar17 < &DAT_004fe4b4);
   puVar22 = (uint *)&DAT_00525bb0;
-  local_364 = DAT_00508c50;
+  local_364 = vram_buffer;
   local_390 = 0;
   puVar24 = &DAT_005006f0;
   puVar23 = &DAT_005006f0;
@@ -31632,8 +31632,8 @@ void FUN_0042dee0(void)
       local_390._0_2_ = (short)local_390 + 0x40;
     } while (local_368 < DAT_004bc610);
   }
-  uVar6 = local_364 - DAT_00508c50 >> 0x1f;
-  _DAT_004dee04 = (local_364 - DAT_00508c50 ^ uVar6) - uVar6;
+  uVar6 = local_364 - vram_buffer >> 0x1f;
+  _DAT_004dee04 = (local_364 - vram_buffer ^ uVar6) - uVar6;
   return;
 }
 
@@ -46744,8 +46744,8 @@ void FUN_004487a0(void)
   DAT_004c0ac0 = 0;
   _DAT_004c0ac4 = 0;
   DAT_004c0ac8 = 0;
-  DAT_004fdaa0 = DAT_00508c50;
-  DAT_00508c18 = DAT_00508c50;
+  DAT_004fdaa0 = vram_buffer;
+  DAT_00508c18 = vram_buffer;
   DAT_004baa34 = 0;
   DAT_004c0a8c = 0xffffff88;
   PTR_DAT_004baa20 = &DAT_0052f3e0;
@@ -52169,7 +52169,7 @@ void FUN_00451520(void)
   CHAR local_58 [64];
   uint auStack_18 [6];
   
-  DAT_004f08ac = DAT_00508c50 + 0xb8000;
+  DAT_004f08ac = vram_buffer + 0xb8000;
   iVar11 = 0;
   setup_text_rendering(0x380,0,0xf,1);
   iVar10 = 0;
@@ -52342,7 +52342,7 @@ void __cdecl FUN_004519a0(int param_1)
   int local_c;
   uint local_8;
   
-  DAT_004f08ac = DAT_00508c50 + 0xb8000;
+  DAT_004f08ac = vram_buffer + 0xb8000;
   DAT_004f0960 = DAT_004f087c;
   bVar2 = true;
   local_8 = DAT_004f087c;
@@ -53606,7 +53606,7 @@ void __cdecl FUN_00453d40(int param_1)
   uint local_30;
   CHAR local_20 [32];
   
-  DAT_004f08ac = DAT_00508c50 + 0xb8000;
+  DAT_004f08ac = vram_buffer + 0xb8000;
   bVar7 = true;
   iVar1 = DAT_004feeb8 + param_1 * 0x44;
   iVar15 = 0;
@@ -54356,7 +54356,7 @@ void __cdecl FUN_004552b0(int param_1)
   CHAR *pCVar12;
   CHAR local_20 [32];
   
-  DAT_004f08ac = DAT_00508c50 + 0xb8000;
+  DAT_004f08ac = vram_buffer + 0xb8000;
   setup_text_rendering(0x380,0,0xf,1);
   bVar3 = true;
   FUN_00458270();
@@ -55067,7 +55067,7 @@ void __cdecl FUN_00456320(int param_1)
   CHAR local_38 [32];
   uint auStack_18 [6];
   
-  DAT_004f08ac = DAT_00508c50 + 0xb8000;
+  DAT_004f08ac = vram_buffer + 0xb8000;
   iVar14 = 0;
   setup_text_rendering(0x380,0,0xf,1);
   sVar4 = *(short *)(DAT_0051f784 + 0x3c);
@@ -55623,7 +55623,7 @@ void __cdecl FUN_004570e0(int param_1)
   CHAR local_38 [32];
   uint auStack_18 [6];
   
-  DAT_004f08ac = DAT_00508c50 + 0xb8000;
+  DAT_004f08ac = vram_buffer + 0xb8000;
   iVar13 = 0;
   setup_text_rendering(0x380,0,0xf,1);
   sVar3 = *(short *)(DAT_0051f784 + 0x3c);
@@ -55955,7 +55955,7 @@ void FUN_00457990(void)
   uint auStack_38 [6];
   CHAR local_20 [32];
   
-  DAT_004f08ac = DAT_00508c50 + 0xb8000;
+  DAT_004f08ac = vram_buffer + 0xb8000;
   iVar12 = 0;
   setup_text_rendering(0x380,0,0xf,1);
   iVar10 = 0;
@@ -56566,7 +56566,7 @@ void FUN_00458800(void)
   short *psVar8;
   short local_8 [4];
   
-  DAT_004f332c = (LPVOID)((int)DAT_00508c50 + 0x40000);
+  DAT_004f332c = (LPVOID)((int)vram_buffer + 0x40000);
   FUN_00422a40(PTR_s_TACTICS_MAP_TACMAP_BIN_004c1198,DAT_004f332c,0x3800,
                (short)DAT_0051f784[0xf] * 0x3800);
   DAT_0057351c = DAT_004f332c;
@@ -56575,8 +56575,8 @@ void FUN_00458800(void)
     FUN_00458ad0();
   }
   FUN_00459ae0();
-  pvVar1 = DAT_00508c50;
-  load_tim_file(s_GRA_TACT01_TIM_004b5768,DAT_00508c50,0x10000);
+  pvVar1 = vram_buffer;
+  load_tim_file(s_GRA_TACT01_TIM_004b5768,vram_buffer,0x10000);
   FUN_00420db0((int)pvVar1,0x340,0);
   uVar2 = calculate_display_mode(0x300,0x1ff);
   _DAT_004fda40 = (ushort)uVar2;
@@ -56706,9 +56706,9 @@ void FUN_00458ad0(void)
   byte local_90 [48];
   char local_60 [96];
   
-  DAT_004f33bc = (LPVOID)(DAT_00508c50 + 0xa1000);
+  DAT_004f33bc = (LPVOID)(vram_buffer + 0xa1000);
   iVar10 = 0;
-  DAT_004f33b8 = DAT_00508c50 + 0xa1480;
+  DAT_004f33b8 = vram_buffer + 0xa1480;
   local_dc = 0;
   FUN_00422a40(PTR_s_TACTICS_UNIT_TACUNIT_BIN_004c119c,DAT_004f33bc,0x800,
                (int)*(short *)(DAT_0051f784 + 0x3c) << 0xb);
@@ -57362,10 +57362,10 @@ void FUN_00459ae0(void)
   int local_108;
   CHAR local_104 [260];
   
-  pvVar3 = DAT_00508c50;
-  DAT_004f3330 = (uint *)((int)DAT_00508c50 + 0x50000);
+  pvVar3 = vram_buffer;
+  DAT_004f3330 = (uint *)((int)vram_buffer + 0x50000);
   load_tim_file((&PTR_s_TACTICS_HEXMDL_TAC01_PAC_004c1158)
-               [(byte)(&DAT_004c7140)[*(short *)(DAT_0051f784 + 0x3c)]],DAT_00508c50,0x20000);
+               [(byte)(&DAT_004c7140)[*(short *)(DAT_0051f784 + 0x3c)]],vram_buffer,0x20000);
   iVar7 = *(int *)((int)pvVar3 + 0xc);
   uVar6 = *(uint *)((int)pvVar3 + 8);
   puVar9 = (uint *)(*(int *)((int)pvVar3 + 4) + (int)pvVar3);
@@ -61808,8 +61808,8 @@ FUN_00462000(int param_1,uint param_2,uint param_3,uint param_4,uint param_5)
   DAT_004c750c = ((((param_5 ^ uVar1) - uVar1 & 7 ^ uVar1) - uVar1) + 8) * 0x40;
   DAT_004c7514 = ((int)(param_5 + (uVar1 & 7)) >> 3) << 8;
   if (DAT_004c74ec == 0) {
-    load_tim_file(s_VS_VSMODE01_TIM_004c7520,DAT_00508c50,0x8040);
-    FUN_00420db0((int)DAT_00508c50,(short)DAT_004c750c,(short)DAT_004c7514);
+    load_tim_file(s_VS_VSMODE01_TIM_004c7520,vram_buffer,0x8040);
+    FUN_00420db0((int)vram_buffer,(short)DAT_004c750c,(short)DAT_004c7514);
     DAT_004c74ec = 1;
   }
   DAT_004c751c = 0;
@@ -63172,7 +63172,7 @@ void FUN_00463e80(void)
   DAT_004cbc20 = 0;
   DAT_00573568 = &DAT_00575574;
   PTR_DAT_004baa20 = &DAT_0052f470;
-  DAT_004fdaa0 = DAT_00508c50 + 0x40000;
+  DAT_004fdaa0 = vram_buffer + 0x40000;
   DAT_004cbac8 = *(byte *)(DAT_004feeb0 + 1) - 1;
   if (DAT_004cbac8 < 1) {
     DAT_004cbac8 = 1;
@@ -71858,7 +71858,7 @@ void FUN_00476a10(void)
     puVar10[6] = 0x20;
     puVar5 = puVar10 + 0x10;
     puVar10[7] = 0x20;
-    pvVar1 = DAT_00508c50;
+    pvVar1 = vram_buffer;
     puVar10 = puVar5;
   } while (puVar5 < &DAT_0052f3e0);
   DAT_004baa24 = 0;
@@ -71869,7 +71869,7 @@ void FUN_00476a10(void)
   DAT_0052f49c = 0;
   DAT_004baa2c = 0;
   DAT_0052f498 = 0;
-  load_tim_file(s_GRA_SOFTPAC_TIM_004ce858,DAT_00508c50,0x28000);
+  load_tim_file(s_GRA_SOFTPAC_TIM_004ce858,vram_buffer,0x28000);
   iVar3 = FUN_00420db0((int)pvVar1,0x280,0);
   iVar3 = (int)pvVar1 + iVar3;
   iVar4 = FUN_00420db0(iVar3,0x2c0,0);
@@ -71911,10 +71911,10 @@ uint __cdecl FUN_00476da0(uint param_1)
   DAT_004baa34 = 0;
   DAT_004baa38 = 0;
   FUN_0043fdd0(0,0);
-  DAT_00508c18 = DAT_00508c50;
+  DAT_00508c18 = vram_buffer;
   _DAT_004f78e0 = DAT_005584b0 + 0x10000;
   _DAT_004f78e4 = DAT_005584b0 + 0x18000;
-  DAT_00575afc = DAT_00508c50 + 0x20000;
+  DAT_00575afc = vram_buffer + 0x20000;
   DAT_00575b10 = param_1;
   FUN_00477010();
   do {
@@ -72127,8 +72127,8 @@ void __cdecl FUN_004773f0(short param_1)
   uint uVar11;
   uint local_104 [65];
   
-  iVar3 = DAT_00508c50;
-  puVar7 = (uint *)(DAT_00508c50 + 0x36000);
+  iVar3 = vram_buffer;
+  puVar7 = (uint *)(vram_buffer + 0x36000);
   if (param_1 < 3) {
     iVar4 = param_1 + 1;
     uVar11 = 0x43;
@@ -74819,7 +74819,7 @@ void FUN_0047ca50(void)
        (char)(&DAT_004d2918)[DAT_004fcc40 * 0x1a + (int)DAT_004fcc38];
   iVar11 = 0;
   *(uchar *)(DAT_004baa44 * 0x70c + 0x45 + DAT_004fdaa4) = 0;
-  iVar5 = DAT_00508c50;
+  iVar5 = vram_buffer;
   iVar10 = *(int *)(&DAT_004b9b84 + iVar7 * 0x28);
   if (0 < iVar10) {
     pbVar14 = &DAT_004d60a0 + iVar7 * 0x37;
@@ -74834,8 +74834,8 @@ void FUN_0047ca50(void)
       iVar11 = iVar11 + 1;
     } while (iVar11 < iVar10);
   }
-  piVar15 = (int *)(DAT_00508c50 + 0x38004);
-  load_tim_file(s_MODEL_TMP_KYU_TMD_004d2b10,(LPVOID)(DAT_00508c50 + 0x38000),0x1000);
+  piVar15 = (int *)(vram_buffer + 0x38004);
+  load_tim_file(s_MODEL_TMP_KYU_TMD_004d2b10,(LPVOID)(vram_buffer + 0x38000),0x1000);
   FUN_0043a180(piVar15);
   FUN_00442a80(0,(uint *)&DAT_0051fee0);
   FUN_0043a390(iVar5 + 0x3800c,0x4ff450,0);
@@ -77968,9 +77968,9 @@ void __cdecl FUN_004831e0(int param_1)
   uint *puVar2;
   int iVar3;
   
-  DAT_004fcfc4 = (LPVOID)(DAT_00508c50 + 0x34000);
+  DAT_004fcfc4 = (LPVOID)(vram_buffer + 0x34000);
   load_tim_file(s_MODEL_TMP_KYU_TMD_004d2b10,DAT_004fcfc4,0x1000);
-  DAT_004fcfc8 = (LPVOID)(DAT_00508c50 + 0x35000);
+  DAT_004fcfc8 = (LPVOID)(vram_buffer + 0x35000);
   load_tim_file(s_MODEL_TMP_KYU_TMD_004d2b10,DAT_004fcfc8,0x1000);
   pvVar1 = DAT_004fcfc4;
   FUN_0043a180((int *)((int)DAT_004fcfc4 + 4));
@@ -79396,8 +79396,8 @@ void __cdecl FUN_00485b20(short param_1)
   int iVar8;
   int *piVar9;
   
-  iVar3 = DAT_00508c50;
-  puVar6 = (uint *)(DAT_00508c50 + 0x38000);
+  iVar3 = vram_buffer;
+  puVar6 = (uint *)(vram_buffer + 0x38000);
   load_tim_file((&PTR_s_MODEL_PARTS_06_AB01_DAT_004d49b0)[param_1],DAT_00508c18,0x10000);
   piVar2 = DAT_00508c18;
   uVar5 = DAT_00508c18[2];
@@ -81200,7 +81200,7 @@ void __cdecl FUN_004895b0(char param_1)
     FUN_0048e100();
   }
   load_tim_file(s_GRA_MEPAC_TIM_004d6b50,DAT_00508c18,0x2800);
-  FUN_00420c60(DAT_00508c50 + 0xc4,0x2100,0,0,0,0);
+  FUN_00420c60(vram_buffer + 0xc4,0x2100,0,0,0,0);
   DAT_004fd0f8 = 0;
   _DAT_004fd112 = 0x20;
   _DAT_004fd114 = 0x18;
@@ -84826,7 +84826,7 @@ int FUN_0048faa0(void)
   DAT_004baa34 = 0;
   DAT_004baa38 = 0;
   FUN_0043fdd0(0,0);
-  DAT_00508c18 = DAT_00508c50;
+  DAT_00508c18 = vram_buffer;
   _DAT_00575b50 = DAT_005584b0 + 0x10000;
   _DAT_00575b54 = DAT_005584b0 + 0x18000;
   FUN_004901a0();
@@ -85054,7 +85054,7 @@ void FUN_004901a0(void)
 void FUN_004902c0(void)
 
 {
-  DAT_00508c18 = DAT_00508c50;
+  DAT_00508c18 = vram_buffer;
   _DAT_00575b50 = DAT_005584b0 + 0x10000;
   _DAT_00575b54 = DAT_005584b0 + 0x18000;
   FUN_004901a0();
@@ -85409,13 +85409,13 @@ void FUN_004910a0(void)
   uint local_10c;
   CHAR local_104 [260];
   
-  iVar11 = DAT_00508c50;
-  piVar14 = (int *)(DAT_00508c50 + 0x36004);
-  load_tim_file(s_MODEL_TMP_KYU_TMD_004d2b10,(LPVOID)(DAT_00508c50 + 0x36000),0x1000);
+  iVar11 = vram_buffer;
+  piVar14 = (int *)(vram_buffer + 0x36004);
+  load_tim_file(s_MODEL_TMP_KYU_TMD_004d2b10,(LPVOID)(vram_buffer + 0x36000),0x1000);
   FUN_0043a180(piVar14);
   FUN_00442a80(0,(uint *)&DAT_0051f7b0);
   FUN_0043a390(iVar11 + 0x3600c,0x4ff2e0,0);
-  iVar11 = DAT_00508c50;
+  iVar11 = vram_buffer;
   DAT_0051f7c8 = 0;
   DAT_0051f7cc = 0;
   DAT_0051f7d0 = 0;
@@ -85424,7 +85424,7 @@ void FUN_004910a0(void)
   DAT_004fdab0 = 0;
   DAT_004ff2e4 = &DAT_0051f7b0;
   DAT_004ff2e0 = 0;
-  puVar10 = (uint *)(DAT_00508c50 + 0x20000);
+  puVar10 = (uint *)(vram_buffer + 0x20000);
   iVar7 = DAT_004baa44 * 0x70c + DAT_004fdaa4;
   iVar4 = *(char *)(iVar7 + 0x26) + 1;
   iVar7 = *(byte *)(iVar7 + 0x45) + 1;
@@ -85915,8 +85915,8 @@ void FUN_00491e30(void)
   uint local_1c [3];
   uint *local_10;
   
-  puVar4 = (uint *)((int)DAT_00508c50 + 4);
-  load_tim_file(s_GRA_EMB_TIM_004b5728,DAT_00508c50,0x2000);
+  puVar4 = (uint *)((int)vram_buffer + 4);
+  load_tim_file(s_GRA_EMB_TIM_004b5728,vram_buffer,0x2000);
   FUN_00437bb0(puVar4,local_1c);
   iVar3 = 0;
   *(uchar *)(DAT_004baa44 * 0x70c + DAT_004fdaa4) = 0;
@@ -95215,7 +95215,7 @@ void __cdecl FUN_004a1870(int param_1,int param_2,byte *param_3)
   pbVar9[0x6a] = 0;
   pbVar9[0x6b] = 0;
   *(uint *)(pbVar9 + 100) = *(uint *)(&DAT_004d8198 + local_4 * 4);
-  *(uint *)(pbVar9 + 0x5c) = DAT_00508c50;
+  *(uint *)(pbVar9 + 0x5c) = vram_buffer;
   pbVar9[0x60] = 0;
   pbVar9[0x61] = 0x10;
   pbVar9[0x62] = 0;
@@ -95873,8 +95873,8 @@ void FUN_004a2cd0(void)
   int iVar3;
   int iVar4;
   
-  iVar3 = DAT_00508c50;
-  DAT_00508c18 = DAT_00508c50;
+  iVar3 = vram_buffer;
+  DAT_00508c18 = vram_buffer;
   _DAT_00575b60 = DAT_005584b0 + 0x10000;
   _DAT_00575b64 = DAT_005584b0 + 0x18000;
   DAT_00575b68 = &DAT_005346c8;
@@ -96371,9 +96371,9 @@ uint FUN_004a3790(void)
 void FUN_004a37a0(void)
 
 {
-  load_tim_file(s_VS_VSBG01_TIM_004d84e8,DAT_00508c50,0x1f800);
+  load_tim_file(s_VS_VSBG01_TIM_004d84e8,vram_buffer,0x1f800);
   FUN_004a37e0();
-  load_tim_file(s_VS_VSBG02_TIM_004d8500,DAT_00508c50,0x1f800);
+  load_tim_file(s_VS_VSBG02_TIM_004d8500,vram_buffer,0x1f800);
   FUN_004a3800();
   return;
 }
@@ -96383,7 +96383,7 @@ void FUN_004a37a0(void)
 void FUN_004a37e0(void)
 
 {
-  FUN_00420e40(DAT_00508c50,0x2c0,0,0x300,0x1df);
+  FUN_00420e40(vram_buffer,0x2c0,0,0x300,0x1df);
   return;
 }
 
@@ -96396,7 +96396,7 @@ void FUN_004a3800(void)
 {
   uint uVar1;
   
-  FUN_00420e40(DAT_00508c50,0x380,0x100,0x300,0x1df);
+  FUN_00420e40(vram_buffer,0x380,0x100,0x300,0x1df);
   uVar1 = calculate_display_mode(0x300,0x1df);
   _DAT_004fda40 = (short)uVar1;
   DAT_004d84e0 = 1;
@@ -96409,10 +96409,10 @@ void FUN_004a3800(void)
 void FUN_004a3850(void)
 
 {
-  load_tim_file(s_VS_VSMODE00_TIM_004d8540,DAT_00508c50,0x8800);
-  FUN_00420db0((int)DAT_00508c50,0x280,0);
-  load_tim_file(s_VS_VSMODE01_TIM_004c7520,DAT_00508c50,0x8800);
-  FUN_00420db0((int)DAT_00508c50,0x340,0x100);
+  load_tim_file(s_VS_VSMODE00_TIM_004d8540,vram_buffer,0x8800);
+  FUN_00420db0((int)vram_buffer,0x280,0);
+  load_tim_file(s_VS_VSMODE01_TIM_004c7520,vram_buffer,0x8800);
+  FUN_00420db0((int)vram_buffer,0x340,0x100);
   return;
 }
 
@@ -96431,8 +96431,8 @@ void __cdecl FUN_004a38b0(ushort param_1)
   DAT_004baa34 = 0;
   DAT_004baa38 = 0;
   if ((param_1 & 0x8000) != 0) {
-    DAT_00508c18 = DAT_00508c50;
-    DAT_004fdaa0 = DAT_00508c50;
+    DAT_00508c18 = vram_buffer;
+    DAT_004fdaa0 = vram_buffer;
   }
   if ((param_1 & 0x1000) == 0) {
     DAT_00549dcc = FUN_00441e20();
@@ -97469,7 +97469,7 @@ void __cdecl FUN_004a5320(uint param_1,uchar *param_2)
     *(uchar **)(&DAT_00575c58 + iVar5) = PTR_s_MODEL_KOMA_KOMA_BIN_004d894c;
     *(uint *)(&DAT_00575c68 + iVar5) = 0x1000;
     *(uint *)(&DAT_00575c64 + iVar5) = *(uint *)(&DAT_004d8660 + local_4 * 4);
-    *(uint *)(&DAT_00575c5c + iVar5) = DAT_00508c50;
+    *(uint *)(&DAT_00575c5c + iVar5) = vram_buffer;
     *(uint *)(&DAT_00575c60 + iVar5) = 0x1000;
     *(uchar **)(&DAT_00575c6c + iVar5) = &LAB_004a5550;
     return;
@@ -97512,11 +97512,11 @@ void __cdecl FUN_004a5690(int param_1)
   int iVar5;
   
   _DAT_00576764 = DAT_005584b0 + 0x18000;
-  DAT_00508c18 = DAT_00508c50;
+  DAT_00508c18 = vram_buffer;
   _DAT_00576760 = DAT_005584b0 + 0x10000;
   iVar3 = DAT_004baa3c + param_1;
   if (0 < iVar3) {
-    iVar5 = DAT_00508c50 + 0x41800;
+    iVar5 = vram_buffer + 0x41800;
     piVar1 = &DAT_00576770;
     do {
       *piVar1 = iVar5;
@@ -98509,7 +98509,7 @@ int FUN_004a7300(void)
 {
   int iVar1;
   
-  DAT_00508c18 = DAT_00508c50 + 0x20000;
+  DAT_00508c18 = vram_buffer + 0x20000;
   _DAT_00576764 = DAT_005584b0 + 0x14000;
   _DAT_00576760 = DAT_005584b0 + 0x10000;
   FUN_004a74e0();
@@ -98934,7 +98934,7 @@ void FUN_004a7cf0(void)
   byte bVar1;
   byte *pbVar2;
   
-  DAT_00508c18 = DAT_00508c50;
+  DAT_00508c18 = vram_buffer;
   _DAT_00575b50 = DAT_005584b0 + 0x10000;
   _DAT_00575b54 = DAT_005584b0 + 0x14000;
   FUN_004901a0();
@@ -98998,8 +98998,8 @@ void FUN_004a7e30(void)
   FUN_004a5f60(2,2);
   play_sound_effect(1,100,0,1);
   FUN_00409570();
-  DAT_00508c18 = DAT_00508c50;
-  DAT_004fdaa0 = DAT_00508c50 + 0x70000;
+  DAT_00508c18 = vram_buffer;
+  DAT_004fdaa0 = vram_buffer + 0x70000;
   FUN_00415e50();
   FUN_00415e00();
   DAT_004fd6f0 = 0;
@@ -99063,7 +99063,7 @@ void FUN_004a7e30(void)
   DAT_004baa34 = 0;
   DAT_004baa38 = 0;
   FUN_00409570();
-  DAT_004fdaa0 = DAT_00508c50 + 0x20000;
+  DAT_004fdaa0 = vram_buffer + 0x20000;
   DAT_00508c18 = DAT_004fdaa0;
   FUN_00415e50();
   FUN_00415e00();
@@ -99303,10 +99303,10 @@ void FUN_004a86c0(void)
   int unaff_retaddr;
   
   FUN_00409570();
-  DAT_00508c18 = DAT_00508c50 + 0x20000;
+  DAT_00508c18 = vram_buffer + 0x20000;
   DAT_00573568 = &DAT_00575574;
   PTR_DAT_004baa20 = &DAT_0052f470;
-  DAT_004fdaa0 = DAT_00508c50;
+  DAT_004fdaa0 = vram_buffer;
   DAT_004cbac8 = *(byte *)(DAT_004feeb0 + 1) + 1;
   FUN_00476a10();
   load_tim_file(s_SOFT_MACRO_ALL_004cbdc8,&DAT_00573570,0x2000);
@@ -99479,9 +99479,9 @@ void FUN_004a8a70(void)
   DAT_004baa34 = 0;
   DAT_004baa38 = 0;
   FUN_00409570();
-  DAT_004fdaa0 = (int)DAT_00508c50 + 0x20000;
+  DAT_004fdaa0 = (int)vram_buffer + 0x20000;
   DAT_00508c18 = DAT_004fdaa0;
-  FUN_00420600(s_GRA_HARD01_TIM_004b50e0,DAT_00508c50,3);
+  FUN_00420600(s_GRA_HARD01_TIM_004b50e0,vram_buffer,3);
   FUN_00410440();
   FUN_0041fce0();
   FUN_004a6d50(0xb,0x340,0x100);
@@ -99523,9 +99523,9 @@ void FUN_004a8a70(void)
     DAT_004baa34 = 0;
     DAT_004baa38 = 0;
     FUN_00409570();
-    DAT_004fdaa0 = (int)DAT_00508c50 + 0x20000;
+    DAT_004fdaa0 = (int)vram_buffer + 0x20000;
     DAT_00508c18 = DAT_004fdaa0;
-    FUN_00420600(s_GRA_HARD01_TIM_004b50e0,DAT_00508c50,3);
+    FUN_00420600(s_GRA_HARD01_TIM_004b50e0,vram_buffer,3);
     FUN_00410440();
   }
   FUN_004a6d50(0xb,0x340,0x100);
@@ -99616,9 +99616,9 @@ LAB_004a8f84:
     DAT_004baa34 = 0;
     DAT_004baa38 = 0;
     FUN_00409570();
-    DAT_004fdaa0 = (int)DAT_00508c50 + 0x20000;
+    DAT_004fdaa0 = (int)vram_buffer + 0x20000;
     DAT_00508c18 = DAT_004fdaa0;
-    FUN_00420600(s_GRA_HARD01_TIM_004b50e0,DAT_00508c50,3);
+    FUN_00420600(s_GRA_HARD01_TIM_004b50e0,vram_buffer,3);
     FUN_00410440();
     if (iVar2 == 6) {
       iVar2 = FUN_004aae90();
@@ -99680,9 +99680,9 @@ LAB_004a8f84:
     DAT_004baa34 = 0;
     DAT_004baa38 = 0;
     FUN_00409570();
-    DAT_004fdaa0 = (int)DAT_00508c50 + 0x20000;
+    DAT_004fdaa0 = (int)vram_buffer + 0x20000;
     DAT_00508c18 = DAT_004fdaa0;
-    FUN_00420600(s_GRA_HARD01_TIM_004b50e0,DAT_00508c50,3);
+    FUN_00420600(s_GRA_HARD01_TIM_004b50e0,vram_buffer,3);
     FUN_00410440();
     if (iVar5 == 6) {
       iVar5 = FUN_004aae90();
@@ -100521,10 +100521,10 @@ void FUN_004aa440(void)
   int local_8;
   
   iVar4 = 0;
-  load_tim_file(s_VS_VSMODE01_TIM_004c7520,DAT_00508c50,0x8800);
-  FUN_00420db0((int)DAT_00508c50,0x300,0x100);
-  load_tim_file(s_VS_VSMODE00_TIM_004d8540,DAT_00508c50,0x8800);
-  FUN_00420db0((int)DAT_00508c50,0x300,0);
+  load_tim_file(s_VS_VSMODE01_TIM_004c7520,vram_buffer,0x8800);
+  FUN_00420db0((int)vram_buffer,0x300,0x100);
+  load_tim_file(s_VS_VSMODE00_TIM_004d8540,vram_buffer,0x8800);
+  FUN_00420db0((int)vram_buffer,0x300,0);
   do {
     iVar1 = 0;
     if (iVar4 < 0x31) {
@@ -101089,10 +101089,10 @@ void __cdecl FUN_004ab3b0(uint param_1)
   int local_8;
   
   iVar4 = 0;
-  load_tim_file(s_VS_VSMODE01_TIM_004c7520,DAT_00508c50,0x8800);
-  FUN_00420db0((int)DAT_00508c50,0x300,0x100);
-  load_tim_file(s_VS_VSMODE00_TIM_004d8540,DAT_00508c50,0x8800);
-  FUN_00420db0((int)DAT_00508c50,0x300,0);
+  load_tim_file(s_VS_VSMODE01_TIM_004c7520,vram_buffer,0x8800);
+  FUN_00420db0((int)vram_buffer,0x300,0x100);
+  load_tim_file(s_VS_VSMODE00_TIM_004d8540,vram_buffer,0x8800);
+  FUN_00420db0((int)vram_buffer,0x300,0);
   do {
     iVar1 = 0;
     if (iVar4 < 0x31) {
@@ -101202,10 +101202,10 @@ void FUN_004ab670(void)
   DAT_00556c60 = 1;
   FUN_004ab580(0x2d);
   FUN_004a5f60(0,0xffffffff);
-  load_tim_file(s_VS_VSMODE01_TIM_004c7520,DAT_00508c50,0x8800);
-  FUN_00420db0((int)DAT_00508c50,0x300,0x100);
-  load_tim_file(s_VS_VSMODE00_TIM_004d8540,DAT_00508c50,0x8800);
-  FUN_00420db0((int)DAT_00508c50,0x300,0);
+  load_tim_file(s_VS_VSMODE01_TIM_004c7520,vram_buffer,0x8800);
+  FUN_00420db0((int)vram_buffer,0x300,0x100);
+  load_tim_file(s_VS_VSMODE00_TIM_004d8540,vram_buffer,0x8800);
+  FUN_00420db0((int)vram_buffer,0x300,0);
   FUN_0041ad70();
   do {
     do {

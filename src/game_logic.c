@@ -3,6 +3,7 @@
 
 #include "zeus.h"
 #include <cstdint>
+#include <stdbool.h>
 
 // Main game loop - handles title screen, menu navigation, and game startup
 uint32_t main_game_loop(void)
@@ -23,7 +24,8 @@ uint32_t main_game_loop(void)
   FUN_00422a00(s_GRA_SNAP_MGSNAP01_TIM_004b44f4,DAT_00508c18,0x10000);
   FUN_00420d20((int)DAT_00508c18,0x340,0x100,0x300,0x1ff);
   uVar1 = FUN_00437b40(0x300,0x1ff);
-  _DAT_004fda40 = (uint16_t)uVar1;
+  
+  display_mode_table = (uint16_t)uVar1;
   draw_title_screen();
   DAT_004ddb5c = 0xff;
   do {
@@ -113,8 +115,7 @@ LAB_00401215:
 
 // Start the selected game mode
 // param_1: game mode (0 or 1)
-uint32_t __cdecl start_game_mode(short param_1)
-{
+uint32_t __cdecl start_game_mode(short param_1) {
   bool bVar1;
   int iVar2;
   int iVar3;
