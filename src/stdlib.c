@@ -1,4 +1,6 @@
 #include "zeus.h"
+#include <cstdint>
+#include <cstdio>
 
 // Library Function - Single Match
 //  _rand
@@ -51,7 +53,7 @@ int __cdecl FID_conflict__wprintf(char *_Format,...)
   
   FID_conflict___lock_file2(1,&DAT_004dcd18);
   _Flag = __stbuf((FILE *)&DAT_004dcd18);
-  iVar1 = FUN_004adff0((FILE *)&DAT_004dcd18,(byte *)_Format,(undefined4 *)&stack0x00000008);
+  iVar1 = FUN_004adff0((FILE *)&DAT_004dcd18,(byte *)_Format,(uint32_t  *)&stack0x00000008);
   __ftbuf(_Flag,(FILE *)&DAT_004dcd18);
   FID_conflict___lock_file2(1,&DAT_004dcd18);
   return iVar1;
@@ -85,7 +87,7 @@ void __fdivp_sti_st(void)
 {
   unkbyte10 in_ST0;
   unkbyte10 in_ST1;
-  undefined2 in_stack_ffffffea;
+  uint16_t in_stack_ffffffea;
   
   FUN_004abc20((int)in_ST0,(uint)((unkuint10)in_ST0 >> 0x20),(ushort)((unkuint10)in_ST0 >> 0x40),
                (int)in_ST1,(uint)((unkuint10)in_ST1 >> 0x20),
@@ -105,7 +107,7 @@ void __fdivrp_sti_st(void)
 {
   unkbyte10 in_ST0;
   unkbyte10 in_ST1;
-  undefined2 in_stack_ffffffea;
+  uint16_t in_stack_ffffffea;
   
   FUN_004abc20((int)in_ST1,(uint)((unkuint10)in_ST1 >> 0x20),(ushort)((unkuint10)in_ST1 >> 0x40),
                (int)in_ST0,(uint)((unkuint10)in_ST0 >> 0x20),
@@ -298,8 +300,8 @@ int __cdecl __cinit(int param_1)
   if (PTR___fpmath_004dc5b0 != (undefined *)0x0) {
     (*(code *)PTR___fpmath_004dc5b0)();
   }
-  __initterm((undefined4 *)&DAT_004b4008,(undefined4 *)&DAT_004b4010);
-  iVar1 = __initterm((undefined4 *)&DAT_004b4000,(undefined4 *)&DAT_004b4004);
+  __initterm((uint32_t  *)&DAT_004b4008,(uint32_t  *)&DAT_004b4010);
+  iVar1 = __initterm((uint32_t  *)&DAT_004b4000,(uint32_t  *)&DAT_004b4004);
   return iVar1;
 }
 
@@ -324,7 +326,7 @@ void __cdecl __exit(int _Code)
 // 
 // Library: Visual Studio 1998 Release
 
-void __cdecl __initterm(undefined4 *param_1,undefined4 *param_2)
+void __cdecl __initterm(uint32_t  *param_1,uint32_t  *param_2)
 
 {
   for (; param_1 < param_2; param_1 = param_1 + 1) {
@@ -362,10 +364,10 @@ void __cdecl __local_unwind2(int param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  undefined4 *unaff_FS_OFFSET;
-  undefined4 uStack_1c;
-  undefined1 *puStack_18;
-  undefined4 local_14;
+  uint32_t  *unaff_FS_OFFSET;
+  uint32_t  uStack_1c;
+  uint8_t *puStack_18;
+  uint32_t  local_14;
   int iStack_10;
   
   iStack_10 = param_1;
@@ -376,8 +378,8 @@ void __cdecl __local_unwind2(int param_1,int param_2)
     iVar1 = *(int *)(param_1 + 8);
     iVar2 = *(int *)(param_1 + 0xc);
     if ((iVar2 == -1) || (iVar2 == param_2)) break;
-    local_14 = *(undefined4 *)(iVar1 + iVar2 * 0xc);
-    *(undefined4 *)(param_1 + 0xc) = local_14;
+    local_14 = *(uint32_t  *)(iVar1 + iVar2 * 0xc);
+    *(uint32_t  *)(param_1 + 0xc) = local_14;
     if (*(int *)(iVar1 + 4 + iVar2 * 0xc) == 0) {
       FUN_004acd56();
       (**(code **)(iVar1 + 8 + iVar2 * 0xc))();
@@ -428,7 +430,7 @@ int __cdecl __XcptFilter(ulong _ExceptionNum,_EXCEPTION_POINTERS *_ExceptionPtr)
       do {
         iVar7 = iVar7 + 0xc;
         iVar8 = iVar8 + 1;
-        *(undefined4 *)(*(int *)(p_Var4->_con_ch_buf + 4) + -4 + iVar7) = 0;
+        *(uint32_t  *)(*(int *)(p_Var4->_con_ch_buf + 4) + -4 + iVar7) = 0;
       } while (iVar8 < DAT_004dc68c + DAT_004dc688);
     }
     pvVar3 = p_Var4->_initarg;
@@ -508,7 +510,7 @@ int __cdecl __ismbblead(uint _C)
 // 
 // Library: Visual Studio 1998 Release
 
-undefined4 __cdecl x_ismbbtype(byte param_1,uint param_2,byte param_3)
+uint32_t  __cdecl x_ismbbtype(byte param_1,uint param_2,byte param_3)
 
 {
   uint uVar1;
@@ -537,7 +539,7 @@ undefined4 __cdecl x_ismbbtype(byte param_1,uint param_2,byte param_3)
 int __cdecl __setargv(void)
 
 {
-  undefined4 *puVar1;
+  uint32_t  *puVar1;
   byte *pbVar2;
   int local_8;
   int local_4;
@@ -548,9 +550,9 @@ int __cdecl __setargv(void)
   if (*DAT_005785a8 != 0) {
     pbVar2 = DAT_005785a8;
   }
-  parse_cmdline(pbVar2,(undefined4 *)0x0,(byte *)0x0,&local_8,&local_4);
-  puVar1 = (undefined4 *)FUN_004af220(local_8 * 4 + local_4);
-  if (puVar1 == (undefined4 *)0x0) {
+  parse_cmdline(pbVar2,(uint32_t  *)0x0,(byte *)0x0,&local_8,&local_4);
+  puVar1 = (uint32_t  *)FUN_004af220(local_8 * 4 + local_4);
+  if (puVar1 == (uint32_t  *)0x0) {
     __amsg_exit(8);
   }
   parse_cmdline(pbVar2,puVar1,(byte *)(puVar1 + local_8),&local_8,&local_4);
@@ -566,8 +568,7 @@ int __cdecl __setargv(void)
 // 
 // Library: Visual Studio 1998 Release
 
-void __cdecl
-parse_cmdline(byte *param_1,undefined4 *param_2,byte *param_3,int *param_4,int *param_5)
+void __cdecl parse_cmdline(byte *param_1,uint32_t  *param_2,byte *param_3,int *param_4,int *param_5)
 
 {
   byte bVar1;
@@ -579,7 +580,7 @@ parse_cmdline(byte *param_1,undefined4 *param_2,byte *param_3,int *param_4,int *
   
   *param_5 = 0;
   *param_4 = 1;
-  if (param_2 != (undefined4 *)0x0) {
+  if (param_2 != (uint32_t  *)0x0) {
     *param_2 = param_3;
     param_2 = param_2 + 1;
   }
@@ -645,7 +646,7 @@ LAB_004ad140:
     for (; (*pbVar6 == 0x20 || (*pbVar6 == 9)); pbVar6 = pbVar6 + 1) {
     }
     if (*pbVar6 == 0) break;
-    if (param_2 != (undefined4 *)0x0) {
+    if (param_2 != (uint32_t  *)0x0) {
       *param_2 = param_3;
       param_2 = param_2 + 1;
     }
@@ -714,7 +715,7 @@ LAB_004ad271:
     }
     *param_5 = *param_5 + 1;
   }
-  if (param_2 != (undefined4 *)0x0) {
+  if (param_2 != (uint32_t  *)0x0) {
     *param_2 = 0;
   }
   *param_4 = *param_4 + 1;
@@ -762,7 +763,7 @@ int __cdecl getSystemCP(int param_1)
 // 
 // Library: Visual Studio 1998 Release
 
-undefined4 __cdecl _CPtoLCID(undefined4 param_1)
+uint32_t  __cdecl _CPtoLCID(uint32_t  param_1)
 
 {
   switch(param_1) {
@@ -791,14 +792,14 @@ void __cdecl setSBCS(void)
 
 {
   int iVar1;
-  undefined4 *puVar2;
+  uint32_t  *puVar2;
   
   puVar2 = &DAT_004dc6a0;
   for (iVar1 = 0x40; iVar1 != 0; iVar1 = iVar1 + -1) {
     *puVar2 = 0;
     puVar2 = puVar2 + 1;
   }
-  *(undefined1 *)puVar2 = 0;
+  *(uint8_t *)puVar2 = 0;
   DAT_004dc7b0 = 0;
   DAT_004dc7a4 = 0;
   _DAT_004dc7a8 = 0;
@@ -1121,7 +1122,7 @@ void __setdefaultprecision(void)
 // 
 // Library: Visual Studio 1998 Release
 
-undefined1 __ms_p5_test_fdiv(void)
+uint8_t __ms_p5_test_fdiv(void)
 
 {
   return 0;
@@ -1150,13 +1151,13 @@ errno_t __cdecl __cftoe(double *_Value,char *_Buf,size_t _SizeInBytes,int _Dec,i
 
 
 
-undefined1 * __cdecl
-FUN_004aee30(undefined1 *param_1,int param_2,int param_3,int *param_4,char param_5)
+uint8_t * __cdecl
+FUN_004aee30(uint8_t *param_1,int param_2,int param_3,int *param_4,char param_5)
 
 {
-  undefined4 *puVar1;
-  undefined1 *puVar2;
-  undefined1 *puVar3;
+  uint32_t  *puVar1;
+  uint8_t *puVar2;
+  uint8_t *puVar3;
   int iVar4;
   
   if (param_5 != '\0') {
@@ -1173,17 +1174,17 @@ FUN_004aee30(undefined1 *param_1,int param_2,int param_3,int *param_4,char param
     *puVar2 = *puVar3;
     *puVar3 = DAT_004dd2a8;
   }
-  puVar1 = (undefined4 *)(puVar3 + (uint)(param_5 == '\0') + param_2);
+  puVar1 = (uint32_t  *)(puVar3 + (uint)(param_5 == '\0') + param_2);
   *puVar1 = DAT_004dd028;
-  *(undefined2 *)(puVar1 + 1) = DAT_004dd02c;
+  *(uint16_t *)(puVar1 + 1) = DAT_004dd02c;
   if (param_3 != 0) {
-    *(undefined1 *)puVar1 = 0x45;
+    *(uint8_t *)puVar1 = 0x45;
   }
   if (*(char *)param_4[3] != '0') {
     iVar4 = param_4[1] + -1;
     if (iVar4 < 0) {
       iVar4 = -iVar4;
-      *(undefined1 *)((int)puVar1 + 1) = 0x2d;
+      *(uint8_t *)((int)puVar1 + 1) = 0x2d;
     }
     if (99 < iVar4) {
       *(char *)((int)puVar1 + 2) = *(char *)((int)puVar1 + 2) + (char)(iVar4 / 100);
@@ -1645,8 +1646,8 @@ int __cdecl __isctype(int _C,int _Type)
   BOOL BVar1;
   byte bVar2;
   BOOL unaff_EBX;
-  undefined4 local_6;
-  undefined1 local_2;
+  uint32_t  local_6;
+  uint8_t local_2;
   
   if (_C + 1U < 0x101) {
     return (uint)*(ushort *)(PTR_DAT_004dd030 + _C * 2) & _Type;
@@ -1654,12 +1655,12 @@ int __cdecl __isctype(int _C,int _Type)
   bVar2 = (byte)((uint)_C >> 8);
   if ((PTR_DAT_004dd030[(uint)bVar2 * 2 + 1] & 0x80) == 0) {
     _LpSrcStr = (LPCSTR)0x1;
-    local_6._0_3_ = CONCAT12((char)_C,(undefined2)local_6);
+    local_6._0_3_ = CONCAT12((char)_C,(uint16_t)local_6);
     local_6 = (uint)(uint3)local_6;
   }
   else {
     _LpSrcStr = (LPCSTR)0x2;
-    local_6._0_3_ = CONCAT12(bVar2,(undefined2)local_6);
+    local_6._0_3_ = CONCAT12(bVar2,(uint16_t)local_6);
     local_2 = 0;
     local_6 = CONCAT13((char)_C,(uint3)local_6);
   }
@@ -1690,7 +1691,7 @@ int __cdecl FID_conflict__tolower(int _C)
   uint in_stack_fffffff8;
   byte local_4;
   byte local_3;
-  undefined1 local_2;
+  uint8_t local_2;
   
   if (DAT_004dd248 == (_locale_t)0x0) {
     if ((0x40 < _C) && (_C < 0x5b)) {
@@ -1738,7 +1739,7 @@ int __cdecl FID_conflict__tolower(int _C)
 // 
 // Library: Visual Studio 1998 Release
 
-undefined4 __cdecl __ZeroTail(int param_1,int param_2)
+uint32_t  __cdecl __ZeroTail(int param_1,int param_2)
 
 {
   byte bVar1;
@@ -1807,15 +1808,15 @@ void __cdecl __IncMan(int param_1,int param_2)
 // 
 // Library: Visual Studio 1998 Release
 
-undefined4 __cdecl __RoundMan(int param_1,int param_2)
+uint32_t  __cdecl __RoundMan(int param_1,int param_2)
 
 {
   uint *puVar1;
   byte bVar2;
   int iVar3;
   int iVar4;
-  undefined4 *puVar5;
-  undefined4 local_4;
+  uint32_t  *puVar5;
+  uint32_t  local_4;
   
   local_4 = 0;
   iVar3 = (int)(param_2 + (param_2 >> 0x1f & 0x1fU)) >> 5;
@@ -1831,7 +1832,7 @@ undefined4 __cdecl __RoundMan(int param_1,int param_2)
   iVar3 = iVar3 + 1;
   *puVar1 = *puVar1 & -1 << (bVar2 & 0x1f);
   if (iVar3 < 3) {
-    puVar5 = (undefined4 *)(param_1 + iVar3 * 4);
+    puVar5 = (uint32_t  *)(param_1 + iVar3 * 4);
     for (iVar4 = 3 - iVar3; iVar4 != 0; iVar4 = iVar4 + -1) {
       *puVar5 = 0;
       puVar5 = puVar5 + 1;
@@ -1847,10 +1848,10 @@ undefined4 __cdecl __RoundMan(int param_1,int param_2)
 // 
 // Library: Visual Studio 1998 Release
 
-void __cdecl __CopyMan(undefined4 *param_1,undefined4 *param_2)
+void __cdecl __CopyMan(uint32_t  *param_1,uint32_t  *param_2)
 
 {
-  undefined4 uVar1;
+  uint32_t  uVar1;
   int iVar2;
   
   iVar2 = 3;
@@ -1871,7 +1872,7 @@ void __cdecl __CopyMan(undefined4 *param_1,undefined4 *param_2)
 // 
 // Library: Visual Studio 1998 Release
 
-void __cdecl __FillZeroMan(undefined4 *param_1)
+void __cdecl __FillZeroMan(uint32_t  *param_1)
 
 {
   *param_1 = 0;
@@ -1887,7 +1888,7 @@ void __cdecl __FillZeroMan(undefined4 *param_1)
 // 
 // Library: Visual Studio 1998 Release
 
-undefined4 __cdecl __IsZeroMan(int *param_1)
+uint32_t  __cdecl __IsZeroMan(int *param_1)
 
 {
   int iVar1;
@@ -1911,18 +1912,18 @@ undefined4 __cdecl __IsZeroMan(int *param_1)
 // 
 // Library: Visual Studio 1998 Release
 
-undefined4 __cdecl __ld12cvt(ushort *param_1,uint *param_2,int *param_3)
+uint32_t  __cdecl __ld12cvt(ushort *param_1,uint *param_2,int *param_3)
 
 {
   ushort uVar1;
   int iVar2;
-  undefined4 uVar3;
+  uint32_t  uVar3;
   uint uVar4;
   int iVar5;
   uint local_18;
   uint local_14;
   int local_10;
-  undefined4 local_c [3];
+  uint32_t  local_c [3];
   
   uVar1 = param_1[5];
   uVar4 = uVar1 & 0x7fff;
@@ -2129,7 +2130,7 @@ errno_t __cdecl __fptostr(char *_Buf,size_t _SizeInBytes,int _Digits,STRFLT _PtF
   uVar3 = ~uVar3;
   pcVar7 = pcVar5 + -uVar3;
   for (uVar4 = uVar3 >> 2; uVar4 != 0; uVar4 = uVar4 - 1) {
-    *(undefined4 *)_Buf = *(undefined4 *)pcVar7;
+    *(uint32_t  *)_Buf = *(uint32_t  *)pcVar7;
     pcVar7 = pcVar7 + 4;
     _Buf = _Buf + 4;
   }
@@ -2183,7 +2184,7 @@ STRFLT __cdecl __fltout2(_CRT_DOUBLE _Dbl,STRFLT _Flt,char *_ResultStr,size_t _S
   pcVar5 = pcVar6 + -uVar3;
   pcVar6 = _ResultStr;
   for (uVar4 = uVar3 >> 2; uVar4 != 0; uVar4 = uVar4 - 1) {
-    *(undefined4 *)pcVar6 = *(undefined4 *)pcVar5;
+    *(uint32_t  *)pcVar6 = *(uint32_t  *)pcVar5;
     pcVar5 = pcVar5 + 4;
     pcVar6 = pcVar6 + 4;
   }
@@ -2211,14 +2212,14 @@ void * __cdecl FID_conflict__memcpy(void *_Dst,void *_Src,size_t _Size)
   uint uVar1;
   int in_EDX;
   uint uVar2;
-  undefined4 *puVar3;
-  undefined1 *puVar4;
-  undefined4 *puVar5;
-  undefined1 *puVar6;
+  uint32_t  *puVar3;
+  uint8_t *puVar4;
+  uint32_t  *puVar5;
+  uint8_t *puVar6;
   
   if ((_Src < _Dst) && (_Dst < (void *)((int)_Src + _Size))) {
-    puVar3 = (undefined4 *)((int)_Src + _Size);
-    puVar5 = (undefined4 *)((int)_Dst + _Size);
+    puVar3 = (uint32_t  *)((int)_Src + _Size);
+    puVar5 = (uint32_t  *)((int)_Dst + _Size);
     if (((uint)puVar5 & 3) == 0) {
       uVar1 = _Size >> 2;
       while( true ) {
@@ -2231,22 +2232,22 @@ void * __cdecl FID_conflict__memcpy(void *_Dst,void *_Src,size_t _Size)
       switch(_Size & 3) {
       case 1:
 switchD_004b0429_caseD_1:
-        *(undefined1 *)((int)puVar5 + 3) = *(undefined1 *)((int)puVar3 + 3);
+        *(uint8_t *)((int)puVar5 + 3) = *(uint8_t *)((int)puVar3 + 3);
         return _Dst;
       case 2:
 switchD_004b0429_caseD_2:
-        *(undefined2 *)((int)puVar5 + 2) = *(undefined2 *)((int)puVar3 + 2);
+        *(uint16_t *)((int)puVar5 + 2) = *(uint16_t *)((int)puVar3 + 2);
         return _Dst;
       case 3:
 switchD_004b0429_caseD_3:
-        *(undefined2 *)((int)puVar5 + 2) = *(undefined2 *)((int)puVar3 + 2);
-        *(undefined1 *)((int)puVar5 + 1) = *(undefined1 *)((int)puVar3 + 1);
+        *(uint16_t *)((int)puVar5 + 2) = *(uint16_t *)((int)puVar3 + 2);
+        *(uint8_t *)((int)puVar5 + 1) = *(uint8_t *)((int)puVar3 + 1);
         return _Dst;
       }
     }
     else {
-      puVar4 = (undefined1 *)((int)puVar3 + -1);
-      puVar6 = (undefined1 *)((int)puVar5 + -1);
+      puVar4 = (uint8_t *)((int)puVar3 + -1);
+      puVar6 = (uint8_t *)((int)puVar5 + -1);
       if (_Size < 0xd) {
         for (; _Size != 0; _Size = _Size - 1) {
           *puVar6 = *puVar4;
@@ -2262,8 +2263,8 @@ switchD_004b0429_caseD_3:
         puVar4 = puVar4 + -1;
         puVar6 = puVar6 + -1;
       }
-      puVar3 = (undefined4 *)(puVar4 + -3);
-      puVar5 = (undefined4 *)(puVar6 + -3);
+      puVar3 = (uint32_t  *)(puVar4 + -3);
+      puVar5 = (uint32_t  *)(puVar6 + -3);
       for (uVar2 = uVar1 >> 2; uVar2 != 0; uVar2 = uVar2 - 1) {
         *puVar5 = *puVar3;
         puVar3 = puVar3 + -1;
@@ -2283,23 +2284,23 @@ switchD_004b0429_caseD_3:
   puVar3 = _Dst;
   if (((uint)_Dst & 3) == 0) {
     for (uVar1 = _Size >> 2; uVar1 != 0; uVar1 = uVar1 - 1) {
-      *puVar3 = *(undefined4 *)_Src;
-      _Src = (undefined4 *)((int)_Src + 4);
+      *puVar3 = *(uint32_t  *)_Src;
+      _Src = (uint32_t  *)((int)_Src + 4);
       puVar3 = puVar3 + 1;
     }
     switch(_Size & 3) {
     case 1:
 switchD_004b0390_caseD_1:
-      *(undefined1 *)puVar3 = *(undefined1 *)_Src;
+      *(uint8_t *)puVar3 = *(uint8_t *)_Src;
       return _Dst;
     case 2:
 switchD_004b0390_caseD_2:
-      *(undefined2 *)puVar3 = *(undefined2 *)_Src;
+      *(uint16_t *)puVar3 = *(uint16_t *)_Src;
       return _Dst;
     case 3:
 switchD_004b0390_caseD_3:
-      *(undefined2 *)puVar3 = *(undefined2 *)_Src;
-      *(undefined1 *)((int)puVar3 + 2) = *(undefined1 *)((int)_Src + 2);
+      *(uint16_t *)puVar3 = *(uint16_t *)_Src;
+      *(uint8_t *)((int)puVar3 + 2) = *(uint8_t *)((int)_Src + 2);
       return _Dst;
     }
   }
@@ -2307,8 +2308,8 @@ switchD_004b0390_caseD_3:
     puVar4 = _Dst;
     if (_Size < 0xd) {
       for (; _Size != 0; _Size = _Size - 1) {
-        *puVar4 = *(undefined1 *)_Src;
-        _Src = (undefined1 *)((int)_Src + 1);
+        *puVar4 = *(uint8_t *)_Src;
+        _Src = (uint8_t *)((int)_Src + 1);
         puVar4 = puVar4 + 1;
       }
       return _Dst;
@@ -2316,13 +2317,13 @@ switchD_004b0390_caseD_3:
     uVar2 = -(int)_Dst & 3;
     uVar1 = _Size - uVar2;
     for (; uVar2 != 0; uVar2 = uVar2 - 1) {
-      *(undefined1 *)puVar3 = *(undefined1 *)_Src;
-      _Src = (undefined4 *)((int)_Src + 1);
-      puVar3 = (undefined4 *)((int)puVar3 + 1);
+      *(uint8_t *)puVar3 = *(uint8_t *)_Src;
+      _Src = (uint32_t *)((int)_Src + 1);
+      puVar3 = (uint32_t *)((int)puVar3 + 1);
     }
     for (uVar2 = uVar1 >> 2; uVar2 != 0; uVar2 = uVar2 - 1) {
-      *puVar3 = *(undefined4 *)_Src;
-      _Src = (undefined4 *)((int)_Src + 4);
+      *puVar3 = *(uint32_t *)_Src;
+      _Src = (uint32_t *)((int)_Src + 4);
       puVar3 = puVar3 + 1;
     }
     switch(uVar1 & 3) {
@@ -2477,7 +2478,7 @@ int __cdecl __write_lk(uint param_1,char *param_2,uint param_3)
   if ((*(byte *)(*local_410 + 4 + local_40c) & 0x20) != 0) {
     __lseek_lk(param_1,0,2);
   }
-  if ((*(byte *)((undefined4 *)(local_40c + *local_410) + 1) & 0x80) == 0) {
+  if ((*(byte *)((uint32_t  *)(local_40c + *local_410) + 1) & 0x80) == 0) {
     BVar2 = WriteFile(*(HANDLE *)(local_40c + *local_410),param_2,param_3,&local_414,
                       (LPOVERLAPPED)0x0);
     if (BVar2 == 0) {
@@ -2907,7 +2908,7 @@ int __cdecl __close(int _FileHandle)
 // 
 // Library: Visual Studio 1998 Release
 
-undefined4 __cdecl __close_lk(uint param_1)
+uint32_t __cdecl __close_lk(uint param_1)
 
 {
   int iVar1;
@@ -2937,7 +2938,7 @@ LAB_004b1c0a:
     __dosmaperr(DVar4);
     return 0xffffffff;
   }
-  *(undefined1 *)
+  *(uint8_t *)
    (*(int *)((int)&DAT_005784a0 + ((int)(param_1 & 0xffffffe7) >> 3)) + 4 + (param_1 & 0x1f) * 0x24)
        = 0;
   return 0;
@@ -2998,7 +2999,7 @@ int __cdecl __free_osfhnd(int param_1)
         SetStdHandle(nStdHandle,(HANDLE)0x0);
       }
 LAB_004b1cf5:
-      *(undefined4 *)(*piVar3 + iVar1) = 0xffffffff;
+      *(uint32_t  *)(*piVar3 + iVar1) = 0xffffffff;
       return 0;
     }
   }

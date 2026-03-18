@@ -2,11 +2,12 @@
 // Decompiled from original binary
 
 #include "zeus.h"
+#include <cstdint>
 
 // Main game loop - handles title screen, menu navigation, and game startup
-undefined4 main_game_loop(void)
+uint32_t main_game_loop(void)
 {
-  undefined4 uVar1;
+  uint32_t uVar1;
   int iVar2;
   bool bVar3;
   short sVar4;
@@ -22,7 +23,7 @@ undefined4 main_game_loop(void)
   FUN_00422a00(s_GRA_SNAP_MGSNAP01_TIM_004b44f4,DAT_00508c18,0x10000);
   FUN_00420d20((int)DAT_00508c18,0x340,0x100,0x300,0x1ff);
   uVar1 = FUN_00437b40(0x300,0x1ff);
-  _DAT_004fda40 = (undefined2)uVar1;
+  _DAT_004fda40 = (uint16_t)uVar1;
   draw_title_screen();
   DAT_004ddb5c = 0xff;
   do {
@@ -112,17 +113,17 @@ LAB_00401215:
 
 // Start the selected game mode
 // param_1: game mode (0 or 1)
-undefined4 __cdecl start_game_mode(short param_1)
+uint32_t __cdecl start_game_mode(short param_1)
 {
   bool bVar1;
   int iVar2;
   int iVar3;
   LPSTR lpString1;
-  undefined2 uStack_f0;
-  undefined2 uStack_ee;
-  undefined1 uStack_ec;
-  undefined1 uStack_eb;
-  undefined4 uStack_e8;
+  uint16_t uStack_f0;
+  uint16_t uStack_ee;
+  uint8_t uStack_ec;
+  uint8_t uStack_eb;
+  uint32_t uStack_e8;
 
   DAT_004baa34 = 0;
   DAT_004baa38 = 0;

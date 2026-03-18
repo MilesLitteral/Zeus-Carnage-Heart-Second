@@ -2,11 +2,12 @@
 // Decompiled from original binary
 
 #include "zeus.h"
+#include <cstdint>
 
 // Set palette color intensity (0-255, where 255 is full brightness)
 void __cdecl set_palette_color(undefined1 param_1)
 {
-  undefined4 local_10;
+  uint32_t local_10;
   short local_c;
   short local_a;
   undefined2 local_8;

@@ -2,6 +2,7 @@
 // Decompiled from original binary
 
 #include "zeus.h"
+#include <cstdint>
 
 // Play a sound effect
 // param_1: sound ID
@@ -12,7 +13,7 @@ void __cdecl play_sound_effect(int param_1,int param_2,int param_3,int param_4)
 {
   int iVar1;
   int iVar2;
-  undefined4 *puVar3;
+  uint32_t *puVar3;
 
   if (DAT_004bf320 != 0) {
     iVar1 = param_2 / 2;
@@ -30,7 +31,7 @@ void __cdecl play_sound_effect(int param_1,int param_2,int param_3,int param_4)
     FUN_00437a40();
     if ((param_4 == 0) || (iVar2 = FUN_00437a80(param_1), iVar2 == 0)) {
       puVar3 = FUN_00437ac0();
-      if (puVar3 == (undefined4 *)0x0) {
+      if (puVar3 == (uint32_t *)0x0) {
         puVar3 = FUN_00437ae0();
       }
       puVar3[1] = param_3;
@@ -47,11 +48,11 @@ void __cdecl play_sound_effect(int param_1,int param_2,int param_3,int param_4)
 }
 
 // Update sound system state
-void FUN_00437a40(void)
+void FUN_00437a40()
 {
   int iVar1;
   int iVar2;
-  undefined4 *puVar3;
+  uint32_t *puVar3;
 
   puVar3 = &DAT_004def10;
   iVar2 = 8;
@@ -69,9 +70,9 @@ void FUN_00437a40(void)
 }
 
 // Check if sound is already playing
-undefined4 __cdecl FUN_00437a80(int param_1)
+uint32_t __cdecl FUN_00437a80(int param_1)
 {
-  undefined4 *puVar1;
+  uint32_t *puVar1;
   int iVar2;
 
   iVar2 = 0;
@@ -87,9 +88,9 @@ undefined4 __cdecl FUN_00437a80(int param_1)
 }
 
 // Find free sound channel
-undefined4 * FUN_00437ac0(void)
+uint32_t * FUN_00437ac0(void)
 {
-  undefined4 *puVar1;
+  uint32_t *puVar1;
   int iVar2;
 
   iVar2 = 0;
@@ -101,17 +102,17 @@ undefined4 * FUN_00437ac0(void)
     iVar2 = iVar2 + 1;
     puVar1 = puVar1 + 4;
   } while (iVar2 < 8);
-  return (undefined4 *)0x0;
+  return (uint32_t *)0x0;
 }
 
 // Find oldest sound channel to replace
-undefined4 * FUN_00437ae0(void)
+uint32_t * FUN_00437ae0(void)
 {
   int iVar1;
   int iVar2;
-  undefined4 *puVar3;
+  uint32_t *puVar3;
   int iVar4;
-  undefined4 *puVar5;
+  uint32_t *puVar5;
   int iVar6;
 
   puVar5 = &DAT_004def10;
