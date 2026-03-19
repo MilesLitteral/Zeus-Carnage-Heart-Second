@@ -68,11 +68,11 @@ void initialize_graphics(void) //thunk_FUN_0041fb90
   if (puVar1 != &DAT_0051f570) {
     DAT_004fda94 = &DAT_0051f570;
   }
-  FUN_00420b20();
-  FUN_00410440();
-  FUN_00410400();
-  FUN_00441cc0();
-  FUN_00439ed0(0,0,0,(int)(&DAT_0052f440 + DAT_00549dcc * 0x14));
+  init_graphics_system() //FUN_00420b20();
+  prepare_gpu_memory(); //FUN_00410440();
+  init_vram_tables(); //FUN_00410400();
+  init_sprite_engine();//FUN_00441cc0();
+  init_default_frame(0,0,0,(int)(&DAT_0052f440 + DAT_00549dcc * 0x14)); //FUN_00439ed0(0,0,0,(int)(&DAT_0052f440 + DAT_00549dcc * 0x14));
   return;
 }
 
