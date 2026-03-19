@@ -8,6 +8,15 @@ typedef struct _s_HandlerType HandlerType;
 typedef struct TypeDescriptor TypeDescriptor, *PTypeDescriptor;
 typedef int ptrdiff_t;
 
+//undefined3 / extraout_var
+struct uint24_t {
+    uint8_t bytes[3];
+};
+
+uint32_t to_uint32(uint24_t u) {
+    return u.bytes[0] | (u.bytes[1] << 8) | (u.bytes[2] << 16); // little-endian
+}
+
 struct TypeDescriptor {
     void *pVFTable;
     void *spare;
@@ -5645,7 +5654,7 @@ FUN_00405950(PEXCEPTION_RECORD param_1,PVOID param_2,DWORD param_3,uint32_t para
   byte bVar1;
   bool bVar2;
   DWORD *pDVar3;
-  undefined3 extraout_var;
+  uint24_t extraout_var; //undefined3
   byte *pbVar4;
   int iVar5;
   int *piVar6;
@@ -5943,17 +5952,17 @@ void __cdecl FUN_00405ff0(int param_1,int param_2,byte *param_3,byte *param_4)
 {
   int *piVar1;
   bool bVar2;
-  undefined3 extraout_var;
-  undefined3 extraout_var_00;
+  uint24_t extraout_var;
+  uint24_t extraout_var_00; //undefined3
   int iVar3;
-  undefined3 extraout_var_01;
-  undefined3 extraout_var_02;
-  undefined3 extraout_var_03;
-  undefined3 extraout_var_04;
+  uint24_t extraout_var_01;
+  uint24_t extraout_var_02;
+  uint24_t extraout_var_03;
+  uint24_t extraout_var_04;
   uint32_t *puVar4;
-  undefined3 extraout_var_05;
-  undefined3 extraout_var_06;
-  undefined3 extraout_var_07;
+  uint24_t extraout_var_05;
+  uint24_t extraout_var_06;
+  uint24_t extraout_var_07;
   uint uVar5;
   void *local_14;
   uint8_t *puStack_10;
@@ -7721,7 +7730,7 @@ int FUN_00408000(int *param_1)
 {
   int *piVar1;
   bool bVar2;
-  undefined3 extraout_var;
+  uint24_t extraout_var; //undefined3
   int iVar3;
   
   piVar1 = (int *)*param_1;
@@ -7747,7 +7756,7 @@ uint __cdecl FUN_004081c0(uint param_1,int *param_2)
   char *pcVar2;
   int *piVar3;
   byte bVar4;
-  undefined3 extraout_var;
+  uint24_t extraout_var; //undefined3
   uint *puVar5;
   uint uVar6;
   uint uVar7;
@@ -13024,7 +13033,7 @@ void __thiscall FUN_0041045e(void *this,uint32_t param_1,uint32_t *param_2)
 {
   void *this_00;
   bool bVar1;
-  undefined3 extraout_var;
+  uint24_t extraout_var;//undefined3
   uint32_t *puVar2;
   int iVar3;
   uint32_t *puVar4;
@@ -13060,7 +13069,7 @@ HWND FUN_004104e9(uint32_t param_1,POINT *param_2)
   bool bVar1;
   HWND hWnd;
   HWND hWnd_00;
-  undefined3 extraout_var;
+  uint24_t extraout_var; //undefined3
   BOOL BVar2;
   tagPOINT local_c;
   
@@ -13144,7 +13153,7 @@ void __thiscall FUN_00410635(void *this,byte *param_1,int *param_2)
   char cVar4;
   byte *pbVar5;
   uint uVar6;
-  undefined3 extraout_var;
+  undefined3 extraout_var; //undefined3
   int *piVar7;
   int *piVar8;
   int *piVar9;
@@ -16080,7 +16089,7 @@ int FUN_004135e2(void)
   HWND hWnd;
   BOOL BVar4;
   CWnd *pCVar5;
-  undefined3 extraout_var;
+  uint24_t extraout_var; //undefined3
   uint uVar6;
   HWND pHVar7;
   int *this;
@@ -17375,7 +17384,7 @@ void __fastcall FUN_004148bc(int *param_1)
   bool bVar1;
   CWinThread *pCVar2;
   int iVar3;
-  undefined3 extraout_var;
+  uint24_t extraout_var;
   int iVar4;
   LONG LVar5;
   LONG LVar6;
@@ -19145,7 +19154,7 @@ uint32_t FUN_00416308(HDC param_1,HWND param_2,int param_3,HANDLE param_4,COLORR
 
 {
   bool bVar1;
-  undefined3 extraout_var;
+  uint24_t extraout_var;
   uint32_t uVar2;
   uint8_t local_10 [4];
   COLORREF local_c;
@@ -19571,7 +19580,7 @@ uint32_t __thiscall FUN_004169e6(void *this,HWND param_1)
 
 {
   bool bVar1;
-  undefined3 extraout_var;
+  uint24_t extraout_var;
   int *piVar2;
   uint *dwNewLong;
   LONG LVar3;
@@ -21388,7 +21397,7 @@ uint32_t * FUN_00417ff1(void)
   HWND hWnd;
   bool bVar2;
   HDC pHVar3;
-  undefined3 extraout_var;
+  uint24_t extraout_var;
   uint32_t *this;
   int unaff_EBP;
   
@@ -21613,8 +21622,8 @@ void FUN_004182fa(HWND param_1)
 {
   bool bVar1;
   HWND hWnd;
-  undefined3 extraout_var;
-  undefined3 extraout_var_00;
+  uint24_t extraout_var;
+  uint24_t extraout_var_00;
   uint uVar2;
   HWND pHVar3;
   HWND pHVar4;
@@ -23029,7 +23038,7 @@ FUN_00419d71(void *this,LPCSTR param_1,LPCSTR param_2,DWORD param_3,int *param_4
 {
   bool bVar1;
   int iVar2;
-  undefined3 extraout_var;
+  uint24_t extraout_var;
   HMENU hMenu;
   HWND pHVar3;
   
@@ -23117,7 +23126,7 @@ uint32_t FUN_00419f84(void)
 {
   uint uVar1;
   bool bVar2;
-  undefined3 extraout_var;
+  uint24_t extraout_var;
   int iVar3;
   LPSTR pCVar4;
   uint32_t uVar5;
@@ -23176,7 +23185,7 @@ void __fastcall FUN_0041a0a9(CWnd *param_1)
   bool bVar1;
   int iVar2;
   int *piVar3;
-  undefined3 extraout_var;
+  uint24_t extraout_var;
   CWnd *pCVar4;
   CWnd *local_8;
   
