@@ -1558,7 +1558,7 @@ uint * __thiscall cleanup_some_object(void *this,byte param_1)// FUN_00401030(vo
 {
   destroy_cwinthread_subclass();//thunk_FUN_0041b77c();
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this); //FUN_0041250b(this);
   }
   return this;
 }
@@ -1642,7 +1642,7 @@ void init_global_thread_object(void) //FUN_00401070(void)
 void setup_static_exception_handler(void) //FUN_00401080(void)
 
 {
-  FUN_004030e0(0x401090);
+  IsResourceValid(0x401090); //FUN_004030e0
   return;
 }
 
@@ -1773,7 +1773,7 @@ CDialog * __thiscall FUN_00401370(void *this,byte param_1)
 {
   CDialog::~CDialog(this);
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this)//FUN_0041250b(this);
   }
   return this;
 }
@@ -1838,7 +1838,7 @@ CDialog * __thiscall FUN_00401440(void *this,byte param_1)
 {
   FUN_004012c0(this);
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);//FUN_0041250b(this);
   }
   return this;
 }
@@ -1892,7 +1892,7 @@ void __thiscall FUN_00401480(void *this,int param_1,int param_2)
     FUN_00412667(&local_14c);
     pCVar7 = &DAT_00425124;
   }
-  FUN_004127af(&local_148,pCVar7);
+  SetString(&local_148,pCVar7); //FUN_004127af
   this_00 = (void *)FUN_00416a40(this,0x3ef);
   FUN_0041251c(&local_140);
   local_4 = CONCAT31(local_4._1_3_,4);
@@ -2635,7 +2635,7 @@ void __fastcall FUN_00402a79(uint32_t *param_1)
 void FUN_00402a80(uint *param_1)
 
 {
-  FUN_0041250b(param_1);
+  safe_free(param_1);//FUN_0041250b(param_1);
   return;
 }
 
@@ -2652,9 +2652,9 @@ void FUN_00402a8d(void)
   *(uint32_t *)(unaff_EBP + -4) = 1;
   FUN_004172a1(extraout_ECX);
   *(uint8_t *)(unaff_EBP + -4) = 0;
-  FUN_0041136c();
+  RefCountedArray_RemoveAll();// FUN_0041136c();
   *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
-  FUN_0041136c();
+  RefCountedArray_RemoveAll();// FUN_0041136c();
   ExceptionList = *(void **)(unaff_EBP + -0xc);
   return;
 }
@@ -2666,7 +2666,7 @@ uint * __thiscall FUN_00402ace(void *this,byte param_1)
 {
   FUN_00402aea();
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);//FUN_0041250b(this);
   }
   return this;
 }
@@ -2705,7 +2705,7 @@ uint * __thiscall FUN_00402b64(void *this,byte param_1)
 {
   FUN_00402b80();
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);//FUN_0041250b(this);
   }
   return this;
 }
@@ -2761,7 +2761,7 @@ uint * __thiscall FUN_00402c07(void *this,byte param_1)
 {
   FUN_00402c23();
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);//FUN_0041250b(this);
   }
   return this;
 }
@@ -2836,7 +2836,7 @@ CDialog * __thiscall FUN_00402d5b(void *this,byte param_1)
 {
   CDialog::~CDialog(this);
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);//FUN_0041250b(this);
   }
   return this;
 }
@@ -2874,13 +2874,13 @@ uint32_t * __thiscall FUN_00402dcb(void *this,byte param_1)
 {
   FUN_00402a79(this);
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);//FUN_0041250b(this);
   }
   return this;
 }
 
 
-void __thiscall FUN_00402e10(void *this,WPARAM param_1)
+void __thiscall notify_control(void *this,WPARAM param_1)//FUN_00402e10(void *this,WPARAM param_1)
 
 {
   uint uVar1;
@@ -2899,9 +2899,9 @@ void __thiscall FUN_00402e10(void *this,WPARAM param_1)
 void __fastcall FUN_00402e49(int *param_1)
 
 {
-  FUN_00402e10(param_1,0);
-  FUN_00402e10(param_1,1);
-  FUN_00402e10(param_1,2);
+  notify_control(param_1,0); //FUN_00402e10
+  notify_control(param_1,1);
+  notify_control(param_1,2);
   FUN_004148bc(param_1);
   return;
 }
@@ -2940,7 +2940,7 @@ uint * __thiscall FUN_00402f0a(void *this,byte param_1)
 {
   FUN_00402f26();
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);//FUN_0041250b(this);
   }
   return this;
 }
@@ -2996,8 +2996,8 @@ uint32_t FUN_00402f83(void)
   FUN_004037f0();
   pAVar1 = AfxGetModuleThreadState();
   if ((*(int *)(pAVar1 + 0x24) == 0) && (*(int *)(unaff_EBP + 8) != 0)) {
-    uVar2 = FUN_004124bb(&LAB_004183a7);
-    iVar3 = FUN_004124cf(0x44);
+    uVar2 = AfxSetModuleThreadState(&LAB_004183a7); //FUN_004124bb
+    iVar3 = RefCountedBuffer_Allocate(0x44); //FUN_004124cf
     *(int *)(unaff_EBP + 8) = iVar3;
     *(uint32_t *)(unaff_EBP + -4) = 0;
     if (iVar3 == 0) {
@@ -3008,7 +3008,7 @@ uint32_t FUN_00402f83(void)
     }
     *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
     *(void **)(pAVar1 + 0x24) = pvVar4;
-    FUN_004124bb(uVar2);
+    AfxSetModuleThreadState(uVar2);
   }
   ExceptionList = *(void **)(unaff_EBP + -0xc);
   return *(uint32_t *)(pAVar1 + 0x24);
@@ -3063,7 +3063,7 @@ uint32_t FUN_0040301d(uint param_1)
 
 
 
-int __cdecl FUN_00403050(int param_1) {
+int __cdecl GetResourceHandle(int param_1) { //FUN_00403050
   SIZE_T SVar1;
   int *piVar2;
   
@@ -3087,12 +3087,12 @@ int __cdecl FUN_00403050(int param_1) {
 
 
 
-int __cdecl FUN_004030e0(int param_1)
+int __cdecl IsResourceValid(int param_1) //FUN_004030e0
 
 {
   int iVar1;
   
-  iVar1 = FUN_00403050(param_1);
+  iVar1 = GetResourceHandle(param_1); //FUN_00403050
   return (iVar1 != 0) - 1;
 }
 
@@ -3422,7 +3422,7 @@ uint32_t * __thiscall FUN_004037d0(void *this,byte param_1)
 {
   FUN_004037a0(this);
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);//FUN_0041250b(this);
   }
   return this;
 }
@@ -3664,7 +3664,7 @@ int * __cdecl FUN_00403bc0(int param_1)
 
 
 
-uint32_t * __cdecl FUN_00403c20(uint32_t *param_1,uint32_t *param_2,uint param_3)
+uint32_t * __cdecl memmove_optimized(uint32_t *param_1,uint32_t *param_2,uint param_3) //FUN_00403c20
 
 {
   uint uVar1;
@@ -12965,7 +12965,7 @@ void FUN_004103c7(uint32_t param_1,uint32_t param_2,uint32_t param_3,uint32_t pa
 
 
 
-uint32_t FUN_004103df(int param_1)
+uint32_t SetInitializationFlag(int param_1) //FUN_004103df
 
 {
   int iVar1;
@@ -12980,19 +12980,19 @@ uint32_t FUN_004103df(int param_1)
 
 
 
-uint32_t __fastcall FUN_004103fd(uint32_t param_1)
+uint32_t __fastcall InitObject(uint32_t param_1) //FUN_004103fd
 
 {
-  FUN_004103df(0);
+  SetInitializationFlag(0); //FUN_004103df
   return param_1;
 }
 
 
 
-void FUN_00410424(void)
+void InitializeGlobal(void)
 
 {
-  FUN_004103fd(&DAT_0042b240);
+  InitObject(&DAT_0042b240); //FUN_004103fd
   return;
 }
 
@@ -13001,13 +13001,13 @@ void FUN_00410424(void)
 void FUN_0041042e(void)
 
 {
-  FUN_004030e0(0x41043a);
+  IsResourceValid(0x41043a); //FUN_004030e0
   return;
 }
 
 
 
-uint32_t __fastcall FUN_00410444(int *param_1)
+uint32_t __fastcall CleanupAndRelease(int *param_1) //FUN_00410444
 
 {
   (**(code **)(*param_1 + 0x60))();
@@ -13343,7 +13343,7 @@ CDialog * __thiscall FUN_00410a44(void *this,byte param_1)
 {
   FUN_004028f0(this);
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);//FUN_0041250b(this);
   }
   return this;
 }
@@ -13664,7 +13664,7 @@ uint * __thiscall FUN_0041119e(void *this,byte param_1)
 {
   FUN_004111da();
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);//FUN_0041250b(this);
   }
   return this;
 }
@@ -13759,12 +13759,12 @@ int __fastcall FUN_004112a4(void *param_1)
 
 
 
-void FUN_004112c8(uint32_t *param_1,int param_2,int param_3)
+void RefCountedBuffer_Replace(uint32_t *param_1,int param_2,int param_3) //FUN_004112c8
 
 {
   uint32_t *puVar1;
   
-  puVar1 = (uint32_t *)FUN_004124cf(param_2 * param_3 + 4);
+  puVar1 = (uint32_t *)RefCountedBuffer_Allocate(param_2 * param_3 + 4); //FUN_004124cf
   *puVar1 = *param_1;
   *param_1 = puVar1;
   return;
@@ -13772,33 +13772,33 @@ void FUN_004112c8(uint32_t *param_1,int param_2,int param_3)
 
 
 
-void __fastcall FUN_004112e8(uint32_t *param_1)
+void __fastcall RefCountedBuffer_FreeChain(uint32_t *param_1) //FUN_004112e8
 
 {
   uint32_t *puVar1;
   
   while (param_1 != (uint32_t *)0x0) {
     puVar1 = (uint32_t *)*param_1;
-    FUN_0041250b((uint *)param_1);
+    safe_free((uint *)param_1); //FUN_0041250b
     param_1 = puVar1;
   }
   return;
 }
 
 
-uint * __thiscall FUN_00411325(void *this,byte param_1)
+uint * __thiscall RefCountedArray_DestroyIfFlag(void *this,byte param_1) //FUN_00411325
 
 {
-  FUN_0041136c();
+  RefCountedArray_RemoveAll(); //FUN_0041136c
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);
   }
   return this;
 }
 
 
 
-void FUN_0041136c(void)
+void RefCountedArray_RemoveAll(void) //FUN_0041136c
 
 {
   uint32_t *extraout_ECX;
@@ -14006,11 +14006,11 @@ void __thiscall FUN_0041156b(void *this,int param_1,int param_2)
   void *_Dst;
   
   if (*(uint **)((int)this + 4) != (uint *)0x0) {
-    FUN_0041250b(*(uint **)((int)this + 4));
+    safe_free(*(uint **)((int)this + 4)); //FUN_0041250b
     *(uint32_t *)((int)this + 4) = 0;
   }
   if (param_2 != 0) {
-    _Dst = (void *)FUN_004124cf(param_1 << 2);
+    _Dst = (void *)RefCountedBuffer_Allocate(param_1 << 2); //FUN_004124cf
     *(void **)((int)this + 4) = _Dst;
     _memset(_Dst,0,param_1 << 2);
   }
@@ -14048,8 +14048,8 @@ uint32_t * __fastcall FUN_004115b1(int param_1)
   uVar1 = *puVar3;
   *(int *)(param_1 + 0xc) = *(int *)(param_1 + 0xc) + 1;
   *(uint32_t *)(param_1 + 0x10) = uVar1;
-  ppuVar4 = FUN_00412516();
-  FUN_00403c20(puVar3 + 2,ppuVar4,uVar6);
+  ppuVar4 = Get_DefaultRefCountedBuffer();//FUN_00412516();
+  memmove_optimized(puVar3 + 2,ppuVar4,uVar6);// FUN_00403c20(puVar3 + 2,ppuVar4,uVar6);
   puVar3[3] = 0;
   return puVar3;
 }
@@ -14133,7 +14133,7 @@ uint32_t * __thiscall FUN_004116af(void *this,byte *param_1)
     }
     puVar1 = FUN_004115b1((int)this);
     puVar1[1] = local_8;
-    FUN_004127af(puVar1 + 2,(LPCSTR)param_1);
+    SetString(puVar1 + 2,(LPCSTR)param_1); //FUN_004127af
     *puVar1 = *(uint32_t *)(*(int *)((int)this + 4) + (int)local_8 * 4);
     *(uint32_t **)(*(int *)((int)this + 4) + (int)local_8 * 4) = puVar1;
   }
@@ -14511,7 +14511,7 @@ uint * __thiscall FUN_00411f54(void *this,byte param_1)
 {
   FUN_00411f70();
   if ((param_1 & 1) != 0) {
-    FUN_0041250b(this);
+    safe_free(this);//FUN_0041250b(this);
   }
   return this;
 }
@@ -14711,12 +14711,12 @@ void __fastcall FUN_00412242(int *param_1)
 {
   CTypeLibCache *this;
   
-  FUN_0041c922(0xd);
+  (0xd);
   this = (CTypeLibCache *)(**(code **)(*param_1 + 0x28))();
   if (this != (CTypeLibCache *)0x0) {
     CTypeLibCache::Unlock(this);
   }
-  FUN_0041c992(0xd);
+  ReleaseCriticalSectionIfActive(0xd);
   if (param_1 != (int *)0x0) {
     (**(code **)(*param_1 + 4))(1);
   }
@@ -14830,7 +14830,7 @@ void __thiscall FUN_004123fa(void *this,LPCSTR param_1)
 
 
 
-uint32_t __thiscall FUN_00412450(void *this,int *param_1,int param_2)
+uint32_t __thiscall RefCountedBuffer_ReleaseOrCall(void *this,int *param_1,int param_2) //FUN_00412450
 
 {
   uint32_t uVar1;
@@ -14857,7 +14857,7 @@ uint32_t __thiscall FUN_00412450(void *this,int *param_1,int param_2)
 
 
 
-uint32_t FUN_004124bb(uint32_t param_1)
+uint32_t AfxSetModuleThreadState(uint32_t param_1)//FUN_004124bb
 
 {
   uint32_t uVar1;
@@ -14871,7 +14871,7 @@ uint32_t FUN_004124bb(uint32_t param_1)
 
 
 
-int __cdecl FUN_004124cf(uint param_1)
+int __cdecl RefCountedBuffer_Allocate(uint param_1) //FUN_004124cf
 
 {
   int iVar1;
@@ -14908,7 +14908,7 @@ void __cdecl free_safe(uint *param_1) //FUN_0041250b
 
 
 
-uint ** FUN_00412516(void)
+uint ** Get_DefaultRefCountedBuffer(void) //FUN_00412516
 
 {
   return &PTR_DAT_004253b4;
@@ -14916,19 +14916,19 @@ uint ** FUN_00412516(void)
 
 
 
-uint32_t * __fastcall FUN_0041251c(uint32_t *param_1)
+uint32_t * __fastcall RefCountedBuffer_AssignDefault(uint32_t *param_1) //FUN_0041251c
 
 {
   uint **ppuVar1;
   
-  ppuVar1 = FUN_00412516();
+  ppuVar1 = Get_DefaultRefCountedBuffer(); //FUN_00412516
   *param_1 = *ppuVar1;
   return param_1;
 }
 
 
 
-int * __thiscall FUN_0041252c(void *this,int *param_1)
+int * __thiscall RefCountedBuffer_AssignFromExisting(void *this,int *param_1) //FUN_0041252c
 
 {
   int iVar1;
@@ -14936,9 +14936,9 @@ int * __thiscall FUN_0041252c(void *this,int *param_1)
   
   iVar1 = *param_1;
   if (*(int *)(iVar1 + -0xc) < 0) {
-    ppuVar2 = FUN_00412516();
+    ppuVar2 = Get_DefaultRefCountedBuffer(); //FUN_00412516
     *(uint **)this = *ppuVar2;
-    FUN_004127af(this,(LPCSTR)*param_1);
+    SetString(this,(LPCSTR)*param_1); //FUN_004127af
   }
   else {
     *(int *)this = iVar1;
@@ -14949,18 +14949,18 @@ int * __thiscall FUN_0041252c(void *this,int *param_1)
 
 
 
-void __thiscall FUN_00412563(void *this,int param_1)
+void __thiscall RefCountedBuffer_Init(void *this,int param_1) //FUN_00412563
 
 {
   uint **ppuVar1;
   uint32_t *puVar2;
   
   if (param_1 == 0) {
-    ppuVar1 = FUN_00412516();
+    ppuVar1 = Get_DefaultRefCountedBuffer();// FUN_00412516();
     puVar2 = (uint32_t *)*ppuVar1;
   }
   else {
-    puVar2 = (uint32_t *)FUN_004124cf(param_1 + 0xd);
+    puVar2 = (uint32_t *)RefCountedBuffer_Allocate(param_1 + 0xd); //FUN_004124cf
     *puVar2 = 1;
     *(uint8_t *)((int)puVar2 + param_1 + 0xc) = 0;
     puVar2[1] = param_1;
@@ -14973,7 +14973,7 @@ void __thiscall FUN_00412563(void *this,int param_1)
 
 
 
-void __fastcall FUN_0041259d(int *param_1)
+void __fastcall release_refcounted(int *param_1)//FUN_0041259d
 
 {
   LONG LVar1;
@@ -14984,7 +14984,7 @@ void __fastcall FUN_0041259d(int *param_1)
     if (LVar1 < 1) {
       safe_free((uint *)(*param_1 + -0xc));// FUN_0041250b((uint *)(*param_1 + -0xc));
     }
-    ppuVar2 = FUN_00412516();
+    ppuVar2 = Get_DefaultRefCountedBuffer(); //FUN_00412516();
     *param_1 = (int)*ppuVar2;
   }
   return;
@@ -15013,10 +15013,10 @@ void __fastcall FUN_004125f2(int *param_1)
 {
   if (*(int *)(*param_1 + -8) != 0) {
     if (-1 < *(int *)(*param_1 + -0xc)) {
-      FUN_0041259d(param_1);
+      release_refcounted(param_1); //FUN_0041259d
       return;
     }
-    FUN_004127af(param_1,&DAT_00428dd8);
+    SetString(param_1,&DAT_00428dd8); //FUN_004127af
   }
   return;
 }
@@ -15030,9 +15030,9 @@ void __fastcall FUN_00412610(int *param_1)
   
   puVar1 = (uint32_t *)*param_1;
   if (1 < (int)puVar1[-3]) {
-    FUN_0041259d(param_1);
-    FUN_00412563(param_1,puVar1[-2]);
-    FUN_00403c20((uint32_t *)*param_1,puVar1,puVar1[-2] + 1);
+    release_refcounted(param_1); //FUN_0041259d(param_1);
+    RefCountedBuffer_Init(param_1,puVar1[-2]); //FUN_00412563
+    memmove_optimized((uint32_t *)*param_1,puVar1,puVar1[-2] + 1); //FUN_00403c20
   }
   return;
 }
@@ -15043,8 +15043,8 @@ void __thiscall FUN_0041263e(void *this,int param_1)
 
 {
   if ((1 < *(int *)(*(int *)this + -0xc)) || (*(int *)(*(int *)this + -4) < param_1)) {
-    FUN_0041259d(this);
-    FUN_00412563(this,param_1);
+    release_refcounted(this); //FUN_0041259d(this);
+    RefCountedBuffer_Init(this,param_1); //FUN_00412563
   }
   return;
 }
@@ -15073,12 +15073,12 @@ void __thiscall FUN_00412690(void *this,uint32_t *param_1,uint param_2,int param
   uint **ppuVar1;
   
   if (param_4 + param_2 == 0) {
-    ppuVar1 = FUN_00412516();
+    ppuVar1 = Get_DefaultRefCountedBuffer();//FUN_00412516();
     *param_1 = *ppuVar1;
   }
   else {
-    FUN_00412563(param_1,param_4 + param_2);
-    FUN_00403c20((uint32_t *)*param_1,(uint32_t *)(param_3 + *(int *)this),param_2);
+    RefCountedBuffer_Init(param_1,param_4 + param_2); //FUN_00412563
+    memmove_optimized((uint32_t *)*param_1,(uint32_t *)(param_3 + *(int *)this),param_2); //FUN_00403c20
   }
   return;
 }
@@ -15091,7 +15091,7 @@ uint32_t * __thiscall FUN_004126d5(void *this,LPCSTR param_1)
   uint **ppuVar1;
   uint uVar2;
   
-  ppuVar1 = FUN_00412516();
+  ppuVar1 = Get_DefaultRefCountedBuffer();//FUN_00412516();
   *(uint **)this = *ppuVar1;
   if (param_1 != (LPCSTR)0x0) {
     if ((short)((uint)param_1 >> 0x10) == 0) {
@@ -15106,19 +15106,19 @@ uint32_t * __thiscall FUN_004126d5(void *this,LPCSTR param_1)
   uVar2 = 0;
 LAB_00412713:
   if (uVar2 != 0) {
-    FUN_00412563(this,uVar2);
-    FUN_00403c20(*(uint32_t **)this,(uint32_t *)param_1,uVar2);
+    RefCountedBuffer_Init(this,uVar2);// FUN_00412563(this,uVar2);
+    memmove_optimized(*(uint32_t **)this,(uint32_t *)param_1,uVar2); //FUN_00403c20
   }
   return this;
 }
 
 
 
-void __thiscall FUN_00412733(void *this,uint param_1,uint32_t *param_2)
+void __thiscall  RefCountedBuffer_CopyFrom(void *this,uint param_1,uint32_t *param_2) //FUN_00412733
 
 {
   FUN_0041263e(this,param_1);
-  FUN_00403c20(*(uint32_t **)this,param_2,param_1);
+  memmove_optimized(*(uint32_t **)this,param_2,param_1); //FUN_00403c20
   *(uint *)(*(int *)this + -8) = param_1;
   *(uint8_t *)(param_1 + *(int *)this) = 0;
   return;
@@ -15126,7 +15126,7 @@ void __thiscall FUN_00412733(void *this,uint param_1,uint32_t *param_2)
 
 
 
-int * __thiscall FUN_00412760(void *this,int *param_1)
+int * __thiscall RefCountedBuffer_Assign(void *this,int *param_1) //FUN_00412760
 
 {
   uint32_t *puVar1;
@@ -15137,10 +15137,10 @@ int * __thiscall FUN_00412760(void *this,int *param_1)
   if (*(uint32_t **)this != puVar1) {
     piVar3 = *(uint32_t **)this + -3;
     if (((*piVar3 < 0) && (piVar3 != (int *)PTR_DAT_004253b0)) || ((int)puVar1[-3] < 0)) {
-      FUN_00412733(this,puVar1[-2],puVar1);
+      RefCountedBuffer_CopyFrom(this,puVar1[-2],puVar1); //FUN_00412733
     }
     else {
-      FUN_0041259d(this);
+      release_refcounted(this); //FUN_0041259d(this);
       iVar2 = *param_1;
       *(int *)this = iVar2;
       InterlockedIncrement((LONG *)(iVar2 + -0xc));
@@ -15151,7 +15151,7 @@ int * __thiscall FUN_00412760(void *this,int *param_1)
 
 
 
-void * __thiscall FUN_004127af(void *this,LPCSTR param_1)
+void * __thiscall SetString(void *this,LPCSTR param_1) // FUN_004127af(void *this,LPCSTR param_1)
 
 {
   uint uVar1;
@@ -15162,7 +15162,7 @@ void * __thiscall FUN_004127af(void *this,LPCSTR param_1)
   else {
     uVar1 = lstrlenA(param_1);
   }
-  FUN_00412733(this,uVar1,(uint32_t *)param_1);
+  RefCountedBuffer_CopyFrom(this,uVar1,(uint32_t *)param_1); //FUN_00412733
   return this;
 }
 
@@ -15173,9 +15173,9 @@ FUN_004127d6(void *this,uint param_1,uint32_t *param_2,uint param_3,uint32_t *pa
 
 {
   if (param_3 + param_1 != 0) {
-    FUN_00412563(this,param_3 + param_1);
-    FUN_00403c20(*(uint32_t **)this,param_2,param_1);
-    FUN_00403c20((uint32_t *)(param_1 + *(int *)this),param_4,param_3);
+    RefCountedBuffer_Init(this,param_3 + param_1); //FUN_00412563
+    memmove_optimized(*(uint32_t **)this,param_2,param_1); //FUN_00403c20
+    memmove_optimized((uint32_t *)(param_1 + *(int *)this),param_4,param_3); //FUN_00403c20
   }
   return;
 }
@@ -15272,7 +15272,7 @@ void __thiscall FUN_00412963(void *this,uint param_1,uint32_t *param_2)
   if (param_1 != 0) {
     puVar1 = *(uint32_t **)this;
     if (((int)puVar1[-3] < 2) && ((int)(param_1 + puVar1[-2]) <= (int)puVar1[-1])) {
-      FUN_00403c20((uint32_t *)(puVar1[-2] + (int)puVar1),param_2,param_1);
+      memmove_optimized((uint32_t *)(puVar1[-2] + (int)puVar1),param_2,param_1); //FUN_00403c20
       *(int *)(*(int *)this + -8) = *(int *)(*(int *)this + -8) + param_1;
       *(uint8_t *)(*(int *)(*(int *)this + -8) + *(int *)this) = 0;
     }
@@ -15298,8 +15298,8 @@ int __thiscall FUN_004129da(void *this,int param_1)
     if (param_1 < iVar2) {
       param_1 = iVar2;
     }
-    FUN_00412563(this,param_1);
-    FUN_00403c20(*(uint32_t **)this,puVar1,iVar2 + 1);
+    RefCountedBuffer_Init(this,param_1); //FUN_00412563
+    memmove_optimized(*(uint32_t **)this,puVar1,iVar2 + 1); //FUN_00403c20
     *(int *)(*(int *)this + -8) = iVar2;
     FUN_004125cf(puVar1 + -3);
   }
@@ -15444,7 +15444,7 @@ int * FUN_00412b94(void)
   DWORD dwOptions;
   
   FUN_004037f0();
-  iVar1 = FUN_004124cf(0x10);
+  iVar1 = RefCountedBuffer_Allocate(0x10); //FUN_004124cf
   *(int *)(unaff_EBP + -0x14) = iVar1;
   *(uint32_t *)(unaff_EBP + -4) = 0;
   if (iVar1 == 0) {
@@ -15498,7 +15498,7 @@ LPCSTR __thiscall FUN_00412c25(void *this,LPCSTR param_1,uint param_2,int param_
   uVar6 = param_2 & 0xffff7fff;
   FUN_004125f2((int *)((int)this + 0xc));
   FUN_00412f5c();
-  FUN_004127af((int *)((int)this + 0xc),local_114);
+  SetString((int *)((int)this + 0xc),local_114);//FUN_004127af((int *)((int)this + 0xc),local_114);
   uVar2 = param_2 & 3;
   if (uVar2 == 0) {
     param_2 = 0x80000000;
@@ -15544,7 +15544,7 @@ LPCSTR __thiscall FUN_00412c25(void *this,LPCSTR param_1,uint param_2,int param_
       *(DWORD *)(param_3 + 0xc) = DVar7;
       uVar4 = FUN_00417444(DVar7);
       *(uint32_t *)(param_3 + 8) = uVar4;
-      FUN_004127af((void *)(param_3 + 0x10),param_1);
+      SetString((void *)(param_3 + 0x10),param_1);//FUN_004127af((void *)(param_3 + 0x10),param_1);
     }
     pCVar5 = (LPCSTR)0x0;
   }
@@ -16547,7 +16547,7 @@ void FUN_00413cac(void)
 void FUN_00413cb9(void)
 
 {
-  FUN_004030e0(0x413cc5);
+  IsResourceValid(0x413cc5); //FUN_004030e0
   return;
 }
 
@@ -16583,7 +16583,7 @@ void FUN_00413d28(void)
 void FUN_00413d35(void)
 
 {
-  FUN_004030e0(0x413d41);
+  IsResourceValid(0x413d41); //FUN_004030e0
   return;
 }
 
@@ -16601,7 +16601,7 @@ void FUN_00413d66(void)
 void FUN_00413d73(void)
 
 {
-  FUN_004030e0(0x413d7f);
+  IsResourceValid(0x413d7f); //FUN_004030e0
   return;
 }
 
@@ -16864,8 +16864,8 @@ uint32_t FUN_0041407b(void)
   FUN_004037f0();
   pAVar1 = AfxGetModuleThreadState();
   if ((*(int *)(pAVar1 + 0x14) == 0) && (*(int *)(unaff_EBP + 8) != 0)) {
-    uVar2 = FUN_004124bb(&LAB_004183a7);
-    iVar3 = FUN_004124cf(0x44);
+    uVar2 = AfxSetModuleThreadState(&LAB_004183a7); //FUN_004124bb
+    iVar3 = RefCountedBuffer_Allocate(0x44); //FUN_004124cf
     *(int *)(unaff_EBP + 8) = iVar3;
     *(uint32_t *)(unaff_EBP + -4) = 0;
     if (iVar3 == 0) {
@@ -16876,7 +16876,7 @@ uint32_t FUN_0041407b(void)
     }
     *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
     *(void **)(pAVar1 + 0x14) = pvVar4;
-    FUN_004124bb(uVar2);
+    AfxSetModuleThreadState(uVar2);//FUN_004124bb
   }
   ExceptionList = *(void **)(unaff_EBP + -0xc);
   return *(uint32_t *)(pAVar1 + 0x14);
@@ -17732,7 +17732,7 @@ uint32_t FUN_00414d40(void)
     }
     iVar4 = FUN_0041bf1f();
     if (*(char *)(iVar4 + 0x14) != '\0') {
-      FUN_0041c922(1);
+      (1);
       *(uint32_t *)(unaff_EBP + -4) = 0;
       iVar4 = FUN_0041bf1f();
       lstrcatA((LPSTR)(iVar4 + 0x34),lpWndClass->lpszClassName);
@@ -17740,7 +17740,7 @@ uint32_t FUN_00414d40(void)
       *(uint8_t *)(unaff_EBP + 10) = 10;
       lstrcatA((LPSTR)(iVar4 + 0x34),(LPCSTR)(unaff_EBP + 10));
       *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
-      FUN_0041c992(1);
+      ReleaseCriticalSectionIfActive(1);
     }
   }
   uVar3 = 1;
@@ -17754,7 +17754,7 @@ LAB_00414dc2:
 uint32_t Catch_00414dd3(void)
 
 {
-  FUN_0041c992(1);
+  ReleaseCriticalSectionIfActive(1);
   FUN_004041a0(0,0);
   return 0x414db4;
 }
@@ -17937,7 +17937,7 @@ LAB_004154bd:
   goto LAB_00415499;
   uVar13 = (**(code **)(*extraout_ECX + 0x30))();
   *(uint32_t *)(unaff_EBP + -0x14) = uVar13;
-  FUN_0041c922(7);
+  (7);
   uVar10 = *(uint *)(unaff_EBP + 8);
   uVar5 = uVar5 & 0x1ff ^ *(uint *)(unaff_EBP + -0x14) & 0x1ff;
   iVar3 = uVar5 * 0xc;
@@ -17953,7 +17953,7 @@ LAB_004154bd:
           *(AFX_MSGMAP_ENTRY **)(unaff_EBP + 0x10) = pAVar7;
           if (pAVar7 != (AFX_MSGMAP_ENTRY *)0x0) {
             *(AFX_MSGMAP_ENTRY **)(&DAT_00428df4 + iVar3) = pAVar7;
-            FUN_0041c992(7);
+            ReleaseCriticalSectionIfActive(7);
             iVar3 = *(int *)(unaff_EBP + 0x10);
             goto LAB_004151e7;
           }
@@ -17965,7 +17965,7 @@ LAB_004154bd:
             while( true ) {
               if (**(int **)(pAVar7 + 0x10) == *(int *)(unaff_EBP + 8)) {
                 *(AFX_MSGMAP_ENTRY **)(&DAT_00428df4 + iVar3) = pAVar7;
-                FUN_0041c992(7);
+                ReleaseCriticalSectionIfActive(7);
                 iVar3 = *(int *)(unaff_EBP + 0x10);
                 goto LAB_004154d3;
               }
@@ -17984,12 +17984,12 @@ LAB_004154bd:
       }
     }
     *(uint32_t *)(&DAT_00428df4 + iVar3) = 0;
-    FUN_0041c992(7);
+    ReleaseCriticalSectionIfActive(7);
     goto LAB_004151c7;
   }
   iVar3 = *(int *)(&DAT_00428df4 + iVar3);
   *(int *)(unaff_EBP + 0x10) = iVar3;
-  FUN_0041c992(7);
+  ReleaseCriticalSectionIfActive(7);
   if (iVar3 == 0) goto LAB_004151c7;
   if (0xbfff < *(uint *)(unaff_EBP + 8)) {
 LAB_004154d3:
@@ -19809,7 +19809,7 @@ bool FUN_00416c7a(UINT param_1)
     FUN_00412a29(local_8,-1);
   }
   else {
-    FUN_004127af(local_8,local_108);
+    SetString(local_8,local_108);// FUN_004127af(local_8,local_108);
   }
   return 0 < iVar1;
 }
@@ -19863,7 +19863,7 @@ LAB_00416d99:
       uVar2 = (int)pbVar1 - (int)param_2;
     }
     puVar3 = (uint32_t *)FUN_00412a51(param_1,uVar2);
-    FUN_00403c20(puVar3,(uint32_t *)param_2,uVar2);
+    memmove_optimized(puVar3,(uint32_t *)param_2,uVar2); //FUN_00403c20
     uVar4 = 1;
   }
   return uVar4;
@@ -19898,8 +19898,8 @@ uint32_t FUN_00416db1(void)
   FUN_004037f0();
   pAVar1 = AfxGetModuleThreadState();
   if ((*(int *)(pAVar1 + 0x18) == 0) && (*(int *)(unaff_EBP + 8) != 0)) {
-    uVar2 = FUN_004124bb(&LAB_004183a7);
-    iVar3 = FUN_004124cf(0x44);
+    uVar2 = AfxSetModuleThreadState(&LAB_004183a7); //FUN_004124bb
+    iVar3 = RefCountedBuffer_Allocate(0x44); //FUN_004124cf
     *(int *)(unaff_EBP + 8) = iVar3;
     *(uint32_t *)(unaff_EBP + -4) = 0;
     if (iVar3 == 0) {
@@ -19910,7 +19910,7 @@ uint32_t FUN_00416db1(void)
     }
     *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
     *(void **)(pAVar1 + 0x18) = pvVar4;
-    FUN_004124bb(uVar2);
+    AfxSetModuleThreadState(uVar2);//FUN_004124bb
   }
   ExceptionList = *(void **)(unaff_EBP + -0xc);
   return *(uint32_t *)(pAVar1 + 0x18);
@@ -20267,7 +20267,7 @@ int FUN_004171c6(void)
     if (iVar3 == 0) {
       iVar3 = FUN_00411434((void *)((int)this + 0x1c),uVar1);
       if (iVar3 == 0) {
-        uVar4 = FUN_004124bb(&LAB_004183a7);
+        uVar4 = AfxSetModuleThreadState(&LAB_004183a7); //FUN_004124bb
         *(uint32_t *)(unaff_EBP + -4) = 0;
         *(uint32_t *)(unaff_EBP + -0x18) = uVar4;
         iVar3 = FUN_00416ece();
@@ -20298,7 +20298,7 @@ uint * Catch_00417253(void)
 {
   int unaff_EBP;
   
-  FUN_004124bb(*(uint32_t *)(unaff_EBP + -0x18));
+  AfxSetModuleThreadState(*(uint32_t *)(unaff_EBP + -0x18)); //FUN_004124bb
   FUN_004041a0(0,0);
   return &DAT_0041726a;
 }
@@ -20314,7 +20314,7 @@ uint32_t FUN_00417270(void)
   uint32_t unaff_EDI;
   
   *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
-  FUN_004124bb(*(uint32_t *)(unaff_EBP + -0x18));
+  AfxSetModuleThreadState(*(uint32_t *)(unaff_EBP + -0x18)); //FUN_004124bb
   puVar1 = (uint32_t *)(*(int *)(unaff_ESI + 0x3c) + *(int *)(unaff_EBP + -0x14));
   *puVar1 = unaff_EDI;
   if (*(int *)(unaff_ESI + 0x40) == 2) {
@@ -20404,7 +20404,7 @@ void FUN_004173c3(void)
   int unaff_EBP;
   
   FUN_004037f0();
-  puVar3 = (uint32_t *)FUN_004124cf(0x14);
+  puVar3 = (uint32_t *)RefCountedBuffer_Allocate(0x14); //FUN_004124cf
   *(uint32_t **)(unaff_EBP + -0x14) = puVar3;
   *(uint32_t *)(unaff_EBP + -4) = 0;
   if (puVar3 == (uint32_t *)0x0) {
@@ -20420,7 +20420,7 @@ void FUN_004173c3(void)
     *(uint8_t *)(unaff_EBP + -4) = 2;
     *puVar3 = &PTR_LAB_0041ed0c;
     puVar3[3] = uVar2;
-    FUN_004127af(puVar3 + 4,pCVar1);
+    SetString(puVar3 + 4,pCVar1); //FUN_004127af
   }
   *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
   *(uint32_t **)(unaff_EBP + -0x10) = puVar3;
@@ -20683,7 +20683,7 @@ uint32_t __thiscall FUN_004176a8(void *this,uint32_t *param_1,int param_2)
   uVar3 = 0;
   if (hMem != (HGLOBAL)0x0) {
     puVar1 = GlobalLock(hMem);
-    FUN_00403c20(puVar1,param_1,*(uint *)((int)this + 4));
+    memmove_optimized(puVar1,param_1,*(uint *)((int)this + 4)); //FUN_00403c20
     if (*(short *)((int)puVar1 + 2) == -1) {
       uVar2 = puVar1[3];
     }
@@ -21050,8 +21050,8 @@ uint32_t FUN_00417b00(void)
   FUN_004037f0();
   pAVar1 = AfxGetModuleThreadState();
   if ((*(int *)(pAVar1 + 0x1c) == 0) && (*(int *)(unaff_EBP + 8) != 0)) {
-    uVar2 = FUN_004124bb(&LAB_004183a7);
-    iVar3 = FUN_004124cf(0x44);
+    uVar2 = AfxSetModuleThreadState(&LAB_004183a7); //FUN_004124bb
+    iVar3 = RefCountedBuffer_Allocate(0x44); //FUN_004124cf
     *(int *)(unaff_EBP + 8) = iVar3;
     *(uint32_t *)(unaff_EBP + -4) = 0;
     if (iVar3 == 0) {
@@ -21062,7 +21062,7 @@ uint32_t FUN_00417b00(void)
     }
     *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
     *(void **)(pAVar1 + 0x1c) = pvVar4;
-    FUN_004124bb(uVar2);
+    AfxSetModuleThreadState(uVar2); //FUN_004124bb
   }
   ExceptionList = *(void **)(unaff_EBP + -0xc);
   return *(uint32_t *)(pAVar1 + 0x1c);
@@ -21436,8 +21436,8 @@ uint32_t FUN_004180be(void)
   FUN_004037f0();
   pAVar1 = AfxGetModuleThreadState();
   if ((*(int *)(pAVar1 + 0x20) == 0) && (*(int *)(unaff_EBP + 8) != 0)) {
-    uVar2 = FUN_004124bb(&LAB_004183a7);
-    iVar3 = FUN_004124cf(0x44);
+    uVar2 = AfxSetModuleThreadState(&LAB_004183a7); //FUN_004124bb
+    iVar3 = RefCountedBuffer_Allocate(0x44); //FUN_004124cf
     *(int *)(unaff_EBP + 8) = iVar3;
     *(uint32_t *)(unaff_EBP + -4) = 0;
     if (iVar3 == 0) {
@@ -21448,7 +21448,7 @@ uint32_t FUN_004180be(void)
     }
     *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
     *(void **)(pAVar1 + 0x20) = pvVar4;
-    FUN_004124bb(uVar2);
+    AfxSetModuleThreadState(uVar2); //FUN_004124bb
   }
   ExceptionList = *(void **)(unaff_EBP + -0xc);
   return *(uint32_t *)(pAVar1 + 0x20);
@@ -22222,7 +22222,7 @@ void __thiscall FUN_00418ec8(void *this,int param_1)
 {
   HCURSOR pHVar1;
   
-  FUN_0041c922(2);
+  (2);
   *(int *)((int)this + 0xa0) = *(int *)((int)this + 0xa0) + param_1;
   if (*(int *)((int)this + 0xa0) < 1) {
     *(uint32_t *)((int)this + 0xa0) = 0;
@@ -22234,7 +22234,7 @@ void __thiscall FUN_00418ec8(void *this,int param_1)
       *(HCURSOR *)((int)this + 0xa4) = pHVar1;
     }
   }
-  FUN_0041c992(2);
+  ReleaseCriticalSectionIfActive(2);
   return;
 }
 
@@ -23043,7 +23043,7 @@ FUN_00419d71(void *this,LPCSTR param_1,LPCSTR param_2,DWORD param_3,int *param_4
       return 0;
     }
   }
-  FUN_004127af((void *)((int)this + 0xac),param_2);
+  SetString((void *)((int)this + 0xac),param_2); //FUN_004127af
   if (param_5 != 0) {
     pHVar3 = *(HWND *)(param_5 + 0x1c);
   }
@@ -24210,7 +24210,7 @@ void FUN_0041b5f6(void)
 void FUN_0041b5f7(void)
 
 {
-  FUN_004030e0(0x41b603);
+  IsResourceValid(0x41b603);//FUN_004030e0
   return;
 }
 
@@ -24409,7 +24409,7 @@ uint32_t __fastcall FUN_0041b8ed(void *param_1)
 void FUN_0041b934(void)
 
 {
-  FUN_004030e0(0x41b940);
+  IsResourceValid(0x41b940); //FUN_004030e0
   return;
 }
 
@@ -24604,7 +24604,7 @@ void FUN_0041bc4d(void)
 void FUN_0041bc4e(void)
 
 {
-  FUN_004030e0(0x41bc5a);
+  IsResourceValid(0x41bc5a); //FUN_004030e0
   return;
 }
 
@@ -24783,9 +24783,9 @@ void FUN_0041be1c(void)
   *(uint8_t *)(unaff_EBP + -4) = 2;
   FUN_004111da();
   *(uint8_t *)(unaff_EBP + -4) = 1;
-  FUN_0041136c();
+  RefCountedArray_RemoveAll(); //FUN_0041136c
   *(uint8_t *)(unaff_EBP + -4) = 0;
-  FUN_0041136c();
+  RefCountedArray_RemoveAll(); //FUN_0041136c();
   ExceptionList = *(void **)(unaff_EBP + -0xc);
   *extraout_ECX = &PTR_LAB_0041e924;
   return;
@@ -24804,7 +24804,7 @@ void FUN_0041bf03(void)
 void FUN_0041bf04(void)
 
 {
-  FUN_004030e0(0x41bf10);
+  IsResourceValid(0x41bf10); //FUN_004030e0
   return;
 }
 
@@ -24940,7 +24940,7 @@ void FUN_0041c149(void)
 void FUN_0041c15b(void)
 
 {
-  FUN_004030e0(0x41c167);
+  IsResourceValid(0x41c167); //FUN_004030e0
   return;
 }
 
@@ -24958,7 +24958,7 @@ void FUN_0041c181(void)
 void FUN_0041c193(void)
 
 {
-  FUN_004030e0(0x41c19f);
+  IsResourceValid(0x41c19f); //FUN_004030e0
   return;
 }
 
@@ -25329,7 +25329,7 @@ int FUN_0041c6da(void)
   *(uint8_t **)(unaff_EBP + -0x10) = &stack0xffffffe8;
   *(int **)(unaff_EBP + -0x14) = extraout_ECX;
   if (*extraout_ECX == 0) {
-    FUN_0041c922(0x10);
+    (0x10);
     *(uint32_t *)(unaff_EBP + -4) = 0;
     if (*extraout_ECX == 0) {
       iVar1 = (**(code **)(unaff_EBP + 8))();
@@ -25338,7 +25338,7 @@ int FUN_0041c6da(void)
       return iVar1;
     }
     *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
-    FUN_0041c992(0x10);
+    ReleaseCriticalSectionIfActive(0x10);
   }
   ExceptionList = *(void **)(unaff_EBP + -0xc);
   return *extraout_ECX;
@@ -25349,7 +25349,7 @@ int FUN_0041c6da(void)
 uint * Catch_0041c70e(void)
 
 {
-  FUN_0041c992(0x10);
+  ReleaseCriticalSectionIfActive(0x10);
   FUN_004041a0(0,0);
   return &DAT_0041c724;
 }
@@ -25363,7 +25363,7 @@ uint32_t FUN_0041c727(void)
   uint32_t *unaff_ESI;
   
   *(uint32_t *)(unaff_EBP + -4) = 0xffffffff;
-  FUN_0041c992(0x10);
+  ReleaseCriticalSectionIfActive(0x10);
   ExceptionList = *(void **)(unaff_EBP + -0xc);
   return *unaff_ESI;
 }
@@ -25425,7 +25425,7 @@ void FUN_0041c874(void)
 void FUN_0041c886(void)
 
 {
-  FUN_004030e0(0x41c892);
+  IsResourceValid(0x41c892); //FUN_004030e0
   return;
 }
 
@@ -25443,13 +25443,13 @@ void FUN_0041c8ac(void)
 void FUN_0041c8be(void)
 
 {
-  FUN_004030e0(0x41c8ca);
+  IsResourceValid(0x41c8ca); //FUN_004030e0
   return;
 }
 
 
 
-int FUN_0041c8d4(void)
+int InitializeThreadingLayer(void) //FUN_0041c8d4
 
 {
   DWORD DVar1;
@@ -25472,13 +25472,13 @@ int FUN_0041c8d4(void)
 
 
 
-void FUN_0041c922(int param_1)
+void AcquireCriticalSectionOnce(int param_1) //FUN_0041c922
 
 {
   int *piVar1;
   
   if (DAT_0042a990 == 0) {
-    FUN_0041c8d4();
+     InitializeThreadingLayer(); //FUN_0041c8d4
   }
   if (DAT_0042ab30 == 0) {
     piVar1 = (int *)(&DAT_0042ab50 + param_1 * 4);
@@ -25497,7 +25497,7 @@ void FUN_0041c922(int param_1)
 
 
 
-void FUN_0041c992(int param_1)
+void ReleaseCriticalSectionIfActive(int param_1) //FUN_0041c992
 
 {
   if (DAT_0042ab30 == 0) {
@@ -25520,7 +25520,7 @@ void FUN_0041c9bd(void)
 void FUN_0041c9c7(void)
 
 {
-  FUN_004030e0(0x41c9d3);
+  IsResourceValid(0x41c9d3); //FUN_004030e0
   return;
 }
 
@@ -25645,7 +25645,7 @@ void FUN_0041cb11(void)
 void FUN_0041cb5c(void)
 
 {
-  FUN_004030e0(0x41cb68);
+  IsResourceValid(0x41cb68); //FUN_004030e0
   return;
 }
 
@@ -25653,7 +25653,7 @@ void FUN_0041cb5c(void)
 void FUN_0041cb7d(void)
 
 {
-  FUN_004030e0(0x41cb89);
+  IsResourceValid(0x41cb89); //FUN_004030e0
   return;
 }
 
@@ -25774,7 +25774,7 @@ void FUN_0041cd7b(void)
   int unaff_EBP;
   
   FUN_004037f0();
-  iVar1 = FUN_004124cf(0xbc);
+  iVar1 = RefCountedBuffer_Allocate(0xbc); //FUN_004124cf
   *(int *)(unaff_EBP + -0x10) = iVar1;
   *(uint32_t *)(unaff_EBP + -4) = 0;
   if (iVar1 != 0) {
@@ -25813,7 +25813,7 @@ void FUN_0041cea1(void)
   byte *lpClassName;
   
   iVar2 = FUN_0041bf1f();
-  FUN_0041c922(1);
+  (1);
   lpClassName = (byte *)(iVar2 + 0x34);
   while (*lpClassName != 0) {
     pbVar3 = FUN_00403f80(lpClassName,10);
@@ -25823,7 +25823,7 @@ void FUN_0041cea1(void)
     lpClassName = pbVar3 + 1;
   }
   *(byte *)(iVar2 + 0x34) = 0;
-  FUN_0041c992(1);
+  ReleaseCriticalSectionIfActive(1);
   iVar2 = FUN_0041bf1f();
   if ((*(int *)(iVar2 + 4) != 0) &&
      (pcVar1 = *(code **)(*(int *)(iVar2 + 4) + 0x54), pcVar1 != (code *)0x0)) {
@@ -25831,7 +25831,7 @@ void FUN_0041cea1(void)
   }
   iVar2 = FUN_0041bc33();
   if (*(int **)(iVar2 + 0xcc) != (int *)0x0) {
-    iVar4 = FUN_00410444(*(int **)(iVar2 + 0xcc));
+    iVar4 = CleanupAndRelease(*(int **)(iVar2 + 0xcc)); //FUN_00410444
     if (iVar4 != 0) {
       *(uint32_t *)(iVar2 + 0xcc) = 0;
     }
@@ -26644,7 +26644,7 @@ void Unwind_0041d3c4(void)
 void Unwind_0041d3cc(void)
 
 {
-  FUN_0041136c();
+  RefCountedArray_RemoveAll(); //FUN_0041136c 
   return;
 }
 
@@ -26653,7 +26653,7 @@ void Unwind_0041d3cc(void)
 void Unwind_0041d3d7(void)
 
 {
-  FUN_0041136c();
+  RefCountedArray_RemoveAll(); //FUN_0041136c 
   return;
 }
 
@@ -26673,7 +26673,7 @@ void Unwind_0041d3ec(void)
 void Unwind_0041d3f4(void)
 
 {
-  FUN_0041136c();
+  RefCountedArray_RemoveAll(); //FUN_0041136c 
   return;
 }
 
@@ -26682,7 +26682,7 @@ void Unwind_0041d3f4(void)
 void Unwind_0041d3ff(void)
 
 {
-  FUN_0041136c();
+  RefCountedArray_RemoveAll(); //FUN_0041136c 
   return;
 }
 
@@ -26711,7 +26711,7 @@ void Unwind_0041d420(void)
 void Unwind_0041d434(void)
 
 {
-  FUN_0041136c();
+  RefCountedArray_RemoveAll(); //FUN_0041136c
   return;
 }
 
@@ -26720,7 +26720,7 @@ void Unwind_0041d434(void)
 void Unwind_0041d43c(void)
 
 {
-  FUN_0041136c();
+  RefCountedArray_RemoveAll(); //FUN_0041136c
   return;
 }
 
@@ -27238,7 +27238,7 @@ void Unwind_0041d7cc(void)
 void Unwind_0041d7e0(void)
 
 {
-  FUN_0041136c();
+   RefCountedArray_RemoveAll();// FUN_0041136c();
   return;
 }
 
@@ -27247,7 +27247,7 @@ void Unwind_0041d7e0(void)
 void Unwind_0041d7e8(void)
 
 {
-  FUN_0041136c();
+  RefCountedArray_RemoveAll();//FUN_0041136c();
   return;
 }
 
