@@ -15,7 +15,7 @@ uint __cdecl calculate_display_mode(uint param_1,short param_2)
 
 
 
-uint __cdecl FUN_00437b60(uint param_1,ushort param_2,uint param_3,uint param_4)
+uint __cdecl build_sprite_attributes(uint param_1,ushort param_2,uint param_3,uint param_4) //FUN_00437b60
 
 {
   return CONCAT22((short)((param_1 & 0xffff0003) >> 0x10),
@@ -44,22 +44,22 @@ void __cdecl set_palette_color(uint8_t param_1)
   local_a = -(short)DAT_004baa38;
   local_8 = 0x200;
   local_6 = 0xf0;
-  FUN_00439e60(&local_10,&DAT_0052f3e0 + DAT_00549dcc * 0x14,0);
+  update_palette_register(&local_10,&DAT_0052f3e0 + DAT_00549dcc * 0x14,0); //FUN_00439e60
   return;
 }
 
 // Fade screen to black
 void fade_to_black(void)
 {
-  thunk_FUN_0041fb90();
-  FUN_0041fb40();
+  initialize_graphics(); //thunk_FUN_0041fb90();
+  clear_framebuffer();   // FUN_0041fb40();
   _rand();
-  FUN_0041fce0();
+  perform_fade_step(); //FUN_0041fce0();
   return;
 }
 
 // Graphics initialization thunk
-void thunk_FUN_0041fb90(void)
+void initialize_graphics(void) //thunk_FUN_0041fb90
 {
   uint *puVar1;
 
@@ -81,10 +81,10 @@ void draw_title_screen(void)
 {
   lstrcpyA(&DAT_004ddb28,(LPCSTR)(DAT_004feeb0 + 2));
   lstrcpyA(&DAT_004ddb38,(LPCSTR)(DAT_004feeb0 + 0xf));
-  FUN_00421db0(0x300,0,0xf,1);
-  FUN_00421e20(0,&DAT_004ddb28);
-  FUN_00421e20(1,&DAT_004ddb38);
-  FUN_00421e20(2,&DAT_004b450c);
+  init_text_layer(0x300,0,0xf,1); //FUN_00421db0(0x300,0,0xf,1);
+  draw_text_to_layer(0,&DAT_004ddb28); //FUN_00421e20(0,&DAT_004ddb28);
+  draw_text_to_layer(1,&DAT_004ddb38); //FUN_00421e20(1,&DAT_004ddb38);
+  draw_text_to_layer(2,&DAT_004b450c);// FUN_00421e20(2,&DAT_004b450c);
   return;
 }
 
@@ -107,8 +107,8 @@ draw_sprite(short param_1,short param_2,uchar param_3,uchar param_4,ushort param
   *(short *)(iVar2 + 0x5584c8) = param_1 - (short)DAT_004baa34;
   *(short *)(iVar2 + 0x5584ca) = param_2 - (short)DAT_004baa38;
   (&DAT_005584ce)[iVar1 * 10] = (&DAT_004fd900)[param_7];
-  FUN_0043a080((int)(&DAT_005584c0 + iVar2),1);
-  FUN_00437ea0(pbVar3,(uint *)(&DAT_005584c0 + iVar2),param_8);
+  commit_graphics_object(&DAT_005584c0 + iVar2),1); //FUN_0043a080((int)(&DAT_005584c0 + iVar2),1);
+  push_to_render_queue(pbVar3,(uint *)(&DAT_005584c0 + iVar2),param_8);// FUN_00437ea0(pbVar3,(uint *)(&DAT_005584c0 + iVar2),param_8);
   iVar2 = DAT_005006e0 + 1;
   DAT_005006e0 = iVar2 % 0x6a4;
   return iVar2 / 0x6a4;
@@ -134,7 +134,7 @@ render_graphics(short param_1,short param_2,ushort param_3,ushort param_4,uchar 
   sVar4 = (short)DAT_004baa38;
   iVar2 = DAT_0052f49c * 0x19;
   puVar1 = (uint *)(&DAT_00557e70 + iVar2);
-  FUN_0043a050((int)puVar1);
+  init_sprite_object((int)puVar1); //FUN_0043a050((int)puVar1);
   *(short *)(iVar2 + 0x557e78) = param_1 - sVar3;
   *(short *)(iVar2 + 0x557e7a) = param_2 - sVar4;
   *(ushort *)(iVar2 + 0x557e7c) = param_3;
@@ -151,8 +151,8 @@ render_graphics(short param_1,short param_2,ushort param_3,ushort param_4,uchar 
   (&DAT_00557e87)[iVar2] = param_15;
   (&DAT_00557e86)[iVar2] = param_14;
   (&DAT_00557e88)[iVar2] = param_16;
-  FUN_0043a080((int)puVar1,param_17);
-  FUN_00437ea0(pbVar6,puVar1,param_18);
+  commit_graphics_object((int)puVar1,param_17); //FUN_0043a080((int)puVar1,param_17);
+  push_to_render_queue(pbVar6,puVar1,param_18);// FUN_00437ea0(pbVar6,puVar1,param_18);
   uVar5 = (int)(DAT_0052f49c + 1U) >> 0x1f;
   DAT_0052f49c = ((DAT_0052f49c + 1U ^ uVar5) - uVar5 & 0x3f ^ uVar5) - uVar5;
   return;
@@ -176,7 +176,7 @@ fill_rectangle(short param_1,short param_2,ushort param_3,ushort param_4,uchar p
   sVar3 = (short)DAT_004baa38;
   iVar4 = DAT_0052f498 * 0x10;
   puVar1 = (uint *)(&DAT_00556c70 + iVar4);
-  FUN_0043a040((int)puVar1);
+  init_rectangle_object((int)puVar1); //FUN_0043a040((int)puVar1);
   *(short *)(&DAT_00556c78 + iVar4) = param_1 - sVar2;
   *(short *)(&DAT_00556c7a + iVar4) = param_2 - sVar3;
   *(ushort *)(&DAT_00556c7c + iVar4) = param_3;
@@ -184,8 +184,8 @@ fill_rectangle(short param_1,short param_2,ushort param_3,ushort param_4,uchar p
   (&DAT_00556c75)[iVar4] = param_5;
   (&DAT_00556c76)[iVar4] = param_6;
   (&DAT_00556c77)[iVar4] = param_7;
-  FUN_0043a080((int)puVar1,param_8);
-  FUN_00437ea0(pbVar5,puVar1,param_9);
+  commit_graphics_object((int)puVar1,param_8); //FUN_0043a080((int)puVar1,param_8);
+  push_to_render_queue(pbVar5,puVar1,param_9); //FUN_00437ea0(pbVar5,puVar1,param_9);
   iVar4 = DAT_0052f498 + 1;
   DAT_0052f498 = iVar4 % 0x120;
   return iVar4 / 0x120;
@@ -206,13 +206,13 @@ process_image_data(int param_1,ushort param_2,ushort param_3,ushort param_4,usho
   ushort local_12;
   short local_8 [4];
   
-  FUN_00410440();
-  FUN_00437bb0((uint *)(param_1 + 4),&local_24);
+  prepare_gpu_memory(); //FUN_00410440();
+  parse_image_header((uint *)(param_1 + 4),&local_24); //FUN_00437bb0((uint *)(param_1 + 4),&local_24);
   local_20 = param_2;
   local_1e = param_3;
   local_14 = param_4;
   local_12 = param_5;
-  FUN_00420ec0(local_8,&local_24);
+  process_image_to_gpu(local_8,&local_24); // FUN_00420ec0(local_8,&local_24);
   return (-(uint)((*(byte *)(param_1 + 4) & 7) == 0) & 0xfffffe20) + 0x220 +
          (local_1c & 0xffff) * (local_1c >> 0x10) * 2;
 }
@@ -222,7 +222,7 @@ process_image_data(int param_1,ushort param_2,ushort param_3,ushort param_4,usho
 void __cdecl set_palette_bank(int param_1,int param_2)
 
 {
-  FUN_00421950(param_1,param_2,(uint *)0x0);
+  select_palette_bank(param_1,param_2,(uint *)0x0);// FUN_00421950(param_1,param_2,(uint *)0x0);
   return;
 }
 
@@ -249,6 +249,6 @@ void __cdecl set_palette_color(uchar param_1)
   local_a = -(short)DAT_004baa38;
   local_8 = 0x200;
   local_6 = 0xf0;
-  FUN_00439e60(&local_10,&DAT_0052f3e0 + DAT_00549dcc * 0x14,0);
+  update_palette_register(&local_10,&DAT_0052f3e0 + DAT_00549dcc * 0x14,0); //FUN_00439e60
   return;
 }
