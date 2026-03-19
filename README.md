@@ -6,7 +6,7 @@
 
 Project Status: ⚡ Ongoing 
 
-This repository contains the decompilation effort of ZEUS Carnage Heart Second, aiming to reverse-engineer the game’s executable into a readable and maintainable source code format. The goal is to enable research, modding, preservation, and deeper understanding of the game’s inner workings.
+This repository contains the decompilation effort of ZEUS Carnage Heart Second (Win95/98 Version, not PSX version), aiming to reverse-engineer the game’s executable into a readable and maintainable source code format. The goal is to enable research, modding, preservation, and deeper understanding of the game’s inner workings.
 As well as create a version of ZEUS (Win95/98) that is fully compatible with modern operating systems.
 
 ## Overview
