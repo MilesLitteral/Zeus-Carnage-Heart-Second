@@ -11199,7 +11199,7 @@ uint32_t FUN_0040d2d0(int param_1)
   DAT_0042c3c4 = DAT_0042c3c4 + -1;
   LeaveCriticalSection((LPCRITICAL_SECTION)&DAT_0042c3a0);
   if (DAT_0042c3c4 == 0) {
-    FUN_0040df20();
+    EnterCriticalSection(); //FUN_0040df20();
   }
   return 1;
 }
@@ -11646,8 +11646,7 @@ LAB_0040ddcb:
 
 
 
-void FUN_0040df20(void)
-
+void  EnterCriticalSection(void) //FUN_0040df20
 {
   int *piVar1;
   
