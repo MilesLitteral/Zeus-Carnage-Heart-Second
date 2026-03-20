@@ -3,6 +3,7 @@
 
 #include <windows.h>
 #include <stdint.h>
+#include <cstdint>
 
 // Basic type definitions from decompiled code
 // Note: uint8_t-8 are decompiler placeholders for unknown types
