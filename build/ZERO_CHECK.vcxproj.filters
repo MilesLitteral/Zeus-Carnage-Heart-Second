@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Manda\OneDrive\Documentos\Playground\Zeus_Decomp\Zeus-Carnage-Heart-Second\build\CMakeFiles\4fd31746e4d0819e999f01ac2b21f5cf\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{34B06689-9D09-383B-9833-70DC0B8B0020}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

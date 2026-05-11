@@ -1,0 +1,3 @@
+C:/Users/Manda/OneDrive/Documentos/Playground/Zeus_Decomp/Zeus-Carnage-Heart-Second/build/CMakeFiles/zeus_ch2.dir
+C:/Users/Manda/OneDrive/Documentos/Playground/Zeus_Decomp/Zeus-Carnage-Heart-Second/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Manda/OneDrive/Documentos/Playground/Zeus_Decomp/Zeus-Carnage-Heart-Second/build/CMakeFiles/ZERO_CHECK.dir

@@ -1,8 +1,11 @@
+#pragma once
 
 typedef struct _s_HandlerType _s_HandlerType, *P_s_HandlerType;
 typedef struct _s_HandlerType HandlerType;
 typedef struct TypeDescriptor TypeDescriptor, *PTypeDescriptor;
+#ifndef ZEUS_USE_SYSTEM_TYPES
 typedef int ptrdiff_t;
+#endif
 
 struct TypeDescriptor {
     void *pVFTable;
@@ -69,6 +72,7 @@ typedef struct CFrameWnd CFrameWnd, *PCFrameWnd;
 struct CFrameWnd { // PlaceHolder Class Structure
 };
 
+#ifndef ZEUS_USE_SYSTEM_TYPES
 typedef struct CLIENT_ID CLIENT_ID, *PCLIENT_ID;
 
 struct CLIENT_ID {
@@ -1128,3 +1132,5 @@ struct _PRINTER_DEFAULTSA {
 };
 
 typedef struct _PRINTER_DEFAULTSA *LPPRINTER_DEFAULTSA;
+
+#endif // ZEUS_USE_SYSTEM_TYPES

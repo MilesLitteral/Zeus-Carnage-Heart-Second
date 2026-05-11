@@ -2,7 +2,7 @@
 // Decompiled from original binary
 
 #include "zeus.h"
-#include <cstdint>
+#include <stdint.h>
 
 uint __cdecl calculate_display_mode(uint param_1,short param_2)
 
@@ -68,7 +68,7 @@ void initialize_graphics(void) //thunk_FUN_0041fb90
   if (puVar1 != &DAT_0051f570) {
     DAT_004fda94 = &DAT_0051f570;
   }
-  init_graphics_system() //FUN_00420b20();
+  init_graphics_system(); //FUN_00420b20();
   prepare_gpu_memory(); //FUN_00410440();
   init_vram_tables(); //FUN_00410400();
   init_sprite_engine();//FUN_00441cc0();
@@ -107,7 +107,7 @@ draw_sprite(short param_1,short param_2,uchar param_3,uchar param_4,ushort param
   *(short *)(iVar2 + 0x5584c8) = param_1 - (short)DAT_004baa34;
   *(short *)(iVar2 + 0x5584ca) = param_2 - (short)DAT_004baa38;
   (&DAT_005584ce)[iVar1 * 10] = (&DAT_004fd900)[param_7];
-  commit_graphics_object(&DAT_005584c0 + iVar2),1); //FUN_0043a080((int)(&DAT_005584c0 + iVar2),1);
+  commit_graphics_object((int)(&DAT_005584c0 + iVar2),1); //FUN_0043a080((int)(&DAT_005584c0 + iVar2),1);
   push_to_render_queue(pbVar3,(uint *)(&DAT_005584c0 + iVar2),param_8);// FUN_00437ea0(pbVar3,(uint *)(&DAT_005584c0 + iVar2),param_8);
   iVar2 = DAT_005006e0 + 1;
   DAT_005006e0 = iVar2 % 0x6a4;
@@ -229,26 +229,4 @@ void __cdecl set_palette_bank(int param_1,int param_2)
 
 
 
-void __cdecl set_palette_color(uchar param_1)
-
-{
-  uint local_10;
-  short local_c;
-  short local_a;
-  ushort local_8;
-  ushort local_6;
-  uchar local_4;
-  uchar local_3;
-  uchar local_2;
-  
-  local_c = -(short)DAT_004baa34;
-  local_10 = 0x60000000;
-  local_2 = param_1;
-  local_3 = param_1;
-  local_4 = param_1;
-  local_a = -(short)DAT_004baa38;
-  local_8 = 0x200;
-  local_6 = 0xf0;
-  update_palette_register(&local_10,&DAT_0052f3e0 + DAT_00549dcc * 0x14,0); //FUN_00439e60
-  return;
-}
+// DUPLICATE REMOVED: set_palette_color (kept the earlier uint8_t version)

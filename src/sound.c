@@ -2,14 +2,14 @@
 // Decompiled from original binary
 
 #include "zeus.h"
-#include <cstdint>
+#include <stdint.h>
 
 // Play a sound effect
 // param_1: sound ID
 // param_2: volume (0-100)
 // param_3: pan (-100 to 100, 0 = center)
 // param_4: flags (0 = allow multiple instances, 1 = replace existing)
-void __cdecl play_sound_effect(int param_1,int param_2,int param_3,int param_4)
+int __cdecl play_sound_effect(int param_1,int param_2,int param_3,int param_4)
 {
   int iVar1;
   int iVar2;
@@ -19,7 +19,7 @@ void __cdecl play_sound_effect(int param_1,int param_2,int param_3,int param_4)
     iVar1 = param_2 / 2;
     if (iVar1 < 0x41) {
       if (iVar1 < 0) {
-        return;
+        return 0;
       }
     }
     else {
@@ -44,7 +44,7 @@ void __cdecl play_sound_effect(int param_1,int param_2,int param_3,int param_4)
       FUN_004479b0((int *)*puVar3);
     }
   }
-  return;
+  return 0;
 }
 
 // Update sound system state

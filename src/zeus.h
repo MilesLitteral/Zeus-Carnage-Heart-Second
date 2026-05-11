@@ -1,9 +1,22 @@
 // Common header file for ZEUS Carnage Heart Second
 // Contains type definitions and extern declarations
 
-#include <windows.h>
+#pragma once
+
 #include <stdint.h>
+#ifdef __cplusplus
 #include <cstdint>
+#else
+#include <stdbool.h>
+#endif
+#include "decomp_compat.h"
+
+#ifdef ZEUS_USE_SYSTEM_TYPES
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+#include <windows.h>
+#endif
 
 // Basic type definitions from decompiled code
 // Note: uint8_t-8 are decompiler placeholders for unknown types
@@ -39,64 +52,13 @@ typedef unsigned int          uint;
 typedef unsigned long         ulong;
 typedef unsigned long long    ulonglong;
 typedef unsigned short        ushort;
-typedef short                 wchar_t;
 
+#ifndef ZEUS_USE_SYSTEM_TYPES
 // Windows API type aliases
 typedef struct _cpinfo _cpinfo, *P_cpinfo;
 typedef uint UINT;
 typedef uchar BYTE;
 typedef struct _cpinfo *LPCPINFO;
-
-// Global variable extern declarations
-// Input system
-extern uint32_t DAT_004bc460;
-extern uint32_t DAT_004deaf8;
-extern uint32_t DAT_004deaf0;
-extern uint32_t DAT_004deaf4;
-extern uint32_t DAT_004bc45c;
-
-// Game state
-extern uint16_t menu_selection;  // Current menu selection (0, 1, or 2)
-extern uint16_t game_start_flag;  // Flag to start the game
-extern uint16_t menu_state;  // Current menu screen/state
-extern uint16_t screen_scroll_y;  // Screen scroll position
-
-// Graphics
-extern uint32_t DAT_004baa34;
-extern uint32_t DAT_004baa38;
-extern uint32_t DAT_00549dcc;
-extern uint32_t DAT_0052f3e0;
-extern uint32_t DAT_0052f440;
-extern uint32_t DAT_004fda94;
-extern uint32_t DAT_0051f5e2;
-extern uint32_t DAT_0051f570;
-extern uint32_t DAT_00508c18;
-extern uint32_t DAT_004feeb0;
-extern uint32_t DAT_004ddb28;
-extern uint32_t DAT_004ddb38;
-extern uint32_t DAT_004b450c;
-extern uint32_t DAT_004ddb5c;
-extern uint32_t PTR_DAT_004baa20;
-
-// Sound system
-extern uint32_t DAT_004bf320;
-extern uint32_t DAT_004def0c;
-extern uint32_t DAT_004def08;
-extern uint32_t DAT_004bf324;
-extern uint32_t DAT_004def10;
-extern uint32_t DAT_004def14;
-extern uint32_t DAT_004def18;
-extern uint32_t DAT_004def20;
-
-// Game data
-extern uint32_t DAT_004dda98;
-extern uint32_t DAT_00508c50;
-
-// String constants
-extern char s_GRA_SNAP_MGSNAP01_TIM_004b44f4[];
-extern char s_KNJ_BIN_004b453c[];
-uint16_t display_mode_table[8];
-uint8_t* vram_buffer;
 
 typedef union IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion, *PIMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion;
 
@@ -1121,6 +1083,89 @@ struct _CRT_DOUBLE {
     double x;
 };
 
+#endif // ZEUS_USE_SYSTEM_TYPES
+
+// Global variable extern declarations
+// Input system
+extern int DAT_004bc460;
+extern uint32_t DAT_004deaf8;
+extern uint32_t DAT_004deaf0;
+extern uint32_t DAT_004deaf4;
+extern int DAT_004bc45c;
+
+// Game state
+extern uint16_t menu_selection;  // Current menu selection (0, 1, or 2)
+extern short game_start_flag;  // Flag to start the game
+extern short menu_state;  // Current menu screen/state
+extern uint16_t screen_scroll_y;  // Screen scroll position
+
+// Graphics
+extern uint32_t DAT_004baa34;
+extern uint32_t DAT_004baa38;
+extern uint32_t DAT_00549dcc;
+extern uchar DAT_0052f3e0;
+extern uchar DAT_0052f440;
+extern uchar *DAT_004fda94;
+extern uchar DAT_0051f5e2;
+extern uchar DAT_0051f570;
+extern uint8_t *DAT_0051f784;
+extern void *DAT_00508c18;
+extern uchar *DAT_004feeb0;
+extern uchar DAT_004ddb28;
+extern uchar DAT_004ddb38;
+extern uchar DAT_004b450c;
+extern short DAT_004ddb5c;
+extern uchar *PTR_DAT_004baa20;
+extern ushort DAT_004fd900;
+extern int DAT_005006e0;
+extern uint DAT_0052f49c;
+extern uint DAT_0052f498;
+extern uchar DAT_00557e70;
+extern uchar DAT_00557e75;
+extern uchar DAT_00557e76;
+extern uchar DAT_00557e77;
+extern uchar DAT_00557e81;
+extern uchar DAT_00557e80;
+extern uchar DAT_00557e82;
+extern uchar DAT_00557e84;
+extern uchar DAT_00557e83;
+extern uchar DAT_00557e85;
+extern uchar DAT_00557e87;
+extern uchar DAT_00557e86;
+extern uchar DAT_00557e88;
+extern uchar DAT_00556c70;
+extern uchar DAT_00556c75;
+extern uchar DAT_00556c76;
+extern uchar DAT_00556c77;
+extern uchar DAT_00556c78;
+extern uchar DAT_00556c7a;
+extern uchar DAT_00556c7c;
+extern uchar DAT_00556c7e;
+extern uchar DAT_005584c0;
+extern uchar DAT_005584cc;
+extern uchar DAT_005584cd;
+extern ushort DAT_005584ce;
+
+// Sound system
+extern uint32_t DAT_004bf320;
+extern uint32_t DAT_004def0c;
+extern uint32_t DAT_004def08;
+extern uint8_t *DAT_004bf324;
+extern uint32_t DAT_004def10;
+extern uint32_t DAT_004def14;
+extern uint32_t DAT_004def18;
+extern uint32_t DAT_004def20;
+
+// Game data
+extern short DAT_004dda98;
+extern uint32_t DAT_00508c50;
+
+// String constants
+extern const char s_GRA_SNAP_MGSNAP01_TIM_004b44f4[];
+extern const char s_KNJ_BIN_004b453c[];
+extern uint16_t display_mode_table[8];
+extern uint8_t* vram_buffer;
+
 // Function declarations
 // Input functions
 void FUN_00420b20(void);
@@ -1132,14 +1177,53 @@ bool FUN_00420c00(void);
 void FUN_00420c20(void);
 void process_input();
 
+// Menu/system functions used before definition (avoid implicit-int in C)
+void initialize_game_state(void);
+void __cdecl initialize_character_data(int param_1);
+void __cdecl FUN_00402790(short param_1);
+void __cdecl FUN_00402880(int param_1);
+void FUN_00403500(void);
+void FUN_00403e00(void);
+void handle_menu_cursor(void);
+void handle_move_selection(void);
+void handle_spell_selection(void);
+int __cdecl FUN_00404ed0(int param_1, LPCSTR param_2);
+void __cdecl FUN_00404fb0(int param_1);
+void __cdecl FUN_00405200(int param_1, LPCSTR param_2);
+void __cdecl FUN_004053c0(int param_1);
+void FUN_00405500(void);
+void __cdecl FUN_004057f0(int param_1, LPCSTR param_2);
+void FUN_0040bef0(void);
+void FUN_0040bfb0(void);
+void thunk_FUN_0040bfb0(void);
+
 // Graphics functions
 void __cdecl set_palette_color(uint8_t param_1);
 void fade_to_black(void);
 void thunk_FUN_0041fb90(void);
 void draw_title_screen(void);
+void update_palette_register(uint32_t *param_1, void *param_2, int param_3);
+void clear_framebuffer(void);
+void initialize_graphics(void);
+void perform_fade_step(void);
+int _rand(void);
+void init_graphics_system(void);
+void prepare_gpu_memory(void);
+void init_vram_tables(void);
+void init_sprite_engine(void);
+void init_default_frame(int param_1, int param_2, int param_3, int param_4);
+void init_text_layer(int param_1, int param_2, int param_3, int param_4);
+void draw_text_to_layer(int param_1, void *param_2);
+void commit_graphics_object(int param_1, int param_2);
+void push_to_render_queue(byte *param_1, uint *param_2, int param_3);
+void parse_image_header(uint32_t *param_1, uint32_t *param_2);
+void process_image_to_gpu(short *param_1, uint32_t *param_2);
+void select_palette_bank(int param_1, int param_2, uint *param_3);
+void init_sprite_object(int param_1);
+void init_rectangle_object(int param_1);
 
 // Sound functions
-void __cdecl play_sound_effect(int param_1,int param_2,int param_3,int param_4);
+int __cdecl play_sound_effect(int param_1,int param_2,int param_3,int param_4);
 void __cdecl update_sound_system(void);
 uint32_t __cdecl is_sound_playing(int param_1);
 uint32_t * find_free_sound_channel(void);
@@ -1149,6 +1233,9 @@ uint32_t * find_oldest_sound_channel(void);
 uint32_t main_game_loop(void);
 uint32_t __cdecl start_game_mode(short param_1);
 
+// Entry / window
+uint FUN_00410300(HINSTANCE param_1);
+
 // Utility functions (to be declared as needed)
 uint32_t __cdecl FUN_00437b40(uint param_1,short param_2);
 uint32_t __cdecl FUN_00437b60(uint param_1,ushort param_2,uint param_3,uint param_4);
@@ -1157,3 +1244,14 @@ void __cdecl FUN_00420ca0(LPCSTR param_1);
 int __cdecl FUN_00420ce0(int param_1);
 int __cdecl FUN_00420d20(int param_1,uint16_t param_2,uint16_t param_3,uint16_t param_4,uint16_t param_5);
 int __cdecl FUN_00420db0(int param_1,uint16_t param_2,uint16_t param_3);
+
+// Asset root
+void zeus_set_asset_root(void);
+
+#ifdef USE_SDL
+int sdl_backend_init(int win_w, int win_h);
+int sdl_backend_prepare_framebuffer(void);
+void sdl_backend_shutdown(void);
+void sdl_backend_present(void);
+void sdl_backend_pump_input(void);
+#endif

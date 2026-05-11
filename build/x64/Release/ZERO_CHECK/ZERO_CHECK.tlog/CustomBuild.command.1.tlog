@@ -1,0 +1,10 @@
+^C:\USERS\MANDA\ONEDRIVE\DOCUMENTOS\PLAYGROUND\ZEUS_DECOMP\ZEUS-CARNAGE-HEART-SECOND\BUILD\CMAKEFILES\4FD31746E4D0819E999F01AC2B21F5CF\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Manda/OneDrive/Documentos/Playground/Zeus_Decomp/Zeus-Carnage-Heart-Second -BC:/Users/Manda/OneDrive/Documentos/Playground/Zeus_Decomp/Zeus-Carnage-Heart-Second/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Manda/OneDrive/Documentos/Playground/Zeus_Decomp/Zeus-Carnage-Heart-Second/build/zeus_ch2.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
