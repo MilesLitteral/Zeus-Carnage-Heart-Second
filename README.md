@@ -1,7 +1,7 @@
 # ZEUS Carnage Heart Second – Decompilation Project
 
 
-![Decompiler Screenshot](Screenshot%202026-03-18%20131835.png)
+![Logo](logo.png)
 
 
 Project Status: ⚡ Ongoing 
