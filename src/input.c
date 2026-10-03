@@ -2,13 +2,56 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-/* globals */
 uint32_t gInputCurrent;
 uint32_t gInputPressed;
 uint32_t gInputPrevious;
-
 uint32_t gInputUpdated;
 uint32_t gInputOverride;
+
+#ifndef USE_SDL
+#include "zeus.h"
+
+int InputSystemActive(void)
+{
+    return 0;
+}
+
+void ResetInputHardware(int port)
+{
+    (void)port;
+}
+
+uint32_t ReadController(uint32_t* state)
+{
+    if (state) *state = 0;
+    return 0;
+}
+
+void StopController(void)
+{
+}
+
+uint32_t __cdecl check_key_press(uint32_t mask)
+{
+    static const struct {
+        uint32_t mask;
+        int key;
+    } keys[] = {
+        { 0x1000, VK_UP }, { 0x2000, VK_RIGHT },
+        { 0x4000, VK_DOWN }, { 0x8000, VK_LEFT },
+        { 0x0020, VK_RETURN }, { 0x0020, VK_SPACE }, { 0x0020, 'Z' },
+        { 0x0040, VK_ESCAPE }, { 0x0040, 'X' }
+    };
+    for (size_t index = 0; index < sizeof(keys) / sizeof(keys[0]); ++index) {
+        if ((mask & keys[index].mask) != 0 && (GetAsyncKeyState(keys[index].key) & 0x8000) != 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+#endif
+
+/* globals */
 
 /* external engine functions */
 extern int InputSystemActive(void);

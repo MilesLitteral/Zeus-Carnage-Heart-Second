@@ -1,6 +1,6 @@
 #include "zeus.h"
-#include <cstdint>
-#include <cstdio>
+#include <stdint.h>
+#include <stdio.h>
 
 // Library Function - Single Match
 //  _rand

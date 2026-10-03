@@ -2,7 +2,7 @@
 // Decompiled from original binary
 
 #include "zeus.h"
-#include <cstdint>
+#include <stdint.h>
 #include <stdbool.h>
 
 // Main game loop - handles title screen, menu navigation, and game startup
@@ -25,7 +25,7 @@ uint32_t main_game_loop(void)
   FUN_00420d20((int)DAT_00508c18,0x340,0x100,0x300,0x1ff);
   uVar1 = FUN_00437b40(0x300,0x1ff);
   
-  display_mode_table = (uint16_t)uVar1;
+  display_mode_table[0] = (uint16_t)uVar1;
   draw_title_screen();
   DAT_004ddb5c = 0xff;
   do {

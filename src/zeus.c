@@ -1,8 +1,859 @@
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 #include "zeus.h"
+#include <mmsystem.h>
 
 void __cdecl FUN_00410030(int param_1,int param_2);
+void __cdecl FUN_004059d0(int param_1);
+void FUN_00405a90(void);
+void __cdecl FUN_00405c30(short param_1);
+LPCSTR __cdecl FUN_00405f00(LPCSTR param_1);
+char * __cdecl FUN_00405f40(int param_1);
+void FUN_004064a0(void);
+void FUN_00406520(void);
+void FUN_00406620(void);
+void __cdecl FUN_00406990(int param_1);
+void FUN_00406ec0(void);
+void FUN_00407340(void);
+void FUN_00407d80(void);
+void FUN_00407e90(void);
+void FUN_00407ee0(void);
+void __cdecl FUN_00407f50(short param_1);
+void __cdecl FUN_00408050(char param_1);
+void FUN_00408120(void);
+void FUN_00408500(void);
+void __cdecl FUN_00408e70(int param_1);
+void FUN_00408f30(void);
+void __cdecl FUN_00409030(int param_1);
+void __cdecl FUN_0040a880(int param_1);
+bool FUN_0040aa20(void);
+void FUN_0040ac70(void);
+void __cdecl FUN_0040ad90(int param_1);
+void __cdecl FUN_0040b2f0(int param_1,int param_2,short param_3);
+void __cdecl FUN_0040b7d0(int param_1,short param_2,int param_3,char param_4);
+void __cdecl FUN_0040b8e0(short param_1,short param_2,uint param_3,int param_4,int param_5,int param_6,int param_7);
+void FUN_0040ba50(void);
+void FUN_0040cbb0(void);
+void FUN_0040cc30(void);
+void __cdecl FUN_0040cd80(short param_1,short param_2,uint param_3,int param_4,int param_5);
+void FUN_0040ce40(void);
+void FUN_0040ced0(void);
+void __cdecl FUN_0040cfb0(uint param_1);
+void FUN_0040d250(void);
+void FUN_0040d3c0(void);
+void FUN_0040d450(void);
+void FUN_0040d890(void);
+bool FUN_0040d8e0(void);
+void FUN_0040d900(void);
+void FUN_0040d920(void);
+void FUN_0040da90(void);
+void __cdecl FUN_0040dad0(int param_1);
+void __cdecl FUN_0040dc20(int param_1,int param_2);
+void __cdecl FUN_0040dcf0(int param_1,int param_2);
+void FUN_0040dea0(void);
+void __cdecl FUN_0040dfc0(short *param_1,uint *param_2);
+void FUN_0040dfe0(void);
+void FUN_0040e040(void);
+void __cdecl FUN_0040e680(int param_1,short param_2,short param_3);
+void __cdecl FUN_0040e700(short param_1,short param_2,char *param_3,int param_4,int param_5);
+void FUN_0040e790(void);
+void __cdecl FUN_0040e890(int param_1,int param_2);
+void FUN_0040e950(void);
+void FUN_0040e9a0(void);
+void FUN_0040ec10(void);
+void __cdecl FUN_0040ecc0(uint param_1,uint param_2,uint param_3);
+void FUN_0040eea0(void);
+void __cdecl FUN_0040eff0(short param_1,short param_2);
+void __cdecl FUN_0040f0c0(short param_1,short param_2);
+void __cdecl FUN_0040f380(short param_1,short param_2);
+void FUN_0040f790(void);
+void __cdecl FUN_0040f960(char param_1);
+void __cdecl FUN_0040fa60(int param_1,byte param_2,byte param_3);
+void FUN_00410640(void);
+void __cdecl FUN_00410900(int param_1);
+void FUN_004109c0(void);
+void __cdecl FUN_00410a50(short param_1,int param_2);
+void __cdecl FUN_00410cb0(short param_1,int param_2);
+void __cdecl FUN_00410e40(int param_1,int param_2,short param_3);
+void __cdecl FUN_004110f0(int param_1,int param_2);
+void FUN_00411260(void);
+void __cdecl FUN_00411370(int param_1);
+void __cdecl FUN_00411670(short param_1,short param_2,ushort param_3,ushort param_4,int param_5);
+void __cdecl FUN_004116f0(int param_1);
+void __cdecl FUN_00411860(int param_1);
+void __cdecl FUN_00411900(int param_1,short param_2);
+void __cdecl FUN_00411c10(short param_1,short param_2,int param_3,int param_4);
+void FUN_00411e40(void);
+void __cdecl FUN_00411e50(short param_1);
+void FUN_00412390(void);
+void __cdecl FUN_00412700(int param_1,short param_2);
+void FUN_00412780(int param_1);
+void FUN_00413180(void);
+char * FUN_004132d0(void);
+void __cdecl FUN_00418780(int param_1);
+void __cdecl FUN_004187e0(short param_1,short param_2,int param_3);
+void __cdecl FUN_00418840(int param_1);
+void __cdecl FUN_00418910(short param_1,int param_2);
+void __cdecl FUN_00418a40(int param_1,int param_2,int param_3);
+void FUN_00418e60(void);
+void FUN_00418fa0(void);
+void FUN_00419200(void);
+void FUN_00419260(void);
+void __cdecl FUN_0041ce10(int param_1,int param_2,uint *param_3);
+void __cdecl FUN_0041cf60(int param_1,uint param_2);
+void FUN_00422560(void);
+void __cdecl FUN_00422e60(short param_1,ushort param_2,ushort *param_3,int param_4);
+void FUN_00426ac0(void);
+void FUN_004276f0(void);
+void __cdecl FUN_00429360(int param_1,int param_2,int param_3);
+void __cdecl FUN_0042a010(int param_1,int param_2,int param_3,int param_4);
+void FUN_0042a0a0(void);
+void __cdecl FUN_0042b170(int param_1,short param_2,int param_3,int param_4,int param_5);
+void FUN_0042b220(void);
+void __cdecl FUN_0042b340(int param_1);
+void __cdecl FUN_0042b4f0(short param_1,short param_2);
+void __cdecl FUN_0042b9c0(short param_1,short param_2);
+void FUN_0042c4d0(void);
+void __cdecl FUN_0042d2f0(int param_1);
+void FUN_0042d3d0(void);
+void FUN_0042d500(void);
+void FUN_0042d8a0(void);
+void FUN_0042da90(void);
+void FUN_0042dc00(void);
+void FUN_0042dc60(void);
+void FUN_0042dcc0(void);
+void __cdecl FUN_0042dd30(int param_1,int param_2,int param_3);
+void __cdecl FUN_0042de80(short *param_1,uint *param_2);
+void FUN_0042ded0(void);
+void FUN_0042dee0(void);
+void FUN_0042ecf0(void);
+void FUN_0042ef40(void);
+void FUN_0042fe70(void);
+void __cdecl FUN_00430090(int param_1);
+int __cdecl FUN_00431cf0(int param_1,int param_2,int param_3,uint param_4);
+int __cdecl FUN_00431da0(int param_1,uint param_2,int param_3,int param_4,uint param_5);
+uint __cdecl FUN_00431e40(int param_1,int param_2,uint param_3,int param_4);
+void __cdecl FUN_004326a0(int param_1,int param_2,uint param_3,int param_4,int param_5,int param_6,int param_7);
+void FUN_00434600(void);
+void __cdecl FUN_004370a0(int param_1,int param_2,int param_3,int param_4);
+void __cdecl FUN_00437bb0(uint *param_1,uint *param_2);
+void __cdecl FUN_00437c20(short *param_1,byte param_2,byte param_3,byte param_4);
+void __cdecl FUN_00437cb0(short *param_1,ushort *param_2);
+void __cdecl FUN_00437d10(short *param_1,ushort *param_2);
+void __cdecl FUN_00437d70(short *param_1,int param_2,int param_3);
+void __cdecl FUN_00437df0(ushort *param_1,short param_2,ushort param_3);
+void __cdecl FUN_00437e30(ushort *param_1,short param_2,ushort param_3,int param_4,ushort param_5);
+void __cdecl FUN_00437e70(byte *param_1);
+void __cdecl FUN_00437ea0(byte *param_1,uint *param_2,int param_3);
+void __cdecl FUN_00437ef0(uint *param_1,uint *param_2);
+void __cdecl FUN_00437f20(byte *param_1);
+void __cdecl FUN_004380c0(uint *param_1);
+void __cdecl FUN_00438110(int *param_1,uint param_2);
+void __cdecl FUN_00438170(int param_1);
+void __cdecl FUN_004381a0(int param_1);
+void __cdecl FUN_004384a0(int *param_1,uint param_2);
+ushort __cdecl FUN_004384c0(ushort param_1,int param_2,int param_3,int param_4);
+void __cdecl FUN_00438580(int param_1);
+void __cdecl FUN_004385f0(int param_1);
+void __cdecl FUN_00438660(int param_1);
+void __cdecl FUN_00438710(int param_1,int param_2);
+void __cdecl FUN_00438740(int param_1);
+void __cdecl FUN_00438830(int param_1);
+void __cdecl FUN_00438a30(int param_1);
+void __cdecl FUN_00438bc0(int param_1);
+void __cdecl FUN_00438cb0(int param_1);
+void __cdecl FUN_00438f40(int param_1);
+void __cdecl FUN_00439090(int param_1);
+void __cdecl FUN_004392e0(int param_1);
+void __cdecl FUN_004393d0(int param_1);
+void __cdecl FUN_004394a0(int param_1);
+longlong FUN_00439c80(void);
+void __cdecl FUN_00439ce0(int param_1);
+void __cdecl FUN_00439db0(byte param_1,byte param_2,byte param_3);
+void FUN_00439dd0(void);
+void __cdecl FUN_00439e60(uint *param_1,byte *param_2,short param_3);
+void __cdecl FUN_00439ed0(uchar param_1,uchar param_2,uchar param_3,int param_4);
+void __cdecl FUN_00439ef0(int param_1,uchar param_2,uchar param_3,ushort param_4,uint *param_5);
+void __cdecl FUN_00439f40(int param_1,short *param_2);
+void __cdecl FUN_00439f80(int param_1);
+void __cdecl FUN_00439f90(int param_1);
+void __cdecl FUN_00439fa0(int param_1);
+void __cdecl FUN_00439fb0(int param_1);
+void __cdecl FUN_00439fc0(int param_1);
+void __cdecl FUN_0043a010(int param_1);
+void __cdecl FUN_0043a050(int param_1);
+void __cdecl FUN_0043a060(int param_1,int param_2);
+void __cdecl FUN_0043a080(int param_1,int param_2);
+void FUN_0043a0a0(void);
+void FUN_0043a0b0(void);
+void FUN_0043a0c0(void);
+void FUN_0043a0d0(void);
+void __cdecl FUN_0043a0e0(short *param_1);
+void __cdecl FUN_0043a180(int *param_1);
+int __cdecl FUN_0043a390(int param_1,int param_2,int param_3);
+void __cdecl FUN_0043a3b0(int param_1,byte *param_2,byte param_3);
+void __cdecl FUN_0043a430(uint param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043a9f0(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043aba0(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043ad60(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043af30(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043b140(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043b330(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043b510(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043b700(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043b910(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043bb30(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043bd00(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043bee0(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043c100(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043c300(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void FUN_0043c520(int param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043c780(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043ca20(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043cc20(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043ce30(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043d080(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043d2c0(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043d500(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043d750(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043d9f0(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043dc90(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043ded0(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043e110(uint *param_1,int param_2,int param_3,int param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043e3c0(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043e640(uint *param_1,int param_2,int param_3,uint param_4,byte *param_5,byte param_6);
+void __cdecl FUN_0043e8c0(int param_1,int param_2,int param_3);
+void FUN_0043eb50(uint *param_1,byte *param_2,uint param_3,int param_4);
+void __cdecl FUN_0043f3c0(int *param_1,int param_2,int param_3,uint param_4,uint param_5,int param_6);
+void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4);
+void __cdecl FUN_0043fdd0(uint param_1,uint param_2);
+void __cdecl FUN_0043fdf0(uint *param_1,uint *param_2);
+void __cdecl FUN_0043fe10(byte param_1,byte param_2,byte param_3);
+void __cdecl FUN_0043fe90(int param_1,int param_2,int param_3,int param_4,byte param_5,byte param_6,byte param_7);
+void __cdecl FUN_0043ff30(int param_1,int param_2,int param_3,int param_4,uchar param_5,uchar param_6,uchar param_7,uint param_8);
+uchar * __cdecl FUN_0043ffd0(uint param_1);
+void __cdecl FUN_00440360(int *param_1,int *param_2);
+void __cdecl FUN_004404a0(int *param_1,int *param_2,int param_3,int param_4);
+void __cdecl FUN_00440850(ushort *param_1,ushort param_2);
+void __cdecl FUN_004408d0(ushort *param_1,ushort param_2);
+void __cdecl FUN_00440990(ushort *param_1,ushort param_2);
+void __cdecl FUN_00440a40(ushort *param_1,ushort param_2);
+void __cdecl FUN_00441930(int param_1,int param_2,int param_3,int param_4,uint param_5,ushort param_6,ushort param_7);
+void __cdecl FUN_00441bd0(int param_1);
+uint __cdecl FUN_00441b80(int param_1);
+void FUN_00441cc0(void);
+void FUN_00441d10(void);
+void __cdecl FUN_00441d40(ushort *param_1,ushort *param_2);
+void FUN_00441d80(void);
+longlong __cdecl FUN_004420f0(int param_1);
+longlong __cdecl FUN_00442120(int param_1,int param_2);
+longlong FUN_00442160(void);
+void __cdecl FUN_00442190(int param_1,uint *param_2);
+void __cdecl FUN_004421b0(short *param_1,ushort *param_2);
+void FUN_00441dc0(void);
+void FUN_00441de0(void);
+void FUN_00441df0(void);
+void FUN_00441e30(void);
+void FUN_00441e40(void);
+longlong __cdecl FUN_004420c0(int param_1);
+void __cdecl FUN_00442230(ushort *param_1);
+void __cdecl FUN_004422e0(int param_1,ushort *param_2);
+void __cdecl FUN_00442330(int param_1,ushort *param_2);
+void __cdecl FUN_00442380(int param_1,ushort *param_2);
+void __cdecl FUN_004423d0(short *param_1,ushort *param_2);
+void __cdecl FUN_00442450(short *param_1,ushort *param_2);
+void __cdecl FUN_004424d0(int param_1,uint *param_2);
+void __cdecl FUN_00442520(int param_1,uint *param_2);
+void __cdecl FUN_00442570(int param_1,uint *param_2);
+void __cdecl FUN_004425c0(uint param_1,uint param_2,ushort *param_3);
+void __cdecl FUN_00442660(uint param_1,uint param_2,ushort *param_3);
+void __cdecl FUN_00442780(ushort *param_1);
+void __cdecl FUN_004427b0(int param_1);
+void __cdecl FUN_004427d0(uint param_1,int *param_2,uint *param_3);
+void __cdecl FUN_00442950(uint param_1,uint *param_2,int *param_3,uint *param_4);
+void FUN_00442a70(void);
+void __cdecl FUN_00442a80(uint param_1,uint *param_2);
+void __cdecl FUN_00442b30(uint *param_1,uint *param_2);
+void __cdecl FUN_00442b70(uint *param_1,ushort *param_2);
+void __cdecl FUN_00442ba0(uint *param_1,uint *param_2,ushort *param_3);
+void __cdecl FUN_00442bd0(uint *param_1);
+void __cdecl FUN_00442c00(int param_1,int param_2);
+void __cdecl FUN_00442ff0(int *param_1);
+void __cdecl FUN_00443000(short *param_1,byte *param_2,uchar *param_3);
+void FUN_004431d0(void);
+void __cdecl FUN_004431e0(int param_1,int *param_2);
+void __cdecl FUN_004432b0(short *param_1);
+void __cdecl FUN_00443500(int param_1,int param_2,int param_3);
+void FUN_00443550(void);
+bool __cdecl FUN_00443610(LPVOID param_1);
+void __cdecl FUN_004436c0(DWORD param_1);
+void FUN_004436f0(void);
+void FUN_00443700(void);
+HANDLE __cdecl FUN_004438e0(LPCSTR param_1);
+HANDLE __cdecl FUN_00443920(LPCSTR param_1);
+void __cdecl FUN_00443980(HANDLE param_1);
+void __cdecl FUN_00443a00(HANDLE param_1,LPVOID param_2,DWORD param_3);
+void __cdecl FUN_00443a80(HANDLE param_1,LONG param_2);
+uchar * FUN_00443d50(void);
+void FUN_004443c0(void);
+ushort * __cdecl FUN_00444430(short param_1);
+void __cdecl FUN_004444d0(int param_1);
+uint __cdecl FUN_00444610(int param_1);
+void __cdecl FUN_00444650(int param_1,uint param_2);
+void __cdecl FUN_004446d0(uint *param_1,uint *param_2);
+void __cdecl FUN_00444770(uint *param_1,ushort *param_2);
+void __fastcall FUN_00446d60(uint param_1,uint param_2,int param_3,uint param_4);
+void __fastcall FUN_00446de0(uint param_1,uint param_2,int param_3);
+void FUN_00446e40(void);
+void FUN_00446e60(void);
+void FUN_00446e80(void);
+void FUN_00446eb0(void);
+void FUN_00447020(void);
+void FUN_00447030(void);
+void __cdecl FUN_00447040(int param_1,int param_2,int param_3);
+int FUN_00447140(void);
+void __cdecl FUN_004472f0(short *param_1,int param_2,int param_3);
+void __cdecl FUN_00447380(short *param_1,int param_2,int param_3);
+void FUN_004474e0(void);
+void FUN_00447530(void);
+void FUN_004475f0(void);
+void FUN_00447670(void);
+int * FUN_004476f0(void);
+void __cdecl FUN_00447730(int *param_1);
+void __cdecl FUN_00447780(int *param_1);
+void __cdecl FUN_004477f0(int param_1);
+void __cdecl FUN_00447840(int *param_1,int param_2);
+void __cdecl FUN_00447880(int *param_1,int param_2,uint param_3);
+void __cdecl FUN_00447900(int *param_1,int param_2);
+void __cdecl FUN_00447960(int *param_1,int param_2);
+void __cdecl FUN_004479b0(int *param_1);
+void __cdecl FUN_00447a10(int *param_1);
+void __cdecl FUN_00447aa0(int *param_1,uchar *param_2,uint param_3);
+void __cdecl FUN_00447bb0(int param_1);
+void __cdecl FUN_00447e60(uint *param_1,uint *param_2);
+int __cdecl FUN_00447f90(int *param_1);
+void __cdecl FUN_00448120(uint *param_1,uint *param_2,uint *param_3,int param_4);
+longlong __cdecl FUN_00448250(uint param_1,uint param_2,double param_3);
+void __cdecl FUN_004483f0(int *param_1,int *param_2,int *param_3,int param_4);
+void FUN_004486c0(void);
+void __cdecl FUN_00448730(HDC param_1);
+void FUN_004487a0(void);
+void FUN_004489e0(void);
+void FUN_00448ad0(void);
+void __cdecl FUN_00448d40(int param_1);
+void __cdecl FUN_004492f0(int param_1);
+void __cdecl FUN_004494b0(int param_1);
+bool __cdecl FUN_00449d30(int param_1);
+void __cdecl FUN_00449d70(int param_1);
+void __cdecl FUN_00449f20(int param_1);
+int __cdecl FUN_0044b540(int param_1,int param_2);
+void __cdecl FUN_0044b690(int *param_1,int param_2,int param_3);
+void FUN_0044b8e0(int param_1,int param_2);
+void __cdecl FUN_0044b970(int param_1);
+void FUN_0044c320(void);
+void __cdecl FUN_0044c8a0(int param_1);
+char FUN_0044ca20(void);
+void FUN_0044f370(void);
+void __cdecl FUN_004508a0(int param_1,int param_2);
+void __cdecl FUN_004509d0(int param_1);
+void FUN_00450a60(int param_1);
+void __cdecl FUN_00450b10(uint param_1,int param_2);
+void __cdecl FUN_00450b90(byte param_1,byte param_2,int param_3);
+void __cdecl FUN_00450db0(int param_1,int param_2);
+void __cdecl FUN_00451030(int param_1,int param_2);
+void __cdecl FUN_004511f0(uint param_1,int param_2);
+void FUN_00451520(void);
+void __cdecl FUN_00451910(int param_1);
+void __cdecl FUN_004519a0(int param_1);
+void __cdecl FUN_004520b0(short param_1,short param_2,short param_3,int param_4,int param_5);
+void FUN_00452360(void);
+void __cdecl FUN_00452b90(short param_1,short param_2,uint param_3,int param_4,int param_5);
+void FUN_00452c50(void);
+void __cdecl FUN_00452ca0(int param_1);
+void FUN_00452ef0(void);
+void FUN_00453120(void);
+void FUN_00453210(void);
+void FUN_00453270(void);
+void FUN_00453350(void);
+void FUN_00453580(void);
+void FUN_00453700(void);
+void FUN_004537f0(void);
+void __cdecl FUN_00453d40(int param_1);
+void __cdecl FUN_00454500(int param_1);
+void FUN_00454560(void);
+void FUN_00454c70(void);
+void __cdecl FUN_004552b0(int param_1);
+void FUN_00455750(void);
+void FUN_00455aa0(void);
+void __cdecl FUN_00455bd0(uint param_1,int param_2);
+void __cdecl FUN_00455f50(int *param_1);
+void FUN_004560b0(void);
+void __cdecl FUN_00456320(int param_1);
+void FUN_00456ac0(void);
+void __cdecl FUN_004570e0(int param_1);
+void FUN_00457810(void);
+void FUN_00457990(void);
+void __cdecl FUN_00457d60(uint param_1,int param_2);
+void FUN_00457de0(void);
+void __cdecl FUN_00457e50(int param_1,int param_2);
+void __cdecl FUN_004580d0(uint param_1,int param_2);
+void __cdecl FUN_004581c0(int param_1,int param_2,short param_3,int param_4);
+void FUN_00458270(void);
+void FUN_00458290(void);
+void __cdecl FUN_00458590(int param_1);
+void FUN_00458720(void);
+void FUN_00458800(void);
+void FUN_00458ad0(void);
+void __cdecl FUN_00459a30(int param_1,int param_2);
+void FUN_00459ae0(void);
+void __cdecl FUN_00459e60(int param_1,short param_2,short param_3);
+void FUN_00459f40(short param_1,short param_2,uint param_3,uint *param_4);
+void FUN_0045abc0(void);
+void FUN_0045af90(void);
+void FUN_0045afe0(void);
+void __cdecl FUN_0045b040(short *param_1,uint *param_2);
+void __cdecl FUN_0045b060(int param_1);
+void __cdecl FUN_0045b320(uint *param_1,int *param_2,int param_3);
+void FUN_0045b6b0(void);
+void __cdecl FUN_0045b810(int param_1,byte param_2);
+void FUN_0045b880(void);
+void FUN_0045ba50(void);
+void FUN_0045bbb0(void);
+void __cdecl FUN_0045bc40(int param_1);
+void __cdecl FUN_0045bcd0(int param_1,int param_2);
+void __cdecl FUN_0045cd20(int param_1,short param_2,int param_3,int param_4,int param_5);
+void __cdecl FUN_0045cec0(int param_1,int param_2,int param_3,int param_4);
+void __cdecl FUN_0045e190(int *param_1);
+void __cdecl FUN_0045ed90(int param_1);
+ulonglong __fastcall FUN_0045f9e0(uint param_1,uint param_2,uint param_3,uint param_4);
+void __cdecl FUN_0045fb40(short param_1,short param_2,LPCSTR param_3,int param_4,int param_5);
+void FUN_0045fc80(int param_1,int param_2,int param_3,int param_4,int param_5,int param_6,int param_7);
+void __cdecl FUN_00460010(short param_1,short param_2,short param_3,int param_4,int param_5);
+void __cdecl FUN_00460210(short param_1,short param_2,short param_3,int param_4,int param_5);
+void __cdecl FUN_00460360(int param_1,int param_2,short param_3,short param_4,int param_5);
+void __cdecl FUN_004604f0(int param_1,int param_2,short param_3,short param_4);
+void __cdecl FUN_004608b0(short param_1,short param_2,uint param_3,int param_4,int param_5,int param_6,int param_7);
+void __cdecl FUN_00460a20(short param_1,short param_2,short param_3,int param_4,int param_5,int param_6,int param_7,int param_8);
+void __cdecl FUN_00460b20(int param_1,short param_2,short param_3,int param_4,char param_5);
+void __cdecl FUN_00460c40(int param_1,int param_2,short param_3,short param_4,int param_5);
+void __cdecl FUN_00461180(int param_1,int param_2,short param_3,short param_4);
+void __cdecl FUN_00461550(short param_1,short param_2,short param_3,int param_4,int param_5,int param_6,int param_7,int param_8);
+void __cdecl FUN_00461650(int param_1,int param_2,short param_3,short param_4);
+void __cdecl FUN_004619e0(short param_1,short param_2,short param_3,int param_4);
+void __cdecl FUN_00461bb0(short param_1,short param_2,short param_3,int param_4,int param_5);
+void __cdecl FUN_00461c60(short param_1,short param_2,short param_3,int param_4,int param_5,int param_6,int param_7,int param_8);
+void __cdecl FUN_00461d60(short param_1,short param_2,short param_3,int param_4,int param_5,int param_6);
+void FUN_00461e20(void);
+void __cdecl FUN_00462000(int param_1,uint param_2,uint param_3,uint param_4,uint param_5);
+void __cdecl FUN_00462250(int param_1);
+void __cdecl FUN_00462280(short *param_1,short param_2,ushort param_3,int param_4,ushort param_5,int param_6);
+void FUN_00462330(void);
+void FUN_00462ce0(void);
+void __cdecl FUN_00462df0(int param_1,int param_2,int param_3);
+void __cdecl FUN_00462e40(int param_1,uint param_2,uint param_3,uint param_4);
+void FUN_00462ee0(int param_1,int param_2);
+void __cdecl FUN_00463160(uint param_1,uint param_2,short param_3);
+void __cdecl FUN_00463230(int param_1,int param_2);
+char FUN_00463640(void);
+void __cdecl FUN_00463820(int param_1,int param_2,int param_3,int param_4);
+void FUN_00463860(int param_1,int param_2,int param_3,int param_4,int param_5);
+void __cdecl FUN_00463a80(int param_1,short param_2,uint param_3,int param_4,byte *param_5);
+void __cdecl FUN_00463b30(byte param_1,short *param_2);
+void __cdecl FUN_00463df0(int param_1,short param_2,int param_3,int param_4,byte *param_5);
+void FUN_00463e80(void);
+void FUN_004642f0(void);
+void FUN_00464520(void);
+void FUN_00464590(void);
+void __cdecl FUN_00464f90(uint param_1,int param_2,int param_3);
+void __cdecl FUN_004652e0(int param_1,int param_2,int param_3,int param_4,int param_5);
+void __cdecl FUN_00465440(int param_1,int param_2,int param_3);
+void FUN_004654c0(void);
+void FUN_004656b0(void);
+void __cdecl FUN_00465720(uint param_1);
+void FUN_00465990(void);
+void FUN_00466040(void);
+void FUN_00466270(void);
+void FUN_00466620(void);
+void FUN_00466700(void);
+bool FUN_004669b0(void);
+void __cdecl FUN_00466de0(int param_1,int param_2);
+void FUN_00466ec0(void);
+void FUN_00466ef0(void);
+void __cdecl FUN_00467410(int param_1,int param_2);
+char FUN_0049faa0(void);
+void __cdecl FUN_0049fc40(int param_1,int param_2,int param_3,int param_4);
+void FUN_0049fc80(int param_1,int param_2,int param_3,int param_4,int param_5);
+void __cdecl FUN_004a01b0(int param_1,int param_2,int param_3,int param_4,int param_5);
+void __cdecl FUN_0049fe60(short param_1,short param_2,uint param_3,int param_4,int param_5);
+void __cdecl FUN_0049fed0(int param_1,int param_2,int param_3,int param_4,int param_5);
+void __cdecl FUN_0049ff10(int param_1,int param_2,int param_3,int param_4,int param_5,int param_6,int param_7,int param_8);
+void FUN_004a0280(ushort *param_1,int param_2,short param_3,int param_4,int param_5,int param_6,int param_7,uchar *param_8);
+void __cdecl FUN_004a0790(int param_1,short param_2,int param_3);
+void __cdecl FUN_004a07c0(int param_1,short param_2,int param_3);
+void __cdecl FUN_004a07f0(int param_1,short param_2,int param_3);
+void FUN_004a0820(int param_1,int param_2);
+void __cdecl FUN_004a0a60(int param_1,int param_2,short param_3);
+void __cdecl FUN_004a0e00(short param_1,short param_2);
+void __cdecl FUN_004a0f40(int param_1,short param_2,short param_3);
+void __cdecl FUN_004a1080(int param_1);
+void FUN_004a1090(void);
+void __cdecl FUN_004a12b0(short param_1,short param_2,int param_3,int param_4);
+void __cdecl FUN_004a1700(short param_1,short param_2,int param_3,int param_4,int param_5);
+void __cdecl FUN_004a1760(int param_1);
+void FUN_004a1780(void);
+void __cdecl FUN_004a1870(int param_1,int param_2,byte *param_3);
+void FUN_004a1cb0(int param_1,uint param_2,uint *param_3);
+void FUN_004a2a50(void);
+void __cdecl FUN_004a2ac0(int param_1);
+void __cdecl FUN_004a2b20(int param_1,int param_2);
+void FUN_004a2cd0(void);
+void FUN_004a2db0(void);
+void __cdecl FUN_004a2e20(uchar param_1);
+void __cdecl FUN_004a3660(int param_1,int param_2);
+void __cdecl FUN_004a3780(uint param_1);
+void FUN_004a37a0(void);
+void FUN_004a37e0(void);
+void FUN_004a3800(void);
+void FUN_004a3850(void);
+void __cdecl FUN_004a38b0(ushort param_1);
+void FUN_004a3bc0(void);
+void FUN_004a3be0(void);
+void FUN_004a4140(void);
+void FUN_004a4160(void);
+void __cdecl FUN_004a41a0(int param_1);
+void FUN_004a4310(short *param_1,short param_2,ushort param_3,int param_4,ushort param_5,int param_6);
+void __cdecl FUN_004a43c0(int param_1);
+void __cdecl FUN_004a43f0(int param_1,uint param_2,uint param_3,uint param_4);
+void FUN_004a51b0(int param_1,uint param_2,int param_3,uint param_4,uint param_5);
+void FUN_004a5280(void);
+void FUN_004a52c0(void);
+void __cdecl FUN_004a5320(uint param_1,uchar *param_2);
+void __cdecl FUN_004a5690(int param_1);
+void __cdecl FUN_004a5760(uchar param_1);
+void FUN_004a5870(void);
+void __cdecl FUN_004a58d0(int param_1,int param_2);
+void __cdecl FUN_004a5940(int param_1,int param_2);
+void FUN_004a5ab0(void);
+void FUN_004a5ad0(void);
+void __cdecl FUN_004a5ee0(int param_1);
+void __cdecl FUN_004a5f20(int param_1);
+void FUN_004a6320(void);
+void FUN_004a66a0(void);
+void FUN_004a69c0(void);
+void FUN_004a6a80(void);
+void FUN_004a6cb0(void);
+void __cdecl FUN_004a6d50(uint param_1,ushort param_2,ushort param_3);
+void __cdecl FUN_004a6eb0(short param_1,short param_2);
+void FUN_004a74a0(void);
+void FUN_004a74e0(void);
+void __cdecl FUN_004a7610(char param_1);
+void __cdecl FUN_004a76d0(int param_1);
+void __cdecl FUN_004a7730(uint param_1);
+void FUN_004a7860(void);
+void FUN_004a7880(void);
+void FUN_004a78a0(void);
+void FUN_004a7ad0(void);
+void FUN_004a7cf0(void);
+void FUN_004a7e30(void);
+void __cdecl FUN_004a82c0(int param_1);
+void __cdecl FUN_004a8330(int param_1);
+void FUN_004a8370(void);
+void FUN_004a8580(void);
+void FUN_004a85b0(void);
+void FUN_004a86c0(void);
+void FUN_004a8a10(void);
+void FUN_004a8a70(void);
+bool FUN_004a8ed0(void);
+void FUN_004a8fc0(void);
+void FUN_004a9010(void);
+bool FUN_004a9040(void);
+void __cdecl FUN_004a92e0(int param_1,int param_2);
+void __cdecl FUN_004a9370(int param_1);
+void FUN_004a94e0(void);
+void __cdecl FUN_004a9580(short param_1,short param_2,int param_3,int param_4,int param_5);
+void __cdecl FUN_004a9690(short param_1,short param_2,ushort param_3,ushort param_4,int param_5);
+void __cdecl FUN_004a9710(int param_1);
+void FUN_004a9870(void);
+void __cdecl FUN_004a98d0(int param_1);
+void __cdecl FUN_004a99c0(int param_1,int param_2);
+void FUN_004a9aa0(void);
+void __cdecl FUN_004a9cd0(int param_1);
+void __cdecl FUN_004a9d70(short param_1,int param_2,int param_3);
+void FUN_004a9f90(void);
+void FUN_004aa030(void);
+void FUN_004aa0c0(void);
+void FUN_004aa150(void);
+void FUN_004aa2d0(void);
+void __cdecl FUN_004aa370(int param_1);
+void FUN_004aa3d0(void);
+void FUN_004aa440(void);
+void __cdecl FUN_004aa5e0(int param_1);
+void __cdecl FUN_004aa670(byte param_1,short *param_2);
+void __cdecl FUN_004aa930(int param_1,short param_2,int param_3,int param_4,byte *param_5);
+void __cdecl FUN_004aa9e0(int param_1,short param_2,int param_3,int param_4,uchar *param_5);
+void __cdecl FUN_004ab3b0(uint param_1);
+void __cdecl FUN_004ab580(int param_1);
+void __cdecl FUN_004ab5c0(int param_1);
+void FUN_004ab670(void);
+void __cdecl FUN_004ab940(int param_1);
+void __cdecl FUN_004ab980(ulong param_1);
+float10 FUN_004abd37(void);
+void FUN_004aca20(void);
+void __cdecl FUN_004acb70(UINT param_1);
+void __cdecl FUN_004acbb0(UINT param_1,int param_2,int param_3);
+void FUN_004acc40(void);
+void FUN_004acc50(void);
+void FUN_004acf50(void);
+LPSTR FUN_004ad2b0(void);
+void FUN_004ad760(void);
+void FUN_004ad770(void);
+void FUN_004ad950(void);
+void __cdecl FUN_004add20(int param_1);
+void __cdecl FUN_004af200(LPVOID param_1);
+LPVOID __cdecl FUN_004af220(SIZE_T param_1);
+int __cdecl FUN_004af240(SIZE_T param_1,int param_2);
+LPVOID __cdecl FUN_004af280(SIZE_T param_1);
+char * __cdecl FUN_004af340(char *param_1,char *param_2,int param_3);
+int *FUN_004b0940(void);
+ulong *FUN_004b0950(void);
+ulonglong __cdecl FUN_004aeab0(int *param_1);
+ushort __cdecl FUN_004aead0(uint *param_1);
+void __cdecl FUN_004b1e20(int *param_1,int *param_2);
+void __cdecl FUN_004b20d0(int *param_1,uint param_2,int param_3);
+void __cdecl FUN_004b2300(int param_1);
+void __cdecl FUN_004b2340(int param_1);
+int FUN_004b2450(void);
+int FUN_004b25c0(void);
+void __cdecl FUN_004b26a0(uchar *param_1,uint param_2,int param_3);
+void __cdecl FUN_004b2730(int param_1);
+char __cdecl FUN_004b2750(int param_1);
+bool __cdecl FUN_004b2770(int param_1);
+void __cdecl FUN_004b2790(uint *param_1,uint param_2);
+uint * __cdecl FUN_004b27b0(int param_1);
+void FUN_004674f0(void);
+void FUN_00467570(void);
+void FUN_00468010(int param_1,int param_2);
+void __cdecl FUN_00468ec0(short param_1,short param_2,uint param_3,int param_4);
+void __cdecl FUN_00469560(short param_1,short param_2,char *param_3,int param_4,int param_5);
+void __cdecl FUN_00469680(int param_1);
+void __cdecl FUN_00469700(int param_1,int param_2);
+void FUN_004697e0(void);
+void FUN_00469820(void);
+void __cdecl FUN_00469f50(short param_1,int param_2);
+void __cdecl FUN_0046a080(int param_1,int param_2);
+void FUN_0046a160(void);
+void FUN_0046a190(void);
+void __cdecl FUN_0046a4f0(int param_1,int param_2,int param_3,int param_4,int param_5,int param_6);
+void FUN_0046a670(void);
+void FUN_0046ac40(void);
+void FUN_0046ae70(void);
+void FUN_0046b180(void);
+void FUN_0046b6d0(void);
+void FUN_0046b740(void);
+void FUN_0046b820(void);
+void FUN_0046b920(void);
+void FUN_0046baf0(void);
+void FUN_0046c500(void);
+void FUN_0046c580(void);
+void __cdecl FUN_0046c670(int param_1);
+bool FUN_0046c7a0(void);
+void FUN_0046cd40(void);
+void __cdecl FUN_0046d020(uint param_1);
+void __cdecl FUN_0046d7b0(int param_1);
+void __cdecl FUN_0046d800(uint param_1);
+void FUN_0046d950(void);
+void FUN_0046dc60(void);
+void FUN_0046df10(void);
+void FUN_00470970(void);
+void FUN_00470a00(void);
+void __cdecl FUN_00473530(int param_1,short param_2,int param_3,int param_4,int param_5,int param_6);
+void __cdecl FUN_00473720(short param_1,short param_2,int param_3,int param_4,int param_5);
+void FUN_004746e0(int param_1,short param_2,uint param_3,int param_4,int param_5);
+void FUN_00476a10(void);
+void FUN_00476d30(void);
+void FUN_00477010(void);
+void FUN_004772d0(void);
+void FUN_00477650(void);
+void FUN_004776b0(void);
+void FUN_004777a0(void);
+void FUN_004786a0(void);
+void FUN_004790f0(void);
+void __cdecl FUN_00479540(uint param_1,short param_2,short param_3);
+void FUN_0047a0c0(void);
+void FUN_0047a320(void);
+void FUN_0047a470(void);
+void __cdecl FUN_0047a5d0(short param_1);
+void FUN_0047a8c0(void);
+void FUN_0047a930(void);
+void FUN_0047ac60(void);
+void FUN_0047af60(void);
+void __cdecl FUN_0047b300(short *param_1);
+void FUN_0047c160(void);
+void FUN_0047c2c0(void);
+void FUN_0047c3e0(void);
+void FUN_0047c490(void);
+void FUN_0047c500(void);
+void FUN_0047c570(void);
+void FUN_0047ca50(void);
+void FUN_0047ce40(void);
+void FUN_0047ced0(void);
+void __cdecl FUN_0047cf20(short param_1,short param_2);
+void FUN_0047d0a0(void);
+void __cdecl FUN_0047d320(short *param_1);
+void FUN_0047d7b0(void);
+void FUN_0047da10(void);
+void FUN_0047fe90(void);
+void __cdecl FUN_0047ffd0(short param_1);
+void __cdecl FUN_00480110(short param_1);
+void __cdecl FUN_00480330(short param_1);
+void FUN_004804e0(void);
+void FUN_00480570(void);
+void FUN_004807f0(void);
+void FUN_00480a90(void);
+void __cdecl FUN_00480c00(short param_1);
+void __cdecl FUN_00480cb0(LPVOID param_1);
+void __cdecl FUN_00480e80(short param_1);
+void FUN_00480fd0(void);
+void __cdecl FUN_004813b0(short *param_1);
+void FUN_00482690(void);
+void FUN_00482720(void);
+void FUN_004828f0(void);
+void FUN_00482920(void);
+void __cdecl FUN_004831e0(int param_1);
+void __cdecl FUN_004833b0(int param_1);
+void __cdecl FUN_00483400(int param_1);
+void __cdecl FUN_00483470(int param_1);
+void __cdecl FUN_004834f0(int param_1);
+void FUN_00483520(void);
+void FUN_004836a0(void);
+void FUN_004838f0(void);
+void __cdecl FUN_00483a50(short *param_1);
+void FUN_00484580(void);
+void FUN_00484680(void);
+void FUN_00484760(void);
+void FUN_004848a0(void);
+void FUN_004849d0(void);
+void __cdecl FUN_00484aa0(short *param_1);
+void FUN_00485740(void);
+void FUN_00485890(void);
+void FUN_004859b0(void);
+void __cdecl FUN_00485b20(short param_1);
+void FUN_00485c10(void);
+void FUN_00485d40(void);
+void __cdecl FUN_00485f00(short *param_1);
+void FUN_004867a0(void);
+void FUN_00487ab0(void);
+void FUN_00487ff0(void);
+void __cdecl FUN_00488170(short param_1);
+void __cdecl FUN_004882f0(short param_1);
+void FUN_00488440(void);
+void __cdecl FUN_00488520(short param_1,short param_2);
+void __cdecl FUN_00488620(short param_1,short param_2,short param_3,short param_4);
+void FUN_00488680(void);
+void FUN_004888f0(void);
+void FUN_00488c00(void);
+void __cdecl FUN_004895b0(char param_1);
+void FUN_00489a10(void);
+void __cdecl FUN_00489bb0(int param_1,int param_2);
+void __cdecl FUN_00489e30(int param_1,int param_2);
+void __cdecl FUN_0048a0d0(int param_1,int param_2);
+void __cdecl FUN_0048a910(int param_1,int param_2);
+byte __cdecl FUN_0048ac30(uint param_1,int param_2,int param_3);
+void __cdecl FUN_0048ac70(int param_1,int param_2);
+void __cdecl FUN_0048b410(int param_1);
+void __cdecl FUN_0048b4d0(uint param_1,int param_2,int param_3,byte param_4);
+void __cdecl FUN_0048b530(int param_1);
+void FUN_0048b620(int param_1,int param_2);
+void __cdecl FUN_0048b710(int param_1,int param_2);
+void __cdecl FUN_0048b980(int param_1,int param_2);
+void __cdecl FUN_0048bb10(int param_1,int param_2,int param_3,int param_4);
+void __cdecl FUN_0048bd10(int param_1);
+void __cdecl FUN_0048bf60(int param_1);
+void __cdecl FUN_0048bff0(int param_1,uint param_2,int param_3,int param_4);
+void __cdecl FUN_0048c180(int param_1,int param_2);
+void __cdecl FUN_0048c310(int param_1,int param_2,int param_3);
+void __cdecl FUN_0048c630(int param_1,int param_2);
+void __cdecl FUN_0048c7a0(int param_1,int param_2,int param_3);
+void __cdecl FUN_0048c8f0(int param_1,int param_2);
+void __cdecl FUN_0048c9f0(int param_1,int param_2,int param_3);
+void __cdecl FUN_0048cb40(uchar *param_1,int param_2);
+void __cdecl FUN_0048d4e0(byte *param_1);
+void __cdecl FUN_0048d580(int param_1,int param_2);
+void __cdecl FUN_0048d750(ushort *param_1);
+void FUN_0048d790(void);
+void FUN_0048d840(void);
+void __cdecl FUN_0048da20(int param_1);
+void FUN_0048dc00(void);
+void FUN_0048dc30(void);
+void FUN_0048dcc0(void);
+void FUN_0048de30(void);
+void __cdecl FUN_0048de50(int param_1);
+void FUN_0048e100(void);
+void FUN_0048e1d0(void);
+void __cdecl FUN_0048e2a0(short param_1,short param_2,short param_3,short param_4,char param_5,char param_6,char param_7,char param_8,uint param_9,uint param_10,uint param_11,short param_12,int param_13);
+void __cdecl FUN_0048e410(uint param_1,uint param_2);
+void FUN_0048e8a0(void);
+void FUN_0048ec70(void);
+void FUN_0048f260(void);
+void __cdecl FUN_0048f720(int param_1);
+void __cdecl FUN_0048f820(short param_1,short param_2,byte param_3,char param_4,uint param_5);
+void __cdecl FUN_0048f9a0(uint param_1);
+void FUN_00490070(void);
+void FUN_004901a0(void);
+void FUN_004902c0(void);
+void FUN_00490320(void);
+void FUN_00490560(void);
+void __cdecl FUN_00490700(int param_1);
+void FUN_00490dc0(void);
+void FUN_004910a0(void);
+void FUN_00491520(void);
+void FUN_00491580(void);
+void FUN_00491630(void);
+void FUN_004916c0(void);
+void __cdecl FUN_00491710(short *param_1,uint *param_2);
+void FUN_004919f0(void);
+void FUN_00491dd0(void);
+void FUN_00491e30(void);
+void __cdecl FUN_004922d0(short param_1);
+void FUN_00492300(void);
+void FUN_00492370(void);
+void __cdecl FUN_004923f0(short param_1,short param_2);
+void __cdecl FUN_00492500(short param_1);
+void __cdecl FUN_00492590(int param_1);
+void FUN_004938d0(void);
+void FUN_004945a0(void);
+void FUN_004945c0(void);
+void __cdecl handle_menu_transition(short param_1);
+void __cdecl handle_menu_selection(short param_1);
+void FUN_00401000(void);
+void __cdecl FUN_004019e0(int param_1);
+void FUN_00495d90(void);
+void FUN_004961d0(void);
+void __cdecl FUN_00496850(int param_1,uint param_2,int param_3);
+void FUN_00498290(void);
+void FUN_00499ee0(void);
+void __cdecl FUN_0049b960(short param_1,short param_2,int param_3,int param_4,int param_5,int param_6,int param_7);
+ushort * __cdecl FUN_0049bd20(int param_1,int param_2);
+void __cdecl FUN_0049c130(int param_1,int param_2);
+void __cdecl FUN_0049c570(int param_1);
+void __cdecl FUN_0049d180(int param_1);
+void FUN_0049dd20(void);
+void FUN_0049de20(void);
+void FUN_0049de50(void);
+void FUN_0049e2d0(void);
+void __cdecl FUN_0049e400(short param_1,short param_2,int param_3);
+void FUN_0049e450(void);
+void __cdecl FUN_0049e7e0(int param_1,int param_2,int param_3);
+void __cdecl FUN_0049ee50(short param_1,short param_2,uchar param_3,uchar param_4,int param_5,int param_6,int param_7);
+void __cdecl FUN_0049eea0(int param_1,int param_2,int param_3);
+void __cdecl FUN_0049eef0(int param_1,short param_2,int param_3,int param_4,byte *param_5);
+void __cdecl FUN_0049efa0(byte param_1,short *param_2);
+void __cdecl FUN_0049f270(int param_1,short param_2,int param_3,int param_4,int param_5,byte *param_6);
+void __cdecl FUN_0049f300(short param_1,short param_2,int param_3,int param_4,byte *param_5);
+void __cdecl FUN_0049f500(int param_1,int param_2);
+char FUN_0049f8f0(void);
+uint * __cdecl FUN_0043ec20(uint *param_1,uint param_2,int *param_3,int param_4,int param_5,byte *param_6,uint param_7,int param_8);
 void __cdecl FUN_00410050(short param_1,short param_2,int param_3,int param_4);
 void __cdecl FUN_004101a0(int param_1);
 void FUN_004101f0(void);
@@ -134,6 +985,28 @@ void __cdecl FUN_00421a50(int param_1,int param_2);
 void FUN_00421a70(void);
 void FUN_00421b10(void);
 void FUN_00421b50(void);
+void __cdecl setup_text_rendering(uint param_1,uint param_2,uint param_3,uint param_4);
+void __cdecl draw_text_string(int param_1,LPCSTR param_2);
+void __cdecl FUN_004224a0(uint param_1,uint param_2,uint param_3,byte param_4);
+void FUN_00422c40(void);
+void FUN_00422c70(void);
+void FUN_00422cf0(void);
+void FUN_00422d00(void);
+void __cdecl FUN_00422d30(int param_1);
+void __cdecl FUN_00422d60(int param_1);
+void thunk_FUN_00447030(void);
+void FUN_00422da0(void);
+void FUN_00422de0(void);
+void __cdecl FUN_00422e00(uint param_1);
+void FUN_00422b70(void);
+void __cdecl FUN_00422e10(short param_1,ushort param_2,ushort *param_3,int param_4);
+void __cdecl FUN_00423a70(int param_1);
+void FUN_00423f00(void);
+void FUN_004252a0(void);
+void __cdecl FUN_00425810(short param_1,short param_2,char *param_3,int param_4,int param_5,int param_6);
+void FUN_00426180(void);
+void __cdecl FUN_00426820(ushort param_1,ushort param_2,uchar param_3,uchar param_4,ushort param_5,ushort param_6,int param_7,int param_8,int param_9,int param_10);
+int FUN_00426960(void);
 ulonglong FUN_00418b30(void);
 int __cdecl FUN_00420ce0(int param_1);
 void FUN_004373e0(void);
@@ -203,7 +1076,7 @@ uint DAT_004baa34;
 uint DAT_004baa38;
 ushort menu_selection;
 short game_start_flag;
-LPVOID DAT_00508c18;
+uchar *DAT_00508c18;
 short menu_state;
 ushort screen_scroll_y;
 uchar DAT_004fda40;
@@ -235,7 +1108,7 @@ short DAT_004ddb48;
 short DAT_004ddb4c;
 int DAT_004baa44;
 int DAT_00511560;
-int DAT_004fdaa4;
+uchar *DAT_004fdaa4;
 short DAT_004ddaa0;
 short DAT_004ddb60;
 short DAT_004ddad4;
@@ -574,7 +1447,7 @@ uchar DAT_004ddc30;
 uchar DAT_004ddc34;
 uint DAT_004b56cc;
 // DUPLICATE REMOVED: // DUPLICATE REMOVED: // DUPLICATE REMOVED: int DAT_004ddbf0;
-int DAT_004feeb8;
+char *DAT_004feeb8;
 int DAT_004feec0;
 uint DAT_004b3000;
 uchar DAT_004b301c;
@@ -1310,8 +2183,8 @@ uchar LAB_00446d10;
 uchar LAB_00446d20;
 uchar LAB_00446d30;
 const char s_Unknown_type_0x_08x_004bc160[] = "Unknown_type:0x%08x";
-uchar FUN_00445760;
-uchar FUN_004459c0;
+uchar DAT_00445760;
+uchar DAT_004459c0;
 // DUPLICATE REMOVED: // DUPLICATE REMOVED: // DUPLICATE REMOVED: uint DAT_00560a98;
 uchar DAT_004de730;
 uchar DAT_004de734;
@@ -2236,7 +3109,7 @@ const char s_ZEUS_CARNAGE_HEART_SECOND_004bf47c[] = "ZEUS_CARNAGE_HEART_SECOND";
 uchar DAT_00573008;
 uchar DAT_0057300c;
 // DUPLICATE REMOVED: // DUPLICATE REMOVED: // DUPLICATE REMOVED: HINSTANCE DAT_00572ff8;
-uchar FUN_00443d60;
+uchar DAT_00443d60;
 uchar DAT_004bf4a0;
 HDC DAT_004bf620;
 HBITMAP DAT_004bf624;
@@ -2254,8 +3127,7 @@ ushort DAT_004ef3d8;
 uint *DAT_004ef468;
 int DAT_004ef460;
 uint DAT_004ef464;
-uint DAT_004ef46c;
-// DUPLICATE REMOVED: int *DAT_004ef46c;
+int *DAT_004ef46c;
 uint DAT_004bf7a0;
 uint DAT_004bf7a4;
 int DAT_004bf674;
@@ -2297,7 +3169,7 @@ uint DAT_004ef490;
 // DUPLICATE REMOVED: // DUPLICATE REMOVED: // DUPLICATE REMOVED: HWAVEOUT DAT_004ef494;
 uint DAT_004ef4ac;
 uint DAT_004efa58;
-uint DAT_004efa98;
+byte *DAT_004efa98;
 uint DAT_004bf830;
 uint DAT_004bf834;
 uint DAT_004bf838;
@@ -2352,7 +3224,7 @@ uint DAT_004f1ad8;
 // DUPLICATE REMOVED: // DUPLICATE REMOVED: // DUPLICATE REMOVED: int DAT_004c0a68;
 // DUPLICATE REMOVED: // DUPLICATE REMOVED: // DUPLICATE REMOVED: int DAT_004c0a6c;
 // DUPLICATE REMOVED: // DUPLICATE REMOVED: // DUPLICATE REMOVED: int DAT_004c0a70;
-int DAT_00508c14;
+char *DAT_00508c14;
 uint DAT_004f096c;
 uint DAT_00573454;
 uchar DAT_004f0d84;
@@ -2781,6 +3653,12 @@ int DAT_00564e6c;
 uchar *PTR_DAT_004c74b0;
 uchar *PTR_s_Finish_004c74d0; // "Finish!"
 uchar *PTR_s_Error_004c74cc; // "Error!"
+uint uRam004c70f2;
+uint uRam004c7112;
+int bRam004c6419;
+char cRam004d6308;
+char cRam004d633f;
+uchar u_3_MZg_004d6640[256];
 // DUPLICATE REMOVED: uchar *DAT_004f42ec;
 uchar DAT_004b62fc;
 uchar DAT_004f4268;
@@ -4475,7 +5353,7 @@ uchar DAT_004d80a8;
 uint DAT_004fd560;
 // DUPLICATE REMOVED: // DUPLICATE REMOVED: // DUPLICATE REMOVED: uint DAT_004fd588;
 int DAT_00575b6c;
-int DAT_00575b68;
+uchar *DAT_00575b68;
 uint DAT_004d808c;
 uint DAT_004d8088;
 uint DAT_004d8090;
@@ -5126,6 +6004,20 @@ void __cdecl handle_menu_transition(short param_1)
   game_start_flag = 1;
   menu_state = 0;
   return;
+}
+
+void __cdecl handle_menu_selection(short param_1)
+{
+  handle_menu_transition(param_1);
+}
+
+void FUN_00401000(void)
+{
+}
+
+void __cdecl FUN_004019e0(int param_1)
+{
+  (void)param_1;
 }
 
 
@@ -6866,7 +7758,7 @@ void __cdecl FUN_004059d0(int param_1)
   local_a = (short)uVar2 + 0x70;
   DAT_004ddb1c = 0;
   *(uint *)(param_1 + 0x2c) = 0;
-  *(LPCSTR)(param_1 + 0xc) = '\0';
+  *(LPCSTR *)(param_1 + 0xc) = NULL;
   local_8 = 0x40;
   local_6 = 0x8f;
   local_c = (short)uVar1;
@@ -21043,7 +21935,7 @@ switchD_0041d672_caseD_1a:
                 *local_c = &LAB_00446280;
                 break;
               case 0x10:
-                *local_c = FUN_00445760;
+                *local_c = DAT_00445760;
                 break;
               case 0x11:
                 *local_c = &LAB_00446340;
@@ -21340,7 +22232,7 @@ switchD_0041d672_caseD_1a:
             }
             else {
               if (local_10 != 0x200009) goto switchD_0041d672_caseD_1a;
-              *local_c = FUN_004459c0;
+              *local_c = DAT_004459c0;
             }
           }
           else if (local_10 < 0x200011) {
@@ -24105,7 +24997,7 @@ LAB_004222f6:
   }
   local_12 = 0x10;
   local_18 = (short)local_8;
-  local_16 = param_2._2_2_;
+  local_16 = (ushort)(param_2 >> 0x10);
   local_4 = iVar2;
   FUN_004224a0(param_1,param_2,param_3,param_4);
   sVar1 = *param_6;
@@ -24167,8 +25059,8 @@ void __cdecl FUN_004224a0(uint param_1,uint param_2,uint param_3,byte param_4)
 
 {
   DAT_004deb20 = (byte)param_3 & 0xf;
-  DAT_004deb08 = param_3._2_1_ & 0xf;
-  DAT_004deb00 = param_3._2_1_;
+  DAT_004deb08 = (byte)(param_3 >> 0x10) & 0xf;
+  DAT_004deb00 = (byte)(param_3 >> 0x10);
   DAT_004deb18 = param_4 & 0xf;
   DAT_004deb1c = param_4;
   DAT_004deb04 = (byte)param_3;
@@ -24617,15 +25509,6 @@ void __cdecl FUN_00422d60(int param_1)
 
 
 
-void thunk_FUN_00447030(void)
-
-{
-  FUN_00447a10(DAT_004ef470);
-  return;
-}
-
-
-
 void FUN_00422d90(void)
 
 {
@@ -24648,15 +25531,6 @@ void FUN_00422da0(void)
     Sleep(100);
   } while (iVar2 < 10);
   FUN_00447030();
-  return;
-}
-
-
-
-void thunk_FUN_00447030(void)
-
-{
-  FUN_00447a10(DAT_004ef470);
   return;
 }
 
@@ -27152,7 +28026,7 @@ FUN_00426820(ushort param_1,ushort param_2,uchar param_3,uchar param_4,
 
 
 
-void FUN_00426960(void)
+int FUN_00426960(void)
 
 {
   setup_text_rendering(0x3c0,0x100,0xf,1);
@@ -27177,7 +28051,7 @@ void FUN_00426960(void)
   draw_text_string(0x1d,&DAT_004bd79c);
   draw_text_string(0x1e,&DAT_004bd78c);
   draw_text_string(0x1f,&DAT_004bd77c);
-  return;
+  return 0;
 }
 
 
@@ -31422,7 +32296,7 @@ void FUN_0042dee0(void)
     local_348 = (uint *)((int)puVar7 + iVar10);
     local_344 = 0;
     local_380 = (uint *)&DAT_005384a0;
-    local_390._0_2_ = 0x200;
+    local_390 = 0x200;
     do {
       if (*(int *)((int)&DAT_00568b80 + iVar16) == 0) break;
       iVar10 = *(int *)((int)&DAT_00566970 + iVar16);
@@ -31656,11 +32530,11 @@ void FUN_0042dee0(void)
       local_348 = local_348 + 0x1a00;
       local_344 = local_344 + 0x40;
       local_368 = local_368 + 1;
-      local_390._0_2_ = (short)local_390 + 0x40;
+      local_390 = (local_390 & 0xffff0000) | ((ushort)local_390 + 0x40);
     } while (local_368 < DAT_004bc610);
   }
-  uVar6 = local_364 - vram_buffer >> 0x1f;
-  DAT_004dee04 = (local_364 - vram_buffer ^ uVar6) - uVar6;
+  uVar6 = ((uint)local_364 - (uint)(uintptr_t)vram_buffer) >> 0x1f;
+  DAT_004dee04 = ((uint)local_364 - (uint)(uintptr_t)vram_buffer ^ uVar6) - uVar6;
   return;
 }
 
@@ -33462,7 +34336,7 @@ LAB_00431ab8:
 
 
 
-void __cdecl FUN_00431cf0(int param_1,int param_2,int param_3,uint param_4)
+int __cdecl FUN_00431cf0(int param_1,int param_2,int param_3,uint param_4)
 
 {
   int iVar1;
@@ -33484,12 +34358,12 @@ void __cdecl FUN_00431cf0(int param_1,int param_2,int param_3,uint param_4)
     (&DAT_005666b0)[param_1] = 0;
     (&DAT_00565a90)[param_1] = 0;
   }
-  return;
+  return iVar1;
 }
 
 
 
-void __cdecl FUN_00431da0(int param_1,uint param_2,int param_3,int param_4,uint param_5)
+int __cdecl FUN_00431da0(int param_1,uint param_2,int param_3,int param_4,uint param_5)
 
 {
   int iVar1;
@@ -33511,12 +34385,12 @@ void __cdecl FUN_00431da0(int param_1,uint param_2,int param_3,int param_4,uint 
     (&DAT_00565a90)[param_1] = 1;
     (&DAT_00565d20)[param_1] = param_2;
   }
-  return;
+  return iVar1;
 }
 
 
 
-void __cdecl FUN_00431e40(int param_1,int param_2,uint param_3,int param_4)
+uint __cdecl FUN_00431e40(int param_1,int param_2,uint param_3,int param_4)
 
 {
   short sVar1;
@@ -33546,7 +34420,7 @@ void __cdecl FUN_00431e40(int param_1,int param_2,uint param_3,int param_4)
     iVar10 = iVar10 + 1;
   } while (piVar5 < &DAT_00570ad0);
   if (0x77 < iVar10) {
-    return;
+    return 0xffffffff;
   }
   if (param_1 == 0) {
     local_3c = 0;
@@ -33763,7 +34637,7 @@ LAB_00432518:
   }
   FUN_0043a390(DAT_0056d85c,(int)(&DAT_004ffec0 + iVar10 * 0x10),(&DAT_00568f90)[iVar10]);
   FUN_0042de80((short *)(&DAT_004fe0a0 + iVar10 * 8),(uint *)(&DAT_00523310 + iVar10 * 0x50));
-  return;
+  return iVar10;
 }
 
 
@@ -36760,7 +37634,7 @@ void __cdecl FUN_004381a0(int param_1)
     }
     local_20c = local_200;
   }
-  if (DAT_004def9c._3_1_ == '\0') {
+  if ((DAT_004def9c >> 24) == 0) {
     local_258 = (int)*(short *)(param_1 + 8);
     local_254 = (int)*(short *)(param_1 + 10);
     local_250 = (uint)*(byte *)(param_1 + 0xc);
@@ -37524,14 +38398,12 @@ void __cdecl FUN_004392e0(int param_1)
   sVar2 = *(short *)(param_1 + 10);
   sVar3 = *(short *)(param_1 + 0xc);
   sVar4 = *(short *)(param_1 + 0xe);
-  pt.y._0_2_ = sVar2;
+  pt.y = (LONG)sVar2;
   pt.x = (int)sVar1;
-  pt.y._2_2_ = sVar2 >> 0xf;
   BVar5 = PtInRect((RECT *)&DAT_004bf348,pt);
   if (BVar5 != 0) {
-    pt_00.y._0_2_ = sVar4;
+    pt_00.y = (LONG)sVar4;
     pt_00.x = (int)sVar3;
-    pt_00.y._2_2_ = sVar4 >> 0xf;
     BVar5 = PtInRect((RECT *)&DAT_004bf348,pt_00);
     if ((BVar5 != 0) && ((*(byte *)(param_1 + 4) & 0x80) == 0)) {
       FUN_00441930((int)sVar1,(int)sVar2,(int)sVar3,(int)sVar4,(uint)*(byte *)(param_1 + 5),
@@ -37838,7 +38710,7 @@ int __cdecl FUN_00439e20(int param_1)
     iVar1 = DAT_004def90;
   }
   DAT_004def90 = iVar2;
-  return DAT_004bf358 + iVar1;
+  return (HGLOBAL)((byte *)DAT_004bf358 + iVar1);
 }
 
 
@@ -38113,11 +38985,11 @@ void __cdecl FUN_0043a0e0(short *param_1)
 
 
 
-void FUN_0043a140(void)
+HGLOBAL FUN_0043a140(void)
 
 {
   DAT_004bf330 = GlobalAlloc(0x40,0x100000);
-  return;
+  return DAT_004bf330;
 }
 
 
@@ -38234,11 +39106,14 @@ FUN_0043a330(uchar *param_1,uchar *param_2,uchar *param_3,byte param_4,
 
 
 
-void __cdecl FUN_0043a390(int param_1,int param_2,int param_3)
+int __cdecl FUN_0043a390(int param_1,int param_2,int param_3)
 
 {
-  *(int *)(param_2 + 8) = param_1 + param_3 * 0x1c;
-  return;
+  int value;
+
+  value = param_1 + param_3 * 0x1c;
+  *(int *)(param_2 + 8) = value;
+  return value;
 }
 
 
@@ -41077,11 +41952,10 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
     bVar2 = *(byte *)(param_1 + 3);
     iVar6 = *(int *)((int)param_1 + 0x32);
     uStack_74 = *(uint *)((int)param_1 + 0x36);
-    uStack_80._0_2_ = (short)iVar4;
+    uStack_80 = (uint)iVar4;
     iVar21 = (int)(short)iVar28;
-    uStack_80._2_2_ = (short)((uint)iVar4 >> 0x10);
-    iVar22 = (int)uStack_80._2_2_;
-    uStack_1a._2_2_ = (short)uStack_80;
+    iVar22 = (int)(short)(uStack_80 >> 0x10);
+    uStack_1a = (uStack_1a & 0xffffU) | ((uStack_80 & 0xffffU) << 16);
     sStack_16 = (short)uStack_80 >> 0xf;
     iVar24 = (int)(short)((uint)iVar28 >> 0x10);
     sStack_2c = (short)uVar3;
@@ -41090,7 +41964,7 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
     sStack_c = (short)uStack_7c;
     sStack_a = (short)uStack_7c >> 0xf;
     uVar11 = (ushort)(((int)(short)uStack_7c + (int)sStack_2c) / 2);
-    iStack_b0 = CONCAT22(iStack_b0._2_2_,uVar11);
+    iStack_b0 = (iStack_b0 & 0xffff0000U) | uVar11;
     uStack_28 = (ushort)*(byte *)(param_1 + 2);
     uStack_26 = 0;
     uStack_24 = (ushort)bVar1;
@@ -41098,19 +41972,19 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
     uVar9 = (uchar)(((uint)bVar1 + (uint)uStack_28) / 2);
     uVar13 = CONCAT12(bVar2,(ushort)*(byte *)((int)param_1 + 9)) & 0xff;
     uStack_20 = (ushort)uVar13;
-    uStack_1e._0_2_ = 0;
+    uStack_1e &= 0xffff0000U;
     uVar14 = CONCAT11(uVar9,*(uchar *)((int)param_1 + 5)) & 0xff;
-    uStack_1e._2_2_ = (ushort)uVar14;
-    uStack_1a._0_2_ = 0;
-    uStack_78._0_2_ = (short)iVar6;
-    uStack_a4._0_2_ = (short)iVar5;
+    uStack_1e = (uStack_1e & 0xffffU) | ((uVar14 & 0xffffU) << 16);
+    uStack_1a &= 0xffff0000U;
+    uStack_78 = (uStack_78 & 0xffff0000U) | ((uint)iVar6 & 0xffffU);
+    uStack_a4 = (uStack_a4 & 0xffff0000U) | ((uint)iVar5 & 0xffffU);
     iStack_70 = (int)(short)uStack_a4;
     iVar19 = (short)uStack_78 + iStack_70;
-    uStack_a4._2_2_ = (short)((uint)iVar5 >> 0x10);
+    uStack_a4 = ((uint)iVar5 & 0xffff0000U) | (uStack_a4 & 0xffffU);
     uStack_34 = (uchar)(iVar19 / 2);
     uStack_33 = (uchar)((uint)(iVar19 / 2) >> 8);
-    uStack_78._2_2_ = (short)((uint)iVar6 >> 0x10);
-    uStack_14 = (int)uStack_a4._2_2_ + (int)uStack_78._2_2_;
+    uStack_78 = ((uint)iVar6 & 0xffff0000U) | (uStack_78 & 0xffffU);
+    uStack_14 = (int)(short)(uStack_a4 >> 16) + (int)(short)(uStack_78 >> 16);
     uStack_32 = (ushort)(uStack_14 / 2);
     uStack_10 = (int)(short)iStack_a0 + (int)(short)uStack_74;
     uStack_30 = (uchar)(uStack_10 / 2);
@@ -41120,13 +41994,13 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
     uVar16 = (uint)(byte)((ushort)*(ushort *)(param_1 + 4) >> 8);
     iStack_4 = *(byte *)((int)param_1 + 0xd) + uVar16;
     uVar27 = (ushort)((iStack_70 + iVar21) / 2);
-    iVar17 = (uStack_a4._2_2_ + iVar24) / 2;
+    iVar17 = ((short)(uStack_a4 >> 16) + iVar24) / 2;
     uStack_ac = CONCAT22((short)iVar17,uVar27);
     uVar12 = (ushort)(((int)(short)iStack_a0 + (int)sStack_2c) / 2);
-    uStack_a8 = CONCAT22(uStack_a8._2_2_,uVar12);
+    uStack_a8 = (uStack_a8 & 0xffff0000U) | uVar12;
     uVar7 = (uint)uStack_24;
     uStack_8c = (uVar14 + *(byte *)((int)param_1 + 0xd)) / 2;
-    uStack_94 = CONCAT22((short)((uStack_78._2_2_ + iVar22) / 2),
+    uStack_94 = CONCAT22((short)(((short)(uStack_78 >> 16) + iVar22) / 2),
                          (short)((short)uStack_80 + (short)uStack_78) / 2);
     sStack_90 = (short)((short)uStack_7c + (short)uStack_74) / 2;
     _uStack_88 = CONCAT31((int3)(char)((uint)iVar6 >> 0x18),(char)((uVar15 + uStack_28) / 2));
@@ -41137,7 +42011,7 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
                          (short)((int)(iVar21 + (iVar21 >> 0x1f & 3U)) >> 2));
     iVar24 = uStack_10 + (short)uStack_7c + (int)sStack_2c;
     uVar15 = (uint)uStack_24;
-    uStack_98 = CONCAT22(uStack_98._2_2_,(short)((int)(iVar24 + (iVar24 >> 0x1f & 3U)) >> 2));
+    uStack_98 = (uStack_98 & 0xffff0000U) | (ushort)((int)(iVar24 + (iVar24 >> 0x1f & 3U)) >> 2);
     iVar24 = iStack_8 + (uint)uStack_28;
     uVar10 = (uchar)((int)(iStack_4 + uVar13 + uVar14) >> 2);
     uVar26 = CONCAT31((int3)((uint)iVar19 >> 8),uVar10);
@@ -41149,7 +42023,7 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
       piVar25 = piVar25 + 1;
     }
     *(short *)piVar25 = (short)*piVar23;
-    uStack_6c = CONCAT22(uStack_6c._2_2_,uVar29);
+    uStack_6c = (uStack_6c & 0xffff0000U) | uVar29;
     uStack_48 = (uchar)((uint)iVar20 >> 0x10);
     uStack_47 = (uchar)((uint)iVar20 >> 0x18);
     uStack_68 = CONCAT11((char)((uVar13 + uVar14) / 2),uVar9);
@@ -41159,12 +42033,12 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
     auStack_40[1] = (uchar)((uint)iVar8 >> 0x18);
     uStack_64 = CONCAT11((uchar)uStack_8c,(char)((bVar2 + uVar7) / 2));
     uStack_3a = uStack_98;
-    uStack_60._0_2_ = CONCAT11(uVar10,(char)((int)(iVar24 + uVar15) >> 2));
+    uStack_60 = (uStack_60 & 0xffff0000U) | ((uint)CONCAT11(uVar10,(char)((int)(iVar24 + uVar15) >> 2)) & 0xffffU);
     uStack_a4 = iVar5;
     uStack_80 = iVar4;
     uStack_78 = iVar6;
     uStack_56 = iVar28;
-    _auStack_52 = uVar3;
+    *(uint *)(void *)_auStack_52 = uVar3;
     unique0x1000060b = iStack_b4;
     uStack_4a = uVar11;
     uStack_46 = uVar27;
@@ -41189,7 +42063,7 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
     auStack_40[1] = (uchar)((uint)iStack_a0 >> 0x18);
     uStack_57 = (uchar)iVar28;
     uStack_58 = (uchar)((uint)uVar26 >> 0x18);
-    stack0xffffffc2 = iStack_70;
+    *(int *)(void *)stack0xffffffc2 = iStack_70;
     uStack_3a = uStack_6c;
     uStack_36 = (ushort)uStack_8c;
     uStack_34 = (uchar)(uStack_8c >> 0x10);
@@ -41203,7 +42077,7 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
     sStack_2c = (short)(uStack_84 >> 0x10);
     sStack_2a = (short)uStack_80;
     uStack_28 = (ushort)((uint)uStack_80 >> 0x10);
-    _auStack_52 = CONCAT13((uchar)uStack_74,CONCAT12((uchar)uStack_78,auStack_52));
+    *(uint *)(void *)_auStack_52 = CONCAT13((uchar)uStack_74,CONCAT12((uchar)uStack_78,*(ushort *)auStack_52));
     FUN_0043f4c0(&uStack_60,param_2,in_stack_0000001c,in_stack_00000020);
     piVar23 = param_1;
     piVar25 = (int *)(auStack_52 + 2);
@@ -41219,7 +42093,7 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
     uStack_32 = (ushort)_uStack_88;
     uStack_30 = (uchar)((uint)_uStack_88 >> 0x10);
     uStack_2f = (uchar)((uint)_uStack_88 >> 0x18);
-    stack0xffffffb2 = CONCAT13((uchar)uStack_6c,CONCAT12(uStack_ac._1_1_,auStack_50._2_2_));
+    *(uint *)(void *)stack0xffffffb2 = CONCAT13((uchar)uStack_6c,CONCAT12((uchar)(uStack_ac >> 8),*(ushort *)(auStack_50 + 2)));
     uStack_2e = (ushort)uStack_7c;
     sStack_2c = (short)((uint)uStack_7c >> 0x10);
     sStack_2a = (short)uStack_78;
@@ -41230,10 +42104,10 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
     uStack_24 = (ushort)(uStack_84 >> 0x10);
     uStack_22 = (ushort)uStack_80;
     uStack_20 = (ushort)((uint)uStack_80 >> 0x10);
-    uStack_44 = uStack_ac._2_1_;
-    uStack_43 = uStack_ac._3_1_;
+    uStack_44 = (uchar)(uStack_ac >> 16);
+    uStack_43 = (uchar)(uStack_ac >> 24);
     auStack_40[0] = (uchar)uStack_a8;
-    auStack_40[1] = uStack_a8._1_1_;
+    auStack_40[1] = (uchar)(uStack_a8 >> 8);
     uStack_1e = uStack_14;
     uStack_1a = uStack_10;
     FUN_0043f4c0((int *)(auStack_52 + 2),param_2,in_stack_0000002c,in_stack_00000030);
@@ -41248,25 +42122,25 @@ void FUN_0043f4c0(int *param_1,byte *param_2,uint param_3,int param_4)
     uStack_24 = (ushort)((uint)uStack_6c >> 0x10);
     uStack_22 = uStack_68;
     uStack_20 = uStack_66;
-    stack0xffffffc2 =
-         CONCAT13((uchar)sStack_90,CONCAT12((uchar)uStack_94,auStack_40._2_2_));
-    uStack_1e._0_2_ = uStack_64;
-    uStack_1e._2_2_ = uStack_62;
-    uStack_1a._0_2_ = (ushort)uStack_60;
-    uStack_1a._2_2_ = (short)((uint)uStack_60 >> 0x10);
-    uStack_3a = CONCAT13(uStack_56._2_1_,CONCAT12(uStack_58,(ushort)uStack_3a));
+    *(uint *)(void *)stack0xffffffc2 =
+          CONCAT13((uchar)sStack_90,CONCAT12((uchar)uStack_94,*(ushort *)(auStack_40 + 2)));
+    uStack_1e = (uStack_1e & 0xffff0000U) | uStack_64;
+    uStack_1e = (uStack_1e & 0xffffU) | (uStack_62 << 16);
+    uStack_1a = (uStack_1a & 0xffff0000U) | ((ushort)uStack_60);
+    uStack_1a = (uStack_1a & 0xffffU) | (uStack_60 & 0xffff0000U);
+     uStack_3a = CONCAT13((uchar)(uStack_56 >> 16),CONCAT12(uStack_58,(ushort)uStack_3a));
     sStack_16 = (short)iStack_4;
-    uStack_14._0_2_ = (ushort)((uint)iStack_4 >> 0x10);
-    uStack_14._2_2_ = (ushort)unaff_retaddr;
-    uStack_10._0_2_ = (ushort)((uint)unaff_retaddr >> 0x10);
+    uStack_14 = (uStack_14 & 0xffff0000U) | ((uint)iStack_4 >> 16);
+    uStack_14 = (uStack_14 & 0xffffU) | ((uint)unaff_retaddr << 16);
+    uStack_10 = (uStack_10 & 0xffff0000U) | ((uint)unaff_retaddr >> 16);
     uStack_34 = (uchar)uStack_98;
-    uStack_33 = uStack_98._1_1_;
-    uStack_10._2_2_ = CONCAT11(uStack_47,uStack_48);
+    uStack_33 = (uchar)(uStack_98 >> 8);
+    uStack_10 = (uStack_10 & 0xffffU) | ((uint)CONCAT11(uStack_47,uStack_48) << 16);
     sStack_a = CONCAT11(uStack_43,uStack_44);
     sStack_c = uStack_46;
-    iStack_8._0_2_ = uStack_42;
-    uStack_30 = uStack_98._2_1_;
-    uStack_2f = uStack_98._3_1_;
+    iStack_8 = (iStack_8 & 0xffff0000) | uStack_42;
+    uStack_30 = (uchar)(uStack_98 >> 16);
+    uStack_2f = (uchar)(uStack_98 >> 24);
     FUN_0043f4c0((int *)auStack_40,param_2,in_stack_0000003c,in_stack_00000040);
     return;
   }
@@ -41617,7 +42491,7 @@ void FUN_0043f4cd(void)
     in_stack_000000a2 = (ushort)uStack0000004c;
     uStack000000a4 = (uchar)((uint)uStack0000004c >> 0x10);
     uStack000000a5 = (uchar)((uint)uStack0000004c >> 0x18);
-    _uStack00000086 = CONCAT13(uStack00000068,CONCAT12(uStack00000028._1_1_,uStack00000086));
+    _uStack00000086 = CONCAT13(uStack00000068,CONCAT12((uchar)(uStack00000028 >> 8),uStack00000086));
     uStack000000a6 = (ushort)_sStack00000058;
     sStack000000a8 = (short)((uint)_sStack00000058 >> 0x10);
     sStack000000aa = (short)_uStack0000005c;
@@ -41850,8 +42724,8 @@ uchar * __cdecl FUN_0043ffd0(uint param_1)
   case 3:
     return &LAB_004401b0;
   default:
-    puVar1 = (uchar *)FUN_004436c0(99);
-    return puVar1;
+    FUN_004436c0(99);
+    return NULL;
   }
 }
 
@@ -42934,9 +43808,9 @@ void __cdecl FUN_00441e90(double *param_1,double *param_2,double *param_3)
 float10 __cdecl FUN_00441ed0(double *param_1)
 
 {
-  return SQRT((float10)*param_1 * (float10)*param_1 +
-              (float10)param_1[2] * (float10)param_1[2] + (float10)param_1[1] * (float10)param_1[1])
-  ;
+  return sqrtl((float10)*param_1 * (float10)*param_1 +
+               (float10)param_1[2] * (float10)param_1[2] +
+               (float10)param_1[1] * (float10)param_1[1]);
 }
 
 
@@ -42944,40 +43818,11 @@ float10 __cdecl FUN_00441ed0(double *param_1)
 double * __cdecl FUN_00441ef0(double *param_1)
 
 {
-  double *pdVar1;
-  float10 fVar2;
-  float10 fVar3;
-  float10 extraout_ST0;
-  float10 extraout_ST1;
-  float10 extraout_ST1_00;
-  
-  fVar2 = FUN_00441ed0(param_1);
-  if (DAT_004dc5ac == 0) {
-    fVar3 = (float10)*param_1 / fVar2;
-  }
-  else {
-    fVar3 = FUN_004abd37();
-    fVar2 = extraout_ST1;
-  }
-  *param_1 = (double)fVar3;
-  pdVar1 = param_1;
-  if (DAT_004dc5ac == 0) {
-    fVar3 = (float10)param_1[1] / fVar2;
-  }
-  else {
-    fVar3 = FUN_004abd37();
-    fVar2 = extraout_ST1_00;
-  }
-  param_1[1] = (double)fVar3;
-  if (DAT_004dc5ac == 0) {
-    fVar2 = (float10)param_1[2] / fVar2;
-  }
-  else {
-    pdVar1 = (double *)__adj_fdivr_m64(*(uint *)(param_1 + 2),*(uint *)((int)param_1 + 0x14));
-    fVar2 = extraout_ST0;
-  }
-  param_1[2] = (double)fVar2;
-  return pdVar1;
+  double length = (double)FUN_00441ed0(param_1);
+  param_1[0] /= length;
+  param_1[1] /= length;
+  param_1[2] /= length;
+  return param_1;
 }
 
 
@@ -43013,11 +43858,8 @@ void __cdecl FUN_00442060(double *param_1,double *param_2,double *param_3)
 longlong __cdecl FUN_004420c0(int param_1)
 
 {
-  longlong lVar1;
-  
-  fsin((float10)(param_1 * 2) * (float10)0.0007669903939428206);
-  lVar1 = __ftol();
-  return lVar1;
+  float10 angle = (float10)param_1 * 2.0L * 0.0007669903939428206L;
+  return (longlong)truncl(sinl(angle) * 4096.0L);
 }
 
 
@@ -43025,11 +43867,8 @@ longlong __cdecl FUN_004420c0(int param_1)
 longlong __cdecl FUN_004420f0(int param_1)
 
 {
-  longlong lVar1;
-  
-  fcos((float10)(param_1 * 2) * (float10)0.0007669903939428206);
-  lVar1 = __ftol();
-  return lVar1;
+  float10 angle = (float10)param_1 * 2.0L * 0.0007669903939428206L;
+  return (longlong)truncl(cosl(angle) * 4096.0L);
 }
 
 
@@ -43037,16 +43876,7 @@ longlong __cdecl FUN_004420f0(int param_1)
 longlong __cdecl FUN_00442120(int param_1,int param_2)
 
 {
-  longlong lVar1;
-  
-  if (DAT_004dc5ac == 0) {
-    fpatan((float10)param_1 * (float10)0.000244140625,(float10)param_2 * (float10)0.000244140625);
-  }
-  else {
-    FUN_004ac9a5();
-  }
-  lVar1 = __ftol();
-  return lVar1;
+  return zeus_crt_atan2_units(param_1, param_2);
 }
 
 
@@ -43640,7 +44470,7 @@ uint __cdecl FUN_00442c30(uint *param_1)
   local_40 = (ushort)local_60;
   local_3e = local_5a;
   local_3c = local_54;
-  local_3a = local_60._2_2_;
+  local_3a = (ushort)(local_5c >> 16);
   local_38 = local_58;
   local_36 = local_52;
   local_34 = local_5c;
@@ -43726,13 +44556,13 @@ uint __cdecl FUN_00442d40(int *param_1)
   FUN_00441e90((double *)&local_88,&local_30,local_18);
   FUN_00441ef0((double *)&local_88);
   lVar4 = __ftol();
-  local_a8._0_2_ = (ushort)lVar4;
+  local_a8 = (local_a8 & 0xffff0000U) | (ushort)lVar4;
   lVar4 = __ftol();
   local_a2 = (ushort)lVar4;
   lVar4 = __ftol();
   local_9c = (ushort)lVar4;
   lVar4 = __ftol();
-  local_a8._2_2_ = (ushort)lVar4;
+  local_a8 = (local_a8 & 0xffffU) | ((uint)(ushort)lVar4 << 16);
   lVar4 = __ftol();
   local_a0 = (ushort)lVar4;
   lVar4 = __ftol();
@@ -43760,7 +44590,7 @@ uint __cdecl FUN_00442d40(int *param_1)
   local_70 = (ushort)local_a8;
   local_6e = local_a2;
   local_6c = local_9c;
-  local_6a = local_a8._2_2_;
+  local_6a = (ushort)(local_a8 >> 16);
   local_68 = local_a0;
   local_66 = local_9a;
   local_64 = local_a4;
@@ -43834,7 +44664,7 @@ void __cdecl FUN_00443000(short *param_1,byte *param_2,uchar *param_3)
   FUN_00441e60(&local_18,(double *)&DAT_004bf3e8);
   local_18 = (double)*param_2 * (DAT_004bf400 + local_18);
   local_10 = (double)param_2[1] * (DAT_004bf408 + local_10);
-  local_30 = (double)CONCAT44(local_30._4_4_,(uint)param_2[2]);
+  ((uint *)&local_30)[0] = (uint)param_2[2];
   local_8 = (double)param_2[2] * (DAT_004bf410 + local_8);
   lVar1 = __ftol();
   *param_3 = (char)lVar1;
@@ -44160,22 +44990,23 @@ HANDLE __cdecl FUN_004438e0(LPCSTR param_1)
 
 
 
-void __cdecl FUN_00443920(LPCSTR param_1)
+HANDLE __cdecl FUN_00443920(LPCSTR param_1)
 
 {
+  HANDLE file;
+
   SetLastError(0);
-  CreateFileA(param_1,0x80000000,0,(LPSECURITY_ATTRIBUTES)0x0,3,0,(HANDLE)0x0);
-  return;
+  file = CreateFileA(param_1,0x80000000,0,(LPSECURITY_ATTRIBUTES)0x0,3,0,(HANDLE)0x0);
+  return file;
 }
 
 
 
-void __cdecl FUN_00443950(LPCSTR param_1)
+HANDLE __cdecl FUN_00443950(LPCSTR param_1)
 
 {
   SetLastError(0);
-  CreateFileA(param_1,0x40000000,0,(LPSECURITY_ATTRIBUTES)0x0,2,0,(HANDLE)0x0);
-  return;
+  return CreateFileA(param_1,0x40000000,0,(LPSECURITY_ATTRIBUTES)0x0,2,0,(HANDLE)0x0);
 }
 
 
@@ -44416,6 +45247,14 @@ uchar * FUN_00443d50(void)
 
 
 
+LRESULT __fastcall FUN_00443d60(uint, uint, HWND, uint, WPARAM, uint);
+
+static LRESULT CALLBACK zeus_window_proc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
+{
+  return FUN_00443d60(0, 0, hwnd, message, wparam, (uint)lparam);
+}
+
+
 LRESULT __fastcall
 FUN_00443d60(uint param_1,uint param_2,HWND param_3,uint param_4,WPARAM param_5,uint param_6)
 
@@ -44605,7 +45444,7 @@ uint __cdecl FUN_00444180(HINSTANCE param_1,uint param_2) {
   local_28.cbWndExtra = 0;
   local_28.hInstance = param_1;
   local_28.style = 3;
-  local_28.lpfnWndProc = FUN_00443d60;
+  local_28.lpfnWndProc = zeus_window_proc;
   local_28.hIcon = LoadIconA(param_1,(LPCSTR)(param_2 & 0xffff));
   local_28.hCursor = LoadCursorA((HINSTANCE)0x0,(LPCSTR)0x7f00);
   local_28.hbrBackground = (HBRUSH)0x0;
@@ -44641,7 +45480,7 @@ uint FUN_00444280(void)
 #else
   BOOL BVar1;
   int cHeight;
-  _OSVERSIONINFOA local_94;
+  OSVERSIONINFOA local_94;
   
   local_94.dwOSVersionInfoSize = 0x94;
   cHeight = 0xf;
@@ -44793,7 +45632,7 @@ uint __cdecl FUN_00444550(int param_1,uint *param_2)
 
 
 
-void __cdecl FUN_00444610(int param_1)
+uint __cdecl FUN_00444610(int param_1)
 
 {
   int *piVar1;
@@ -44807,7 +45646,7 @@ void __cdecl FUN_00444610(int param_1)
     *piVar1 = 0;
     piVar1 = piVar1 + 0x14;
   }
-  return;
+  return (uint)param_1;
 }
 
 
@@ -45326,11 +46165,10 @@ void __cdecl FUN_00447040(int param_1,int param_2,int param_3)
 
 
 
-void FUN_00447140(void)
+int FUN_00447140(void)
 
 {
-  FUN_00447a50(DAT_004ef470);
-  return;
+  return FUN_00447a50(DAT_004ef470);
 }
 
 
@@ -45994,8 +46832,10 @@ void __cdecl FUN_00447bb0(int param_1)
   uchar *in_stack_000034dc;
   uint in_stack_000034e0;
   uint *puVar9;
+  uint *register0x00000010;
   
   FUN_004aca20();
+  register0x00000010 = (uint *)&in_stack_00000020;
   FUN_00447e60((uint *)&stack0x00000000,in_stack_000034d8);
   iVar2 = FUN_00447f90((int *)&stack0x00000000);
   iVar1 = in_stack_0000003c;
@@ -46228,7 +47068,7 @@ void __cdecl FUN_00447e60(uint *param_1,uint *param_2)
 
 
 
-void __cdecl FUN_00447f90(int *param_1)
+int __cdecl FUN_00447f90(int *param_1)
 
 {
   int iVar1;
@@ -46255,8 +47095,7 @@ void __cdecl FUN_00447f90(int *param_1)
     local_20.right = iVar2;
   }
   local_20.right = local_20.right + 1;
-  IntersectRect(&local_10,&local_20,(RECT *)&DAT_004bf348);
-  return;
+  return IntersectRect(&local_10,&local_20,(RECT *)&DAT_004bf348) != 0;
 }
 
 
@@ -46491,6 +47330,9 @@ uint FUN_00448500(void)
 
 {
 #ifdef USE_SDL
+  if (FUN_00441b80(0) == 0) {
+    return 0;
+  }
   if (sdl_backend_prepare_framebuffer() == 0) {
     return 0;
   }
@@ -48323,7 +49165,7 @@ int __cdecl FUN_0044b360(int param_1)
 
 
 
-void __cdecl FUN_0044b540(int param_1,int param_2)
+int __cdecl FUN_0044b540(int param_1,int param_2)
 
 {
   uint uVar1;
@@ -48335,10 +49177,12 @@ void __cdecl FUN_0044b540(int param_1,int param_2)
       while ((int)(uint)(byte)(&DAT_004f2720)[*piVar2] < param_1) {
         piVar2 = piVar2 + -1;
         if (piVar2 < (int *)0x4f0981) {
-          return;
+          return -1;
         }
       }
+      return *piVar2;
     }
+    return -1;
   }
   else if (param_2 == 1) {
     uVar1 = DAT_004f2710 - 1;
@@ -48348,24 +49192,26 @@ void __cdecl FUN_0044b540(int param_1,int param_2)
         piVar2 = piVar2 + -1;
         uVar1 = uVar1 - 1;
         if (0x7fffffff < uVar1) {
-          return;
+          return -1;
         }
       }
+      return *piVar2;
     }
+    return -1;
   }
   else if ((param_2 == 2) && (0 < DAT_004f2710 + -1)) {
     piVar2 = (int *)(&DAT_004f0980 + (DAT_004f2710 + -1) * 4);
     do {
       if (param_1 <= (int)(uint)(byte)(&DAT_004f2720)[*piVar2]) {
-        return;
+        return *piVar2;
       }
       if ((int)(uint)(byte)(&DAT_004f2720)[*piVar2] < param_1 + -3) {
-        return;
+        return *piVar2;
       }
       piVar2 = piVar2 + -1;
     } while (&DAT_004f0980 < piVar2);
   }
-  return;
+  return -1;
 }
 
 
@@ -56279,7 +57125,7 @@ void FUN_00458290(void)
           iVar7 = FUN_0045f980(uVar8,local_20);
           if (iVar7 < 0) {
             bVar4 = true;
-            local_20._0_1_ = bVar2;
+            local_20 = (local_20 & 0xffffff00U) | bVar2;
           }
           else {
             DAT_004f08b8 = 0;
@@ -56314,7 +57160,7 @@ void FUN_00458290(void)
             bVar4 = true;
             bVar5 = (byte)(iVar9 >> 0x1f);
             bVar5 = (((byte)iVar9 ^ bVar5) - bVar5 & 0x3f ^ bVar5) - bVar5;
-            local_20._0_1_ = (byte)((int)(iVar9 + (iVar9 >> 0x1f & 0x3fU)) >> 6);
+            local_20 = (local_20 & 0xffffff00U) | (byte)((int)(iVar9 + (iVar9 >> 0x1f & 0x3fU)) >> 6);
           }
 LAB_0045848e:
           if (bVar4) {
@@ -57840,9 +58686,8 @@ void FUN_00459f4b(void)
   bool in_ZF;
   
   if (in_CF || in_ZF) {
-                    // WARNING: Could not recover jumptable at 0x00459f55. Too many branches
-                    // WARNING: Treating indirect jump as call
-    (*(code *)(&switchD_00459f55::switchdataD_0045ab9c)[in_EAX])();
+    FUN_00437cb0((short *)&stack0x00000000,(ushort *)&stack0x0000000c);
+    FUN_00410440();
     return;
   }
   FUN_00437cb0((short *)&stack0x00000000,(ushort *)&stack0x0000000c);
@@ -58749,12 +59594,12 @@ LAB_0045bf1d:
             FUN_00442a10(&local_c8,&local_d0,&local_d8,&local_e0,&local_f0,&local_ec,&local_e8,
                          &local_e4,&local_10c,&local_110);
             sVar5 = (short)local_ec + 0x100;
-            local_11c = CONCAT22(local_11c._2_2_,(short)local_e8 + 0x100);
+            local_11c = (local_11c & 0xffff0000U) | (ushort)((short)local_e8 + 0x100);
             PTR_DAT_004baa20 = &DAT_0052f470;
-            local_114 = (int *)CONCAT22(local_114._2_2_,(short)local_e4 + 0x100);
-            local_124 = (uint *)CONCAT22(local_124._2_2_,(short)(local_e8 >> 0x10) + 0x78);
+            local_114 = (int *)(((uint)(uintptr_t)local_114 & 0xffff0000U) | (ushort)((short)local_e4 + 0x100));
+            local_124 = (uint *)(((uint)(uintptr_t)local_124 & 0xffff0000U) | (ushort)((short)(local_e8 >> 0x10) + 0x78));
             sVar2 = (short)(local_ec >> 0x10) + 0x78;
-            local_118 = (ushort *)CONCAT22(local_118._2_2_,(short)(local_e4 >> 0x10) + 0x78);
+            local_118 = (ushort *)(((uint)(uintptr_t)local_118 & 0xffff0000U) | (ushort)((short)(local_e4 >> 0x10) + 0x78));
             local_130 = (int)sVar5;
             FUN_004216c0((short)local_f0 + 0x100,(short)(local_f0 >> 0x10) + 0x78,sVar5,sVar2,0x1e,
                          0x1e,0x1e,0);
@@ -58957,7 +59802,7 @@ void __cdecl FUN_0045cd20(int param_1,short param_2,int param_3,int param_4,int 
     uVar3 = 100;
   }
   iVar7 = 0x14;
-  local_10._0_2_ = 0;
+  local_10 &= 0xffff0000U;
   local_c = 0;
   if (uVar3 != 0) {
     iVar5 = local_8 + param_1;
@@ -59305,7 +60150,7 @@ LAB_0045d173:
           psVar16 = psVar16 + 4;
         } while (iVar3 != 0);
       }
-      local_2c4 = (ushort *)CONCAT31(local_2c4._1_3_,(char)local_160);
+      local_2c4 = (ushort *)(((uintptr_t)local_2c4 & ~(uintptr_t)0xff) | (uchar)local_160);
       if ((char)local_160 == '\0') {
         DAT_00508c2c = 0xff;
       }
@@ -59323,7 +60168,7 @@ LAB_0045d173:
           if (param_1 != 0) {
             cVar1 = *(char *)((int)&local_160 + local_2d4);
             if ((char)local_2c4 != cVar1) {
-              local_2c4 = (ushort *)CONCAT31(local_2c4._1_3_,cVar1);
+              local_2c4 = (ushort *)(((uintptr_t)local_2c4 & ~(uintptr_t)0xff) | (uchar)cVar1);
               if (cVar1 == '\0') {
                 DAT_00508c2c = 0xff;
                 DAT_00508c2d = 0xff;
@@ -59349,13 +60194,13 @@ LAB_0045d173:
             FUN_00442a10(&local_268,&local_270,&local_278,&local_280,&local_290,&local_28c,
                          &local_288,&local_284,&local_2ac,&local_2b0);
             sVar5 = (short)local_28c + 0x100;
-            local_2bc = CONCAT22(local_2bc._2_2_,(short)local_288 + 0x100);
-            local_2b4 = CONCAT22(local_2b4._2_2_,(short)local_284 + 0x100);
+            local_2bc = (local_2bc & 0xffff0000) | (ushort)((short)local_288 + 0x100);
+            local_2b4 = (local_2b4 & 0xffff0000) | (ushort)((short)local_284 + 0x100);
             sVar13 = (short)(local_288 >> 0x10) + 0x78;
             PTR_DAT_004baa20 = &DAT_0052f470;
             sVar2 = (short)(local_28c >> 0x10) + 0x78;
             local_2d0 = (int)sVar2;
-            local_2b8 = CONCAT22(local_2b8._2_2_,(short)(local_284 >> 0x10) + 0x78);
+            local_2b8 = (local_2b8 & 0xffff0000) | (ushort)((short)(local_284 >> 0x10) + 0x78);
             FUN_004216c0((short)local_290 + 0x100,(short)(local_290 >> 0x10) + 0x78,sVar5,sVar2,0x1e
                          ,0x1e,0x1e,0);
             sVar2 = (short)local_2bc;
@@ -59763,25 +60608,25 @@ LAB_0045e2d5:
            (FUN_0043a3b0((int)local_14c,&DAT_0052f470 + DAT_00549dcc * 0x14,4), DAT_00573430 != 0)))
           ))) {
         FUN_00442950(&local_118,(uint *)local_158,&local_140,&local_144);
-        local_150._0_2_ = local_158[0];
+        local_150 = (local_150 & 0xffff0000) | (ushort)local_158[0];
         sVar17 = local_158[1] + 0x78;
         FUN_00442950(&local_110,(uint *)local_158,&local_140,&local_144);
-        asVar3 = local_158;
-        local_148._0_2_ = local_158[0];
+        asVar3[0] = local_158[0]; asVar3[1] = local_158[1];
+        local_148 = (local_148 & 0xffff0000) | (ushort)local_158[0];
         FUN_00442950(&local_108,(uint *)local_158,&local_140,&local_144);
-        asVar4 = local_158;
+        asVar4[0] = local_158[0]; asVar4[1] = local_158[1];
         sVar18 = local_158[0];
         FUN_00442950(&local_100,(uint *)local_158,&local_140,&local_144);
-        local_150._0_2_ = (short)local_150 + 0x100;
+        local_150 = (local_150 & 0xffff0000) | (ushort)((short)local_150 + 0x100);
         sVar12 = (short)local_148 + 0x100;
-        local_148 = CONCAT22(local_148._2_2_,sVar12);
-        local_12c = (uint *)CONCAT22(local_12c._2_2_,local_158[0] + 0x100);
-        local_138 = CONCAT22(local_138._2_2_,sVar17);
+        local_148 = (local_148 & 0xffff0000) | (ushort)sVar12;
+        local_12c = (uint *)(((uintptr_t)local_12c & ~(uintptr_t)0xffff) | (ushort)(local_158[0] + 0x100));
+        local_138 = (local_138 & 0xffff0000U) | (ushort)sVar17;
         sVar11 = asVar3[1] + 0x78;
-        local_134 = (ushort *)CONCAT22(local_134._2_2_,asVar4[1] + 0x78);
+        local_134 = (ushort *)(((uintptr_t)local_134 & ~(uintptr_t)0xffff) | (ushort)(asVar4[1] + 0x78));
         PTR_DAT_004baa20 = &DAT_0052f470;
         local_154 = (uchar *)(int)sVar11;
-        local_130 = (int *)CONCAT22(local_130._2_2_,local_158[1] + 0x78);
+        local_130 = (int *)(((uintptr_t)local_130 & ~(uintptr_t)0xffff) | (ushort)(local_158[1] + 0x78));
         FUN_004216c0((short)local_150,sVar17,sVar12,sVar11,0x1e,0x1e,0x1e,0);
         sVar11 = (short)local_134;
         FUN_004216c0(sVar12,(short)local_154,sVar18 + 0x100,(short)local_134,0x1e,0x1e,0x1e,0);
@@ -60137,21 +60982,21 @@ LAB_0045eed5:
         sVar18 = local_154[0];
         sVar17 = local_154[1] + 0x78;
         FUN_00442950(&local_110,(uint *)local_154,&local_140,&local_144);
-        asVar4 = local_154;
-        local_150._0_2_ = local_154[0];
+        asVar4[0] = local_154[0]; asVar4[1] = local_154[1];
+        local_150 = (local_150 & 0xffff0000) | (ushort)local_154[0];
         FUN_00442950(&local_108,(uint *)local_154,&local_140,&local_144);
-        asVar5 = local_154;
+        asVar5[0] = local_154[0]; asVar5[1] = local_154[1];
         sVar21 = local_154[0];
         FUN_00442950(&local_100,(uint *)local_154,&local_140,&local_144);
         sVar13 = (short)local_150 + 0x100;
-        local_150 = CONCAT22(local_150._2_2_,sVar13);
-        local_138 = CONCAT22(local_138._2_2_,local_154[0] + 0x100);
-        local_134 = (ushort *)CONCAT22(local_134._2_2_,sVar17);
+        local_150 = (local_150 & 0xffff0000) | (ushort)sVar13;
+        local_138 = (local_138 & 0xffff0000U) | (ushort)(local_154[0] + 0x100);
+        local_134 = (ushort *)(((uintptr_t)local_134 & ~(uintptr_t)0xffff) | (ushort)sVar17);
         sVar12 = asVar4[1] + 0x78;
-        local_130 = (int *)CONCAT22(local_130._2_2_,asVar5[1] + 0x78);
+        local_130 = (int *)(((uintptr_t)local_130 & ~(uintptr_t)0xffff) | (ushort)(asVar5[1] + 0x78));
         PTR_DAT_004baa20 = &DAT_0052f470;
         local_14c = (int)sVar12;
-        local_12c = (uint *)CONCAT22(local_12c._2_2_,local_154[1] + 0x78);
+        local_12c = (uint *)(((uintptr_t)local_12c & ~(uintptr_t)0xffff) | (ushort)(local_154[1] + 0x78));
         FUN_004216c0(sVar18 + 0x100,sVar17,sVar13,sVar12,0x1e,0x1e,0x1e,0);
         sVar18 = (short)local_130;
         FUN_004216c0(sVar13,(short)local_14c,sVar21 + 0x100,(short)local_130,0x1e,0x1e,0x1e,0);
@@ -61764,7 +62609,7 @@ FUN_00462280(short *param_1,short param_2,ushort param_3,int param_4,ushort para
   FUN_00437c20(&local_1c,0,0,0);
   FUN_00410440();
   local_14 = 0;
-  local_8 = (uint)local_8._2_2_ << 0x10;
+  local_8 &= 0xffff0000U;
   local_10 = CONCAT22(param_3,param_2);
   local_4 = 0;
   local_c = 0xf;
@@ -61928,11 +62773,11 @@ LAB_0046258a:
         switch(DAT_004f4264) {
         case 10:
         case 0xe:
-          pbVar4 = PTR_s_Error__004c74cc;
+          pbVar4 = PTR_s_Error_004c74cc;
           break;
         case 0xb:
         case 0xf:
-          pbVar4 = PTR_s_Finish__004c74d0;
+          pbVar4 = PTR_s_Finish_004c74d0;
           break;
         default:
           goto switchD_004625a6_caseD_c;
@@ -67225,7 +68070,8 @@ uint FUN_0046b330(void)
       else if (DAT_004cbb80 == 1) {
         DAT_004cbbb8 = 1;
         DAT_004cbc00 = DAT_004cbb84;
-        iVar5 = FUN_00467410(unaff_EBP,unaff_EDI);
+        FUN_00467410(unaff_EBP,unaff_EDI);
+        iVar5 = 0;
         FUN_0046b6d0();
         if ((iVar5 == 3) && (DAT_004ce1a8 == 0)) {
           FUN_004690a0(1,1,0,0);
@@ -72104,8 +72950,8 @@ LAB_00477559:
 LAB_00477570:
   load_tim_file((LPCSTR)local_104,DAT_00508c18,0x10000);
   piVar2 = DAT_00508c18;
-  uVar6 = DAT_00508c18[2];
-  puVar8 = (uint *)(DAT_00508c18[1] + (int)DAT_00508c18);
+  uVar6 = ((uint *)DAT_00508c18)[2];
+  puVar8 = (uint *)(((uint *)DAT_00508c18)[1] + (int)DAT_00508c18);
   for (uVar5 = uVar6 >> 2; uVar5 != 0; uVar5 = uVar5 - 1) {
     *puVar7 = *puVar8;
     puVar8 = puVar8 + 1;
@@ -79312,8 +80158,8 @@ void __cdecl FUN_00485b20(short param_1)
   puVar6 = (uint *)(vram_buffer + 0x38000);
   load_tim_file((&PTR_s_MODEL_PARTS_06_AB01_DAT_004d49b0)[param_1],DAT_00508c18,0x10000);
   piVar2 = DAT_00508c18;
-  uVar5 = DAT_00508c18[2];
-  puVar7 = (uint *)(DAT_00508c18[1] + (int)DAT_00508c18);
+  uVar5 = ((uint *)DAT_00508c18)[2];
+  puVar7 = (uint *)(((uint *)DAT_00508c18)[1] + (int)DAT_00508c18);
   for (uVar4 = uVar5 >> 2; uVar4 != 0; uVar4 = uVar4 - 1) {
     *puVar6 = *puVar7;
     puVar7 = puVar7 + 1;
@@ -83285,7 +84131,7 @@ void __cdecl FUN_0048d580(int param_1,int param_2)
   int local_8;
   int local_4;
   
-  local_8 = DAT_00508c18 + 0x6540;
+  local_8 = (int)DAT_00508c18 + 0x6540;
   local_c = DAT_00508c18;
   if (param_1 == -1) {
     local_24 = 0;
@@ -89228,23 +90074,23 @@ switchD_0049752b_caseD_a:
     if (iVar6 != 0) {
       if (0 < DAT_00575bf0) {
         DAT_00575bf0 = DAT_00575bf0 + -1;
-        iVar6 = FUN_004a1760(7);
-        return iVar6;
+        FUN_004a1760(7);
+        return 0;
       }
       DAT_004d6fe4 = (DAT_004d6fe4 + 0x18) % 0x19;
-      iVar6 = FUN_004a1760(7);
-      return iVar6;
+      FUN_004a1760(7);
+      return 0;
     }
     iVar6 = check_key_press(0x4000);
     if (iVar6 != 0) {
       if (DAT_00575bf0 < 3) {
         DAT_00575bf0 = DAT_00575bf0 + 1;
-        iVar6 = FUN_004a1760(7);
-        return iVar6;
+        FUN_004a1760(7);
+        return 0;
       }
       DAT_004d6fe4 = (DAT_004d6fe4 + 1) % 0x19;
-      iVar6 = FUN_004a1760(7);
-      return iVar6;
+      FUN_004a1760(7);
+      return 0;
     }
     iVar6 = check_key_press(0x20);
     if (iVar6 != 0) {
@@ -89298,8 +90144,8 @@ switchD_0049752b_caseD_a:
         FUN_004a1090();
         FUN_004a3780(0xffffffff);
       }
-      iVar6 = FUN_004a1760(9);
-      return iVar6;
+      FUN_004a1760(9);
+      return 0;
     }
     break;
   case 1:
@@ -89352,8 +90198,8 @@ switchD_0049752b_caseD_a:
         if (iVar6 == -1) {
           DAT_004d6f98 = 3;
           DAT_004d6f88 = 5;
-          iVar6 = FUN_004a1760(9);
-          return iVar6;
+          FUN_004a1760(9);
+          return 0;
         }
         if (iVar6 != 0) {
           return iVar6;
@@ -89369,8 +90215,8 @@ switchD_0049752b_caseD_a:
       case 5:
         DAT_004d6f98 = 3;
         DAT_004d6f88 = 6;
-        iVar6 = FUN_004a1760(9);
-        return iVar6;
+        FUN_004a1760(9);
+        return 0;
       }
     }
     break;
@@ -89395,8 +90241,8 @@ switchD_0049752b_caseD_a:
           puVar10 = puVar10 + 1;
         }
         DAT_004d6f3c = 2;
-        iVar6 = FUN_004a1080(DAT_004d6f44 + 0x22 + DAT_004d6f48 * 2);
-        return iVar6;
+        FUN_004a1080(DAT_004d6f44 + 0x22 + DAT_004d6f48 * 2);
+        return 0;
       }
       if (DAT_004d6f84 == 4) {
         setup_text_rendering(0x380,0,0xf,1);
@@ -89406,8 +90252,8 @@ switchD_0049752b_caseD_a:
         pCVar3 = (LPCSTR)FUN_004a3750(0x29);
         draw_text_string(0xb,pCVar3);
         DAT_004d6f3c = 1;
-        iVar6 = FUN_004a1080(DAT_004d6f44 + 0x2e);
-        return iVar6;
+        FUN_004a1080(DAT_004d6f44 + 0x2e);
+        return 0;
       }
       DAT_00575bec = 0;
       DAT_00575bfc = 0;
@@ -89417,8 +90263,8 @@ switchD_0049752b_caseD_a:
       FUN_004a1090();
       DAT_00575be4 = 0x40;
       DAT_00575be8 = 0x1a;
-      iVar6 = FUN_004a3780(0xffffffff);
-      return iVar6;
+      FUN_004a3780(0xffffffff);
+      return 0;
     }
     break;
   case 6:
@@ -89466,8 +90312,8 @@ switchD_0049752b_caseD_a:
           if (DAT_004d6f84 == 1) {
             FUN_004a3be0();
           }
-          iVar6 = FUN_004a1760(9);
-          return iVar6;
+          FUN_004a1760(9);
+          return 0;
         }
         if (iVar6 != 0) {
           return iVar6;
@@ -89477,8 +90323,8 @@ switchD_0049752b_caseD_a:
           if (CONCAT31(extraout_var_03,bVar11) != 0) {
             DAT_004d6f98 = 3;
             DAT_004d6f88 = 8;
-            iVar6 = FUN_004a1760(9);
-            return iVar6;
+            FUN_004a1760(9);
+            return 0;
           }
           DAT_004d6f80 = DAT_004d6f80 + 1;
           return 0;
@@ -89488,8 +90334,8 @@ switchD_0049752b_caseD_a:
           DAT_004d6f98 = 3;
           DAT_004d6f88 = 8;
           FUN_004a3be0();
-          iVar6 = FUN_004a1760(9);
-          return iVar6;
+          FUN_004a1760(9);
+          return 0;
         }
         DAT_004d6f80 = DAT_004d6f80 + 1;
         return 0;
@@ -89511,8 +90357,8 @@ switchD_0049752b_caseD_a:
         FUN_004945a0();
         DAT_004d6f98 = 3;
         DAT_004d6f88 = 9;
-        iVar6 = FUN_004a1760(9);
-        return iVar6;
+        FUN_004a1760(9);
+        return 0;
       }
     }
     break;
@@ -89528,13 +90374,14 @@ switchD_0049752b_caseD_a:
       FUN_004a1090();
       DAT_00575be4 = 0x40;
       DAT_00575be8 = 0x1a;
-      iVar6 = FUN_004a3780(0xffffffff);
-      return iVar6;
+      FUN_004a3780(0xffffffff);
+      return 0;
     }
     if (iVar6 != 4) {
       return iVar6;
     }
-    iVar6 = FUN_004a3be0();
+    FUN_004a3be0();
+    iVar6 = 0;
     DAT_004d6f88 = 0xc;
   }
   return iVar6;
@@ -96665,7 +97512,7 @@ void __cdecl FUN_004a41a0(int param_1)
     if (*psVar3 != 0) {
       FUN_004222a0(0,local_18,0xf,0,0,psVar3,0x10);
     }
-    local_18 = CONCAT22(local_18._2_2_ + 0x10,(ushort)local_18);
+    local_18 = ((local_18 + 0x100000) & 0xffff0000) | (ushort)local_18;
     psVar3 = psVar3 + 0x24;
     iVar2 = iVar2 + -1;
   } while (iVar2 != 0);
@@ -96707,7 +97554,7 @@ FUN_004a4310(short *param_1,short param_2,ushort param_3,int param_4,ushort para
   FUN_00437c20(&local_1c,0,0,0);
   FUN_00410440();
   local_14 = 0;
-  local_8 = (uint)local_8._2_2_ << 0x10;
+  local_8 = local_8 & 0xffff0000;
   local_10 = CONCAT22(param_3,param_2);
   local_4 = 0;
   local_c = 0xf;
@@ -97206,7 +98053,8 @@ void FUN_004a44bb(void)
   if (in_CF || in_ZF) {
                     // WARNING: Could not recover jumptable at 0x004a44c5. Too many branches
                     // WARNING: Treating indirect jump as call
-    (*(code *)(&switchD_004a44c5::switchdataD_004a518c)[in_EAX])();
+                    FUN_00437cb0((short *)&stack0x00000000,(ushort *)&stack0x0000000c);
+                    FUN_00410440();
     return;
   }
   FUN_00437cb0((short *)&stack0x00000000,(ushort *)&stack0x0000000c);
@@ -99560,12 +100408,15 @@ bool __fastcall FUN_004a8ed8(int param_1)
   int iVar4;
   int iVar5;
   bool bVar6;
+  uchar local_18[24];
+  uchar local_30[24];
   
   bVar6 = false;
+  in_EAX = 0;
   do {
     uVar1 = *(uchar *)((int)&DAT_00556c50 + in_EAX);
-    (&stack0x00000000)[param_1] = *(uchar *)((int)&DAT_00501ff0 + in_EAX);
-    (&stack0x00000008)[param_1] = uVar1;
+    local_18[param_1] = *(uchar *)((int)&DAT_00501ff0 + in_EAX);
+    local_30[param_1] = uVar1;
     in_EAX = in_EAX + 4;
     param_1 = param_1 + 1;
   } while (in_EAX < 0x18);
@@ -99578,8 +100429,8 @@ LAB_004a8f84:
       iVar3 = 0;
       do {
         iVar4 = iVar3 + 4;
-        cVar2 = (&stack0x00000008)[iVar5];
-        *(int *)((int)&DAT_00501ff0 + iVar3) = (int)(char)(&stack0x00000000)[iVar5];
+        cVar2 = (char)local_30[iVar5];
+        *(int *)((int)&DAT_00501ff0 + iVar3) = (int)(char)local_18[iVar5];
         *(int *)((int)&DAT_00556c50 + iVar3) = (int)cVar2;
         iVar5 = iVar5 + 1;
         iVar3 = iVar4;
@@ -101192,15 +102043,13 @@ void __cdecl FUN_004ab940(int param_1)
 void __cdecl FUN_004ab980(ulong param_1)
 
 {
-  _ptiddata p_Var1;
-  
-  p_Var1 = __getptd();
-  p_Var1->_holdrand = param_1;
+  srand((unsigned int)param_1);
   return;
 }
 
 // Boot?
 // WARNING: Globals starting with '_' overlap smaller symbols at the same address
+#if 0
 void entry(void)
 
 {
@@ -101212,7 +102061,7 @@ void entry(void)
   byte *pbVar6;
   int unaff_EDI;
   uint *unaff_FS_OFFSET;
-  _STARTUPINFOA local_74;
+  STARTUPINFOA local_74;
   uchar *local_1c;
   uint local_14;
   uchar *puStack_10;
@@ -101283,6 +102132,7 @@ LAB_004abaca:
   *unaff_FS_OFFSET = local_14;
   return;
 }
+#endif
 
 
 // WARNING: Globals starting with '_' overlap smaller symbols at the same address
@@ -101648,18 +102498,6 @@ float10 FUN_004abd37(void)
   }
 }
 
-uchar  [10] FUN_004ac9a5(void)
-
-{
-  unkbyte10 in_ST0;
-  unkbyte10 in_ST1;
-  uchar auVar1 [10];
-  
-  auVar1 = (uchar  [10])fpatan(in_ST1,in_ST0);
-  return auVar1;
-}
-
-
 void FUN_004ac9e0(void)
 
 {
@@ -101972,7 +102810,7 @@ uint __cdecl FUN_004ad450(int param_1)
   byte *pbVar9;
   uint *puVar10;
   int local_18;
-  _cpinfo local_14;
+  CPINFO local_14;
   
   __lock(0x19);
   CodePage = getSystemCP(param_1);
@@ -102100,7 +102938,7 @@ void FUN_004ad770(void)
   int iVar9;
   UINT *pUVar10;
   int iVar11;
-  _STARTUPINFOA local_44;
+  STARTUPINFOA local_44;
   
   puVar1 = (uint *)FUN_004af220(0x480);
   if (puVar1 == (uint *)0x0) {
@@ -102267,7 +103105,7 @@ void __cdecl FUN_004ada90(int param_1)
     else if (param_1 != 0xfc) {
       DVar3 = GetModuleFileNameA((HMODULE)0x0,local_104,0x104);
       if (DVar3 == 0) {
-        pcVar8 = s_<program_name_unknown>_004dcc20;
+        pcVar8 = "<program name unknown>";
         pCVar10 = local_104;
         for (iVar5 = 5; iVar5 != 0; iVar5 = iVar5 + -1) {
           *(uint *)pCVar10 = *(uint *)pcVar8;
@@ -102419,6 +103257,11 @@ void __cdecl FUN_004add20(int param_1)
   return;
 }
 
+void zeus_crt_lock_enter(int lock_id)
+{
+  EnterCriticalSection(*(LPCRITICAL_SECTION *)(&DAT_004dcc38 + lock_id * 4));
+}
+
 
 int __cdecl FUN_004adff0(FILE *param_1,byte *param_2,uint *param_3)
 
@@ -102442,6 +103285,7 @@ int __cdecl FUN_004adff0(FILE *param_1,byte *param_2,uint *param_3)
   char *pcVar17;
   ulonglong uVar18;
   CHAR local_248 [2];
+  char format_buffer[64];
   char local_246;
   char local_245;
   CHAR local_244 [4];
@@ -102574,7 +103418,7 @@ switchD_004ae071_caseD_0:
         if (((uint)puVar15 & 0x810) == 0) {
           puVar16 = (uchar *)0x1;
           uVar9 = FUN_004aeaa0((int *)&param_3);
-          local_200 = (uchar *)CONCAT31(local_200._1_3_,(char)uVar9);
+          local_200 = (local_200 & 0xffffff00) | (uchar)uVar9;
         }
         else {
           WVar3 = FUN_004aead0(&param_3);
@@ -102756,13 +103600,13 @@ LAB_004ae520:
         else {
           local_238 = FUN_004aeab0((int *)&param_3);
         }
-        if (((((uint)puVar15 & 0x40) == 0) || (0 < (int)local_238._4_4_)) ||
+        if (((((uint)puVar15 & 0x40) == 0) || (0 < (int)(local_238 >> 32))) ||
            (-1 < (longlong)local_238)) {
           local_22c = local_238;
         }
         else {
           puVar15 = (uchar *)((uint)puVar15 | 0x100);
-          local_22c = CONCAT44(-(local_238._4_4_ + ((uint)local_238 != 0)),-(uint)local_238);
+          local_22c = ((ulonglong)(-(int)((local_238 >> 32) + ((uint)local_238 != 0))) << 32) | (uint)(-(int)(uint)local_238);
         }
         if (((uint)puVar15 & 0x8000) == 0) {
           local_22c = local_22c & 0xffffffff;
@@ -102773,19 +103617,19 @@ LAB_004ae520:
         else {
           puVar15 = (uchar *)((uint)puVar15 & 0xfffffff7);
         }
-        pWVar13 = (WCHAR *)register0x00000010;
-        if ((local_22c._4_4_ == 0) && ((uint)local_22c == 0)) {
+        pWVar13 = (WCHAR *)(format_buffer + sizeof(format_buffer));
+        if (((local_22c >> 32) == 0) && ((uint)local_22c == 0)) {
           local_220 = 0;
         }
         while( true ) {
           local_240 = (WCHAR *)((int)pWVar13 + -1);
           iVar11 = local_23c + -1;
-          if (((local_23c < 1) && (local_22c._4_4_ == 0)) && ((uint)local_22c == 0)) break;
+          if (((local_23c < 1) && ((local_22c >> 32) == 0)) && ((uint)local_22c == 0)) break;
           local_238 = (ulonglong)uVar4;
           local_23c = iVar11;
-          uVar18 = __aullrem((uint)local_22c,local_22c._4_4_,uVar4,0);
+          uVar18 = __aullrem((uint)local_22c,(uint)(local_22c >> 32),uVar4,0);
           iVar11 = (int)uVar18 + 0x30;
-          local_22c = __aulldiv((uint)local_22c,local_22c._4_4_,(uint)local_238,local_238._4_4_);
+          local_22c = __aulldiv((uint)local_22c,(uint)(local_22c >> 32),(uint)local_238,(uint)(local_238 >> 32));
           if (0x39 < iVar11) {
             iVar11 = iVar11 + local_214;
           }
@@ -102820,7 +103664,7 @@ LAB_004ae520:
         }
 LAB_004ae7aa:
         iVar11 = (local_224 - local_220) - (int)puVar16;
-        local_238 = CONCAT44(local_238._4_4_,iVar11);
+        local_238 = (local_238 & 0xffffffff00000000ULL) | (uint)iVar11;
         if (((uint)puVar15 & 0xc) == 0) {
           write_multi_char(0x20,iVar11,param_1,&local_230);
         }
@@ -103058,11 +103902,10 @@ void __cdecl FUN_004af200(LPVOID param_1)
 
 
 
-void __cdecl FUN_004af220(SIZE_T param_1)
+LPVOID __cdecl FUN_004af220(SIZE_T param_1)
 
 {
-  FUN_004af240(param_1,DAT_004dd2e0);
-  return;
+  return (LPVOID)FUN_004af240(param_1,DAT_004dd2e0);
 }
 
 
@@ -103094,11 +103937,10 @@ int __cdecl FUN_004af240(SIZE_T param_1,int param_2)
 
 
 
-void __cdecl FUN_004af280(SIZE_T param_1)
+LPVOID __cdecl FUN_004af280(SIZE_T param_1)
 
 {
-  HeapAlloc(DAT_00578490,0,param_1);
-  return;
+  return HeapAlloc(DAT_00578490,0,param_1);
 }
 
 
@@ -103133,86 +103975,15 @@ char * __cdecl FUN_004af340(char *param_1,char *param_2,int param_3)
 int FUN_004af370(void)
 
 {
-  FILE *_File;
-  int iVar1;
-  int iVar2;
-  int iVar3;
-  int iVar4;
-  
-  iVar3 = 0;
-  iVar4 = 3;
-  __lock(2);
-  if (3 < DAT_00577480) {
-    iVar2 = 0xc;
-    do {
-      _File = *(FILE **)(DAT_00577484 + iVar2);
-      if (_File != (FILE *)0x0) {
-        if ((_File->_flag & 0x83) != 0) {
-          iVar1 = _fclose(_File);
-          if (iVar1 != -1) {
-            iVar3 = iVar3 + 1;
-          }
-        }
-        if (0x4f < iVar2) {
-          DeleteCriticalSection((LPCRITICAL_SECTION)(*(int *)(DAT_00577484 + iVar2) + 0x20));
-          FUN_004af200(*(LPVOID *)(DAT_00577484 + iVar2));
-          *(uint *)(DAT_00577484 + iVar2) = 0;
-        }
-      }
-      iVar2 = iVar2 + 4;
-      iVar4 = iVar4 + 1;
-    } while (iVar4 < DAT_00577480);
-  }
-  FUN_004add20(2);
-  return iVar3;
+  return _flushall();
 }
 
 
 int __cdecl FUN_004af4d0(int param_1)
 
 {
-  void *_File;
-  FILE *pFVar1;
-  int iVar2;
-  int iVar3;
-  int _Index;
-  int iVar4;
-  int local_4;
-  
-  iVar4 = 0;
-  _Index = 0;
-  iVar3 = 0;
-  local_4 = 0;
-  __lock(2);
-  do {
-    _File = *(void **)(DAT_00577484 + iVar3);
-    if ((_File != (void *)0x0) && ((*(byte *)((int)_File + 0xc) & 0x83) != 0)) {
-      FID_conflict___lock_file2(_Index,_File);
-      pFVar1 = *(FILE **)(DAT_00577484 + iVar3);
-      if ((pFVar1->_flag & 0x83U) != 0) {
-        if (param_1 == 1) {
-          iVar2 = __fflush_lk(pFVar1);
-          if (iVar2 != -1) {
-            iVar4 = iVar4 + 1;
-          }
-        }
-        else if ((param_1 == 0) && ((pFVar1->_flag & 2U) != 0)) {
-          iVar2 = __fflush_lk(pFVar1);
-          if (iVar2 == -1) {
-            local_4 = -1;
-          }
-        }
-      }
-      FID_conflict___lock_file2(_Index,*(void **)(DAT_00577484 + iVar3));
-    }
-    iVar3 = iVar3 + 4;
-    _Index = _Index + 1;
-  } while (iVar3 < 0x800);
-  FUN_004add20(2);
-  if (param_1 != 1) {
-    iVar4 = local_4;
-  }
-  return iVar4;
+  int status = _flushall();
+  return param_1 == 1 ? status : (status == EOF ? EOF : 0);
 }
 
 
@@ -103251,64 +104022,7 @@ uint __cdecl FUN_004af780(uint param_1,FILE *param_2)
   uint uVar3;
   uint uVar4;
   
-  _File = param_2;
-  _FileHandle = param_2->_file;
-  uVar3 = param_2->_flag;
-  if (((uVar3 & 0x82) == 0) || ((uVar3 & 0x40) != 0)) {
-    param_2->_flag = uVar3 | 0x20;
-    return 0xffffffff;
-  }
-  if ((uVar3 & 1) != 0) {
-    param_2->_cnt = 0;
-    if ((param_2->_flag & 0x10U) == 0) {
-      param_2->_flag = param_2->_flag | 0x20;
-      return 0xffffffff;
-    }
-    param_2->_ptr = param_2->_base;
-    param_2->_flag = param_2->_flag & 0xfffffffe;
-  }
-  uVar3 = param_2->_flag;
-  uVar4 = 0;
-  param_2->_flag = uVar3 | 2;
-  param_2->_flag = uVar3 & 0xffffffef | 2;
-  param_2->_cnt = 0;
-  if ((param_2->_flag & 0x10cU) == 0) {
-    if ((param_2 == (FILE *)&DAT_004dcd18) || (param_2 == (FILE *)&DAT_004dcd38)) {
-      bVar1 = FUN_004af590(_FileHandle);
-      if (CONCAT31(extraout_var,bVar1) != 0) goto LAB_004af804;
-    }
-    __getbuf(_File);
-  }
-LAB_004af804:
-  if ((_File->_flag & 0x108U) == 0) {
-    uVar3 = 1;
-    uVar4 = __write(_FileHandle,&param_1,1);
-  }
-  else {
-    uVar3 = (int)_File->_ptr - (int)_File->_base;
-    _File->_ptr = _File->_base + 1;
-    _File->_cnt = _File->_bufsiz + -1;
-    if ((int)uVar3 < 1) {
-      puVar2 = &DAT_004dc8b8;
-      if (_FileHandle != 0xffffffff) {
-        puVar2 = (uchar *)
-                 (*(int *)((int)&DAT_005784a0 + ((int)(_FileHandle & 0xffffffe7) >> 3)) +
-                 (_FileHandle & 0x1f) * 0x24);
-      }
-      if ((puVar2[4] & 0x20) != 0) {
-        __write(_FileHandle,(void *)0x0,2);
-      }
-    }
-    else {
-      uVar4 = __write(_FileHandle,_File->_base,uVar3);
-    }
-    *_File->_base = (char)param_1;
-  }
-  if (uVar4 != uVar3) {
-    _File->_flag = _File->_flag | 0x20;
-    return 0xffffffff;
-  }
-  return param_1 & 0xff;
+  return (uint)fputc((int)(param_1 & 0xff),param_2);
 }
 
 void FUN_004afa70(void)
@@ -103472,10 +104186,8 @@ LAB_004b060f:
 int * FUN_004b0940(void)
 
 {
-  _ptiddata p_Var1;
-  
-  p_Var1 = __getptd();
-  return &p_Var1->_terrno;
+  static int thread_errno;
+  return &thread_errno;
 }
 
 
@@ -103483,10 +104195,8 @@ int * FUN_004b0940(void)
 ulong * FUN_004b0950(void)
 
 {
-  _ptiddata p_Var1;
-  
-  p_Var1 = __getptd();
-  return &p_Var1->_tdoserrno;
+  static ulong thread_doserrno;
+  return &thread_doserrno;
 }
 
 
@@ -104112,14 +104822,12 @@ FUN_004b17b0(int param_1,uint param_2,ushort param_3,int param_4,byte param_5,sh
   uVar5 = uStack_22;
   if (0 < iVar8) {
     do {
-      uStack_22._2_2_ = (ushort)(uVar5 >> 0x10);
-      uStack_22._0_2_ = (ushort)uVar5;
-      uStack_26._2_2_ = (ushort)((uint)iVar4 >> 0x10);
-      uStack_26._0_2_ = (ushort)iVar4;
+      uStack_22 = uVar5;
+      uStack_26 = (uint)iVar4;
       psVar6 = (short *)((int)psVar7 + 1);
       local_c = CONCAT22((ushort)uStack_26,local_28);
-      local_8 = CONCAT22((ushort)uStack_22,uStack_26._2_2_);
-      local_4 = CONCAT13(cStack_1d,CONCAT12(local_1e,uStack_22._2_2_));
+      local_8 = CONCAT22((ushort)uStack_22,(ushort)((uint)iVar4 >> 0x10));
+      local_4 = CONCAT13(cStack_1d,CONCAT12(local_1e,(ushort)(uVar5 >> 0x10)));
       uStack_26 = iVar4;
       uStack_22 = uVar5;
       ___shl_12((uint *)&local_28);
@@ -104214,9 +104922,7 @@ void __cdecl FUN_004b1e20(int *param_1,int *param_2)
   int local_8;
   int local_4;
   
-  local_18._0_1_ = 0;
-  local_18._1_1_ = 0;
-  local_18._2_2_ = 0;
+  local_18 = 0;
   local_14[0] = 0;
   local_14[1] = 0;
   local_14[2] = 0;
@@ -104282,7 +104988,7 @@ void __cdecl FUN_004b1e20(int *param_1,int *param_2)
   }
   local_1a = local_1a - 1;
   if ((short)local_1a < 0) {
-    iVar8 = CONCAT22(local_18._2_2_,CONCAT11(local_18._1_1_,(byte)local_18));
+    iVar8 = local_18;
     sVar6 = -local_1a;
     local_1a = 0;
     do {
@@ -104294,16 +105000,16 @@ void __cdecl FUN_004b1e20(int *param_1,int *param_2)
     } while (sVar6 != 0);
   }
   else {
-    iVar8 = CONCAT22(local_18._2_2_,CONCAT11(local_18._1_1_,(byte)local_18));
+    iVar8 = local_18;
   }
   if (iVar8 != 0) {
-    local_18._0_1_ = (byte)local_18 | 1;
+    local_18 = local_18 | 1;
   }
 LAB_004b1ff3:
   iVar7 = CONCAT22(local_14[2],local_14[1]);
-  iVar8 = CONCAT22(local_14[0],local_18._2_2_);
-  if (0x8000 < CONCAT11(local_18._1_1_,(byte)local_18)) {
-    if (CONCAT22(local_14[0],local_18._2_2_) == -1) {
+  iVar8 = CONCAT22(local_14[0],(ushort)(local_18 >> 16));
+  if (0x8000 < (local_18 & 0xffff)) {
+    if (CONCAT22(local_14[0],(ushort)(local_18 >> 16)) == -1) {
       iVar8 = 0;
       if (CONCAT22(local_14[2],local_14[1]) == -1) {
         if (local_14[3] == 0xffff) {
@@ -104323,16 +105029,16 @@ LAB_004b1ff3:
       }
     }
     else {
-      iVar8 = CONCAT22(local_14[0],local_18._2_2_) + 1;
+      iVar8 = CONCAT22(local_14[0],(ushort)(local_18 >> 16)) + 1;
       iVar7 = CONCAT22(local_14[2],local_14[1]);
     }
   }
   local_14[0] = (short)((uint)iVar8 >> 0x10);
-  local_18._2_2_ = (ushort)iVar8;
+  local_18 = (local_18 & 0xffff) | ((uint)(ushort)iVar8 << 16);
   local_14[2] = (short)((uint)iVar7 >> 0x10);
   local_14[1] = (short)iVar7;
   if (local_1a < 0x7fff) {
-    *(ushort *)param_1 = local_18._2_2_;
+    *(ushort *)param_1 = (ushort)(local_18 >> 16);
     *(uint *)((int)param_1 + 2) = CONCAT22(local_14[1],local_14[0]);
     *(uint *)((int)param_1 + 6) = CONCAT22(local_14[3],local_14[2]);
     *(ushort *)((int)param_1 + 10) = uVar2 | local_1a;
@@ -104379,11 +105085,11 @@ void __cdecl FUN_004b20d0(int *param_1,uint param_2,int param_3)
         if (0x7fff < *puVar1) {
           puVar3 = &local_c;
           local_c = (ushort)*(uint *)puVar1;
-          uStack_a._0_2_ = (ushort)((uint)*(uint *)puVar1 >> 0x10);
-          uStack_a._2_2_ = (ushort)*(uint *)(puVar1 + 2);
+          uStack_a = (uStack_a & 0xffff0000) | (ushort)((uint)*(uint *)puVar1 >> 0x10);
+          uStack_a = (uStack_a & 0x0000ffff) | ((uint)(ushort)*(uint *)(puVar1 + 2) << 16);
           uStack_6 = (ushort)((uint)*(uint *)(puVar1 + 2) >> 0x10);
           local_4 = *(uint *)(puVar1 + 4);
-          uStack_a = CONCAT22(uStack_a._2_2_,(ushort)uStack_a) + -1;
+          uStack_a = uStack_a - 1;
         }
         FUN_004b1e20(param_1,(int *)puVar3);
       }
@@ -104437,37 +105143,12 @@ char * __cdecl FUN_004b2150(char *param_1,char *param_2,int param_3)
 
 
 
-void RtlUnwind(PVOID TargetFrame,PVOID TargetIp,PEXCEPTION_RECORD ExceptionRecord,PVOID ReturnValue)
-
-{
-                    // WARNING: Could not recover jumptable at 0x004b2182. Too many branches
-                    // WARNING: Treating indirect jump as call
-  RtlUnwind(TargetFrame,TargetIp,ExceptionRecord,ReturnValue);
-  return;
-}
-
-
-
-void MCIWndCreateA(void)
+void FUN_004b2188(void)
 
 {
                     // WARNING: Could not recover jumptable at 0x004b2188. Too many branches
                     // WARNING: Treating indirect jump as call
-  MCIWndCreateA();
   return;
-}
-
-
-
-HIMC ImmAssociateContext(HWND param_1,HIMC param_2)
-
-{
-  HIMC pHVar1;
-  
-                    // WARNING: Could not recover jumptable at 0x004b218e. Too many branches
-                    // WARNING: Treating indirect jump as call
-  pHVar1 = ImmAssociateContext(param_1,param_2);
-  return pHVar1;
 }
 
 
@@ -104580,7 +105261,7 @@ uint __cdecl FUN_004b23c0(int param_1,int param_2,uint param_3)
 
 
 
-void FUN_004b2450(void)
+int FUN_004b2450(void)
 
 {
   int iVar1;
@@ -104588,7 +105269,7 @@ void FUN_004b2450(void)
   do {
     iVar1 = FUN_004b2460();
   } while (0 < iVar1);
-  return;
+  return iVar1;
 }
 
 
@@ -104651,7 +105332,7 @@ uint __cdecl FUN_004b2540(int param_1,int param_2,uint param_3)
 
 
 
-void FUN_004b25c0(void)
+int FUN_004b25c0(void)
 
 {
   int iVar1;
@@ -104659,7 +105340,7 @@ void FUN_004b25c0(void)
   do {
     iVar1 = FUN_004b25d0();
   } while (0 < iVar1);
-  return;
+  return iVar1;
 }
 
 

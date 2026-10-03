@@ -10,11 +10,12 @@ set(ZEUS_ASSETS_DIR "" CACHE PATH "Path to game assets directory (optional)")
 # Sources
 set(ZEUS_SOURCES
     src/zeus.c
+    src/crt_compat.c
+    src/runtime_compat.c
+    src/tim.cpp
     src/graphics.c
     src/input.c
     src/sound.c
-    # src/stdlib.c   # decompiled CRT; disable for MSVC build
-    # src/tim.c      # helper parser; not required for runtime
     src/asset_root.c
     src/launcher.cpp
 )
@@ -23,7 +24,11 @@ if (USE_SDL)
     list(APPEND ZEUS_SOURCES src/sdl_backend.cpp)
 endif()
 
-add_executable(zeus_ch2 ${ZEUS_SOURCES})
+if (WIN32)
+    add_executable(zeus_ch2 WIN32 ${ZEUS_SOURCES})
+else()
+    add_executable(zeus_ch2 ${ZEUS_SOURCES})
+endif()
 
 target_include_directories(zeus_ch2 PRIVATE src)
 
@@ -37,6 +42,7 @@ endif()
 # Prefer system Windows types when building on Windows
 if (WIN32)
     target_compile_definitions(zeus_ch2 PRIVATE ZEUS_USE_SYSTEM_TYPES=1)
+    target_link_libraries(zeus_ch2 PRIVATE winmm imm32 vfw32)
 endif()
 
 if (ZEUS_ASSETS_DIR)
@@ -55,5 +61,11 @@ if (BUILD_DATACOPY)
     if (WIN32)
         target_compile_definitions(datacopy PRIVATE ZEUS_USE_SYSTEM_TYPES=1)
     endif()
+endif()
+
+option(BUILD_TIM_INSPECTOR "Build the standalone PlayStation TIM validator" OFF)
+if (BUILD_TIM_INSPECTOR)
+    add_executable(tim_inspect src/tim_inspect.cpp src/tim.cpp)
+    target_include_directories(tim_inspect PRIVATE src)
 endif()
 

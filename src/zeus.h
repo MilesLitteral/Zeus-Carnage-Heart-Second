@@ -10,6 +10,10 @@
 #include <stdbool.h>
 #endif
 #include "decomp_compat.h"
+#include "crt_compat.h"
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 #ifdef ZEUS_USE_SYSTEM_TYPES
 #ifndef WIN32_LEAN_AND_MEAN
@@ -43,11 +47,14 @@ typedef unsigned int     dword;
 typedef unsigned short   word;
 
 typedef long double      float10;
+typedef unsigned __int64 unkuint10;
+typedef long double      unkbyte10;
 typedef unsigned int     pointer32;
 typedef pointer32        ImageBaseOffset32;
 
 typedef long long             longlong;
 typedef unsigned char         uchar;
+typedef signed char          sbyte;
 typedef unsigned int          uint;
 typedef unsigned long         ulong;
 typedef unsigned long long    ulonglong;
@@ -1087,6 +1094,10 @@ struct _CRT_DOUBLE {
 
 // Global variable extern declarations
 // Input system
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern int DAT_004bc460;
 extern uint32_t DAT_004deaf8;
 extern uint32_t DAT_004deaf0;
@@ -1254,4 +1265,8 @@ int sdl_backend_prepare_framebuffer(void);
 void sdl_backend_shutdown(void);
 void sdl_backend_present(void);
 void sdl_backend_pump_input(void);
+#endif
+
+#ifdef __cplusplus
+}
 #endif

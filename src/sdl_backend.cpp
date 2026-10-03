@@ -1,10 +1,14 @@
 #ifdef USE_SDL
 
+#include <SDL_config.h>
+#undef HAVE_STRINGS_H
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include <windows.h>
 #include <stdint.h>
 #include <stdlib.h>
+
+extern "C" {
 
 // Globals from zeus.c
 extern unsigned int DAT_004bf7a0; // held
@@ -105,7 +109,7 @@ int sdl_backend_init(int win_w, int win_h)
 int sdl_backend_prepare_framebuffer(void)
 {
     if (!DAT_004bf7e0) {
-        DAT_004bf7e0 = malloc(g_fb_w * g_fb_h * 2);
+        DAT_004bf7e0 = (unsigned short*)malloc(g_fb_w * g_fb_h * 2);
         if (!DAT_004bf7e0) {
             return 0;
         }
@@ -177,6 +181,28 @@ void sdl_backend_present(void)
     glEnd();
 
     SDL_GL_SwapWindow(g_window);
+}
+
+int check_key_press(uint32_t mask)
+{
+    return (DAT_004bf7a4 & mask) != 0;
+}
+
+int InputSystemActive(void)
+{
+    return g_window != NULL;
+}
+
+void ResetInputHardware(int) {}
+
+uint32_t ReadController(uint32_t* state)
+{
+    if (state) *state = DAT_004bf7a0;
+    return DAT_004bf7a4;
+}
+
+void StopController(void) {}
+
 }
 
 #endif // USE_SDL

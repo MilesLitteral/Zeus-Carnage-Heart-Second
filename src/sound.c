@@ -4,6 +4,11 @@
 #include "zeus.h"
 #include <stdint.h>
 
+void FUN_00437a40(void);
+int FUN_00437a80(int sound_id);
+uint * FUN_00437ac0(void);
+uint * FUN_00437ae0(void);
+
 // Play a sound effect
 // param_1: sound ID
 // param_2: volume (0-100)
@@ -135,4 +140,23 @@ uint * find_oldest_sound_channel(void)
   FUN_00447a10((int *)*puVar5);
   puVar5[1] = 0xffffffff;
   return puVar5;
+}
+
+void FUN_00437a40(void)
+{
+}
+
+int FUN_00437a80(int sound_id)
+{
+  return (int)is_sound_playing(sound_id);
+}
+
+uint * FUN_00437ac0(void)
+{
+  return find_free_sound_channel();
+}
+
+uint * FUN_00437ae0(void)
+{
+  return find_oldest_sound_channel();
 }

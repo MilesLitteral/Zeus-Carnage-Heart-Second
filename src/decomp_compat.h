@@ -3,6 +3,9 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#define SUB84(value, offset) ((uint32_t)(value))
+#define SUB104(value, offset) ((int32_t)(value))
+
 // Ghidra-style placeholder types
 typedef uint8_t  undefined1;
 typedef uint16_t undefined2;
@@ -16,7 +19,7 @@ typedef int32_t  int3;
 typedef uint32_t uint3;
 
 // Ghidra uses "code" as a function pointer target type (no prototype)
-typedef void (*code)();
+typedef long double (*code)();
 
 // Generic pointer-sized integer placeholder
 typedef uintptr_t pointer;
