@@ -39,6 +39,8 @@ These instructions assume you want to explore the decompiled code, run tests, or
 
 * Git
 
+* [Zeus Carnage Heart Second ISO (PC)](https://archive.org/details/zeus-carnage-heart-second_202507)
+  
 * C/C++ compiler (depending on decompilation output)
 
 * [Optional] Debugging tools such as Ghidra, IDA, or Binary Ninja
