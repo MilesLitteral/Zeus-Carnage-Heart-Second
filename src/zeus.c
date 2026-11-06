@@ -826,8 +826,8 @@ void FUN_004945a0(void);
 void FUN_004945c0(void);
 void __cdecl handle_menu_transition(short param_1);
 void __cdecl handle_menu_selection(short param_1);
-void FUN_00401000(void);
-void __cdecl FUN_004019e0(int param_1);
+uint FUN_00401000(void);
+uint __cdecl FUN_004019e0(short param_1);
 void FUN_00495d90(void);
 void FUN_004961d0(void);
 void __cdecl FUN_00496850(int param_1,uint param_2,int param_3);
@@ -6011,13 +6011,14 @@ void __cdecl handle_menu_selection(short param_1)
   handle_menu_transition(param_1);
 }
 
-void FUN_00401000(void)
+uint FUN_00401000(void)
 {
+  return main_game_loop();
 }
 
-void __cdecl FUN_004019e0(int param_1)
+uint __cdecl FUN_004019e0(short param_1)
 {
-  (void)param_1;
+  return start_game_mode(param_1);
 }
 
 
